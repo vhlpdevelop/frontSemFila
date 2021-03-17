@@ -1,0 +1,171 @@
+<template>
+  <v-app>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet" />
+    <v-content>
+      <v-container class="fill-height blue darken-3" fluid>
+        <v-row align="center" justify="center">
+          <v-col cols="12" sm="8" md="4">
+            <v-card class="elevation-12" @keyup.enter="handleSubmit">
+              <v-toolbar dark>
+                <v-layout justify-center>
+                  <v-toolbar-title>Login</v-toolbar-title>
+                </v-layout>
+                
+              </v-toolbar>
+              <v-card-text>
+                <v-alert
+                  type="error"
+                  outlined
+                  :value="erroForm"
+                >Verifique seus dados e tente novamente.</v-alert>
+                <v-alert type="error" outlined :value="erro">Usuário ou senha errados.</v-alert>
+                <v-layout align-center justify-center column>
+                  <v-flex>
+                    <v-form ref="form" @submit.prevent="onSubmit">
+                      <v-text-field
+                      class="blue--text"
+                        v-model="user"
+                        label="Usuário"
+                        name="usuario"
+                        prepend-icon="person"
+                        type="text"
+                        outlined
+                      />
+
+                      <v-text-field
+                      class="blue--text"
+                        id="senha"
+                        v-model="pss"
+                        label="Senha"
+                        name="senha"
+                        prepend-icon="lock"
+                        type="password"
+                        outlined
+                      />
+                    </v-form>
+                  </v-flex>
+                  <v-flex>
+                    <small>
+                      <input id="checkbox" v-model="cancelled" type="checkbox" @click="RememberMe" />
+                      Salvar usuário
+                    </small>
+                  </v-flex>
+                </v-layout>
+              </v-card-text>
+              <v-card-actions class="grey lighten-1">
+                <small>
+                  Esqueci a
+                  <a @click="handlePassword()">senha</a>
+                </small>
+                <v-spacer />
+                <v-btn v-show="!loading" @click="handleSubmit">Entrar</v-btn>
+                <v-progress-circular v-show="loading" indeterminate color="primary" />
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+        <v-footer elevation-1
+        absolute
+      class="font-weight-medium transparent grey lighten-5">
+      
+      <v-layout align-center justify-center class="black--text">
+        &copy; Copyright &nbsp;<div>{{ new Date().getFullYear() }}</div>&nbsp; UCDB
+      </v-layout>
+        </v-footer>
+      </v-container>
+    </v-content>
+  </v-app>
+</template>
+
+<script>
+import { METHODS } from "http";
+import { mapState, mapActions, mapGetters } from "vuex";
+export default {
+  data: () => ({
+    user: "",
+    pss: "",
+    remember: false,
+    cancelled: false,
+    isLoggedIn: false,
+    erro: false,
+    erroForm: false,
+    loading: false,
+    validacao: [v => v.length > 4 || "Campo inválido"]
+  }),
+  mounted() {
+    if (localStorage.user) {
+      this.user = localStorage.user;
+    }
+    if (localStorage.cancelled) {
+      this.cancelled = localStorage.cancelled;
+    }
+    if (localStorage.remember) {
+      this.remember = localStorage.remember;
+    }
+  },
+  computed: mapGetters(["getAuth"]),
+  methods: {
+    ...mapActions(["FazerLogin"]),
+    async handleSubmit() {
+      if (this.$refs.form.validate()) {
+        try {
+          this.loading = true;
+          let data = {
+            user: this.user,
+            pss: this.pss
+          };
+          this.FazerLogin(data).then(response => {
+            if (this.getAuth) {
+              this.$router.push({
+                name: "Home Page",
+                params: {
+                  isLoggedIn: !this.isLoggedIn
+                }
+              });
+            } else {
+              this.erro = true;
+              this.loading = false;
+            }
+          });
+        } catch (error) {
+          this.loading = false;
+          this.erro = true;
+          throw error;
+        }
+      } else {
+        this.erroForm = true;
+      }
+    },
+    async handlePassword() {
+      this.$router.push({
+        name: 'pedidoAlterarSenha'
+      })
+    },
+    RememberMe() {
+      // PRECISA DE UM FIX NA LOGICA
+      if (this.remember) {
+        localStorage.user = this.user;
+        localStorage.cancelled = this.cancelled;
+        localStorage.remember = this.remember;
+        this.remember = false;
+      } else {
+        localStorage.user = "";
+        localStorage.remember = false;
+        localStorage.cancelled = false;
+        this.remember = true;
+      }
+    }
+  }
+};
+</script>
+<style scoped>
+  .transparent {
+   /* background-color: white!important; */
+   opacity: 0.65;
+   /* border-color: transparent!important; */
+ }
+</style>
