@@ -44,7 +44,6 @@ const actions = {
     }
   },
   async addPedido({commit}, itemData){
-
   },
   async DeletePedido({commit}, itemData){
     if(itemData !== null){
