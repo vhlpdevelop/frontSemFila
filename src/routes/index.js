@@ -75,6 +75,7 @@ const router = new Router({
       props:true,
       component: () => import('../components/User/signUp'), 
     },
+    
     {
       path: '/',
       name: 'dashboard',
