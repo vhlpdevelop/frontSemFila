@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/pedidos/";
+const url = "https://semfila-api.herokuapp.com/pedidos/";
 
 import axios from "axios";
 

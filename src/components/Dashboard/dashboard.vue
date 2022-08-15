@@ -1,49 +1,27 @@
 <template>
   <v-app>
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css"
-      rel="stylesheet"
-    />
     <div>
-      <v-toolbar flat class="grey white--text">
+      <v-toolbar flat class="backgroundB elevation-5"
+     
+      >
         <v-app-bar-nav-icon
-          class="white--text"
+          class="hidden-md-and-up"
           @click.stop="drawer = !drawer"
         />
 
         <v-toolbar-title>
-          <b>PAINEL ADMIN</b>
+          <v-btn text class="navTitle" to="/home">NoLine</v-btn>
         </v-toolbar-title>
         <v-spacer />
-        <v-toolbar-items
-          v-for="menus in menu"
-          :key="menus.title"
-          class="hidden-xs-only"
-        >
-          <v-menu offset-y>
-            <template v-slot:activator="{ on }">
-              <v-btn width="150" text v-on="on" class="white--text">
-                {{ menus.title }}
-                <v-icon right>{{ menus.icon }}</v-icon>
-              </v-btn>
-            </template>
-            <v-list>
-              <v-list-item
-                v-for="item in getPerfil"
-                v-if="item.title.includes(menus.title)"
-                :key="item.title"
-                :to="item.path"
-              >
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </v-toolbar-items>
+        
+        <div v-for="(item, index) in subMenu"
+            :key="item.title"
+            :to="item.to"
+            class="hidden-sm-and-down">
+          <v-btn text depressed class="hidden-sm-and-down navText" > {{item.title}}</v-btn>
+        </div>
+        <v-btn depressed text class="ml-5 navTitle d-none d-sm-flex d-md-flex d-lg-flex d-xl-flex" to="/entrar">criar conta</v-btn>
+        <v-btn raised class="navButtonEntrar white--text mr-5 d-none d-sm-flex d-md-flex d-lg-flex d-xl-flex"  to="/entrar">Entrar</v-btn>
       </v-toolbar>
 
       <v-navigation-drawer
@@ -53,72 +31,78 @@
         width="300"
         class="mx-auto"
       >
-        <v-list>
-          <v-list-item class="hidden-xs-only">
+        <v-list class="">
+          <v-list-item class="">
             <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
+              <v-icon style="color: rgb(55, 80, 92) !important;"
+                >mdi-home</v-icon
+              >
             </v-list-item-icon>
-            <v-list-item-title>Painel Admin</v-list-item-title>
+            <v-btn text class="navTitle" to="/home">NOLINE</v-btn>
+          </v-list-item>
+          <v-divider />
+          <v-list-item
+            v-for="(item, index) in subMenu"
+            :key="item.title"
+            :to="item.to"
+          >
+            <v-list-item-title class="navTitle">{{
+              item.title
+            }}</v-list-item-title>
           </v-list-item>
 
           <v-divider />
-
-          <v-list-group
-            v-for="menus in subMenu"
-            :key="menus.title"
-            no-action
-            :prepend-icon="menus.icon"
+          <v-list-item to="/entrar">
+            <v-list-item-title class="navSubMenu">Entrar</v-list-item-title>
+          </v-list-item>
+          <v-list-item
+            v-for="(item, index) in staticMenu"
+            :key="item.title"
+            :to="item.path"
           >
-            <template v-slot:activator>
-              <v-list-item-title>{{ menus.title }}</v-list-item-title>
-            </template>
-            <v-list-item
-              v-for="item in getPerfil"
-              v-if="item.title.includes(menus.title)"
-              :key="item.title"
-              :to="item.path"
-            >
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item>
-          </v-list-group>
+            <v-list-item-title class="navSubMenu">{{
+              item.title
+            }}</v-list-item-title>
+          </v-list-item>
         </v-list>
       </v-navigation-drawer>
     </div>
 
-    <v-content class>
+    <v-container  ma-0 pr-0 pl-0 pt-3 fluid  class="mx-auto ">
       <router-view />
-      <ContentFooter />
-    </v-content>
+    </v-container>
+    <ContentFooter />
   </v-app>
 </template>
 
 <script>
-import { mapState, mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import ContentFooter from "../Dashboard/ContentFooter";
 export default {
-  beforeRouteEnter(to, from, next) {
-    next((vm) => {
-      vm.isLoggedIn ? next() : next("/");
-    });
-  },
   components: {
     ContentFooter,
   },
-  name: "Lob",
-  props: ["isLoggedIn"],
+  name: "NoLine",
   data: () => ({
     drawer: null,
-    appTitle: "Admin DashBoard",
+    appTitle: "NoLine - Sem Fila",
     navDrawer: true,
     sidebar: true,
-    menu: [{ title: "Produto" }, { title: "Pedidos" }, { title: "Historico" }],
-    subMenu: [
-      { title: "Usuários" },
-      { title: "Produto" },
-      { title: "Historico" },
-      { title: "Pedidos" },
+    staticMenu: [
+      { title: "Politicas", path: "/politicas" },
+      { title: "Ajuda", path: "/ajuda" },
+    ],
+    menu: [
+      { title: "Cardapio" },
+      { title: "QR CODE" },
       { title: "Financeiro" },
+      { title: "Minha Conta" },
+    ],
+    subMenu: [
+      { title: "Comece por aqui", to: "/comece" },
+      { title: "Tornar-me um Sem fila", to: "/semfila" },
+      { title: "Parceiros", to: "/parceiros" },
+      { title: "Jornada", to: "/jornada" },
     ],
   }),
 
@@ -126,5 +110,12 @@ export default {
   methods: {
     ...mapActions([]),
   },
+  created(){
+    
+  }
 };
 </script>
+
+<style>
+@import "./dashboard.module.css";
+</style>

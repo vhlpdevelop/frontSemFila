@@ -3,7 +3,8 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
+  
   mode: 'history',
   base: process.env.BASE_URL,
   scrollBehavior: (to, from, savedPosition) => {
@@ -14,71 +15,99 @@ export default new Router({
   },
   routes: [
     {
-      path:'/', 
-      name: 'login',
+      path:'/cardapio/:id/',
+      name: ':id',
       props:true,
-      component: () => import('../components/User/login'), 
+      component: () => import('../components/Cardapio/cardapio.vue'),
+      children: [
+        {
+          path:'/:id/home',
+          name: 'homeCardapio',
+          props:true,
+          component: () => import('../components/Cardapio/Cardapiohome.vue'),
+        },
+        {
+          path:'/:id/destaque',
+          name: 'destaques',
+          props:true,
+          component: () => import('../components/Cardapio/destaques.vue'),
+        },
+        {
+          path:'/:id/promocao',
+          name: 'promocoes',
+          props:true,
+          component: () => import('../components/Cardapio/promocoes.vue'),
+        },
+        {
+          path:'/:id/categoria/:id2/',
+          name: 'categoria',
+          props:true,
+          component: () => import('../components/Cardapio/Categoria/categoria.vue'),
+        },
+        {
+          path:'/:id/compra',
+          name: 'compra',
+          props:true,
+          component: () => import('../components/Payment/compra.vue'),
+        },
+        {
+          path:'/:id/checkout',
+          name: 'checkout',
+          props:true,
+          component: () => import('../components/Payment/checkout.vue'),
+        },
+        {
+          path:'/:id/payment',
+          name: 'payment',
+          props:true,
+          component: () => import('../components/Payment/payment.vue'),
+        },
+        {
+          path: '/:id/QrCodes',
+          name: 'qrcodesOnCardapio',
+          component: () => import('../components/User/QrCodes.vue'),
+        }
+      ]
     },
     {
-      path: '/dashboard',
+      path:'/entrar', 
+      name: 'entrar',
+      props:true,
+      component: () => import('../components/User/signUp'), 
+    },
+    {
+      path: '/',
       name: 'dashboard',
       component: () => import('../components/Dashboard/dashboard'),
       props:true,
       children: [
         {
-          path: '/produto',
-          name: 'produto',
-          component: () => import('../components/Produto/painelProduto'),
-        },
-        {
-          path: '/editProduct',
-          name: 'Editar Produto',
-          component: () => import("../components/Produto/editarProduto"),
+          path: '/home',
+          name: 'home',
+          component: () => import("../components/Dashboard/home"),
           props:true
         },
         {
-          path: '/addProduct',
-          name: 'Novo Produto',
-          component: () => import("../components/Produto/addProduto")
-        },
-        {
-          path: '/pedidos',
-          name: 'pedidos',
-          component: () => import('../components/Pedido/painelPedidos'),
-        },
-        {
-          path: '/editPedido',
-          name: 'Editar Pedido',
-          component: () => import("../components/Pedido/editarPedido"),
-          props:true
-        },
-        {
-          path: '/addPedido',
-          name: 'Novo Pedido',
-          component: () => import("../components/Pedido/addPedido")
-        },
-        {
-          path: '/visualizarPedido',
-          name: 'Visualizar Pedido',
-          component: () => import("../components/Pedido/VisualizarPedido"),
-          props: true
-        },
-        {
-          path: '/historico',
-          name: 'historico',
-          component: () => import('../components/Historico/painelHistorico')
-        },
-        {
-          path: '/usuarios',
-          name: 'usuarios',
-          component: () => import('../components/User/painelUsuario'),
-        },
-        {
-          path: '/financeiro',
-          name: 'financeiro',
-          component:()=> import('../components/Financeiro/painelFinanceiro')
+          path: '/QrCodes',
+          name: 'qrcodes',
+          component: () => import('../components/User/QrCodes.vue'),
         }
       ],
     },
   ]
 })
+/*
+function hasQueryParams(route) {
+  return !!Object.keys(route.query).length
+}
+
+router.beforeEach((to, from, next) => {
+   if(!hasQueryParams(to) && hasQueryParams(from)){
+    next({name: to.name, query: from.query});
+  } else {
+    next()
+  }
+})
+*/
+//router.replace({ path: '*', redirect: '/' })
+export default router

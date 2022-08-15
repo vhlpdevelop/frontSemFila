@@ -5,7 +5,9 @@ import App from './App.vue'
 import router from './routes/index'
 import vuetify from './plugins/vuetify'
 import store from '../src/store/index'
+
 Vue.use(router, VueAxios, axios)
+
 
 Vue.config.productionTip = false
 

@@ -1,0 +1,76 @@
+@font-face {
+  font-family: Josefin Sans;
+  src: url("../../font/JosefinSans/JosefinSans-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: Josefin Slab;
+  src: url("../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
+}
+.background{
+    background-image: url("../../img/bgwork.jpeg");
+    background-position: center top !important;
+    background-size: 300vh auto !important;
+}
+
+html * {
+  font-family: Josefin Sans;
+}
+.TitleCard {
+  font-size: 1.8em !important;
+  color: rgb(88,157,108) !important;
+  font-family: Josefin Slab;
+}
+.SubTitleCard {
+  font-size: 1.5em !important;
+  font-family: Josefin Slab;
+}
+.textImp {
+  font-size: 1.2em !important;
+  color: rgb(88,157,108) !important;
+  font-family: Josefin Slab;
+}
+.buttonCategory{
+  background-color : rgb(66,129,164) !important; 
+}
+.termos {
+  font-size: 0.8em !important;
+}
+
+.termosLinks {
+  font-size: 0.8em !important;
+  padding-left: 0.3em;
+}
+.recaptcha {
+  font-size: 0.8em !important;
+  padding-top: 1em;
+}
+.TitleCard2 {
+  font-size: 1.3em !important;
+  color: rgb(55,80,92) !important;
+  font-family: Josefin Slab;
+}
+.pinkyBackground{
+  background-color: rgb(254,147,140) !important;
+}
+.fontSlab {
+  font-family: Josefin Slab;
+}
+.fontSans {
+  font-family: Josefin Sans;
+  font-size: 1em;
+}
+
+.border {
+  border-top: 1px solid #bbbbbb;
+  padding: 45px 0 10px;
+  margin-top: 40px;
+  margin-left: calc(50% - 40vw);
+  margin-right: calc(50% - 40vw);
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -o-flexbox;
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+}
