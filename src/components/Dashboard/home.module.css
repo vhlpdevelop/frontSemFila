@@ -22,8 +22,23 @@
         font-size: 0.7em !important;
         background-color: rgb(254,147,140) !important;
     } 
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center;  
+        text-shadow: 2px 1px white;
+    }
+    
 }
 @media (max-width:480px){
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center; 
+        text-shadow: 2px 1px white; 
+    }
     .headerTitle{
         font-family: Josefin Sans !important;
         font-size: 2em !important;
@@ -56,6 +71,13 @@
         font-size: 0.7em !important;
         background-color: rgb(254,147,140) !important;
     }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center; 
+        text-shadow: 2px 1px white; 
+    }
 }
 @media (max-width:992px){
     .headerTitle{
@@ -72,6 +94,14 @@
         font-family: Josefin Sans !important;
         font-size: 0.8em !important;
         background-color: rgb(254,147,140) !important;
+    }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-color: rgb(255,192,192);
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: right;  
+        text-shadow: 2px 1px white;
     }
 }
 @media (min-width:993px){
@@ -90,6 +120,14 @@
         font-size: 0.8em !important;
         background-color: rgb(254,147,140) !important;
     }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-color: rgb(255,192,192);
+        background-size:     cover;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center center; 
+        text-shadow: 2px 1px white; 
+    }
 }
 @media (min-width:1200px){
     .headerTitle{
@@ -107,6 +145,21 @@
         font-size: 1em !important;
         background-color: rgb(254,147,140) !important;
     }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-color: rgb(255,192,192);
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: 85%;  
+        text-shadow: 2px 1px white;
+    }
+}
+.backgroundTornar{
+    background-image: url("https://i.ibb.co/t260MTR/5182ae135815275-61eeba8cb745d.jpg") !important;
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center;  
+    text-shadow: 1px 1px black;
 }
 .backgroundHome{
     
@@ -114,6 +167,10 @@
 }
 .textColorDefault{
     color: rgb(88, 157, 108) !important;
+}
+.textComeceDefault{
+    font-family: Josefin Sans !important;
+    font-size: 1em !important;
 }
 .textColorID{
     color: rgb(88, 157, 108) !important;
@@ -141,6 +198,7 @@
     background-color: rgb(254,147,140) !important;
 
 }
+
 .sheetsMarine{
     font-family: Josefin Sans !important;
     font-size: 1em !important;

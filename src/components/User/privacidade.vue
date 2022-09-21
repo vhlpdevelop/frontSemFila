@@ -4,7 +4,7 @@
         <div class="py-12"></div>
 
         <v-container class="text-center">
-          <h2 class="display-2 font-weight-bold mb-3">TERMOS DE SERVIÇO</h2>
+          <h2 class="display-2 font-weight-bold mb-3">PÓLITICA DE PRIVACIDADE</h2>
 
           <v-responsive
             class="mx-auto mb-8"

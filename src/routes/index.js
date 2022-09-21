@@ -73,7 +73,7 @@ const router = new Router({
       path:'/entrar', 
       name: 'entrar',
       props:true,
-      component: () => import('../components/User/signUp'), 
+      component: () => import('../components/User/login'), 
     },
     
     {
@@ -92,23 +92,46 @@ const router = new Router({
           path: '/QrCodes',
           name: 'qrcodes',
           component: () => import('../components/User/QrCodes.vue'),
-        }
+        },
+        {
+          path:'/privacidade',
+          name: 'privacidade',
+          component: () => import('../components/User/privacidade.vue'),
+        },
+        {
+          path:'/TermosdeUso',
+          name: 'termos',
+          component: () => import('../components/User/termos.vue'),
+        },
+        {
+          path:'/comece',
+          name: 'comece',
+          component: () => import('../components/Dashboard/comece.vue'),
+        },
+        {
+          path:'/tornarSemFila',
+          name: 'tornar',
+          component: () => import('../components/Dashboard/tornar.vue'),
+        },
+        {
+          path:'/ajuda',
+          name: 'ajuda',
+          component: () => import('../components/User/ajuda.vue'),
+        },
+        {
+          path:'/:id',
+        name: 'helperComponent',
+        props:true,
+        component: () => import('../components/User/Ajuda/helperComponent.vue'),
+        },
+        {
+          path:'/perguntasFrequentes',
+          name: 'faq',
+          component: () => import('../components/User/Ajuda/faq.vue'),
+        },
+
       ],
     },
   ]
 })
-/*
-function hasQueryParams(route) {
-  return !!Object.keys(route.query).length
-}
-
-router.beforeEach((to, from, next) => {
-   if(!hasQueryParams(to) && hasQueryParams(from)){
-    next({name: to.name, query: from.query});
-  } else {
-    next()
-  }
-})
-*/
-//router.replace({ path: '*', redirect: '/' })
 export default router

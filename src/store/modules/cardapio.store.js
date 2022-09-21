@@ -1,4 +1,5 @@
 //const url = "http://localhost:3000/cardapio/";
+//const url = "http://http://10.1.1.23:3000/cardapio"
 const url = "https://semfila-api.herokuapp.com"
 
 import axios from "axios";
@@ -27,7 +28,7 @@ const actions = {
   async cardapioLoaded({commit}){
     commit("Loaded", true) //Cardapio carregado
   },
-  async LoadStore({commit}, itemData){
+  async LoadStore({commit}, itemData){ //BUSCA CARDAPIO DA LOJA
     if(itemData!==""){
       try{
         

@@ -3,16 +3,16 @@
 
 import axios from "axios";
 
-//const url = 'https://lobby-contador.herokuapp.com/auth/'
 const url = "https://semfila-api.herokuapp.com/auth/";
+//const url = "http://localhost:3000/auth/";
 //console.log(session)
 const state = {
   session: "",
   authLogin: false,
   messageLogin: "",
   checkToken: false,
-  profile: '',
-  company: '',
+  profile: "",
+  company: "",
 };
 
 const getters = {
@@ -21,48 +21,60 @@ const getters = {
   getPerfil: (state) => state.profile,
   getMessageLogin: (state) => state.messageLogin,
   getCheckToken: (state) => state.checkToken,
-  getCompany_name: (state) => state.company
+  getCompany_name: (state) => state.company,
 };
 
 const actions = {
-  async pingIt({commit}){
-    try{
-    await axios.get(url+`ping`).then(function (response){
-      if (response.data.success === true) {
-        axios.defaults.headers.common["Authorization"] = JSON.stringify( `Bearer ${response.data.token}`);
-        commit("setAuthLogin", response.data.success);
-        commit("setSession", JSON.stringify(`Bearer ${response.data.token}`));
-        commit("messageLogin", response.data.msg);
-        commit("setProfile", response.data.profile)
-        commit("setCompany", response.data.company_name)
-        window.localStorage.setItem(
-          "session",
-          JSON.stringify(`Bearer ${response.data.token}`)
-        );
-      }else{
-        console.log("deu errado")
+  async autoLogin({ dispatch, commit }) {
+    const session = window.localStorage.getItem("session");
+    //console.log(session);
+    if (session !== "") {
+      //Pode ser uma lacuna na armadura
+      axios.defaults.headers.common["Authorization"] = session;
+      try {
+        await axios.get(url + "autoLogin").then(function (response) {
+          console.log(response);
+          if (response.data.success) {
+            dispatch("getQrCodesAuth", response.data.qrcodes, { root: true });
+            commit("setAuthLogin", response.data.success);
+            commit(
+              "setSession",
+              JSON.stringify(`Bearer ${response.data.token}`)
+            );
+            commit("setProfile", response.data.profile)
+            commit("messageLogin", response.data.msg);
+          } else {
+            commit("setAuthLogin", false);
+            commit("setSession", "");
+            axios.defaults.headers.common["Authorization"] = "";
+            window.localStorage.setItem("session", "");
+          }
+        });
+      } catch (e) {
+        console.log(e);
+        commit("setAuthLogin", false);
+        commit("setSession", "");
+        axios.defaults.headers.common["Authorization"] = "";
+        window.localStorage.setItem("session", "");
       }
-    })
-  }catch(e){
-    console.log(e)
-  }
+    }
   },
   async FazerLogin({ commit }, itemData) {
     let dataToSend = {
-      user: itemData.user,
-      pss: itemData.pss,
+      email: itemData.email,
+      pss: itemData.password,
     };
     //console.log(itemData)
     await axios
-      .post(url + "login/Admin", dataToSend)
-      .then(function(response) {
-        //console.log(response);
+      .post(url + "login", dataToSend)
+      .then(function (response) {
         if (response.data.success === true) {
-          axios.defaults.headers.common["Authorization"] = JSON.stringify( `Bearer ${response.data.token}`);
+          axios.defaults.headers.common["Authorization"] = JSON.stringify(
+            `Bearer ${response.data.token}`
+          );
           commit("setAuthLogin", response.data.success);
           commit("setSession", JSON.stringify(`Bearer ${response.data.token}`));
           commit("messageLogin", response.data.msg);
-          commit("setProfile", response.data.profile)
           window.localStorage.setItem(
             "session",
             JSON.stringify(`Bearer ${response.data.token}`)
@@ -73,11 +85,18 @@ const actions = {
           commit("setAuthLogin", response.data.success);
         }
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error, error.message);
         commit("messageLogin", error);
       });
-  }, 
+  },
+  async LogOut({commit}){
+    commit("setAuthLogin", false);
+    commit("setSession", "");
+    window.localStorage.setItem("session", "");
+    window.localStorage.setItem("Qrcodes", null);
+    window.localStorage.setItem("QrcodesSize", 0)
+  }
 };
 
 const mutations = {
@@ -92,7 +111,7 @@ const mutations = {
     state.session = session;
   },
   setProfile: (state, profile) => (state.profile = profile),
-  setCompany: (state, company) => (state.company = company)
+  setCompany: (state, company) => (state.company = company),
 };
 
 export default {

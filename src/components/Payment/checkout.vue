@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-container fluid fill-height style="position: relative;">
+    <v-container fluid style="position: relative;">
       <p class="display-3 font-weight-light text-center pa-4">Checkout</p>
       <v-row>
         <v-col :cols="12" md="9" sm="12">
@@ -55,7 +55,7 @@
               </tbody>
             </template>
           </v-simple-table>
-          <v-layout v-resize="onResize" column style="padding-top: 56px">
+          <v-layout v-resize="onResize" column>
             <v-data-table
               :headers="headers"
               disable-sort
@@ -280,7 +280,7 @@ export default {
       this.overlay = true;
     } else {
       this.items = this.getCart;
-      console.log(this.items);
+      //console.log(this.items);
       this.updateTotal();
     }
   },

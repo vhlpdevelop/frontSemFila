@@ -30,27 +30,15 @@
                         <v-card
                           outlined
                           elevation-7
-                          class=" fill-height ma-5 "
+                          class="fill-height ma-5"
                           @click="showQrCode(item)"
                         >
-                          <v-card-title>
-                            <v-row>
+                          <v-card-title style="word-break: break-word">
+                            <v-row no-gutters>
                               <v-col cols="8">
                                 <span class="">
                                   {{ item.data.item.item_name }}
                                 </span>
-                                <v-subheader>{{
-                                  item.data.item.description
-                                }}</v-subheader>
-                                <v-subheader class="">
-                                  Expira em
-                                  {{
-                                    AssimilateTime(
-                                      item.data.item.discount_duration,
-                                      item.data.createdAt
-                                    )
-                                  }}
-                                </v-subheader>
                               </v-col>
                               <v-col cols="4">
                                 <div>
@@ -62,7 +50,7 @@
                                     "
                                   ></v-img>
                                   <v-img
-                                    class=" d-flex d-sm-none"
+                                    class="d-flex d-sm-none"
                                     alt="Avatar"
                                     :src="
                                       'data:image/jpeg;base64,' + item.qrcode
@@ -73,85 +61,103 @@
                                 </div>
                               </v-col>
                             </v-row>
+                            <v-row no-gutters>
+                                  <v-col cols="12">
+                                    <v-subheader>{{
+                                      item.data.item.description
+                                    }}</v-subheader>
+                                  </v-col>
+                                  <v-col cols="12">
+                                    <v-subheader class="">
+                                      Expira em
+                                      {{
+                                        AssimilateTime(
+                                          item.data.item.discount_duration,
+                                          item.data.createdAt
+                                        )
+                                      }}
+                                    </v-subheader>
+                                  </v-col>
+                                </v-row>
                           </v-card-title>
                           <v-divider></v-divider>
-                          <v-card-text>
-                            <v-row no-gutters>
-                              <v-col cols="12" md="12" sm="12">
-                                <div v-if="item.discount_status" class="ml-6">
-                                  <b class="textColorDefault mr-2">
-                                    R$ {{ item.price - item.discount_value }}
+                          <v-container fluid>
+                            <v-card-text>
+                              <v-row no-gutters justify="center" align="center">
+                                <v-col
+                                  cols="12"
+                                  md="12"
+                                  sm="12"
+                                  lg="12"
+                                  xl="12"
+                                >
+                                  <b class="">
+                                    <span class="ml-6 textColorDefault"
+                                      >Quantidade:
+                                      {{ item.data.quantity }}</span
+                                    >
                                   </b>
-                                  <b style="text-decoration: line-through;"
-                                    >R${{ item.price }}
+                                </v-col>
+                                <v-col cols="11" md="6" sm="6" xl="6" lg="6">
+                                  <b>
+                                    <span class="ml-6">
+                                      {{ item.data.store_name }}
+                                    </span>
                                   </b>
-                                </div>
-                                <b class="" v-else>
-                                  <span class="ml-6 textColorDefault"
-                                    >Quantidade: {{ item.data.quantity }}</span
+                                </v-col>
+                                <v-col cols="1" md="6" sm="6" xl="6" lg="6">
+                                  <v-tooltip
+                                    bottom
+                                    v-if="item.data.item.destaques"
                                   >
-                                </b>
-                                
-                              </v-col>
-                              <v-col cols="6" md="6" sm="6" xl="2" lg="2">
-                                <b>
-                                  <span class="ml-6">
-                                    {{ item.data.store_name }}
-                                  </span>
-                                </b>
-                              </v-col>
-                              <v-col cols="6" md="6" sm="6" xl="2">
-                                <v-tooltip
-                                  bottom
-                                  v-if="item.data.item.destaques"
-                                >
-                                  <template v-slot:activator="{ on, attrs }">
-                                    <v-icon
-                                      color="red"
-                                      dark
-                                      v-bind="attrs"
-                                      v-on="on"
-                                    >
-                                      mdi-fire
-                                    </v-icon>
-                                  </template>
-                                  <span>Está em destaque</span>
-                                </v-tooltip>
-                                <v-tooltip
-                                  bottom
-                                  v-if="item.data.item.discount_status"
-                                >
-                                  <template v-slot:activator="{ on, attrs }">
-                                    <v-icon
-                                      color="primary"
-                                      dark
-                                      v-bind="attrs"
-                                      v-on:hover="on"
-                                    >
-                                      mdi-sale
-                                    </v-icon>
-                                  </template>
-                                  <span>Possui desconto</span>
-                                </v-tooltip>
-                                <v-tooltip
-                                  bottom
-                                  v-if="item.data.item.promotion"
-                                >
-                                  <template v-slot:activator="{ on, attrs }">
-                                    <v-icon
-                                      color="yellow"
-                                      dark
-                                      v-bind="attrs"
-                                      v-on="on"
-                                    >
-                                      mdi-lightning-bolt
-                                    </v-icon>
-                                  </template>
-                                  <span>Está em promoção</span>
-                                </v-tooltip>
-                              </v-col>
-                            </v-row>
-                          </v-card-text>
+                                    <template v-slot:activator="{ on, attrs }">
+                                      <v-icon
+                                        color="red"
+                                        dark
+                                        v-bind="attrs"
+                                        v-on="on"
+                                      >
+                                        mdi-fire
+                                      </v-icon>
+                                    </template>
+                                    <span>Está em destaque</span>
+                                  </v-tooltip>
+                                  <v-tooltip
+                                    bottom
+                                    v-if="item.data.item.discount_status"
+                                  >
+                                    <template v-slot:activator="{ on, attrs }">
+                                      <v-icon
+                                        color="primary"
+                                        dark
+                                        v-bind="attrs"
+                                        v-on:hover="on"
+                                      >
+                                        mdi-sale
+                                      </v-icon>
+                                    </template>
+                                    <span>Possui desconto</span>
+                                  </v-tooltip>
+                                  <v-tooltip
+                                    bottom
+                                    v-if="item.data.item.promotion"
+                                  >
+                                    <template v-slot:activator="{ on, attrs }">
+                                      <v-icon
+                                        color="yellow"
+                                        dark
+                                        v-bind="attrs"
+                                        v-on="on"
+                                      >
+                                        mdi-lightning-bolt
+                                      </v-icon>
+                                    </template>
+                                    <span>Está em promoção</span>
+                                  </v-tooltip>
+                                </v-col>
+                              </v-row>
+                            </v-card-text>
+                          </v-container>
                         </v-card>
                       </v-col>
                     </v-row>
@@ -160,9 +166,7 @@
               </v-card-text>
             </v-card>
 
-            <v-card class="pa-5" v-else>
-              Sem QrCodes para mostrar
-            </v-card>
+            <v-card class="pa-5" v-else> Sem QrCodes para mostrar </v-card>
             <v-dialog
               v-if="dialog"
               v-model="dialog"
@@ -183,19 +187,19 @@
                 <v-container fluid fill-height mt-12>
                   <v-row justify="center" align="center">
                     <v-img
-                  :src="'data:image/jpeg;base64,' + QrCodeShow.qrcode"
-                  max-width="300"
-                  max-height="300"
-                  class=""
-                ></v-img>
+                      :src="'data:image/jpeg;base64,' + QrCodeShow.qrcode"
+                      max-width="300"
+                      max-height="300"
+                      class=""
+                    ></v-img>
                   </v-row>
-                  
                 </v-container>
                 <v-container fluid fill-height>
                   <v-row justify="center" align="center">
                     <h1 class="pa-5 text-justify">
-                      Aproxime-se de um atendente do local para aprovar seu QrCode.
-                      Mostre o QrCode. O Atendente deve escanea-lo com o celular e aprovar quantas unidades você quer retirar.
+                      Aproxime-se de um atendente do local para aprovar seu
+                      QrCode. Mostre o QrCode. O Atendente deve escanea-lo com o
+                      celular e aprovar quantas unidades você quer retirar.
                     </h1>
                   </v-row>
                 </v-container>
@@ -271,9 +275,9 @@ export default {
         case "md":
           return 2;
         case "lg":
-          return 4;
+          return 2;
         case "xl":
-          return 4;
+          return 2;
       }
     },
   },

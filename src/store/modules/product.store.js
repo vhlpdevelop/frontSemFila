@@ -3,8 +3,8 @@
 
 import axios from "axios";
 
-//const url = 'https://lobby-contador.herokuapp.com/auth/'
-const url = "http://localhost:3000/product/";
+const url = 'https://lobby-contador.herokuapp.com/auth/'
+//const url = "http://localhost:3000/product/";
 //console.log(products)
 const state = {
   products: "",

@@ -27,7 +27,11 @@
                         :cols="12 / itemsPerRow"
                         class="py-1"
                       >
-                        <v-card outlined class=" fill-height " @click="toCompra(item)">
+                        <v-card
+                          outlined
+                          class="fill-height"
+                          @click="toCompra(item)"
+                        >
                           <v-card-title>
                             <v-row>
                               <v-col cols="8">
@@ -48,7 +52,7 @@
                                     height="120px"
                                   ></v-img>
                                   <v-img
-                                    class=" d-flex d-sm-none"
+                                    class="d-flex d-sm-none"
                                     alt="Avatar"
                                     :src="item.image_url"
                                     width="80px"
@@ -60,65 +64,83 @@
                           </v-card-title>
                           <v-divider></v-divider>
                           <v-card-text>
-                            <v-row>
-                              <v-col cols="8" md="10" sm="10">
-                                <div
-                                  v-if="item.discount_status"
-                                  class="ml-6"
-                                >
-                                  <b class="textColorDefault mr-2">
-                                    R$ {{ item.price - item.discount_value }}
-                                  </b>
-                                  <b style="text-decoration: line-through;"
-                                    >R${{ item.price }}
-                                  </b>
-                                </div>
-                                <b class="" v-else>
-                                  <span class="ml-6 textColorDefault"
-                                    >R${{ item.price }}</span
-                                  >
-                                </b>
-                              </v-col>
-                              <v-col cols="4" md="2" sm="2" xl="2">
-                                <v-tooltip bottom v-if="item.destaques">
-                                  <template v-slot:activator="{ on, attrs }">
-                                    <v-icon
-                                      color="red"
-                                      dark
-                                      v-bind="attrs"
-                                      v-on="on"
+                            <v-row no-gutters>
+                              <v-col cols="12">
+                                <v-row no-gutters>
+                                  <v-col cols="8" md="10" sm="10">
+                                    <div
+                                      v-if="item.discount_status"
+                                      class="ml-6"
                                     >
-                                      mdi-fire
-                                    </v-icon>
-                                  </template>
-                                  <span>Está em destaque</span>
-                                </v-tooltip>
-                                <v-tooltip bottom v-if="item.discount_status">
-                                  <template v-slot:activator="{ on, attrs }">
-                                    <v-icon
-                                      color="primary"
-                                      dark
-                                      v-bind="attrs"
-                                      v-on:hover="on"
+                                      <b class="textColorDefault mr-2">
+                                        R$
+                                        {{ (item.price - item.discount_value).toFixed(2) }}
+                                      </b>
+                                      <b style="text-decoration: line-through"
+                                        >R${{ item.price }}
+                                      </b>
+                                    </div>
+                                    <b class="" v-else>
+                                      <span class="ml-6 textColorDefault"
+                                        >R${{ item.price }}</span
+                                      >
+                                    </b>
+                                  </v-col>
+                                  <v-col cols="4" md="2" sm="2" xl="2">
+                                    <v-tooltip bottom v-if="item.destaques">
+                                      <template
+                                        v-slot:activator="{ on, attrs }"
+                                      >
+                                        <v-icon
+                                          color="red"
+                                          dark
+                                          v-bind="attrs"
+                                          v-on="on"
+                                        >
+                                          mdi-fire
+                                        </v-icon>
+                                      </template>
+                                      <span>Está em destaque</span>
+                                    </v-tooltip>
+                                    <v-tooltip
+                                      bottom
+                                      v-if="item.discount_status"
                                     >
-                                      mdi-sale
-                                    </v-icon>
-                                  </template>
-                                  <span>Possui desconto</span>
-                                </v-tooltip>
-                                <v-tooltip bottom v-if="item.promotion">
-                                  <template v-slot:activator="{ on, attrs }">
-                                    <v-icon
-                                      color="yellow"
-                                      dark
-                                      v-bind="attrs"
-                                      v-on="on"
-                                    >
-                                      mdi-lightning-bolt
-                                    </v-icon>
-                                  </template>
-                                  <span>Está em promoção</span>
-                                </v-tooltip>
+                                      <template
+                                        v-slot:activator="{ on, attrs }"
+                                      >
+                                        <v-icon
+                                          color="primary"
+                                          dark
+                                          v-bind="attrs"
+                                          v-on:hover="on"
+                                        >
+                                          mdi-sale
+                                        </v-icon>
+                                      </template>
+                                      <span>Possui desconto</span>
+                                    </v-tooltip>
+                                    <v-tooltip bottom v-if="item.promotion">
+                                      <template
+                                        v-slot:activator="{ on, attrs }"
+                                      >
+                                        <v-icon
+                                          color="yellow"
+                                          dark
+                                          v-bind="attrs"
+                                          v-on="on"
+                                        >
+                                          mdi-lightning-bolt
+                                        </v-icon>
+                                      </template>
+                                      <span>Está em promoção</span>
+                                    </v-tooltip>
+                                  </v-col>
+                                </v-row>
+                                </v-col>
+
+                              <v-col cols="12">
+                                <v-subheader>Tempo da promoção - {{item.promotion_duration * 24}} horas</v-subheader>
                               </v-col>
                             </v-row>
                           </v-card-text>
@@ -129,9 +151,7 @@
                 </v-data-iterator>
               </v-card-text>
             </v-card>
-            <v-card v-else>
-              Estamos sem promoções Hoje
-            </v-card>
+            <v-card v-else> Estamos sem promoções Hoje </v-card>
           </v-row>
         </v-container>
       </v-responsive>
@@ -163,9 +183,7 @@ export default {
   }),
 
   methods: {
-    ...mapActions([
-      "MovetoCompra",
-    ]),
+    ...mapActions(["MovetoCompra"]),
     toCompra(item) {
       //console.log(item)
       this.MovetoCompra(item).then(() => {
@@ -177,9 +195,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters([
-      "getPromocoes",
-    ]),
+    ...mapGetters(["getPromocoes"]),
     itemsPerRow() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":

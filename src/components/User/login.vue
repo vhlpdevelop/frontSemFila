@@ -1,77 +1,79 @@
 <template>
   <v-app>
-    <v-container fluid fill-height class=" mx-auto d-flex background d-inline-block">
-      <v-row
-        md="2"
-        xs="1"
-        sm="1"
-        no-gutters
-        class="justify-center align-center"
-      >
-        <v-col></v-col>
-        <v-col class="d-flex mx-auto justify-center align-center">
-          <v-card
-            elevation="2"
-            outlined
-            shaped
-            
-            class="pa-3"
-          >
-            <v-container fluid class="ma-3 align-center justify-center">
-              <v-card-title class="TitleCard align-center justify-center">
-                NOLINE
-              </v-card-title>
-              <v-card-subtitle class="TitleCard2 text-center">
-                Gerencie suas vendas de forma prática e fácil
-              </v-card-subtitle>
-            </v-container>
+    <v-container fluid fill-height class="background d-flex">
+      <v-row class="justify-center align-center mx-auto">
+        <v-col cols="12" md="6"></v-col>
+        <v-col cols="12" md="6">
+          <v-container class="">
+            <v-row no-gutters class="justify-center align-center">
+              <v-card>
+                <v-col cols="12" v-if="select">
+                  <v-btn text block v-if="createAccount" @click="backSignIn"
+                    ><v-icon small>mdi-arrow-left</v-icon>Voltar</v-btn
+                  >
+                  <v-btn text block v-if="loginAccount" @click="backSignIn"
+                    ><v-icon small>mdi-arrow-left</v-icon>Voltar</v-btn
+                  >
+                </v-col>
 
-            <v-container fluid pa-5 class="mt-n6">
-              Insira o <span class="textImp">email</span>
-              <v-text-field
-                hide-details
-                dense
-                label="joao@meuemail.com.br"
-                solo
-              ></v-text-field>
-            </v-container>
-            <v-container fluid pa-5>
-              Digite sua <span class="textImp">senha</span>
-              <v-text-field
-                dense
-                hide-details
-                label="Sua senha"
-                type="password"
-                solo
-              ></v-text-field>
-            </v-container>
-            <p class="red--text text-center">{{errorMsg}}</p>
-            <v-container
-              fluid
-              class=" pt-1 text-center align-center justify-between mt-n5"
-            >
-              <v-btn text to="/privacy">Esqueci meu Email </v-btn>
-              <v-btn text to="/privacy">Esqueci minha Senha </v-btn>
-            </v-container>
-            <v-container fluid>
-              <p class="recaptcha pa-5 mt-n10">
-                Esse site é protegido pelo reCAPTCHA e está sujeito à Política
-                de Privacidade e aos Termos de Serviço do Google.
-              </p>
-            </v-container>
-            <v-container pa-5 class="mt-n12 mx-auto">
-              <v-btn block class="buttonCategory white--text" @click="loginRapido()">
-                Avançar
-              </v-btn>
-            </v-container>
+                <v-col cols="12" v-if="!select"
+                  ><v-card-title style="word-break: break-word"
+                    ><b class="text-center TitleCard"
+                      >Hora de usar o cardapio digital chegou!</b
+                    ></v-card-title
+                  ></v-col
+                >
 
-            <v-container fluid class=" align-center justify-center text-center">
-              <p>
-                Ainda não possui cadastro?
-                <v-btn text to="/signUp" class="pinkyBackground white--text pa-1">Cadastre sua loja!</v-btn>
-              </p>
-            </v-container>
-          </v-card>
+                <signIn v-if="loginAccount"></signIn>
+                <signUp v-if="createAccount"></signUp>
+
+                <v-col cols="12"  v-if="!select"
+                  ><v-card-subtitle
+                   
+                    class="text-center mt-n10 SubTitleCard"
+                    >Como deseja continuar?</v-card-subtitle
+                  ></v-col
+                >
+
+                <v-col cols="12" v-if="!select">
+                  <v-container>
+                    <v-btn block text outlined @click="openEmail(false)"
+                      >Entrar com Email</v-btn
+                    >
+                  </v-container>
+                  <v-container>
+                    <v-btn block text outlined @click="openEmail(true)"
+                      >Criar minha conta</v-btn
+                    >
+                  </v-container>
+                </v-col>
+                <v-col cols="12" v-if="!select">
+                  <v-container>
+                    <div
+                      id="g_id_onload"
+                      data-client_id="YOUR_CLIENT_ID"
+                      data-ux_mode="redirect"
+                      data-login_uri="https://www.example.com/your_login_endpoint"
+                    ></div>
+                    <div class="g_id_signin" data-type="standard"></div>
+                  </v-container>
+                </v-col>
+                <v-col cols="12" v-if="!select" v-show="!select">
+                  <v-layout
+                    column
+                    class="justify-center align-center pb-3 ma-1"
+                  >
+                    <a @click="$router.push((path = '/TermosdeUso'))"
+                      >Termos de Serviço</a
+                    >
+                    <a @click="$router.push((path = '/privacidade'))"
+                      >Política de privacidade</a
+                    >
+                  </v-layout>
+                </v-col>
+              </v-card>
+            </v-row>
+          </v-container>
         </v-col>
       </v-row>
     </v-container>
@@ -80,69 +82,81 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-
+import signUp from "./signUpbyemail.vue";
+import signIn from "./signInbyemail.vue";
 export default {
+  components: {
+    signUp,
+    signIn,
+  },
   data: () => ({
-    user: "",
-    pss: "",
-    remember: false,
-    cancelled: false,
-    isLoggedIn: false,
-    erro: false,
-    erroForm: false,
     loading: false,
-    errorMsg: "",
-    validacao: [(v) => v.length > 4 || "Campo inválido"],
+    select: false,
+    Email: false,
+    Google: false,
+    createAccount: false,
+    loginAccount: false,
+    dialog: false,
+    isInit: false,
+    isSignIn: false,
+    snackMsg: "",
+    timeout: 5000,
   }),
-  computed: mapGetters(["getAuth", "getMessageLogin"]),
+  computed: {
+    ...mapGetters(["getRespostaUser", "getMessageUser"]),
+  },
   methods: {
-    ...mapActions(["FazerLogin", "pingIt"]),
-    async loginRapido() {
-      this.pingIt().then((response) => {
-        console.log("End");
-      });
-      this.$router.push({
-        name: "dashboard",
-        params: {
-          isLoggedIn: !this.isLoggedIn,
-        },
-      });
+    ...mapActions(["registrarUser"]),
+    backSignIn() {
+      this.createAccount = false;
+      this.loginAccount = false;
+      this.select = false;
     },
-    async handleSubmit() {
-      if (this.$refs.form.validate()) {
-        try {
-          this.loading = true;
-          let data = {
-            user: this.user,
-            pss: this.pss,
-          };
-          this.FazerLogin(data).then((response) => {
-            if (this.getAuth) {
-              this.$router.push({
-                name: "dashboard",
-                params: {
-                  isLoggedIn: !this.isLoggedIn,
-                },
-              });
-            } else {
-              this.erro = true;
-              this.loading = false;
-            }
-          });
-        } catch (error) {
-          this.loading = false;
-          this.erro = true;
-          throw error;
-        }
+    onSignIn(user) {
+      // do stuff, for exampl
+      console.log(user);
+    },
+    openEmail(type) {
+      if (type) {
+        this.createAccount = type;
       } else {
-        this.erroForm = true;
+        this.loginAccount = true;
       }
+
+      this.select = true;
     },
+    terms() {
+      this.$router.push({
+        name: "Termos",
+      });
+    },
+    popError(msg) {
+      this.snackMsg = msg;
+      this.snackErro = true;
+      this.loading = false;
+    },
+  },
+  mounted() {
+    let that = this;
+    console.log(GoogleAuth);
+    console.log(gapi);
+    /*
+    gapi.signin2.render('google-signin-btn', { // this is the button "id"
+      cookiePolicy: 'single_host_origin',
+      isSignIn: true,
+      onsuccess: this.onSignIn,
+      onfailure: this.onSignIn,
+       // note, no "()" here
+    })
+    let checkGauthLoad = setInterval(function(){
+      that.isInit = that.$gAuth.isInit
+      that.isSignIn = that.$gAuth.isAuthorized
+      if(that.isInit) clearInterval(checkGauthLoad)
+    }, 1000);
+    */
   },
 };
 </script>
-
-<style lang="scss" scoped>
-
+<style>
 @import "./login.module.css";
 </style>

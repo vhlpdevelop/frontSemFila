@@ -4,7 +4,8 @@
 import axios from "axios";
 let Qrcodes = window.localStorage.getItem('Qrcodes');
 let QrcodesSize = window.localStorage.getItem('QrcodesSize');
-//const url = 'https://lobby-contador.herokuapp.com/'
+//const url = 'http://localhost:3000/auth/'
+//const url = 'http://10.1.1.23:3000/auth/'
 const url = "https://semfila-api.herokuapp.com/auth/";
 
 //window.localStorage.clear('Qrcodes')
@@ -31,6 +32,20 @@ const getters = {
 };
 
 const actions = {
+  async getQrCodesAuth({commit}, itemData){
+    console.log("Entrou aqui no qrcodes");
+    console.log(itemData)
+    if(itemData.length > 0){
+      commit("addQrCodes", itemData);
+      commit("updateSizeQrCodes");
+      commit("saveQrCodes");
+    }
+  },
+  async callSnack({commit}, item){
+    commit("setMessageUser", item.message)
+    commit("setRespostaUser", item.status)
+    
+  },
   async newQrCode({commit}){
     commit("AlertnewQrCode", true);
   },
@@ -101,7 +116,8 @@ const actions = {
       }
     }
   },
-  async getProfile({ commit }) {
+  async getProfile({ commit, state }) {
+    if(Object.keys(state.user).length !== 0)
     //IMPORTANTE
     await axios
       .post(url + "getProfile")
@@ -136,22 +152,20 @@ const actions = {
     //console.log(itemData)
     if (itemData !== null) {
       let dataToSend = {
-        pss: itemData.password,
-        email: itemData.email,
-        endereco: itemData.endereco,
-        firstName: itemData.firstName,
-        lastName: itemData.lastName,
-        telefone: itemData.telefone,
+        account: {
+          pss: itemData.password,
+          email: itemData.email,
+        }
       };
       try {
         await axios.post(url + "register", dataToSend).then(function(response) {
           //console.log(response.data)
           if (response.data.ok) {
             commit("setMessageUser", response.data.msg);
-            commit("setRespostaUser", response.data.ok);
+            commit("setRespostaUser", response.data.success);
           } else {
             commit("setMessageUser", response.data.msg);
-            commit("setRespostaUser", response.data.ok);
+            commit("setRespostaUser", response.data.success);
           }
         });
       } catch (err) {

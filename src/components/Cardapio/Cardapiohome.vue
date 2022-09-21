@@ -78,7 +78,7 @@
                             >
                           </v-row>
                           <v-row align="center" justify="center">
-                            <v-card-text class="text-center text-lg-body-1">{{
+                            <v-card-text style="display: inline-block; overflow: hidden; text-overflow: ellipsis; width:100%;" class="text-center text-lg-body-1">{{
                               itemDestaques[+index + i].description
                             }}</v-card-text>
                           </v-row>
@@ -163,7 +163,7 @@
                   >
                 </v-row>
                 <v-row align="center" justify="center">
-                  <v-card-text class="text-center text-lg-body-1">{{
+                  <v-card-text style="display: inline-block; overflow: hidden; text-overflow: ellipsis; width:100%;" class="text-center text-lg-body-1">{{
                     promocao.description
                   }}</v-card-text>
                 </v-row>
@@ -223,7 +223,7 @@
                                 <span class="">
                                   {{ item.item_name }}
                                 </span>
-                                <v-subheader>{{
+                                <v-subheader style="display: inline-block; overflow: hidden; text-overflow: ellipsis; width:100%;">{{
                                   item.description
                                 }}</v-subheader>
                               </v-col>
@@ -249,11 +249,11 @@
                           </v-card-title>
                           <v-divider></v-divider>
                           <v-card-text>
-                            <v-row>
+                            <v-row no-gutters>
                               <v-col cols="8" md="10" xl="10" sm="10" lg="10">
                                 <div v-if="item.discount_status" class="ml-6">
                                   <b class="textColorDefault mr-2">
-                                    R$ {{ item.price - item.discount_value }}
+                                    R$ {{ (item.price - item.discount_value).toFixed(2) }}
                                   </b>
                                   <b style="text-decoration: line-through;"
                                     >R${{ item.price }}

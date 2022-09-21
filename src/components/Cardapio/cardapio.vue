@@ -19,7 +19,7 @@
             class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex navText"
             >Destaques</v-btn
           >
-          <h1 v-if="!storeHasImage" class="navTitle">{{ store.name }}</h1>
+          <h1 v-if="!storeHasImage" class="navTitle" @click="toHome">{{ store.name }}</h1>
           <v-btn
             small
             text
@@ -207,52 +207,23 @@
         </v-list-item>
 
         <v-divider />
-
-        <v-list-item
-          v-for="(item, index) in staticMenu"
-          :key="item.title"
-          @click="toLink(item.to)"
-        >
-          <v-list-item-title class="navSubMenu">{{
-            item.title
-          }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-      <v-menu>
+        <v-menu>
         <template v-slot:activator="{ on }">
-          <v-btn plain v-on="on" class="mr-2" v-show="logged">
-            <span class="mr-2">Conta</span>
-            <v-icon>mdi-account</v-icon>
-          </v-btn>
+          <v-list-item v-show="logged" v-on="on">
+            <v-list-item-title class="navSubMenu">{{getPerfil}} <v-icon left color="green">mdi-account</v-icon></v-list-item-title>
+          </v-list-item>
           <v-list-item @click="pushToLogin" v-show="!logged">
             <v-list-item-title class="navSubMenu">Entrar</v-list-item-title>
           </v-list-item>
         </template>
         <v-list shaped>
           <v-list-item-group>
-            <v-list-item>
-              <v-list-item-icon
-                ><v-icon v-text="'mdi-account'"></v-icon
-              ></v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title v-text="'Conta'"></v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-divider></v-divider>
             <v-list-item @click="moveToSettings()">
               <v-list-item-icon
                 ><v-icon v-text="'mdi-cog'"></v-icon
               ></v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title v-text="'Configurações'"></v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-            <v-list-item @click="moveToHistory()">
-              <v-list-item-icon
-                ><v-icon v-text="'mdi-shopping'"></v-icon
-              ></v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title v-text="'Historico'"></v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-divider></v-divider>
@@ -268,6 +239,17 @@
           </v-list-item-group>
         </v-list>
       </v-menu>
+        <v-list-item
+          v-for="(item, index) in staticMenu"
+          :key="item.title"
+          @click="toLink(item.path)"
+        >
+          <v-list-item-title class="navSubMenu">{{
+            item.title
+          }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+      
       
     </v-navigation-drawer>
     <v-container v-if="loaded" ma-0 pr-0 pl-0 pt-3 fluid class="mx-auto " >
@@ -324,8 +306,9 @@ export default {
     skeletonLoading: true,
     loaded: false,
     staticMenu: [
-      { title: "Politicas", path: "/politicas" },
-      { title: "Ajuda", path: "/ajuda" },
+      { title: "Termos de Uso", path: "termos" },
+      { title: "Privacidade", path: "privacidade" },
+      { title: "Ajuda", path: "ajuda" },
     ],
     subMenu: [
       { title: "Destaques", to: "destaques" },
@@ -334,7 +317,7 @@ export default {
   }),
 
   methods: {
-    ...mapActions(["LoadStore", "routeToCategoria", "DeleteItem", "LogOut", "checkToken","MovetoCompra"]),
+    ...mapActions(["LoadStore", "routeToCategoria", "DeleteItem", "LogOut", "checkToken","MovetoCompra", "autoLogin"]),
     pushToLogin() {
       this.$router.push({
         name: "entrar",
@@ -346,11 +329,6 @@ export default {
     moveToSettings() {
       this.$router.push({
         name: "settings",
-      });
-    },
-    moveToHistory() {
-      this.$router.push({
-        name: "history",
       });
     },
     accountLogOut() {
@@ -464,6 +442,7 @@ export default {
     "getQrcodes",
     "getQrcodesSize",
     "getAuth",
+    "getPerfil",
     "getCheckToken",
   ]),
 
@@ -486,6 +465,11 @@ export default {
           this.cardapio = this.getCardapio.cardapio;
           this.loaded = true;
         }
+        this.autoLogin().then( () => {
+          if(this.getAuth){
+            this.logged = true
+          }
+        });
       } else {
         this.$router.push({
           name: "dashboard",

@@ -17,7 +17,7 @@
                       </v-expansion-panel-header>
                       <v-expansion-panel-content>
                         <p>
-                          <b>Tipo de chave: CNPJ</b>
+                          <b>As informações devem aparecer:</b>
                         </p>
                         <p>
                           <b>Número: 000.000.000/0001-00</b>
@@ -43,13 +43,16 @@
                             ></v-progress-circular
                           ></v-col>
                           <v-col cols="10"
-                            ><div
+                            ><v-container fluid fill-height
                               v-show="pixReady"
                               style="background-color: lightgray"
-                              class="mt-2"
+                              class="mt-2 align-center justify-center"
                             >
-                              <p>{{ pixCode }}</p>
-                            </div></v-col
+                              <p>Codigo pix gerado</p>
+                              <p>{{error}}</p>
+                              <v-btn class="ma-5" text x-small @click="copyCode()"><v-subheader>Pix copie e cole</v-subheader><v-icon>mdi-clipboard</v-icon></v-btn>
+                              <p>{{pixCode}}</p>
+                            </v-container></v-col
                           >
                         </v-row>
                       </v-expansion-panel-content>
@@ -98,7 +101,8 @@ export default {
   data: () => ({
     loading: false,
     pixReady: false,
-    pixCode: "123123ABC",
+    pixCode: "",
+    error: "",
     timeout: 5000,
     loadingFrete: false,
     snackSucesso: false,
@@ -127,15 +131,6 @@ export default {
         (v && v.length >= 2 && v.length < 3) || "Minimo 2 caracteres",
     },
   }),
-  mounted() {
-    let mercadopago = document.createElement("script");
-    mercadopago.setAttribute("id", "mercadopago");
-    mercadopago.setAttribute(
-      "src",
-      "https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"
-    );
-    document.head.appendChild(mercadopago);
-  },
   computed: {
     ...mapGetters([
       "getRespostaUser",
@@ -148,6 +143,23 @@ export default {
   },
   methods: {
     ...mapActions(["getProfile", "PaymentCheck", "clearCart", "updateProfile"]),
+    async copyCode(){
+      try{
+        await navigator.clipboard
+      .writeText(this.pixCode)
+      .then(() => {
+        alert("successfully copied");
+      })
+      .catch(() => {
+        alert("something went wrong");
+      });
+      }catch(e){
+        this.error = e.message
+      }
+      
+      this.snackMsg="Codigo Copiado"
+      this.snackSucesso = true;
+    },  
     payment(type) {
       if (this.getCart.length > 0) {
         this.ButtonToggle = false;
@@ -170,12 +182,14 @@ export default {
             if (this.getStatus) {
               this.snackSucesso = true;
               this.snackMsg = 'Código pix gerado'
+           
               this.loading = false;
               this.pixReady = true;
               this.clearCart();
               //console.log(this.getPlan);
               //window.location.href = this.getPlan.url;
             } else {
+              this.pixReady = false
               this.loading = false;
               this.snackMsg = 'Ocorre um erro ao gerar o pix'
               this.snackErro = true;

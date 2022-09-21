@@ -4,8 +4,13 @@ import axios from "axios";
 import { io } from "socket.io-client";
 //const url = 'https://lobby-contador.herokuapp.com/pagSeguro/'
 //{ transports: ['websocket', 'polling', 'flashsocket'] }
+//const url = "http://localhost:3000/payment/"
+
+//const url = "http://localhost:3000/payment/"
+//const urlSocket="http://localhost:3000"
+const urlSocket = "https://semfila-api.herokuapp.com" // 
 const url = "https://semfila-api.herokuapp.com/payment/";
-const socket = io("https://semfila-api.herokuapp.com", { autoConnect: true });
+const socket = io(urlSocket, { autoConnect: true });
 socket.on("connect", () => {
   //console.log(`Client connected: ${socket.id}`);
 });
@@ -87,8 +92,14 @@ const actions = {
         await axios.post(url + "payPix", object).then(
           function(response) {
             //console.log(response.data);
-            commit("SetPlan", response.data);
-            commit("SetStatus", true);
+            if(response.data.success){
+              commit("SetPlan", response.data.obj);
+              commit("SetStatus", true);
+            }else{
+              commit("SetPlan", "");
+              commit("SetStatus", false);
+            }
+            
           },
           (error) => {
             //Caso de erro

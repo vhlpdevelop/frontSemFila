@@ -10,13 +10,13 @@
         />
 
         <v-toolbar-title>
-          <v-btn text class="navTitle" to="/home">NoLine</v-btn>
+          <v-btn text class="navTitle" to="/home">SemFila</v-btn>
         </v-toolbar-title>
         <v-spacer />
         
         <div v-for="(item, index) in subMenu"
             :key="item.title"
-            :to="item.to"
+            @click="$router.push({path:item.path})"
             class="hidden-sm-and-down">
           <v-btn text depressed class="hidden-sm-and-down navText" > {{item.title}}</v-btn>
         </div>
@@ -38,13 +38,13 @@
                 >mdi-home</v-icon
               >
             </v-list-item-icon>
-            <v-btn text class="navTitle" to="/home">NOLINE</v-btn>
+            <v-btn text class="navTitle" to="/home">SEMFILA</v-btn>
           </v-list-item>
           <v-divider />
           <v-list-item
             v-for="(item, index) in subMenu"
             :key="item.title"
-            :to="item.to"
+            :to="item.path"
           >
             <v-list-item-title class="navTitle">{{
               item.title
@@ -89,7 +89,8 @@ export default {
     navDrawer: true,
     sidebar: true,
     staticMenu: [
-      { title: "Politicas", path: "/politicas" },
+      { title: "Termos de Uso", path: "/TermosdeUso" },
+      { title: "Termos de Privacidade", path: "/privacidade" },
       { title: "Ajuda", path: "/ajuda" },
     ],
     menu: [
@@ -99,10 +100,8 @@ export default {
       { title: "Minha Conta" },
     ],
     subMenu: [
-      { title: "Comece por aqui", to: "/comece" },
-      { title: "Tornar-me um Sem fila", to: "/semfila" },
-      { title: "Parceiros", to: "/parceiros" },
-      { title: "Jornada", to: "/jornada" },
+      { title: "Comece por aqui", path: "/comece" },
+      { title: "Tornar-me um Sem fila", path: "/tornarSemFila" },
     ],
   }),
 

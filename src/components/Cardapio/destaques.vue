@@ -27,7 +27,11 @@
                         :cols="12 / itemsPerRow"
                         class="py-1"
                       >
-                        <v-card outlined class=" fill-height " @click="toCompra(item)">
+                        <v-card
+                          outlined
+                          class="fill-height"
+                          @click="toCompra(item)"
+                        >
                           <v-card-title>
                             <v-row>
                               <v-col cols="8">
@@ -48,7 +52,7 @@
                                     height="120px"
                                   ></v-img>
                                   <v-img
-                                    class=" d-flex d-sm-none"
+                                    class="d-flex d-sm-none"
                                     alt="Avatar"
                                     :src="item.image_url"
                                     width="80px"
@@ -62,14 +66,11 @@
                           <v-card-text>
                             <v-row>
                               <v-col cols="8" md="10" sm="10">
-                                <div
-                                  v-if="item.discount_status"
-                                  class="ml-6"
-                                >
+                                <div v-if="item.discount_status" class="ml-6">
                                   <b class="textColorDefault mr-2">
                                     R$ {{ item.price - item.discount_value }}
                                   </b>
-                                  <b style="text-decoration: line-through;"
+                                  <b style="text-decoration: line-through"
                                     >R${{ item.price }}
                                   </b>
                                 </div>
@@ -129,9 +130,7 @@
                 </v-data-iterator>
               </v-card-text>
             </v-card>
-            <v-card v-else>
-              Estamos sem destaques Hoje
-            </v-card>
+            <v-card v-else> Estamos sem destaques Hoje </v-card>
           </v-row>
         </v-container>
       </v-responsive>
@@ -163,9 +162,7 @@ export default {
   }),
 
   methods: {
-    ...mapActions([
-      "MovetoCompra",
-    ]),
+    ...mapActions(["MovetoCompra"]),
     toCompra(item) {
       ////console.log(item)
       this.MovetoCompra(item).then(() => {
@@ -177,9 +174,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters([
-      "getDestaques",
-    ]),
+    ...mapGetters(["getDestaques"]),
     itemsPerRow() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
@@ -198,7 +193,6 @@ export default {
 
   created() {
     if (this.getDestaques.length > 0) {
-
       this.categorias = this.getDestaques;
       //console.log(this.categorias);
     }
