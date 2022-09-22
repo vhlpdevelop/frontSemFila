@@ -190,6 +190,10 @@ const mutations = {
     }
     
   },
+  setLogOutQrCodes: (state) => {
+    state.Qrcodes = []
+    state.QrcodesSize =0;
+  },
   updateSizeQrCodes: (state) => {
     
     state.QrcodesSize = state.Qrcodes.length.toString();

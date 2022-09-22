@@ -93,6 +93,7 @@ const actions = {
   async LogOut({commit}){
     commit("setAuthLogin", false);
     commit("setSession", "");
+    commit("setLogOutQrCodes", "",{root:true})
     window.localStorage.setItem("session", "");
     window.localStorage.setItem("Qrcodes", null);
     window.localStorage.setItem("QrcodesSize", 0)
