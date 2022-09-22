@@ -2,8 +2,8 @@
 // TESTE DO VUEX LOGIN JS
 
 import axios from "axios";
-let Qrcodes = window.localStorage.getItem('Qrcodes');
-let QrcodesSize = window.localStorage.getItem('QrcodesSize');
+let Qrcodes = window.localStorage.getItem("Qrcodes");
+let QrcodesSize = window.localStorage.getItem("QrcodesSize");
 //const url = 'http://localhost:3000/auth/'
 //const url = 'http://10.1.1.23:3000/auth/'
 const url = "https://semfila-api.herokuapp.com/auth/";
@@ -28,25 +28,24 @@ const getters = {
   getUser: (state) => state.user,
   getQrcodes: (state) => state.Qrcodes,
   getQrcodesSize: (state) => state.QrcodesSize,
-  getnewQrCode: (state) => state.newQrCode
+  getnewQrCode: (state) => state.newQrCode,
 };
 
 const actions = {
-  async getQrCodesAuth({commit}, itemData){
+  async getQrCodesAuth({ commit }, itemData) {
     //console.log("Entrou aqui no qrcodes");
     //console.log(itemData)
-    if(itemData.length > 0){
+    if (itemData.length > 0) {
       commit("addQrCodes", itemData);
       commit("updateSizeQrCodes");
       commit("saveQrCodes");
     }
   },
-  async callSnack({commit}, item){
-    commit("setMessageUser", item.message)
-    commit("setRespostaUser", item.status)
-    
+  async callSnack({ commit }, item) {
+    commit("setMessageUser", item.message);
+    commit("setRespostaUser", item.status);
   },
-  async newQrCode({commit}){
+  async newQrCode({ commit }) {
     commit("AlertnewQrCode", true);
   },
   async Qrcodes({ commit }, itemData) {
@@ -65,7 +64,7 @@ const actions = {
       try {
         await axios
           .get(url + `autenticarByEmail/${itemData}`)
-          .then(function(response) {
+          .then(function (response) {
             if (response.data.ok) {
               response.data.token = `Bearer ${response.data.token}`;
               axios.defaults.headers.common["Authorization"] =
@@ -104,7 +103,7 @@ const actions = {
       try {
         await axios
           .post(url + "verifyEmail", object_send)
-          .then(function(response) {
+          .then(function (response) {
             commit("setMessageUser", response.data.msg);
             commit("setRespostaUser", response.data.ok);
           });
@@ -116,18 +115,18 @@ const actions = {
     }
   },
   async getProfile({ commit, state }) {
-    if(Object.keys(state.user).length !== 0)
-    //IMPORTANTE
-    await axios
-      .post(url + "getProfile")
-      .then(function(response) {
-        commit("setUser", response.data.user);
-        commit("setRespostaUser", response.data.ok);
-      })
-      .catch(function(error) {
-        console.log(error);
-        commit("setCheckToken", false);
-      });
+    if (Object.keys(state.user).length !== 0)
+      //IMPORTANTE
+      await axios
+        .post(url + "getProfile")
+        .then(function (response) {
+          commit("setUser", response.data.user);
+          commit("setRespostaUser", response.data.ok);
+        })
+        .catch(function (error) {
+          console.log(error);
+          commit("setCheckToken", false);
+        });
   },
   async verify({ commit }, itemData) {
     if (itemData !== null) {
@@ -136,7 +135,7 @@ const actions = {
         token: itemData,
       };
       try {
-        await axios.post(url + "verifyEmail", aux).then(function(response) {
+        await axios.post(url + "verifyEmail", aux).then(function (response) {
           commit("setMessageUser", response.data.msg);
           commit("setRespostaUser", response.data.ok);
         });
@@ -154,19 +153,21 @@ const actions = {
         account: {
           pss: itemData.password,
           email: itemData.email,
-        }
+        },
       };
       try {
-        await axios.post(url + "register", dataToSend).then(function(response) {
-          //console.log(response.data)
-          if (response.data.ok) {
-            commit("setMessageUser", response.data.msg);
-            commit("setRespostaUser", response.data.success);
-          } else {
-            commit("setMessageUser", response.data.msg);
-            commit("setRespostaUser", response.data.success);
-          }
-        });
+        await axios
+          .post(url + "register", dataToSend)
+          .then(function (response) {
+            //console.log(response.data)
+            if (response.data.ok) {
+              commit("setMessageUser", response.data.msg);
+              commit("setRespostaUser", response.data.success);
+            } else {
+              commit("setMessageUser", response.data.msg);
+              commit("setRespostaUser", response.data.success);
+            }
+          });
       } catch (err) {
         commit("setMessageUser", "Erro crítico");
         commit("setRespostaUser", false);
@@ -177,34 +178,37 @@ const actions = {
 
 const mutations = {
   addQrCodes: (state, Qrcodes) => {
-    for(let i=0; i<Qrcodes.length;i++){
-      const index = state.Qrcodes.findIndex(
-        (item) => item._id === Qrcodes[i]._id
-      );
-    if(index > -1){
-        state.Qrcodes.splice(index, 1);
-        state.Qrcodes.push(Qrcodes[i]);
-    }else{
+    if (state.Qrcodes != null) {
+      for (let i = 0; i < Qrcodes.length; i++) {
+        const index = state.Qrcodes.findIndex(
+          (item) => item._id === Qrcodes[i]._id
+        );
+        if (index > -1) {
+          state.Qrcodes.splice(index, 1);
+          state.Qrcodes.push(Qrcodes[i]);
+        } else {
+          state.Qrcodes.push(Qrcodes[i]);
+        }
+      }
+    } else {
       state.Qrcodes.push(Qrcodes[i]);
     }
-    }
-    
   },
   setLogOutQrCodes: (state) => {
-    state.Qrcodes = []
-    state.QrcodesSize =0;
+    state.Qrcodes = [];
+    state.QrcodesSize = 0;
   },
   updateSizeQrCodes: (state) => {
-    
     state.QrcodesSize = state.Qrcodes.length.toString();
-    
   },
   saveQrCodes(state) {
     window.localStorage.setItem("Qrcodes", JSON.stringify(state.Qrcodes));
     window.localStorage.setItem("QrcodesSize", state.QrcodesSize);
   },
   DeleteItem: (state, Qrcodes) => {
-    const index = state.Qrcodes.findIndex((Qrcodes) => Qrcodes._id === Qrcodes._id);
+    const index = state.Qrcodes.findIndex(
+      (Qrcodes) => Qrcodes._id === Qrcodes._id
+    );
 
     if (index !== -1) {
       state.Qrcodes.splice(index, 1);
