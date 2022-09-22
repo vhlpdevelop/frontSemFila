@@ -1,9 +1,7 @@
 <template>
   <v-app>
     <div>
-      <v-toolbar flat class="backgroundB elevation-5"
-     
-      >
+      <v-toolbar flat class="backgroundB elevation-5">
         <v-app-bar-nav-icon
           class="hidden-md-and-up"
           @click.stop="drawer = !drawer"
@@ -13,15 +11,78 @@
           <v-btn text class="navTitle" to="/home">SemFila</v-btn>
         </v-toolbar-title>
         <v-spacer />
-        
-        <div v-for="(item, index) in subMenu"
-            :key="item.title"
-            @click="$router.push({path:item.path})"
-            class="hidden-sm-and-down">
-          <v-btn text depressed class="hidden-sm-and-down navText" > {{item.title}}</v-btn>
+
+        <div
+          v-for="(item, index) in subMenu"
+          :key="item.title"
+          @click="$router.push({ path: item.path })"
+          class="hidden-sm-and-down"
+        >
+          <v-btn text depressed class="hidden-sm-and-down navText">
+            {{ item.title }}</v-btn
+          >
         </div>
-        <v-btn depressed text class="ml-5 navTitle d-none d-sm-flex d-md-flex d-lg-flex d-xl-flex" to="/entrar">criar conta</v-btn>
-        <v-btn raised class="navButtonEntrar white--text mr-5 d-none d-sm-flex d-md-flex d-lg-flex d-xl-flex"  to="/entrar">Entrar</v-btn>
+
+        <v-btn
+          depressed
+          text
+          class="ml-5 navTitle d-none d-sm-flex d-md-flex d-lg-flex d-xl-flex"
+          to="/entrar"
+          v-if="!logged"
+          >criar conta</v-btn
+        >
+        <v-btn
+          raised
+          class="navButtonEntrar white--text mr-5 d-none d-sm-flex d-md-flex d-lg-flex d-xl-flex"
+          to="/entrar"
+          v-if="!logged"
+          >Entrar</v-btn
+        >
+
+        <span
+          v-if="logged"
+          class="d-none d-sm-flex d-md-flex d-lg-flex d-xl-flex"
+        >
+          <v-menu>
+            <template v-slot:activator="{ on }">
+              <v-list-item v-show="logged" v-on="on">
+                <v-list-item-title class="navSubMenu"
+                  >{{ getPerfil }}
+                  <v-icon left color="green"
+                    >mdi-account</v-icon
+                  ></v-list-item-title
+                >
+              </v-list-item>
+              <v-list-item @click="pushToLogin" v-show="!logged">
+                <v-list-item-title class="navSubMenu">Entrar</v-list-item-title>
+              </v-list-item>
+            </template>
+            <v-list shaped>
+              <v-list-item-group>
+                <v-list-item @click="moveToSettings()">
+                  <v-list-item-icon
+                    ><v-icon v-text="'mdi-cog'"></v-icon
+                  ></v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title
+                      v-text="'Configurações'"
+                    ></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-divider></v-divider>
+
+                <v-list-item @click="accountLogOut()">
+                  <v-list-item-icon>
+                    <v-icon v-text="'mdi-logout'"></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title v-text="'Sair'"></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-menu>
+        </span>
       </v-toolbar>
 
       <v-navigation-drawer
@@ -34,7 +95,7 @@
         <v-list class="">
           <v-list-item class="">
             <v-list-item-icon>
-              <v-icon style="color: rgb(55, 80, 92) !important;"
+              <v-icon style="color: rgb(55, 80, 92) !important"
                 >mdi-home</v-icon
               >
             </v-list-item-icon>
@@ -52,9 +113,61 @@
           </v-list-item>
 
           <v-divider />
-          <v-list-item to="/entrar">
-            <v-list-item-title class="navSubMenu">Entrar</v-list-item-title>
-          </v-list-item>
+          <v-menu>
+            <template v-slot:activator="{ on }">
+              <v-list-item v-show="logged" v-on="on">
+                <v-list-item-title class="navSubMenu"
+                  >{{ getPerfil }}
+                  <v-icon left color="green"
+                    >mdi-account</v-icon
+                  ></v-list-item-title
+                >
+              </v-list-item>
+              <v-list-item @click="pushToLogin" v-show="!logged">
+                <v-list-item-title class="navSubMenu">Entrar</v-list-item-title>
+              </v-list-item>
+            </template>
+            <v-list shaped>
+              <v-list-item-group>
+                <v-list-item
+                  @click="toLink('qrcodes')"
+                  class="mb-1 text-center"
+                >
+                  <h1 class="navSubMenu">Meus QrCodes</h1>
+                  <v-list-item-icon>
+                    <v-badge
+                      :content="getQrcodesSize.toString()"
+                      value="2"
+                      color="green"
+                      overlap
+                    >
+                      <v-icon>mdi-qrcode</v-icon>
+                    </v-badge>
+                  </v-list-item-icon>
+                </v-list-item>
+                <v-list-item @click="moveToSettings()">
+                  <v-list-item-icon
+                    ><v-icon v-text="'mdi-cog'"></v-icon
+                  ></v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title
+                      v-text="'Configurações'"
+                    ></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-divider></v-divider>
+
+                <v-list-item @click="accountLogOut()">
+                  <v-list-item-icon>
+                    <v-icon v-text="'mdi-logout'"></v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title v-text="'Sair'"></v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-menu>
           <v-list-item
             v-for="(item, index) in staticMenu"
             :key="item.title"
@@ -68,8 +181,10 @@
       </v-navigation-drawer>
     </div>
 
-    <v-container  ma-0 pr-0 pl-0 pt-3 fluid  class="mx-auto ">
-      <router-view />
+    <v-container ma-0 pr-0 pl-0 pt-3 fluid class="mx-auto">
+      <transition name="slide-fade">
+        <router-view class="view" />
+      </transition>
     </v-container>
     <ContentFooter />
   </v-app>
@@ -88,6 +203,7 @@ export default {
     appTitle: "NoLine - Sem Fila",
     navDrawer: true,
     sidebar: true,
+    logged: false,
     staticMenu: [
       { title: "Termos de Uso", path: "/TermosdeUso" },
       { title: "Termos de Privacidade", path: "/privacidade" },
@@ -105,16 +221,54 @@ export default {
     ],
   }),
 
-  computed: mapGetters(["getPerfil"]),
+  computed: mapGetters(["getPerfil", "getAuth", "getQrcodesSize"]),
   methods: {
-    ...mapActions([]),
+    ...mapActions(["LogOut", "autoLogin"]),
+    toLink(name) {
+      ////console.log(name);
+      this.$router.push({
+        //arrumar os props
+        name: name,
+      });
+    },
+    pushToLogin() {
+      this.$router.push({
+        name: "entrar",
+      });
+    },
+    moveToSettings() {
+      this.$router.push({
+        name: "settings",
+      });
+    },
+    accountLogOut() {
+      //Realizar logout
+      this.LogOut().then((response) => {
+        this.logged = false;
+      });
+    },
   },
-  created(){
-    
-  }
+  created() {
+    this.autoLogin().then(() => {
+      if (this.getAuth) {
+        this.logged = true;
+      }
+    });
+  },
 };
 </script>
 
 <style>
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
 @import "./dashboard.module.css";
 </style>

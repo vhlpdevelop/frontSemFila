@@ -33,7 +33,7 @@ const actions = {
       axios.defaults.headers.common["Authorization"] = session;
       try {
         await axios.get(url + "autoLogin").then(function (response) {
-          console.log(response);
+          //console.log(response);
           if (response.data.success) {
             dispatch("getQrCodesAuth", response.data.qrcodes, { root: true });
             commit("setAuthLogin", response.data.success);

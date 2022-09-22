@@ -23,7 +23,7 @@
                     <v-row class="fill-height overflow-auto" id="container">
                       <v-col
                         v-for="(item, idx) in props.items"
-                        :key="item.data._id"
+                        :key="item._id"
                         :cols="12 / itemsPerRow"
                         class="py-1"
                       >
@@ -37,7 +37,7 @@
                             <v-row no-gutters>
                               <v-col cols="8">
                                 <span class="">
-                                  {{ item.data.item.item_name }}
+                                  {{ item.item.item_name }}
                                 </span>
                               </v-col>
                               <v-col cols="4">
@@ -46,14 +46,14 @@
                                     class="d-none d-sm-flex"
                                     alt="Avatar"
                                     :src="
-                                      'data:image/jpeg;base64,' + item.qrcode
+                                      'data:image/jpeg;base64,' + item.QrImage
                                     "
                                   ></v-img>
                                   <v-img
                                     class="d-flex d-sm-none"
                                     alt="Avatar"
                                     :src="
-                                      'data:image/jpeg;base64,' + item.qrcode
+                                      'data:image/jpeg;base64,' + item.QrImage
                                     "
                                     width="80px"
                                     height="60px"
@@ -64,7 +64,7 @@
                             <v-row no-gutters>
                                   <v-col cols="12">
                                     <v-subheader>{{
-                                      item.data.item.description
+                                      item.item.description
                                     }}</v-subheader>
                                   </v-col>
                                   <v-col cols="12">
@@ -72,8 +72,8 @@
                                       Expira em
                                       {{
                                         AssimilateTime(
-                                          item.data.item.discount_duration,
-                                          item.data.createdAt
+                                          item.item.discount_duration,
+                                          item.createdAt
                                         )
                                       }}
                                     </v-subheader>
@@ -94,21 +94,21 @@
                                   <b class="">
                                     <span class="ml-6 textColorDefault"
                                       >Quantidade:
-                                      {{ item.data.quantity }}</span
+                                      {{ item.quantity }}</span
                                     >
                                   </b>
                                 </v-col>
                                 <v-col cols="11" md="6" sm="6" xl="6" lg="6">
                                   <b>
                                     <span class="ml-6">
-                                      {{ item.data.store_name }}
+                                      {{ item.store_name }}
                                     </span>
                                   </b>
                                 </v-col>
                                 <v-col cols="1" md="6" sm="6" xl="6" lg="6">
                                   <v-tooltip
                                     bottom
-                                    v-if="item.data.item.destaques"
+                                    v-if="item.item.destaques"
                                   >
                                     <template v-slot:activator="{ on, attrs }">
                                       <v-icon
@@ -124,7 +124,7 @@
                                   </v-tooltip>
                                   <v-tooltip
                                     bottom
-                                    v-if="item.data.item.discount_status"
+                                    v-if="item.item.discount_status"
                                   >
                                     <template v-slot:activator="{ on, attrs }">
                                       <v-icon
@@ -140,7 +140,7 @@
                                   </v-tooltip>
                                   <v-tooltip
                                     bottom
-                                    v-if="item.data.item.promotion"
+                                    v-if="item.item.promotion"
                                   >
                                     <template v-slot:activator="{ on, attrs }">
                                       <v-icon
@@ -181,13 +181,13 @@
                   </v-btn>
                   <v-toolbar-title
                     >QrCode
-                    {{ QrCodeShow.data.item.item_name }}</v-toolbar-title
+                    {{ QrCodeShow.item.item_name }}</v-toolbar-title
                   >
                 </v-toolbar>
                 <v-container fluid fill-height mt-12>
                   <v-row justify="center" align="center">
                     <v-img
-                      :src="'data:image/jpeg;base64,' + QrCodeShow.qrcode"
+                      :src="'data:image/jpeg;base64,' + QrCodeShow.QrImage"
                       max-width="300"
                       max-height="300"
                       class=""
@@ -292,5 +292,5 @@ export default {
 </script>
 
 <style>
-@import "../Cardapio/cardapio.module.css";
+@import "./qrcodes.module.css";
 </style>

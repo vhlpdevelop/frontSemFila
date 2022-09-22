@@ -33,8 +33,8 @@ const getters = {
 
 const actions = {
   async getQrCodesAuth({commit}, itemData){
-    console.log("Entrou aqui no qrcodes");
-    console.log(itemData)
+    //console.log("Entrou aqui no qrcodes");
+    //console.log(itemData)
     if(itemData.length > 0){
       commit("addQrCodes", itemData);
       commit("updateSizeQrCodes");
@@ -50,8 +50,7 @@ const actions = {
     commit("AlertnewQrCode", true);
   },
   async Qrcodes({ commit }, itemData) {
-    console.log(itemData)
-    console.log("Entrou aqui")
+    //console.log(itemData)
     commit("addQrCodes", itemData);
     commit("updateSizeQrCodes");
     commit("saveQrCodes");
@@ -178,27 +177,23 @@ const actions = {
 
 const mutations = {
   addQrCodes: (state, Qrcodes) => {
-    var aux ={
-      data: Qrcodes.data,
-      qrcode: Qrcodes.qrcode
+    for(let i=0; i<Qrcodes.length;i++){
+      const index = state.Qrcodes.findIndex(
+        (item) => item._id === Qrcodes[i]._id
+      );
+    if(index > -1){
+        state.Qrcodes.splice(index, 1);
+        state.Qrcodes.push(Qrcodes[i]);
+    }else{
+      state.Qrcodes.push(Qrcodes[i]);
     }
-    //console.log(aux)
-    const index = state.Qrcodes.findIndex(
-      (item) => item.data._id === Qrcodes.data._id
-    );
-  if(index > -1){
-      state.Qrcodes.splice(index, 1);
-      state.Qrcodes.push(aux);
-  }else{
+    }
     
-    //console.log(aux)
-    state.Qrcodes.push(aux);
-  }
   },
   updateSizeQrCodes: (state) => {
-    console.log(state.Qrcodes.length.toString())
+    
     state.QrcodesSize = state.Qrcodes.length.toString();
-    console.log(state.QrcodesSize)
+    
   },
   saveQrCodes(state) {
     window.localStorage.setItem("Qrcodes", JSON.stringify(state.Qrcodes));
