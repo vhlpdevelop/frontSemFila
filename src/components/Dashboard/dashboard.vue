@@ -59,6 +59,22 @@
             </template>
             <v-list shaped>
               <v-list-item-group>
+                <v-list-item
+                  @click="toLink('qrcodes')"
+                  class="mb-1 text-center"
+                >
+                  <h1 class="navSubMenu">Meus QrCodes</h1>
+                  <v-list-item-icon>
+                    <v-badge
+                      :content="getQrcodesSize.toString()"
+                      value="2"
+                      color="green"
+                      overlap
+                    >
+                      <v-icon>mdi-qrcode</v-icon>
+                    </v-badge>
+                  </v-list-item-icon>
+                </v-list-item>
                 <v-list-item @click="moveToSettings()">
                   <v-list-item-icon
                     ><v-icon v-text="'mdi-cog'"></v-icon
