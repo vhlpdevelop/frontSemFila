@@ -68,7 +68,7 @@
                               <v-col cols="8" md="10" sm="10">
                                 <div v-if="item.discount_status" class="ml-6">
                                   <b class="textColorDefault mr-2">
-                                    R$ {{ item.price - item.discount_value }}
+                                    R$ {{ (item.price - item.discount_value).toFixed(2) }}
                                   </b>
                                   <b style="text-decoration: line-through;"
                                     >R${{ item.price }}

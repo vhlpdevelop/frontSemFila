@@ -191,7 +191,7 @@ const mutations = {
         }
       }
     } else {
-      state.Qrcodes.push(Qrcodes[i]);
+      state.Qrcodes.push(Qrcodes);
     }
   },
   setLogOutQrCodes: (state) => {
