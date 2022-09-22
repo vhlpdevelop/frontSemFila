@@ -20,7 +20,7 @@
     <v-container fluid pa-12 class="text-center textComeceDefault ">
       
       <h1>Para cada camerâ mais um acesso acontece</h1>
-      <p class=" text-justify">
+      <p class=" text-center">
         Clientes, bares e festas. O SemFila foi criado por pessoas que têm um desejo em comum: Evitar filas e dar sentido ao cardápio digital.
       </p>
       
