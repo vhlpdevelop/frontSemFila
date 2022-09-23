@@ -1,9 +1,11 @@
 <template>
-  <v-footer class="d-flex align-center justify-center topGradient">
+  <v-container ma-0 pa-0 fluid>
+    <v-img :src="wave"></v-img>
+    <v-footer class="backgroundFooter" style="width: 100%">
     
-    <v-container fluid fill-height>
+    <v-container ma-0 pa-0 fluid class="d-flex align-center justify-center  ">
       
-      <v-row>
+      <v-row  >
         <v-col cols="12" sm="4" md="6" lg="6" xl="6" class="d-flex">
           <v-container fluid class="flex-grow-1 d-flex row justify-center align-center">
             <p>
@@ -35,10 +37,19 @@
       </v-row>
     </v-container>
   </v-footer>
+  </v-container>
+  
 </template>
 <script>
-export default {};
+export default {
+  data: () => ({
+    wave: require('../../img/wave.svg')
+  }),
+};
 </script>
-<style>
+<style scoped>
+.backgroundFooter{
+  background-image: url('../../img/wave-down.svg');
+}
 
 </style>

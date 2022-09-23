@@ -59,7 +59,7 @@
       </v-row>
     </v-container>
     <v-container fluid class="text-center">
-      <v-btn rounded outlined @click="$router.push({name:'tornar'})"
+      <v-btn color="#FE938C" rounded outlined @click="$router.push({name:'tornar'})"
             >Comece agora</v-btn
           >
     </v-container>

@@ -52,7 +52,7 @@
                 <p class="text-start">Comece agora, totalmente gratuito. Com o nosso painel administrativo você tem acesso a todo nosso trabalho</p>
             </v-col>
             <v-col cols="12" md="6" sm="6" lg="6" xl="6" class="d-flex justify-center align-center">
-                <v-btn text outlined rounded color="primary">Me tornar um SemFila</v-btn>
+                <v-btn rounded outlined color="#FE938C">Me tornar um SemFila</v-btn>
             </v-col>
           </v-row>
         </v-col>

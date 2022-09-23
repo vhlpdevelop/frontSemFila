@@ -42,7 +42,7 @@
                     >
                   </v-container>
                   <v-container>
-                    <v-btn block text outlined @click="openEmail(true)"
+                    <v-btn block text @click="openEmail(true)"
                       >Criar minha conta</v-btn
                     >
                   </v-container>

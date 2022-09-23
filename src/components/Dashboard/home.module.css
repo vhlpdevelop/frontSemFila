@@ -20,7 +20,7 @@
     .buttonSearch{
         font-family: Josefin Sans !important;
         font-size: 0.7em !important;
-        background-color: rgb(254,147,140) !important;
+        
     } 
     .backgroundComece{
         background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
@@ -52,7 +52,7 @@
     .buttonSearch{
         font-family: Josefin Sans !important;
         font-size: 0.7em !important;
-        background-color: rgb(254,147,140) !important;
+        
     }
 }
 @media (max-width:768px){
@@ -69,7 +69,7 @@
     .buttonSearch{
         font-family: Josefin Sans !important;
         font-size: 0.7em !important;
-        background-color: rgb(254,147,140) !important;
+       
     }
     .backgroundComece{
         background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
@@ -93,7 +93,7 @@
     .buttonSearch{
         font-family: Josefin Sans !important;
         font-size: 0.8em !important;
-        background-color: rgb(254,147,140) !important;
+        
     }
     .backgroundComece{
         background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
@@ -118,7 +118,7 @@
     .buttonSearch{
         font-family: Josefin Sans !important;
         font-size: 0.8em !important;
-        background-color: rgb(254,147,140) !important;
+        
     }
     .backgroundComece{
         background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
@@ -143,7 +143,7 @@
     .buttonSearch{
         font-family: Josefin Sans !important;
         font-size: 1em !important;
-        background-color: rgb(254,147,140) !important;
+       
     }
     .backgroundComece{
         background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
@@ -153,6 +153,15 @@
         background-position: 85%;  
         text-shadow: 2px 1px white;
     }
+}
+.verifyEmail{
+    font-family: Josefin Sans !important;
+}
+.cardVerify{
+    font-family: Josefin Sans !important;
+    color: rgb(88, 157, 108) !important;
+    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+
 }
 .backgroundTornar{
     background-image: url("https://i.ibb.co/t260MTR/5182ae135815275-61eeba8cb745d.jpg") !important;

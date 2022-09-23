@@ -61,7 +61,7 @@
               >
             </v-layout>
             
-            <v-btn v-show="!loading" @click="confirmar">Confirmar</v-btn>
+            <v-btn rounded outlined color="#FE938C" v-show="!loading" @click="confirmar">Confirmar</v-btn>
             <v-progress-circular
               v-show="loading"
               indeterminate

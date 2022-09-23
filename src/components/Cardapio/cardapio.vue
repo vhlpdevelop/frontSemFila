@@ -450,6 +450,7 @@ export default {
     ////console.log(JSON.parse(JSON.stringify(this.getQrcodes)))
     ////console.log(this.getQrcodes[0])
     ////console.log(this.id);
+    document.title = this.Storename
     this.LoadStore(this.id).then((response) => {
       ////console.log(this.getLoaded);
       if (this.getLoaded) {

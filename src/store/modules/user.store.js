@@ -15,6 +15,7 @@ const state = {
   respostaUser: "",
   messageUser: "",
   users: [],
+  verify: "",
   Qrcodes: Qrcodes ? JSON.parse(Qrcodes) : [],
   QrcodesSize: QrcodesSize ? parseInt(QrcodesSize) : 0,
   newQrCode: false,
@@ -25,6 +26,7 @@ const getters = {
   getRespostaUser: (state) => state.respostaUser,
   getMessageUser: (state) => state.messageUser,
   getUsers: (state) => state.users,
+  getVerify: (state) => state.verify,
   getUser: (state) => state.user,
   getQrcodes: (state) => state.Qrcodes,
   getQrcodesSize: (state) => state.QrcodesSize,
@@ -105,7 +107,7 @@ const actions = {
           .post(url + "verifyEmail", object_send)
           .then(function (response) {
             commit("setMessageUser", response.data.msg);
-            commit("setRespostaUser", response.data.ok);
+            commit("setRespostaUser", response.data.success);
           });
       } catch (e) {
         console.log(e.message);
@@ -130,14 +132,15 @@ const actions = {
   },
   async verify({ commit }, itemData) {
     if (itemData !== null) {
-      //console.log(itemData)
+      console.log(itemData)
       let aux = {
         token: itemData,
       };
       try {
-        await axios.post(url + "verifyEmail", aux).then(function (response) {
+        await axios.post(url + "verifyTokenEmail", aux).then(function (response) {
+          commit("setVerify", response.data.obj)
           commit("setMessageUser", response.data.msg);
-          commit("setRespostaUser", response.data.ok);
+          commit("setRespostaUser", response.data.success);
         });
       } catch (e) {
         console.log(e);
@@ -216,6 +219,7 @@ const mutations = {
   },
   setRespostaUser: (state, respostaUser) => (state.respostaUser = respostaUser),
   AlertnewQrCode: (state, newQrCode) => (state.newQrCode = newQrCode),
+  setVerify: (state, verify) => (state.verify = verify),
   setMessageUser: (state, messageUser) => (state.messageUser = messageUser),
   setUser: (state, user) => (state.user = user),
 };

@@ -24,7 +24,7 @@
               ></v-text-field>
             </v-col>
             <v-col cols="12" md="6" lg="6" sm="6" xs="12">
-              <v-btn @click="moveTo()" block class="buttonSearch white--text">Buscar</v-btn>
+              <v-btn outlined @click="moveTo()" block color="#FE938C" class="buttonSearch ">Buscar</v-btn>
             </v-col>
           </v-row>
         </v-col>
@@ -102,7 +102,7 @@
               </v-row>
               <v-row class="align-end justify-start">
                 <v-container fluid>
-                  <a>Saiba mais</a>
+                  <v-btn text rounded color="#589D6C">Saiba mais</v-btn>
                 </v-container>
               </v-row>
             </v-card>
@@ -117,7 +117,7 @@
               </v-row>
               <v-row class="align-end justify-start">
                 <v-container fluid>
-                  <a>Começar!</a>
+                  <v-btn rounded outlined color="#FE938C">Começar!</v-btn>
                 </v-container>
               </v-row>
             </v-card>
@@ -132,7 +132,7 @@
               </v-row>
               <v-row class="align-end justify-start">
                 <v-container fluid>
-                  <a>Saiba mais</a>
+                  <v-btn text rounded color="#589D6C">Saiba mais</v-btn>
                 </v-container>
               </v-row>
             </v-card>

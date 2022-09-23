@@ -70,6 +70,12 @@ const router = new Router({
       ]
     },
     {
+      path: '/:id/autenticar',
+      name: 'verifyEmail',
+      props:true,
+      component: () => import('../components/User/verifyEmail.vue')
+    },
+    {
       path:'/entrar', 
       name: 'entrar',
       props:true,
@@ -129,7 +135,6 @@ const router = new Router({
           name: 'faq',
           component: () => import('../components/User/Ajuda/faq.vue'),
         },
-
       ],
     },
   ]

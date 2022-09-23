@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <div>
+    <v-container fluid ma-0 pa-0>
       <v-toolbar flat class="backgroundB elevation-5">
         <v-app-bar-nav-icon
           class="hidden-md-and-up"
@@ -8,7 +8,8 @@
         />
 
         <v-toolbar-title>
-          <v-btn text class="navTitle" to="/home">SemFila</v-btn>
+          
+          <v-btn text class="navTitle ma-1" @click="$router.push({name:'home'})" ><v-avatar ><img :src="logo"></v-avatar>SemFila</v-btn>
         </v-toolbar-title>
         <v-spacer />
 
@@ -115,7 +116,7 @@
                 >mdi-home</v-icon
               >
             </v-list-item-icon>
-            <v-btn text class="navTitle" to="/home">SEMFILA</v-btn>
+            <v-btn text class="navTitle" @click="$router.push({name:'home'})">SEMFILA</v-btn>
           </v-list-item>
           <v-divider />
           <v-list-item
@@ -195,14 +196,16 @@
           </v-list-item>
         </v-list>
       </v-navigation-drawer>
-    </div>
+    </v-container>
 
-    <v-container ma-0 pr-0 pl-0 pt-3 fluid class="mx-auto">
+    <v-container ma-0 pr-0 pl-0 fluid class="mx-auto">
       <transition name="slide-fade">
         <router-view class="view" />
       </transition>
     </v-container>
-    <ContentFooter />
+      
+    
+    <ContentFooter ma-0 pr-0 pl-0 fluid class="mx-auto" />
   </v-app>
 </template>
 
@@ -220,6 +223,7 @@ export default {
     navDrawer: true,
     sidebar: true,
     logged: false,
+    logo: require("../../img/semfila-tag-semfundo.png"),
     staticMenu: [
       { title: "Termos de Uso", path: "/TermosdeUso" },
       { title: "Termos de Privacidade", path: "/privacidade" },
@@ -265,6 +269,7 @@ export default {
     },
   },
   created() {
+    document.title = "SemFila";
     this.autoLogin().then(() => {
       if (this.getAuth) {
         this.logged = true;
