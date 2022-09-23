@@ -95,7 +95,7 @@ const actions = {
     commit("setSession", "");
     commit("setLogOutQrCodes", "",{root:true})
     window.localStorage.setItem("session", "");
-    window.localStorage.setItem("Qrcodes", null);
+    window.localStorage.setItem("Qrcodes", "");
     window.localStorage.setItem("QrcodesSize", 0)
   }
 };
