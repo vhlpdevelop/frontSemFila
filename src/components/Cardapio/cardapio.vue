@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid ma-0 pa-0>
+  <v-app>
     <v-toolbar flat class="backgroundB elevation-5">
       <topSkeleton></topSkeleton>
       <v-container ma-0 pa-0 fluid v-if="loaded" class="d-flex">
@@ -108,7 +108,7 @@
               >mdi-home</v-icon
             >
           </v-list-item-icon>
-          <h1 class="navSubMenu">{{ store.name }}</h1>
+          <h1 class="navTitle">{{ store.name }}</h1>
         </v-list-item>
         <v-divider />
         <v-list-item @click="toLink('qrcodesOnCardapio')" class="mb-1 text-center">
@@ -191,9 +191,9 @@
           :key="item.title"
           @click="toLink(item.to)"
         >
-          <v-list-item-title class="navTitle2">{{
+          <v-list-item-title class="pinkColorText">{{
             item.title
-          }}</v-list-item-title>
+          }}<v-icon :color="item.color">{{item.icon}}</v-icon></v-list-item-title>
         </v-list-item>
 
         <v-list-item
@@ -201,7 +201,7 @@
           :key="item.category_name"
           @click="toLinkCategoria(item)"
         >
-          <v-list-item-title class="navTitle2">{{
+          <v-list-item-title class="pinkColorText">{{
             item.category_name
           }}</v-list-item-title>
         </v-list-item>
@@ -244,7 +244,7 @@
           :key="item.title"
           @click="toLink(item.path)"
         >
-          <v-list-item-title class="navSubMenu">{{
+          <v-list-item-title class="textColorDefault">{{
             item.title
           }}</v-list-item-title>
         </v-list-item>
@@ -266,16 +266,7 @@
     >
       <bodySkeleton></bodySkeleton>
     </v-container>
-    <v-snackbar v-model="snackSucesso" color="success">
-      <v-layout justify-space-around align-center></v-layout>
-    </v-snackbar>
-    <v-snackbar v-model="snackErro" color="error">
-      <v-layout justify-space-around align-center></v-layout>
-    </v-snackbar>
-    <v-snackbar v-model="getnewQrCode" color="success">
-      <v-layout justify-space-around align-center>QrCode chegou!</v-layout>
-    </v-snackbar>
-  </v-container>
+  </v-app>
 </template>
 
 <script>
@@ -311,8 +302,8 @@ export default {
       { title: "Ajuda", path: "ajuda" },
     ],
     subMenu: [
-      { title: "Destaques", to: "destaques" },
-      { title: "Promoções", to: "promocoes" },
+      { title: "Destaques", to: "destaques" , icon: "mdi-fire", color:"red"},
+      { title: "Promoções", to: "promocoes", icon: "mdi-lightning-bolt", color:"yellow" },
     ],
   }),
 
@@ -450,13 +441,14 @@ export default {
     ////console.log(JSON.parse(JSON.stringify(this.getQrcodes)))
     ////console.log(this.getQrcodes[0])
     ////console.log(this.id);
-    document.title = this.Storename
+    
     this.LoadStore(this.id).then((response) => {
       ////console.log(this.getLoaded);
       if (this.getLoaded) {
         ////console.log(this.getCardapio);
         if (this.getCardapio !== "") {
           this.StoreName = this.getCardapio.store.name;
+          document.title = this.StoreName
           this.StoreImg = this.getCardapio.store.store_img;
           let aux = this.getCardapio.store.store_img;
           if (aux.length !== 0) {

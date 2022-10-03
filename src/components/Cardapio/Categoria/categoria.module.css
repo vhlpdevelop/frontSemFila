@@ -6,6 +6,9 @@
     font-family: Josefin Slab;
     src: url("../../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
 }
+.backGroundCategoria {
+    background-image: linear-gradient(rgb(245, 245, 245), white) !important;
+  }
 .titleText{
     font-family: Josefin Sans !important;
     font-size: 1.2em !important;

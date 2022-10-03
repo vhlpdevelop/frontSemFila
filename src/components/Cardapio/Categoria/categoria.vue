@@ -1,14 +1,21 @@
 <template>
   <v-app>
-    <v-container ma-0 pa-0 fluid class="mb-5">
+    <v-container ma-0 pa-0 fluid class="backGroundDestaques">
       <v-responsive width="100%">
         <v-container fluid ma-0 pa-0 fill-height class="d-flex">
           <v-row align="center" justify="center" class="mt-3">
-            <v-card v-if="getCardapio.cardapio[getCategoria].items.length > 0">
-              <v-row justify="start" class="mt-3 ma-1">
-                <v-card-title class="ml-6 CategoryName"
-                  ><b>{{ getCardapio.cardapio[getCategoria].category_name }}</b></v-card-title
+            <v-card v-if="getCardapio.cardapio[getCategoria].items.length > 0" class="rounded-xl backGroundDestaques" elevation="0" >
+              <v-row justify="start" class="mt-3 ma-1" no-gutters>
+                <v-col cols="12">
+                  <v-card-title class="ml-6 CategoryName"
+                  ><b>{{ getCardapio.cardapio[getCategoria].category_name }}</b>
+                  </v-card-title
                 >
+                </v-col>
+                <v-col cols="12" class="ml-6 mt-n6">
+                  <v-subheader>Nós recomendamos para você</v-subheader>
+                </v-col>
+                
               </v-row>
 
               <v-card-text>
@@ -17,7 +24,7 @@
                   :items="getCardapio.cardapio[getCategoria].items"
                   hide-default-header
                   hide-default-footer
-                  class="d-flex flex-column mh-100 overflow-hidden ma-1"
+                  class="d-flex flex-column mh-100 ma-5"
                 >
                   <template v-slot:default="props">
                     <v-row class="fill-height overflow-auto" id="container">
@@ -25,20 +32,20 @@
                         v-for="(item, idx) in props.items"
                         :key="item.item_name"
                         :cols="12 / itemsPerRow"
-                        class="py-1"
+                        class="py-1 mb-5"
                       >
                         <v-card
                           outlined
-                          class=" fill-height "
+                          class=" fill-height rounded-xl"
                           @click="toCompra(item)"
                         >
                           <v-card-title>
                             <v-row>
                               <v-col cols="8">
-                                <span class="">
+                                <p class="text-truncate" style="max-width: 300px">
                                   {{ item.item_name }}
-                                </span>
-                                <v-subheader>{{
+                                </p>
+                                <v-subheader class="text-truncate" style="max-width: 300px">{{
                                   item.description
                                 }}</v-subheader>
                               </v-col>

@@ -1,6 +1,5 @@
 <template>
-  <v-app>
-    <v-row no-gutters class="align-center justify-center backGroundDestaques">
+  <v-row no-gutters class="align-center justify-center">
     <v-col cols="10" lg="12" md="12" sm="12" class="mt-5 mb-n6 ">
       <v-responsive :aspect-ratio="16 / 9" max-height="500px" class="">
         <v-carousel cycle hide-delimiters show-arrows-on-hover>
@@ -27,10 +26,9 @@
                         <v-card
                           @click="toCompra(itemDestaques[+index + i])"
                           dark
-                          
                           elevation="7"
                           outlined
-                          class="pa-5 cardDestaques"
+                          class="pa-5"
                         >
                           <v-row align="center" justify="center">
                             <v-img
@@ -64,39 +62,38 @@
                             >mdi-fire</v-icon
                           >
                           <v-row align="start" justify="center" class="">
-                            <v-card-title class="text-truncate" style="max-width: 200px"
+                            <v-card-title class="text-justify"
                               >{{ itemDestaques[+index + i].item_name }}
                             </v-card-title>
                           </v-row>
+
                           <v-row align="center" justify="center">
-                            <p class="mt-n6 pinkColorText"
+                            <v-subheader class="mt-n8">Em Destaque</v-subheader>
+                          </v-row>
+                          <v-row align="center" justify="center">
+                            <v-subheader class="mt-n8"
                               >R${{
                                 itemDestaques[+index + i].price
-                              }}</p
+                              }}</v-subheader
                             >
                           </v-row>
                           <v-row align="center" justify="center">
-                            <v-card-text class="d-flex align-center justify-center">
-                            <v-subheader class="text-truncate" style="max-width: 300px">
-                              {{
+                            <v-card-text style="display: inline-block; overflow: hidden; text-overflow: ellipsis; width:100%;" class="text-center text-lg-body-1">{{
                               itemDestaques[+index + i].description
-                            }}
-                            </v-subheader>
-                            </v-card-text>
+                            }}</v-card-text>
                           </v-row>
-                          <v-row align="end" justify="end" >
-                            <v-card-actions>
+
+                          <v-divider></v-divider>
+                          <v-row align="end" justify="end">
+                            <v-card-actions class="mt-3">
                               <v-btn
                                 rounded
-                                outlined
-                                class="pr-6 pl-6 pinkColorText"
                                 @click="toCompra(itemDestaques[+index + i])"
                                 >Comprar</v-btn
                               >
                             </v-card-actions>
                           </v-row>
                         </v-card>
-                        
                       </v-responsive>
                     </v-col>
                   </template>
@@ -107,23 +104,23 @@
         </v-carousel>
       </v-responsive>
     </v-col>
-    <v-col cols="10" class="">
+    <v-col cols="12" class="">
       <v-row align="center" justify="center">
         <v-divider></v-divider>
         <h1 class="mr-3 ml-3 navTitle">Promoções</h1>
         <v-divider></v-divider>
       </v-row>
-      <v-row align="center" justify="center" class="">
+      <v-row align="center" justify="center" class="backGroundDestaques">
         <template v-for="(promocao, index) in itemPromocoes">
           <v-col
             cols="6"
             md="3"
             lg="3"
             sm="4"
-            class="align-center justify-center d-flex"
+            class="align-center justify-center"
           >
-            
-              <v-card class="pa-5 flex-grow-1" elevation="5">
+            <v-responsive max-height="300" max-width="240" class="ml-2">
+              <v-card class="">
                 <v-row align="center" justify="center">
                   <v-img
                     contain
@@ -133,7 +130,6 @@
                     max-width="160"
                     class="mt-2 d-none d-sm-flex"
                   ></v-img>
-                  
                 </v-row>
                 <v-row align="center" justify="center">
                   <v-img
@@ -145,49 +141,40 @@
                     class="mt-2 d-flex d-sm-none"
                   ></v-img>
                 </v-row>
-                <v-icon color="yellow"
-                  absolute
-                  top
-                  right
-                      >mdi-lightning-bolt</v-icon
-                    >
+
                 <v-row align="start" justify="center">
                   <v-card-title
-                  
-                    class="text-caption text-lg-body-1"
-                    >
-                    <span class="pinkTitle text-truncate" style="max-width: 130px" >{{ promocao.item_name }}</span>
-                    </v-card-title
+                    class="text-caption text-lg-body-1 textColorDefault"
+                    >{{ promocao.item_name }}
+                    <v-icon color="yellow"
+                      >mdi-lightning-bolt</v-icon
+                    ></v-card-title
                   >
                 </v-row>
 
                 <v-row align="center" justify="center">
-                  <v-subheader class="mt-n8 "
+                  <v-subheader class="mt-n8 text-caption text-lg-button"
                     >Promoção</v-subheader
                   >
                 </v-row>
                 <v-row align="center" justify="center">
-                  <v-subheader class="mt-n7 textColorDefault text-lg-button"
+                  <v-subheader class="mt-n8 text-caption text-lg-button"
                     >R${{ promocao.price }}</v-subheader
                   >
                 </v-row>
                 <v-row align="center" justify="center">
-                  
-                  <v-subheader class=" text-truncate" style="max-width: 200px">
-                    {{
+                  <v-card-text style="display: inline-block; overflow: hidden; text-overflow: ellipsis; width:100%;" class="text-center text-lg-body-1">{{
                     promocao.description
-                  }}
-                  </v-subheader>
-                 
+                  }}</v-card-text>
                 </v-row>
 
                 <v-row align="center" justify="center">
                   <v-card-actions class="ma-2">
-                    <v-btn outlined rounded class=" pl-4 pr-4" @click="toCompra(promocao)">Comprar</v-btn>
+                    <v-btn rounded @click="toCompra(promocao)">Comprar</v-btn>
                   </v-card-actions>
                 </v-row>
               </v-card>
-           
+            </v-responsive>
           </v-col>
         </template>
       </v-row>
@@ -198,17 +185,15 @@
       class="mt-12"
       v-for="(categoria, index) in categorias"
     >
-      
-      <v-responsive width="100%" height="100%">
+      <v-divider></v-divider>
+      <v-responsive width="100%">
         <v-container fluid ma-0 pa-0 fill-height class="d-flex">
           <v-row align="center" justify="center" class="mt-3">
-            <v-card v-if="categoria.items.length > 0" elevation="5" class="pa-3">
-              <v-row justify="start" class="mt-3">
+            <v-card v-if="categoria.items.length > 0">
+              <v-row justify="start" class="mt-3 ma-1">
                 <v-card-title class="ml-6 CategoryName"
-                  ><b>{{ categoria.category_name }}</b>
-                  </v-card-title
+                  ><b>{{ categoria.category_name }}</b></v-card-title
                 >
-                
               </v-row>
 
               <v-card-text>
@@ -217,7 +202,7 @@
                   :items="categoria.items"
                   hide-default-header
                   hide-default-footer
-                  class="d-flex flex-column mh-100 ma-5"
+                  class="d-flex flex-column mh-100 overflow-hidden ma-1"
                 >
                   <template v-slot:default="props">
                     <v-row class="fill-height overflow-auto" id="container">
@@ -225,20 +210,20 @@
                         v-for="(item, idx) in props.items"
                         :key="item.item_name"
                         :cols="12 / itemsPerRow"
-                        class="py-1 mb-5"
+                        class="py-1"
                       >
                         <v-card
                           outlined
-                          class=" fill-height rounded-xl"
+                          class=" fill-height "
                           @click="toCompra(item)"
                         >
                           <v-card-title>
-                            <v-row >
+                            <v-row>
                               <v-col cols="8">
-                                <p class="text-truncate" style="max-width: 300px">
+                                <span class="">
                                   {{ item.item_name }}
-                                </p>
-                                <v-subheader class="text-truncate" style="max-width: 300px">{{
+                                </span>
+                                <v-subheader style="display: inline-block; overflow: hidden; text-overflow: ellipsis; width:100%;">{{
                                   item.description
                                 }}</v-subheader>
                               </v-col>
@@ -334,9 +319,11 @@
         </v-container>
       </v-responsive>
     </v-col>
+
+    <v-col cols="12" class="">
+      <v-divider></v-divider>
+    </v-col>
   </v-row>
-  </v-app>
-  
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
@@ -393,7 +380,7 @@ export default {
         case "md":
           return 2;
         case "lg":
-          return 2;
+          return 3;
         case "xl":
           return 4;
       }
