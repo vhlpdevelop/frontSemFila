@@ -4,10 +4,11 @@
 import axios from "axios";
 let Qrcodes = window.localStorage.getItem("Qrcodes");
 let QrcodesSize = window.localStorage.getItem("QrcodesSize");
-//const url = 'http://localhost:3000/auth/'
+//const url = "http://localhost:3000/auth/";
+//const baseUrl = "http://localhost:3000/qrcode/";
 //const url = 'http://10.1.1.23:3000/auth/'
 const url = "https://semfila-api.herokuapp.com/auth/";
-
+const baseUrl = "https://semfila-api.herokuapp.com/qrcode/";
 //window.localStorage.clear('Qrcodes')
 //window.localStorage.clear('QrcodesSize')
 
@@ -43,6 +44,27 @@ const actions = {
       commit("saveQrCodes");
     }
   },
+  async refreshQRCODEUser({ commit }) {
+    try {
+      await axios.post(baseUrl + "refreshQrCodeUser").then(function (response) {
+        if (response.data.success) {
+          console.log(response.data.obj);
+          commit("refreshQrCodes", response.data.obj);
+          commit("updateSizeQrCodes");
+          commit("saveQrCodes");
+          commit("setMessageUser", response.data.msg);
+          commit("setRespostaUser", response.data.success);
+        } else {
+          commit("setMessageUser", response.data.msg);
+          commit("setRespostaUser", false);
+        }
+      });
+    } catch (e) {
+      console.log(e);
+      commit("setMessageUser", "Ah não, um erro ocorreu ao atualizar");
+      commit("setRespostaUser", false);
+    }
+  },
   async callSnack({ commit }, item) {
     commit("setMessageUser", item.message);
     commit("setRespostaUser", item.status);
@@ -51,8 +73,12 @@ const actions = {
     commit("AlertnewQrCode", true);
   },
   async Qrcodes({ commit }, itemData) {
-    //console.log(itemData)
-    commit("addQrCodes", itemData);
+    if (itemData.qrcode !== null) {
+      commit("addQrCodes", itemData.data);
+    } else {
+      commit("addQrCodes", itemData);
+    }
+
     commit("updateSizeQrCodes");
     commit("saveQrCodes");
   },
@@ -132,16 +158,18 @@ const actions = {
   },
   async verify({ commit }, itemData) {
     if (itemData !== null) {
-      console.log(itemData)
+      console.log(itemData);
       let aux = {
         token: itemData,
       };
       try {
-        await axios.post(url + "verifyTokenEmail", aux).then(function (response) {
-          commit("setVerify", response.data.obj)
-          commit("setMessageUser", response.data.msg);
-          commit("setRespostaUser", response.data.success);
-        });
+        await axios
+          .post(url + "verifyTokenEmail", aux)
+          .then(function (response) {
+            commit("setVerify", response.data.obj);
+            commit("setMessageUser", response.data.msg);
+            commit("setRespostaUser", response.data.success);
+          });
       } catch (e) {
         console.log(e);
         commit("setMessageUser", "Erro ao enviar verificação");
@@ -180,17 +208,28 @@ const actions = {
 };
 
 const mutations = {
+  refreshQrCodes: (state, Qrcode) => {
+    state.Qrcodes = Qrcode;
+  },
   addQrCodes: (state, Qrcodes) => {
     if (state.Qrcodes != null) {
-      for (let i = 0; i < Qrcodes.length; i++) {
-        const index = state.Qrcodes.findIndex(
-          (item) => item._id === Qrcodes[i]._id
-        );
-        if (index > -1) {
-          state.Qrcodes.splice(index, 1);
-          state.Qrcodes.push(Qrcodes[i]);
-        } else {
-          state.Qrcodes.push(Qrcodes[i]);
+      if (
+        typeof Qrcodes === "object" &&
+        Qrcodes !== null &&
+        !Array.isArray(Qrcodes)
+      ) {
+        state.Qrcodes.push(Qrcodes);
+      } else {
+        for (let i = 0; i < Qrcodes.length; i++) {
+          const index = state.Qrcodes.findIndex(
+            (item) => item._id === Qrcodes[i]._id
+          );
+          if (index > -1) {
+            state.Qrcodes.splice(index, 1);
+            state.Qrcodes.push(Qrcodes[i]);
+          } else {
+            state.Qrcodes.push(Qrcodes[i]);
+          }
         }
       }
     } else {

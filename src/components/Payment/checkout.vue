@@ -223,7 +223,7 @@
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
-            <v-btn color="blue darken-1" text @click="movetoLogin()">
+            <v-btn color="blue darken-1" text @click="moveToLogin()">
               Entrar
             </v-btn>
             <v-btn color="grey darken-1" text @click="moveToPayment()">
@@ -320,7 +320,7 @@ export default {
       }
       this.total = this.total.toFixed(2);
     },
-    moveTologin() {
+    moveToLogin() {
       this.dialogAuth = false;
       this.$router.push({
         name: "entrar",

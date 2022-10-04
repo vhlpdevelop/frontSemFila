@@ -1,37 +1,44 @@
 <template>
-  <v-container fluid fill-height class="d-flex align-center justify-center">
-    <v-row no-gutters class="d-flex align-center justify-center">
-      <v-col cols="12" sm="6" md="4" lg="4" xl="4">
-        <v-container class="d-flex justify-center">
+  <v-app class="mb-n6 ">
+    <v-container fluid ma-0 pa-0 fill-height class="d-flex align-center justify-center backgroundCompra">
+    <v-row no-gutters class="d-flex">
+      <v-col cols="12" sm="6" md="4" lg="5" xl="4" class="pa-5 d-flex align-start" >
+        <v-container fluid ma-0 pa-0>
+          <v-container class="d-flex align-center justify-center">
           <v-img
             max-width="320px"
             max-height="180px"
             contain
-
+            class=""
             :src="itemCompra.image_url"
           >
           </v-img>
+          
         </v-container>
-
-        <v-icon
+        <v-container fluid class="d-flex ">
+          <v-icon
           v-if="itemCompra.discount_status"
-          absolute
-          top
-          right
+          
+          
           color="primary"
         >
           mdi-sale
         </v-icon>
-        <v-icon v-if="itemCompra.destaques" absolute top right color="red"
+        <v-icon v-if="itemCompra.destaques"   color="red"
           >mdi-fire</v-icon
         >
-        <v-icon absolute top right v-if="itemCompra.promotion" color="yellow"
+        <v-icon   v-if="itemCompra.promotion" color="yellow"
           >mdi-lightning-bolt</v-icon
         >
+        </v-container>
+
+        </v-container>
+        
+        
       </v-col>
       <v-col cols="12" sm="6" md="6" lg="6" xl="6">
         <v-container fluid class="d-row justify-center align-center">
-          <p class="mb-0 ImportFont text-center">
+          <p class="mb-0 ImportFont text-truncate text-center mt-2">
             {{ itemCompra.item_name }}
           </p>
           <v-card-actions class="pa-0 text-center">
@@ -54,58 +61,78 @@
 
             <v-spacer></v-spacer>
           </v-card-actions>
-          <p class="subtitle-1 font-weight-thin text-center">
+          <v-container fluid>
+            <span class="compraDescription ">Descrição</span>
+          <p class="subtitleDescription text--primary ImportFontNormal text-center">
             {{ itemCompra.description }}
           </p>
-          <v-container class="text-center" fluid v-if="itemCompra.promotion">
-            <v-subheader class="text-center"
+          </v-container>
+          
+          <v-container class="d-flex align-center justify-center" fluid v-if="itemCompra.promotion">
+            <v-subheader class=""
               >Tempo da promoção -
               {{ itemCompra.promotion_duration * 24 }} horas</v-subheader
             >
           </v-container>
-          <v-container class="d-flex justify-center">
-            <v-container class="d-flex">
-              <p class="title mr-12">Quantidade</p>
-
-              <v-text-field
+          <v-container fluid class="pr-n12">
+            <v-row
+            class="d-flex justify-center align-center quantidadeCorner"
+            
+            no-gutters
+          >
+            <v-col cols="5 mb-n5" md="3" xl="3">
+              <p class="ImportFontNormal" style="font-size: 1.2em !important">
+                Quantidade
+              </p></v-col
+            >
+            <v-col cols="3  mb-n4 " md="3" xl="3"
+              ><v-text-field
                 v-model="itemCompra.qtd"
                 :rules="[rules.counter]"
-                outlined
+                outline
                 single-line
                 type="number"
                 :value="1"
-                dense
+                class="ImportFontNormal centered-input"
               ></v-text-field>
-            </v-container>
+            </v-col>
+          </v-row>
           </v-container>
+          
 
-          <v-subheader class="text-center ma-6"
+          <v-subheader class="text-center ma-6 mt-10"
             >Atenção, na compra de um produto, terá duração de 6 meses e podendo
-            variar até 1 semana(Promoção) para sua retirada na
+            variar até 1 semana(Tempo da Promoção) para sua retirada na
             loja.</v-subheader
           >
-
-          <v-container class="d-flex justify-center">
+          
+          
+        </v-container>
+        <v-container fluid ma-0 pa-0 class="containerDown containerDownTwo">
+            <v-container class="d-flex justify-center pt-8">
             <v-btn
               @click="addOnCart()"
-              class="primary white--text"
+              class="addCarrinho white--text"
               outlined
-              tile
+              rounded
+              
               dense
               ><v-icon>mdi-cart</v-icon>
               Colocar no carrinho
             </v-btn>
           </v-container>
-          <v-container class="d-flex justify-center">
-            <v-btn @click="moveToCheckout()" outlined tile dense>
+          <v-container class="d-flex justify-center align-center text-center mb-10">
+            <v-btn @click="moveToCheckout()" text dense class="checkOut" style="text-decoration: underline;">
               Ir ao checkout
-              <v-icon right>mdi-shopping</v-icon>
+              <v-icon right >mdi-shopping</v-icon>
             </v-btn>
           </v-container>
-        </v-container>
+          </v-container>
       </v-col>
     </v-row>
   </v-container>
+  </v-app>
+  
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
@@ -199,6 +226,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "./compra.module.css";
+.centered-input >>> input {
+  text-align: center;
+}
 </style>

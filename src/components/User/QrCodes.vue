@@ -5,18 +5,25 @@
         <v-container fluid ma-0 pa-0 fill-height class="d-flex">
           <v-row align="center" justify="center" class="mt-3">
             <v-card v-if="getQrcodes.length > 0" class="rounded-xl backGroundQrCode" elevation="0">
-              <v-row justify="start" class="mt-3 ma-1">
-                <v-card-title class="ml-6"
+              <v-row justify="start" class="mt-3 ma-1 d-flex align-center justify-center">
+                <v-card-title class="ml-6 "
                   ><b class="primary--text">Meus QrCodes</b></v-card-title
                 >
+                <v-btn color="primary" fab icon large :loading="refreshLoader" @click="refreshQrcodes"><v-icon>mdi-refresh</v-icon></v-btn>
               </v-row>
 
               <v-card-text>
+                <v-snackbar v-model="snackSucesso" color="success">
+      <v-layout justify-space-around align-center>{{ getMessageUser }}</v-layout>
+    </v-snackbar>
+    <v-snackbar v-model="snackErro" color="error">
+      <v-layout justify-space-around align-center>{{ getMessageUser }}</v-layout>
+    </v-snackbar>
                 <v-data-iterator
                   :headers="headers"
                   :items="qrcodes"
                   hide-default-header
-                  hide-default-footer
+                  
                   class="d-flex flex-column mh-100 ma-1"
                 >
                   <template v-slot:default="props">
@@ -72,7 +79,7 @@
                                       Expira em
                                       {{
                                         AssimilateTime(
-                                          item.item.discount_duration,
+                                          item.item.promotion_duration,
                                           item.createdAt
                                         )
                                       }}
@@ -221,6 +228,7 @@ export default {
   props: ["object", "index"],
   data: () => ({
     snackErro: false,
+    refreshLoader: false,
     snackSucesso: false,
     timeout: 5000,
     qrcodes: [],
@@ -239,7 +247,22 @@ export default {
   }),
 
   methods: {
-    ...mapActions(["MovetoCompra"]),
+    ...mapActions(["MovetoCompra","refreshQRCODEUser"]),
+    refreshQrcodes(){
+      this.refreshLoader = true;
+      this.refreshQRCODEUser().then( () => {
+        if(this.getRespostaUser){
+          this.qrcodes = this.getQrcodes;
+          this.snackErro=false;
+          this.snackSucesso = true;
+          this.refreshLoader = false
+        }else{
+          this.snackSucesso=false;
+          this.snackErro=true;
+          this.refreshLoader = false
+        }
+      });
+    },
     AssimilateTime(time, createdAt) {
       if (time === undefined) {
         const d = new Date(createdAt);
@@ -265,7 +288,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getQrcodes"]),
+    ...mapGetters(["getQrcodes","getRespostaUser","getMessageUser"]),
     itemsPerRow() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":

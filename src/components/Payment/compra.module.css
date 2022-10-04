@@ -6,9 +6,39 @@
     font-family: Josefin Slab;
     src: url("../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
 }
+@media (max-width: 480px) {
+    .containerDown{
+        background-color: #121212;
+        position: absolute;
+        border-top-right-radius: 90px;
+        border-top-left-radius: 90px;
+    }
+}
+.backgroundCompra{
+    background-image: linear-gradient(rgb(245, 245, 245) 80%, white);
+}
+.buttonColor{
+    color: rgb(254,147,140) !important;
+}
+.quantidadeCorner{
+    border-radius: 25px;
+  border: 1px solid #121212;
+}
 .ImportFont{
     font-family: Josefin Sans !important;
     font-size: 2em !important;
+}
+.compraDescription{
+    opacity: 80%;
+    font-family: Josefin Sans !important;
+    font-size: 0.7em !important;
+}
+.subtitleDescription{
+    font-family: Josefin Sans !important;
+    font-size: 0.9em !important;
+}
+.ImportFontNormal{
+    font-family: Josefin Sans !important;
 }
 .greenTitle{
     font-family: Josefin Sans !important;
@@ -24,4 +54,13 @@
     font-family: Josefin Sans !important;
     font-size: 1em !important;
     color: rgb(254,147,140) !important;
+}
+
+.addCarrinho{
+    background-color: rgb(254,147,140) !important;
+    font-family: Josefin Sans !important;
+}
+.checkOut{
+    color: rgb(136, 185, 150) !important;
+    font-family: Josefin Sans !important;
 }

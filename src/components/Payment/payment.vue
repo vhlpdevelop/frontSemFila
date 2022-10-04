@@ -1,27 +1,37 @@
 <template>
-  <v-app>
-    <v-container fluid class="pa-5">
-      <v-row justify="center">
-        <v-col cols="12" md="6">
-          <v-card>
-            <v-card>
+  <v-app class="">
+    <v-container fluid fill-height class="pa-5 backgroundCompra d-flex align-start justify-center">
+      <v-row >
+        <v-col cols="12" md="10" lg="10" xl="10">
+          
+            <v-card tile elevation="10">
               <v-card-title style="word-break: break-word" class="text-center"
-                >Selecione o tipo de pagamento</v-card-title
+                >Selecione o tipo de Pagamento</v-card-title
               >
               <v-row class="pa-5">
                 <v-col cols="12" md="6">
                   <v-expansion-panels>
                     <v-expansion-panel>
-                      <v-expansion-panel-header>
-                        Pagar com pix <v-icon small right>mdi-clover</v-icon>
+                      <v-expansion-panel-header class="checkOut">
+                        Pagar com pix <v-icon class="checkOut" small right>mdi-clover</v-icon>
                       </v-expansion-panel-header>
                       <v-expansion-panel-content>
                         <p>
                           <b>As informações devem aparecer:</b>
                         </p>
-                        <p>
-                          <b>Número: 000.000.000/0001-00</b>
-                        </p>
+                        <v-row no-gutters>
+                          <v-col cols="12" md="6">
+                            <p>
+                          <b>CNPJ: 40.470.307/0001-43 </b>
+                          </p>
+                          </v-col>
+                          <v-col cols="12" md="6">
+                            <p>
+                          <b>Conta: 1231 </b>
+                          </p>
+                          </v-col>
+                        </v-row>
+                        
                         <p>
                           Ao clicar no botão pagar, nesta tela irá mostar o
                           codigo de pagamento pix. Copie e cole no seu
@@ -33,6 +43,8 @@
                               @click="payment('PIX')"
                               v-show="ButtonToggle"
                               outlined
+                              rounded
+                              class="buttonColor pr-6 pl-6"
                               >Pagar com pix</v-btn
                             ></v-col
                           >
@@ -67,11 +79,7 @@
                         <v-icon small right>mdi-credit-card</v-icon>
                       </v-expansion-panel-header>
                       <v-expansion-panel-content>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
+                        Sintimos muito, mas ainda não terminamos de implementar este pagamento. Por enquanto temos apenas pagamento por PIX.
                       </v-expansion-panel-content>
                     </v-expansion-panel>
                   </v-expansion-panels>
@@ -80,7 +88,7 @@
                 <v-spacer></v-spacer>
               </v-row>
             </v-card>
-          </v-card>
+          
         </v-col>
         <v-snackbar v-model="snackSucesso" color="success">
       <v-layout justify-space-around align-center>{{snackMsg}}</v-layout>
@@ -220,3 +228,6 @@ export default {
   },
 };
 </script>
+<style>
+  @import "./compra.module.css";
+</style>
