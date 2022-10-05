@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="background-color: rgb(245,245,245) !important;">
       <section id="termos">
         <div class="py-12"></div>
 

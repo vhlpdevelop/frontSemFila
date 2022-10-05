@@ -75,6 +75,7 @@
         background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
         background-size:     contain;                      /* <------ */
         background-repeat:   no-repeat;
+
         background-position: center; 
         text-shadow: 2px 1px white; 
     }
@@ -97,7 +98,7 @@
     }
     .backgroundComece{
         background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
-        background-color: rgb(255,192,192);
+        background-color: rgb(255,192,192) !important;
         background-size:     contain;                      /* <------ */
         background-repeat:   no-repeat;
         background-position: right;  
@@ -153,6 +154,12 @@
         background-position: 85%;  
         text-shadow: 2px 1px white;
     }
+}
+.deepTopColor{
+    background-image: linear-gradient(rgb(245,245,245) 30%,rgb(255,192,192) 70%) !important;
+}
+.deepBottomColor{
+    background-image: linear-gradient(rgb(255,192,192) 10%, rgb(245,245,245) 90%) !important;
 }
 .verifyEmail{
     font-family: Josefin Sans !important;

@@ -15,7 +15,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container fluid pa-12 class="text-center textComeceDefault">
+    <v-container style="background-color: rgb(245,245,245) !important;" fluid pa-12 class="text-center textComeceDefault">
       <v-row justify="center">
         <v-col cols="12" md="8" sm="10" lg="8" xl="10">
           <v-subheader>O que é <span class="textColorDefault ml-1">SemFila</span> </v-subheader>
@@ -42,7 +42,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container fluid class="text-center textComeceDefault">
+    <v-container style="background-color: rgb(245,245,245) !important;" fluid class="text-center textComeceDefault">
       <v-divider></v-divider>
       <v-row justify="center">
         <v-col cols="12" md="8" sm="10" lg="8" xl="10">

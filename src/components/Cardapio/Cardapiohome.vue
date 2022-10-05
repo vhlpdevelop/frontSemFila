@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-row no-gutters class="align-center justify-center backGroundDestaques">
+  <v-app style="background-color: rgb(245, 245, 245) !important">
+    <v-row no-gutters class="align-center justify-center">
     <v-col cols="10" lg="12" md="12" sm="12" class="mt-5 mb-n6 ">
       <v-responsive :aspect-ratio="16 / 9" max-height="500px" class="">
         <v-carousel cycle hide-delimiters show-arrows-on-hover>
@@ -199,10 +199,11 @@
       v-for="(categoria, index) in categorias"
     >
       
-      <v-responsive width="100%" height="100%">
+      
         <v-container fluid ma-0 pa-0 fill-height class="d-flex">
           <v-row align="center" justify="center" class="mt-3">
-            <v-card v-if="categoria.items.length > 0" elevation="5" class="pa-3">
+            
+              <v-card style="width: 100%" v-if="categoria.items.length > 0" elevation="5" class="pa-3">
               <v-row justify="start" class="mt-3">
                 <v-card-title class="ml-6 CategoryName"
                   ><b>{{ categoria.category_name }}</b>
@@ -220,12 +221,12 @@
                   class="d-flex flex-column mh-100 ma-5"
                 >
                   <template v-slot:default="props">
-                    <v-row class="fill-height overflow-auto" id="container">
+                    <v-row class="fill-height overflow-auto d-flex align-center justify-center" id="container">
                       <v-col
                         v-for="(item, idx) in props.items"
                         :key="item.item_name"
                         :cols="12 / itemsPerRow"
-                        class="py-1 mb-5"
+                        class=" mb-5"
                       >
                         <v-card
                           outlined
@@ -233,7 +234,7 @@
                           @click="toCompra(item)"
                         >
                           <v-card-title>
-                            <v-row >
+                            <v-row>
                               <v-col cols="8">
                                 <p class="text-truncate" style="max-width: 300px">
                                   {{ item.item_name }}
@@ -330,9 +331,11 @@
                 </v-data-iterator>
               </v-card-text>
             </v-card>
+      
+            
           </v-row>
         </v-container>
-      </v-responsive>
+      
     </v-col>
   </v-row>
   </v-app>
@@ -395,7 +398,7 @@ export default {
         case "lg":
           return 2;
         case "xl":
-          return 4;
+          return 3;
       }
     },
     columns() {

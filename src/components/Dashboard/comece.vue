@@ -1,5 +1,7 @@
 <template>
   <v-app>
+    <v-container fluid class="deepTopColor">
+    </v-container>
     <v-container pa-12 fluid class="text-center  backgroundComece textComeceDefault">
       <v-row justify="center">
         <v-col cols="12" md="8" sm="6" lg="6" xl="6">
@@ -17,7 +19,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container fluid pa-12 class="text-center textComeceDefault ">
+    <v-container fluid pa-12 class="text-center deepBottomColor textComeceDefault ">
       
       <h1>Para cada camerâ mais um acesso acontece</h1>
       <p class=" text-center">
@@ -25,7 +27,7 @@
       </p>
       
     </v-container>
-    <v-container fluid >
+    <v-container fluid style="background-color: rgb(245,245,245) !important;" >
       <v-row justify="center">
         <v-col cols="12">
           <v-row justify="center" align="center">
@@ -58,7 +60,7 @@
           </v-row></v-col>
       </v-row>
     </v-container>
-    <v-container fluid class="text-center">
+    <v-container fluid class="text-center" style="background-color: rgb(245,245,245) !important;">
       <v-btn color="#FE938C" rounded outlined @click="$router.push({name:'tornar'})"
             >Comece agora</v-btn
           >

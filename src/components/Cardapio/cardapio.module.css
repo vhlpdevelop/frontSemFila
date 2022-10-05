@@ -168,11 +168,11 @@
 }
 
 .backGroundDestaques {
-  background-image: linear-gradient(rgb(245, 245, 245), white);
+  background-image: linear-gradient(rgb(252, 250, 250), white);
 }
 
 .backgroundB {
-  background-color: rgb(228, 239, 241);
+  background-color: rgb(245, 245, 245) !important;
 }
 .textColorDefault {
   color: rgb(88, 157, 108) !important;

@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-container fluid fill-height class="backgroundHome d-inline-block">
+  <v-app style="background-color: rgb(245,245,245) !important;">
+    <v-container fluid fill-height class=" d-inline-block">
       <v-row class="justify-center align-center text-center">
         <v-col cols="12" md="12" lg="12">
           <span class="headerTitle">Hora de deixar tudo mais fácil</span>

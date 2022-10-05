@@ -1,10 +1,10 @@
 <template>
-  <v-app>
+  <v-app style="background-color: rgb(245, 245, 245) !important">
     <v-container ma-0 pa-0 fluid class="backGroundDestaques">
-      <v-responsive width="100%">
+      
         <v-container fluid ma-0 pa-0 fill-height class="d-flex ">
           <v-row align="center" justify="center" class="mt-3">
-            <v-card class="rounded-xl backGroundDestaques" elevation="0"  v-if="itemPromocoes.length > 0">
+            <v-card style="width: 100%" class="rounded-xl backGroundDestaques" elevation="5"  v-if="itemPromocoes.length > 0">
               <v-row justify="start" class="mt-3 ma-1" no-gutters>
                 <v-col cols="12">
                   <v-card-title class="ml-6 textColorDefault"
@@ -23,7 +23,7 @@
                   :items="itemPromocoes"
                   hide-default-header
                   hide-default-footer
-                  class="d-flex flex-column mh-100 ma-5"
+                  class="d-flex flex-column ma-5"
                 >
                   <template v-slot:default="props">
                     <v-row class="fill-height overflow-auto" id="container">
@@ -160,7 +160,7 @@
             <v-card v-else> Estamos sem promoções Hoje </v-card>
           </v-row>
         </v-container>
-      </v-responsive>
+      
     </v-container>
   </v-app>
 </template>
@@ -211,7 +211,7 @@ export default {
         case "md":
           return 2;
         case "lg":
-          return 4;
+          return 3;
         case "xl":
           return 4;
       }

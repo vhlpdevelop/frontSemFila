@@ -1,7 +1,7 @@
 <template>
-  <v-app>
+  <v-app style="background-color: rgb(245, 245, 245) !important;">
     <v-container fluid ma-0 pa-0>
-      <v-toolbar flat class="backgroundB elevation-5">
+      <v-toolbar flat class="backgroundB rounded-xl ml-1 mr-1 elevation-5">
         <v-app-bar-nav-icon
           class="hidden-md-and-up"
           @click.stop="drawer = !drawer"
