@@ -205,6 +205,58 @@ const actions = {
       }
     }
   },
+  async sendRecoveryPssToken({commit}, itemData){
+    try{
+      await axios
+      .post(url + "CommonTokenPasswordReset", itemData)
+      .then(function(response) {
+        commit("setRespostaUser", response.data.success)
+        commit("setMessageUser", response.data.msg)
+      }).catch(function(error){
+        console.log(error)
+        commit("setRespostaUser", false)
+        commit("setMessageUser","Desculpe, um erro ocorreu ao enviar a solicitação")
+      })
+    }catch(e){
+      commit('setRespostaUser', false);
+      commit('setMessageUser', 'Erro ao enviar token')
+      console.log('erro:', err);
+    }
+  },
+  async verifyTokenPassword({commit}, itemData){
+    
+    try {
+      let aux = {
+        token: itemData
+      }
+      await axios
+        .post(url + "CommonVerifyTokenPasswordReset", aux)
+        .then(function (response) {
+          commit("setVerify", response.data.obj);
+          commit("setMessageUser", response.data.msg);
+          commit("setRespostaUser", response.data.success);
+        });
+    } catch (e) {
+      console.log(e);
+      commit("setMessageUser", "Erro ao enviar verificação");
+      commit("setRespostaUser", false);
+    }
+  },
+  async ChangePassword({commit}, itemData){
+    try{
+      await axios
+        .post(url + "PasswordReset", itemData)
+        .then(function (response) {
+          commit("setVerify", response.data.obj);
+          commit("setMessageUser", response.data.msg);
+          commit("setRespostaUser", response.data.success);
+        });
+    } catch (e) {
+      console.log(e);
+      commit("setMessageUser", "Erro ao enviar verificação");
+      commit("setRespostaUser", false);
+    }
+  },
 };
 
 const mutations = {

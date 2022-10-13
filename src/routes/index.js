@@ -76,6 +76,18 @@ const router = new Router({
       component: () => import('../components/User/verifyEmail.vue')
     },
     {
+      path: '/:id/recuperarSenha',
+      name: 'passwordRecovery',
+      props:true,
+      component: () => import('../components/User/passwordRecovery.vue')
+    },
+    {
+      path:'/recuperarSenha', 
+      name: 'forgotPassword',
+      props:true,
+      component: () => import('../components/User/forgotPassword'), 
+    },
+    {
       path:'/entrar', 
       name: 'entrar',
       props:true,

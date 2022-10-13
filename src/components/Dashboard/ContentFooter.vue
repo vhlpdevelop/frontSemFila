@@ -1,9 +1,10 @@
 <template>
-  <v-container ma-0 pa-0 fluid>
-    <v-img :src="wave"></v-img>
-    <v-footer class="backgroundFooter" style="width: 100%">
+  <v-app style="background-color: rgb(245, 245, 245) !important; width: 100%;">
+    <v-container ma-0 pa-0 fluid >
+    <v-img :src="wave" ></v-img>
+    <v-footer class="backgroundFooter" >
     
-    <v-container ma-0 pa-0 fluid class="d-flex align-center justify-center  ">
+    <v-container ma-0 pa-0 fluid class="d-flex align-center justify-center  " >
       
       <v-row  >
         <v-col cols="12" sm="4" md="6" lg="6" xl="6" class="d-flex">
@@ -38,6 +39,8 @@
     </v-container>
   </v-footer>
   </v-container>
+  </v-app>
+  
   
 </template>
 <script>
@@ -50,6 +53,8 @@ export default {
 <style scoped>
 .backgroundFooter{
   background-image: url('../../img/wave-down.svg');
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
 }
 
 </style>

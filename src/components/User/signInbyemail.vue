@@ -28,8 +28,11 @@
           </v-layout>
         </v-layout>
 
-        <v-layout column align-center justify-center>
-          <v-btn rounded outlined color="#FE938C" v-show="!loading" @click="confirmar">Confirmar</v-btn>
+        <v-layout column align-center justify-center class="pl-5 pr-5">
+          <v-btn block text to="/recuperarSenha" class="text-decoration-underline"
+                  >Esqueci minha Senha
+                </v-btn>
+          <v-btn block rounded outlined color="#FE938C" v-show="!loading" @click="confirmar">Confirmar</v-btn>
           <v-progress-circular v-show="loading" indeterminate color="primary" />
         </v-layout>
       </v-container>
