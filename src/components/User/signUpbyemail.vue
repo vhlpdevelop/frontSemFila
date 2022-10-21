@@ -45,7 +45,12 @@
               </v-flex>
             </v-layout>
           </v-layout>
-
+          <v-container fluid>
+                <p class="recaptcha pa-5 mt-n10">
+                  Esse site é protegido pelo reCAPTCHA e está sujeito à Política
+                  de Privacidade e aos Termos de Serviço do Google.
+                </p>
+              </v-container>
           <v-layout column align-center justify-center>
             <v-checkbox
               v-model="agreeTerms"

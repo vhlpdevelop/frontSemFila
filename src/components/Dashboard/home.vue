@@ -2,7 +2,8 @@
   <v-app style="background-color: rgb(245,245,245) !important;">
     <v-container fluid fill-height class=" d-inline-block">
       <v-row class="justify-center align-center text-center">
-        <v-col cols="12" md="12" lg="12">
+        <v-container fluid fill-height class="d-flex justify-center align-center mb-16 mt-6">
+          <v-col cols="12" md="12" lg="12">
           <span class="headerTitle">Hora de deixar tudo mais fácil</span>
         </v-col>
         <v-col cols="12" md="12" lg="12" class="mt-n6">
@@ -26,72 +27,25 @@
             <v-col cols="12" md="6" lg="6" sm="6" xs="12">
               <v-btn outlined @click="moveTo()" block color="#FE938C" class="buttonSearch ">Buscar</v-btn>
             </v-col>
+            <v-col cols="12" class="mt-2 mb-6">
+              <v-btn outlined icon fab @click="goTo()" ><v-icon>mdi-arrow-down</v-icon></v-btn>
+            </v-col>
           </v-row>
         </v-col>
-        <v-col cols="12" md="12" lg="12" sm="12" xs="12" class="d-flex">
-          <v-container fluid>
-            <v-row align="center" justify="center">
-              <v-col cols="12" md="5" lg="5" sm="6">
-                <v-card
-                  elevation="2"
-                  outlined
-                  shaped
-                  class="d-flex sheetsPinky mr-6 pa-2"
-                >
-                  <v-row class="align-start justify-start mt-3 ml-3">
-                    <v-card-title class="white--text cardTitle"
-                      >Festa</v-card-title
-                    >
-                  </v-row>
-                  <v-row class="align-end d-flex justify-start">
-                    <v-btn class="ml-n12 mb-6 " rounded x-small outlined
-                      >Veja as opções
-                      <v-icon right>mdi-arrow-right</v-icon></v-btn
-                    >
-                  </v-row>
-                  <v-row class="align-end d-flex justify-end">
-                    <v-img
-                      contain
-                      max-height="160"
-                      max-width="230"
-                      :src="imagebalde"
-                    ></v-img>
-                  </v-row>
-                </v-card>
-              </v-col>
-              <v-col cols="12" md="5" lg="5" sm="6">
-                <v-card
-                  elevation="2"
-                  outlined
-                  shaped
-                  class="d-flex sheetsMarine mr-6 pr-5 pl-5 pb-2"
-                >
-                  <v-row class="align-start d-flex justify-start mt-3 ml-3">
-                    <v-card-title class="white--text cardTitle"
-                      >Bar</v-card-title
-                    >
-                  </v-row>
-                  <v-row class="align-end d-flex justify-start">
-                    <v-btn class="ml-n12 mb-6 " rounded x-small outlined
-                      >Veja as opções
-                      <v-icon right>mdi-arrow-right</v-icon></v-btn
-                    >
-                  </v-row>
-                  <v-row class="align-end d-flex justify-end">
-                    <v-img
-                      contain
-                      max-height="160"
-                      max-width="230"
-                      :src="imagebalde"
-                    ></v-img>
-                  </v-row>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-container>
+        </v-container>
+        
+
+        <v-col cols="12" md="12" lg="12" sm="12" xs="12" class="mt-16" ref="section_start" >
+          <section_1  >
+            
+          </section_1>
         </v-col>
-        <v-col cols="12" md="12" lg="12" sm="12" xs="12">
-          <v-row>
+        <v-col cols="12" md="12" lg="12" sm="12" xs="12" class="mt-16 mb-6 d-row align-center justify-center" style="background: white" >
+          <section_partness class="" ></section_partness>
+        </v-col>
+        
+        <v-col cols="12" md="12" lg="12" sm="12">
+          <v-row justify="center" align="center">
             <v-col cols="12" md="4" lg="4" sm="4" xs="4">
               <v-card class="sheetsPinky mr-6 pa-6">
               <v-row class="align-start justify-start">
@@ -138,23 +92,40 @@
             </v-card>
             </v-col>
           </v-row>
-            
+          
             
           
         </v-col>
+        <v-col cols="12" class="mt-16">
+          <section_ratings></section_ratings>
+        </v-col>
+        <v-col cols="12" class="mt-16">
+          <section_numbers></section_numbers>
+        </v-col>
       </v-row>
     </v-container>
-    <v-container fluid>  </v-container>
+    
 
   </v-app>
 </template>
 
 <script>
+import section_1 from "./home_components/section_start.vue"
+import section_numbers from "./home_components/section_numbers.vue"
+import section_ratings from "./home_components/section_ratings.vue"
+import section_partness from "./home_components/section_partness.vue"
 export default {
-  name: "NoLine",
+  components: {
+    section_1,
+    section_numbers,
+    section_partness,
+    section_ratings
+  },
+
+  name: "SemFila",
   data: () => ({
     drawer: null,
-    appTitle: "NoLine - Sem Fila",
+    appTitle: "Sem Fila",
     navDrawer: true,
     search:"",
     imagebalde: require("../../img/balde.png"),
@@ -163,6 +134,13 @@ export default {
   computed: {}, //mapGetters([""]),
   methods: {
     //...mapActions([""]),
+    goTo(){
+      var element = this.$refs['section_start'];
+      
+      var top = element.offsetTop;
+      
+      window.scrollTo(0, top+120);
+    },  
     moveTo(){
       
       this.$router.push({
