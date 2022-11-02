@@ -1,8 +1,8 @@
 <template>
   <v-app  style="background-color: rgb(245, 245, 245) !important">
-    <v-container ma-0 pa-0 fluid class="backGroundDestaques">
+    <v-container fluid class="backGroundDestaques" style="background-color: rgb(245, 245, 245) !important">
       
-        <v-container fluid ma-0 pa-0 fill-height class="d-flex">
+        <v-container fluid fill-height class="d-flex" style="background-color: rgb(245, 245, 245) !important">
           <v-row align="center" justify="center" class="mt-3">
             <v-card style="width: 100%" v-if="categorias.length > 0" class=" rounded-xl backGroundDestaques" elevation="5">
               <v-row justify="start" class="mt-3 ma-1" no-gutters>
@@ -25,10 +25,10 @@
                   :items="categorias"
                   hide-default-header
                   hide-default-footer
-                  class="d-flex flex-column ma-5"
+                  class="d-flex flex-column "
                 >
                   <template v-slot:default="props">
-                    <v-row class="fill-height overflow-auto" id="container">
+                    <v-row class="fill-height" id="container">
                       <v-col
                         v-for="(item, idx) in props.items"
                         :key="item.item_name"
@@ -46,12 +46,12 @@
                                 <p class="text-truncate" style="max-width: 300px">
                                   {{ item.item_name }}
                                 </p>
-                                <v-subheader class="text-truncate" style="max-width: 300px">{{
+                                <v-subheader style="word-break: break-word;">{{
                                   item.description
                                 }}</v-subheader>
                               </v-col>
                               <v-col cols="4">
-                                <div>
+                                <div v-if="item.image_url !== ''">
                                   <v-img
                                     class="d-none d-sm-flex"
                                     alt="Avatar"
@@ -63,6 +63,23 @@
                                     class="d-flex d-sm-none"
                                     alt="Avatar"
                                     :src="item.image_url"
+                                    width="80px"
+                                    height="60px"
+                                  ></v-img>
+                                </div>
+                                <div v-else>
+                                  
+                                  <v-img
+                                    class="d-none d-sm-flex"
+                                    alt="Avatar"
+                                    src="https://i.ibb.co/WH7Bj1J/empty.jpg"
+                                    width="180px"
+                                    height="120px"
+                                  ></v-img>
+                                  <v-img
+                                    class="d-flex d-sm-none"
+                                    alt="Avatar"
+                                    src="https://i.ibb.co/WH7Bj1J/empty.jpg"
                                     width="80px"
                                     height="60px"
                                   ></v-img>

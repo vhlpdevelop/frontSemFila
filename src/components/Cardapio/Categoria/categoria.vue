@@ -1,8 +1,8 @@
 <template>
   <v-app style="background-color: rgb(245, 245, 245) !important">
-    <v-container ma-0 pa-0 fluid class="backGroundDestaques">
+    <v-container  fluid class="backGroundDestaques">
       
-        <v-container fluid ma-0 pa-0 fill-height class="d-flex">
+        <v-container fluid  fill-height class="d-flex" style="background-color: rgb(245, 245, 245) !important">
           <v-row align="center" justify="center" class="mt-3">
             <v-card style="width: 100%" v-if="getCardapio.cardapio[getCategoria].items.length > 0" class="rounded-xl backGroundDestaques" elevation="5" >
               <v-row justify="start" class="mt-3 ma-1" no-gutters>
@@ -45,12 +45,12 @@
                                 <p class="text-truncate" style="max-width: 300px">
                                   {{ item.item_name }}
                                 </p>
-                                <v-subheader class="text-truncate" style="max-width: 300px">{{
+                                <v-subheader style="word-break: break-word;">{{
                                   item.description
                                 }}</v-subheader>
                               </v-col>
                               <v-col cols="4">
-                                <div>
+                                <div v-if="item.image_url !== ''">
                                   <v-img
                                     class="d-none d-sm-flex"
                                     alt="Avatar"
@@ -59,9 +59,26 @@
                                     height="120px"
                                   ></v-img>
                                   <v-img
-                                    class=" d-flex d-sm-none"
+                                    class="d-flex d-sm-none"
                                     alt="Avatar"
                                     :src="item.image_url"
+                                    width="80px"
+                                    height="60px"
+                                  ></v-img>
+                                </div>
+                                <div v-else>
+                                  
+                                  <v-img
+                                    class="d-none d-sm-flex"
+                                    alt="Avatar"
+                                    src="https://i.ibb.co/WH7Bj1J/empty.jpg"
+                                    width="180px"
+                                    height="120px"
+                                  ></v-img>
+                                  <v-img
+                                    class="d-flex d-sm-none"
+                                    alt="Avatar"
+                                    src="https://i.ibb.co/WH7Bj1J/empty.jpg"
                                     width="80px"
                                     height="60px"
                                   ></v-img>
@@ -137,7 +154,7 @@
                 </v-data-iterator>
               </v-card-text>
             </v-card>
-            <v-card v-else>
+            <v-card v-else >
               <v-card-title class="ma-2" style="word-break: break-word">
                 Aguarde, estamos arrumando nosso cardápio {{ getCardapio.cardapio[getCategoria].category_name }}
               </v-card-title>

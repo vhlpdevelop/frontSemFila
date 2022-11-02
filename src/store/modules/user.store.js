@@ -7,8 +7,8 @@ let QrcodesSize = window.localStorage.getItem("QrcodesSize");
 //const url = "http://localhost:3000/auth/";
 //const baseUrl = "http://localhost:3000/qrcode/";
 //const url = 'http://10.1.1.23:3000/auth/'
-const url = "https://semfila-api.herokuapp.com/auth/";
-const baseUrl = "https://semfila-api.herokuapp.com/qrcode/";
+const url = "https://api-semfila.api-semfila.online/auth/";
+const baseUrl = "https://api-semfila.api-semfila.online/qrcode/";
 //window.localStorage.clear('Qrcodes')
 //window.localStorage.clear('QrcodesSize')
 

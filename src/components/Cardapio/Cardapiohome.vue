@@ -1,7 +1,7 @@
 <template>
   <v-app style="background-color: rgb(245, 245, 245) !important">
     <v-row no-gutters class="align-center justify-center">
-    <v-col cols="10" lg="12" md="12" sm="12" class="mt-5 mb-n6 ">
+    <v-col cols="10" lg="12" md="12" sm="12" class="mt-5 mb-n6 " v-if="itemDestaques.length>0">
       <v-responsive :aspect-ratio="16 / 9" max-height="500px" class="">
         <v-carousel cycle hide-delimiters show-arrows-on-hover>
           <template v-slot:prev="{ on, attrs }">
@@ -28,16 +28,19 @@
                           @click="toCompra(itemDestaques[+index + i])"
                           dark
                           
-                          elevation="7"
+                          
                           outlined
-                          class="pa-5 cardDestaques"
+                          class="pa-5 rounded-xl cardDestaques"
                         >
                           <v-row align="center" justify="center">
-                            <v-img
+                           
+                            <div v-if="itemDestaques[+index + i].image_url !== null">
+                              <v-img
                               contain
                               :aspect-ratio="16 / 9"
                               :src="itemDestaques[+index + i].image_url"
-                              max-height="300"
+                              width="220px"
+                              height="200px"
                               class=" d-none d-sm-flex"
                             >
                               <v-row align="start" justify="start"> </v-row>
@@ -46,10 +49,31 @@
                               contain
                               :aspect-ratio="16 / 9"
                               :src="itemDestaques[+index + i].image_url"
-                              max-height="220"
-                              max-width="320"
+                              width="220px"
+                              height="200px"
                               class=" d-flex d-sm-none"
                             ></v-img>
+                            </div>
+                            <div v-else>
+                              <v-img
+                              contain
+                              :aspect-ratio="16 / 9"
+                              src="https://i.ibb.co/WH7Bj1J/empty.jpg"
+                              width="220px"
+                              height="220px"
+                              class=" d-none d-sm-flex"
+                            >
+                              
+                            </v-img>
+                            <v-img
+                              contain
+                              :aspect-ratio="16 / 9"
+                              src="https://i.ibb.co/WH7Bj1J/empty.jpg"
+                              width="200px"
+                              height="200px"
+                              class=" d-flex d-sm-none"
+                            ></v-img>
+                            </div>
                           </v-row>
                           <v-icon
                             v-if="itemDestaques[+index + i].discount_status"
@@ -107,7 +131,7 @@
         </v-carousel>
       </v-responsive>
     </v-col>
-    <v-col cols="10" class="">
+    <v-col cols="10" class="" v-if="itemPromocoes.length>0">
       <v-row align="center" justify="center">
         <v-divider></v-divider>
         <h1 class="mr-3 ml-3 navTitle">Promoções</h1>
@@ -121,11 +145,12 @@
             lg="3"
             sm="4"
             class="align-center justify-center d-flex"
+            
           >
             
               <v-card class="pa-5 flex-grow-1" elevation="5">
                 <v-row align="center" justify="center">
-                  <v-img
+                  <v-img v-if="promocao.image_url !== ''"
                     contain
                     :aspect-ratio="16 / 9"
                     :src="promocao.image_url"
@@ -133,10 +158,18 @@
                     max-width="160"
                     class="mt-2 d-none d-sm-flex"
                   ></v-img>
+                  <v-img v-else
+                    contain
+                    :aspect-ratio="16 / 9"
+                    src="https://i.ibb.co/WH7Bj1J/empty.jpg"
+                    max-height="220"
+                    max-width="160"
+                    class="mt-2 d-none d-sm-flex"
+                  ></v-img>
                   
                 </v-row>
                 <v-row align="center" justify="center">
-                  <v-img
+                  <v-img v-if="promocao.image_url !== ''"
                     contain
                     :aspect-ratio="16 / 9"
                     :src="promocao.image_url"
@@ -144,6 +177,15 @@
                     max-width="80"
                     class="mt-2 d-flex d-sm-none"
                   ></v-img>
+                  <v-img v-else
+                    contain
+                    :aspect-ratio="16 / 9"
+                    src="https://i.ibb.co/WH7Bj1J/empty.jpg"
+                    max-height="120"
+                    max-width="80"
+                    class="mt-2 d-flex d-sm-none"
+                  ></v-img>
+
                 </v-row>
                 <v-icon color="yellow"
                   absolute
@@ -200,7 +242,7 @@
     >
       
       
-        <v-container fluid ma-0 pa-0 fill-height class="d-flex">
+        <v-container fluid fill-height class="d-flex">
           <v-row align="center" justify="center" class="mt-3">
             
               <v-card style="width: 100%" v-if="categoria.items.length > 0" elevation="5" class="pa-3">
@@ -218,10 +260,10 @@
                   :items="categoria.items"
                   hide-default-header
                   hide-default-footer
-                  class="d-flex flex-column mh-100 ma-5"
+                  class="d-flex flex-column mh-100 "
                 >
                   <template v-slot:default="props">
-                    <v-row class="fill-height overflow-auto d-flex align-center justify-center" id="container">
+                    <v-row class="fill-height overflow-hidden d-flex align-center justify-center" id="container">
                       <v-col
                         v-for="(item, idx) in props.items"
                         :key="item.item_name"
@@ -239,12 +281,12 @@
                                 <p class="text-truncate" style="max-width: 300px">
                                   {{ item.item_name }}
                                 </p>
-                                <v-subheader class="text-truncate" style="max-width: 300px">{{
+                                <v-subheader style="word-break: break-word;">{{
                                   item.description
                                 }}</v-subheader>
                               </v-col>
                               <v-col cols="4">
-                                <div>
+                                <div v-if="item.image_url !== ''">
                                   <v-img
                                     class="d-none d-sm-flex"
                                     alt="Avatar"
@@ -253,9 +295,26 @@
                                     height="120px"
                                   ></v-img>
                                   <v-img
-                                    class=" d-flex d-sm-none"
+                                    class="d-flex d-sm-none"
                                     alt="Avatar"
                                     :src="item.image_url"
+                                    width="80px"
+                                    height="60px"
+                                  ></v-img>
+                                </div>
+                                <div v-else>
+                                  
+                                  <v-img
+                                    class="d-none d-sm-flex"
+                                    alt="Avatar"
+                                    src="https://i.ibb.co/WH7Bj1J/empty.jpg"
+                                    width="180px"
+                                    height="120px"
+                                  ></v-img>
+                                  <v-img
+                                    class="d-flex d-sm-none"
+                                    alt="Avatar"
+                                    src="https://i.ibb.co/WH7Bj1J/empty.jpg"
                                     width="80px"
                                     height="60px"
                                   ></v-img>

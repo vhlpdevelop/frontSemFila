@@ -152,14 +152,16 @@ export default {
   methods: {
     ...mapActions(["getProfile", "PaymentCheck", "clearCart", "updateProfile"]),
     async copyCode(){
+
+      console.log(this.pixCode)
       try{
         await navigator.clipboard
       .writeText(this.pixCode)
       .then(() => {
-        alert("successfully copied");
+        alert("Texto Copiado");
       })
       .catch(() => {
-        alert("something went wrong");
+        alert("Algo deu errado");
       });
       }catch(e){
         this.error = e.message
@@ -194,7 +196,7 @@ export default {
               this.loading = false;
               this.pixReady = true;
               this.clearCart();
-              //console.log(this.getPlan);
+              this.pixCode = this.getPlan;
               //window.location.href = this.getPlan.url;
             } else {
               this.pixReady = false

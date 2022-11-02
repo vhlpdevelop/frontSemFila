@@ -3,7 +3,7 @@
 
 import axios from "axios";
 
-const url = "https://semfila-api.herokuapp.com/auth/";
+const url = "https://api-semfila.api-semfila.online/auth/";
 //const url = "http://localhost:3000/auth/";
 //console.log(session)
 const state = {

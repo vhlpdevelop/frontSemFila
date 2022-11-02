@@ -1,6 +1,7 @@
 //const url = "http://localhost:3000/cardapio/";
-//const url = "http://http://10.1.1.23:3000/cardapio"
-const url = "https://semfila-api.herokuapp.com"
+const url ="https://api-semfila.api-semfila.online/cardapio/"
+//https://semfila-api.herokuapp.com/store/getStore/"
+//const url = "https://semfila-api.herokuapp.com"
 
 import axios from "axios";
 
@@ -33,12 +34,12 @@ const actions = {
       try{
         
         await axios
-          .get(`https://semfila-api.herokuapp.com/store/getStore/${itemData}`)
+          .get(`https://api-semfila.api-semfila.online/store/getStore/${itemData}`)
           .then(function(response) {
             //Organizar categorias, items, destaques e Promoções
             //1- Destaques
             if(response.data.success){
-              //console.log(response.data.obj)
+              console.log(response.data.obj)
               //console.log(response.data.obj.cardapio.length)
               //console.log(response.data.obj.cardapio[0].items.length)
               let destaques = [];
@@ -115,23 +116,7 @@ const actions = {
       }
         
   },
-    async fetchCardapio({commit}){
-      try{
-        await axios
-          .get(url + "fetchCardapio")
-          .then(function(response) {
-              
-            let aux = response.data.obj
-            aux.push({category_name : 'Todos'})
-            commit("setCardapio", aux)
-            commit("setResponse", response.data.success)
-            commit("setResponseMsg", response.data.msg)
-            
-          });
-      }catch(e){
-        //console.log(e)
-      }
-    },
+
     updateItemFromCategoria({commit}, itemData){
       if(itemData !== null)
       if(itemData !== ""){

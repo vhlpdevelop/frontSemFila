@@ -7,7 +7,7 @@
     src: url("../../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
 }
 .backGroundCategoria {
-    background-image: linear-gradient(rgb(245, 245, 245), white) !important;
+    background-color: rgb(245, 245, 245) !important
   }
 .titleText{
     font-family: Josefin Sans !important;

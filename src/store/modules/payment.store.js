@@ -8,11 +8,23 @@ import { io } from "socket.io-client";
 
 //const url = "http://localhost:3000/payment/"
 //const urlSocket="http://localhost:3000"
-const urlSocket = "https://semfila-api.herokuapp.com" // 
-const url = "https://semfila-api.herokuapp.com/payment/";
+//const urlSocket = "https://semfila-api.herokuapp.com" // 
+const urlSocket="https://api-semfila.api-semfila.online"
+const url = "https://api-semfila.api-semfila.online/payment/";
+const sessionID = window.localStorage.getItem("sessionID");
+
+  
 const socket = io(urlSocket, { autoConnect: true });
-socket.on("connect", () => {
-  //console.log(`Client connected: ${socket.id}`);
+if (sessionID) {
+  //this.usernameAlreadySelected = true;
+  socket.auth = { sessionID };
+  socket.connect();
+}
+socket.on("session", ({ sessionID }) => {
+  // attach the session ID to the next reconnection attempts
+  socket.auth = { sessionID };
+  // store it in the localStorage
+  window.localStorage.setItem("sessionID", sessionID);
 });
 const state = {
   sessionID: "",
@@ -79,7 +91,7 @@ const actions = {
   async PaymentCheck({ dispatch, commit }, itemData) {
     let object = {
       itemData: itemData,
-      idSocket: socket.id,
+      idSocket: sessionID,
     };
     try {
       if (itemData.type === "PIX") {

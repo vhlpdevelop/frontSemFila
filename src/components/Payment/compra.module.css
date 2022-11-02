@@ -8,14 +8,16 @@
 }
 @media (max-width: 480px) {
     .containerDown{
-        background-color: #121212;
-        position: absolute;
+        background: linear-gradient(#121212 95%, rgb(245, 245, 245) ) !important;
+        
+        height: 200px;
         border-top-right-radius: 90px;
         border-top-left-radius: 90px;
+        
     }
 }
 .backgroundCompra{
-    background-image: linear-gradient(rgb(245, 245, 245) 80%, white);
+    background-color: rgb(245, 245, 245) !important
 }
 .buttonColor{
     color: rgb(254,147,140) !important;

@@ -1,4 +1,4 @@
-const url = "https://semfila-api.herokuapp.com/categoria/";
+const url = "https://api-semfila.api-semfila.online/categoria/";
 
 import axios from "axios";
 
