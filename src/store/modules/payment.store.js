@@ -96,7 +96,7 @@ const actions = {
     try {
       if (itemData.type === "PIX") {
         socket.on("qrcodeGet", (qrcode) => {
-        
+          commit("SetPaymentCheck", true);
           for(let i=0; i<qrcode.dataToSend.length;i++){
             dispatch("Qrcodes", qrcode.dataToSend[i], { root: true });
           }

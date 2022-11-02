@@ -206,11 +206,24 @@
       
     
     <ContentFooter ma-0 pr-0 pl-0 fluid class="mx-auto" />
+    <v-overlay
+      :z-index="zIndex"
+      :value="getPaymentCheck"
+    >
+      <p color="white">Seu QRCODE chegou!</p>
+      <v-btn
+        class="white--text"
+        color="teal"
+        @click="SetPaymentCheck(false)"
+      >
+        Entendi
+      </v-btn>
+    </v-overlay>
   </v-app>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations} from "vuex";
 import ContentFooter from "../Dashboard/ContentFooter";
 export default {
   components: {
@@ -218,6 +231,7 @@ export default {
   },
   name: "NoLine",
   data: () => ({
+    zIndex: 0,
     drawer: null,
     appTitle: "NoLine - Sem Fila",
     navDrawer: true,
@@ -241,9 +255,10 @@ export default {
     ],
   }),
 
-  computed: mapGetters(["getPerfil", "getAuth", "getQrcodesSize"]),
+  computed: mapGetters(["getPaymentCheck","getPerfil", "getAuth", "getQrcodesSize"]),
   methods: {
     ...mapActions(["LogOut", "autoLogin"]),
+    ...mapMutations(["SetPaymentCheck"]),
     toLink(name) {
       ////console.log(name);
       this.$router.push({
