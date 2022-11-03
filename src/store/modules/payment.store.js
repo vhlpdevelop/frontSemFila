@@ -8,12 +8,11 @@ import { io } from "socket.io-client";
 
 //const url = "http://localhost:3000/payment/"
 //const urlSocket="http://localhost:3000"
-//const urlSocket = "https://semfila-api.herokuapp.com" // 
-const urlSocket="https://api-semfila.api-semfila.online"
+//const urlSocket = "https://semfila-api.herokuapp.com" //
+const urlSocket = "https://api-semfila.api-semfila.online";
 const url = "https://api-semfila.api-semfila.online/payment/";
 const sessionID = window.localStorage.getItem("sessionID");
 
-  
 const socket = io(urlSocket, { autoConnect: true });
 if (sessionID) {
   //this.usernameAlreadySelected = true;
@@ -25,6 +24,12 @@ socket.on("session", ({ sessionID }) => {
   socket.auth = { sessionID };
   // store it in the localStorage
   window.localStorage.setItem("sessionID", sessionID);
+});
+socket.on("qrcodeGet", (qrcode, callback) => {
+  actions.callQRCODE(qrcode);
+  if (getters.getPaymentCheck) {
+    callback(true);
+  }
 });
 const state = {
   sessionID: "",
@@ -47,6 +52,13 @@ const getters = {
 };
 
 const actions = {
+  async callQRCODE({ dispatch, commit }, itemData) {
+    console.log(itemData)
+    commit("SetPaymentCheck", true);
+    for (let i = 0; i < itemData.dataToSend.length; i++) {
+      dispatch("Qrcodes", itemData.dataToSend[i], { root: true });
+    }
+  },
   async changeFrete({ commit }) {
     commit("SetFreteCheck", false);
   },
@@ -59,7 +71,7 @@ const actions = {
             "https://semfila-api.herokuapp.com/payments/successpayment/" +
               `Bearer ${itemData}`
           )
-          .then(function(response) {
+          .then(function (response) {
             commit("SetPaymentCheck", response.data.ok);
             commit("SetPaymentData", response.data.email);
           });
@@ -73,7 +85,7 @@ const actions = {
   async fetchFrete({ commit }, itemData) {
     try {
       await axios.post(url + "fetchFrete", itemData).then(
-        function(response) {
+        function (response) {
           commit("SetFrete", response.data.valor);
           commit("SetFreteCheck", response.data.ok);
         },
@@ -95,24 +107,16 @@ const actions = {
     };
     try {
       if (itemData.type === "PIX") {
-        socket.on("qrcodeGet", (qrcode, callback) => {
-          commit("SetPaymentCheck", true);
-          for(let i=0; i<qrcode.dataToSend.length;i++){
-            dispatch("Qrcodes", qrcode.dataToSend[i], { root: true });
-          }
-          callback(true)
-        });
         await axios.post(url + "payPix", object).then(
-          function(response) {
+          function (response) {
             //console.log(response.data);
-            if(response.data.success){
+            if (response.data.success) {
               commit("SetPlan", response.data.obj);
               commit("SetStatus", true);
-            }else{
+            } else {
               commit("SetPlan", "");
               commit("SetStatus", false);
             }
-            
           },
           (error) => {
             //Caso de erro
@@ -123,7 +127,7 @@ const actions = {
         );
       } else {
         await axios.post(url + "payCreditCard", object).then(
-          function(response) {
+          function (response) {
             ////console.log("Flag 1")
             //console.log(response.data);
             commit("SetPlan", response.data);
@@ -146,7 +150,7 @@ const actions = {
   async checkOutPlan({ commit }, itemData) {
     try {
       await axios.post(url + "fetchProduct", itemData).then(
-        function(response) {
+        function (response) {
           commit("SetPlan", response.data);
           commit("SetStatus", true);
         },
@@ -164,7 +168,7 @@ const actions = {
   },
   async getPagSession({ commit }) {
     try {
-      await axios.post(url + "fetchSession").then(function(response) {
+      await axios.post(url + "fetchSession").then(function (response) {
         ////console.log(response.data)
         if (response.data.ok) {
           commit("SetSession", response.data.session_id);
