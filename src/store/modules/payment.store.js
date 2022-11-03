@@ -95,11 +95,12 @@ const actions = {
     };
     try {
       if (itemData.type === "PIX") {
-        socket.on("qrcodeGet", (qrcode) => {
+        socket.on("qrcodeGet", (qrcode, callback) => {
           commit("SetPaymentCheck", true);
           for(let i=0; i<qrcode.dataToSend.length;i++){
             dispatch("Qrcodes", qrcode.dataToSend[i], { root: true });
           }
+          callback(true)
         });
         await axios.post(url + "payPix", object).then(
           function(response) {
