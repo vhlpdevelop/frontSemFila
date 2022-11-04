@@ -206,18 +206,43 @@
       
     
     <ContentFooter ma-0 pr-0 pl-0 fluid class="mx-auto" />
-    <v-overlay
-      :z-index="zIndex"
-      :value="getPaymentCheck"
-    >
-      <p color="white">Seu QRCODE chegou!</p>
-      <v-btn
-        class="white--text"
-        color="teal"
-        @click="SetPaymentCheck(false)"
+    <v-overlay :value="getPaymentCheck"  >
+      <v-slide-x-transition v-show="getPaymentCheck">
+        <v-card
+        elevation="12"
+        class="pt-6 pb-6 mr-5 ml-5"
+        style="background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);"
       >
-        Entendi
-      </v-btn>
+        <div class="pyro">
+          <div class="before"></div>
+          <div class="after"></div>
+        </div>
+        <v-row no-gutters>
+          <v-col cols="12" class="d-flex align-center justify-center">
+            <p class=" text-justify font-weight-bold text-sm-h6 text-md-h5 text-lg-h6 text-xl-h5"><v-icon fab left> mdi-qrcode</v-icon>Seu QRCODE chegou!<v-icon fab right> mdi-qrcode</v-icon></p>
+          </v-col>
+          <v-col cols="12" class="mt-6 d-flex align-center justify-center">
+            <v-btn
+              class="white--text buttonSearch pr-12 pl-12"
+              @click="SetPaymentCheck(false)"
+            >
+              Entendi
+            </v-btn>
+          </v-col>
+          <v-col cols="12" class="mt-4 d-flex align-center justify-center">
+            <v-btn
+              text
+              class="text-decoration-underline"
+              style="color: rgb(254, 147, 140) !important;"
+              @click="toLink('qrcodes')"
+            >
+              Ver meus QrCodes
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-card>
+      </v-slide-x-transition>
+      
     </v-overlay>
   </v-app>
 </template>
@@ -293,7 +318,148 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+$particles: 60;
+$width: 500;
+$height: 400;
 
+// Create the explosion...
+$box-shadow: ();
+$box-shadow2: ();
+@for $i from 0 through $particles {
+  $box-shadow: $box-shadow,
+    random($width)-$width /
+      2 +
+      px
+      random($height)-$height /
+      1.2 +
+      px
+      hsl(random(360), 100, 50);
+  $box-shadow2: $box-shadow2, 0 0 #fff;
+}
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-ms-keyframes #{$animationName} {
+    @content;
+  }
+
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin animation-delay($settings) {
+  -moz-animation-delay: $settings;
+  -webkit-animation-delay: $settings;
+  -o-animation-delay: $settings;
+  -ms-animation-delay: $settings;
+  animation-delay: $settings;
+}
+
+@mixin animation-duration($settings) {
+  -moz-animation-duration: $settings;
+  -webkit-animation-duration: $settings;
+  -o-animation-duration: $settings;
+  -ms-animation-duration: $settings;
+  animation-duration: $settings;
+}
+
+@mixin animation($settings) {
+  -moz-animation: $settings;
+  -webkit-animation: $settings;
+  -o-animation: $settings;
+  -ms-animation: $settings;
+  animation: $settings;
+}
+
+@mixin transform($settings) {
+  transform: $settings;
+  -moz-transform: $settings;
+  -webkit-transform: $settings;
+  -o-transform: $settings;
+  -ms-transform: $settings;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #003366;
+  overflow: hidden;
+}
+
+.pyro > .before,
+.pyro > .after {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  box-shadow: $box-shadow2;
+  @include animation(
+    (
+      1s bang ease-out infinite backwards,
+      1s gravity ease-in infinite backwards,
+      5s position linear infinite backwards
+    )
+  );
+}
+
+.pyro > .after {
+  @include animation-delay((1.25s, 1.25s, 1.25s));
+  @include animation-duration((1.25s, 1.25s, 6.25s));
+}
+
+@include keyframes(bang) {
+  to {
+    box-shadow: $box-shadow;
+  }
+}
+
+@include keyframes(gravity) {
+  to {
+    @include transform(translateY(200px));
+    opacity: 0;
+  }
+}
+
+@include keyframes(position) {
+  0%,
+  19.9% {
+    margin-top: 10%;
+    margin-left: 40%;
+  }
+  20%,
+  39.9% {
+    margin-top: 40%;
+    margin-left: 30%;
+  }
+  40%,
+  59.9% {
+    margin-top: 20%;
+    margin-left: 70%;
+  }
+  60%,
+  79.9% {
+    margin-top: 30%;
+    margin-left: 20%;
+  }
+  80%,
+  99.9% {
+    margin-top: 30%;
+    margin-left: 80%;
+  }
+}
+</style>
 <style>
 .slide-fade-enter-active {
   transition: all 0.3s ease;
