@@ -149,7 +149,7 @@
           >
             
               <v-card class="pa-5 flex-grow-1" elevation="5">
-                <v-row align="center" justify="center">
+                <v-row align="center" justify="space-around">
                   <v-img v-if="promocao.image_url !== ''"
                     contain
                     :aspect-ratio="16 / 9"

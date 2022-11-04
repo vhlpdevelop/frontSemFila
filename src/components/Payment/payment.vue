@@ -1,105 +1,128 @@
 <template>
   <v-app class="">
-    <v-container fluid fill-height class="pa-5 backgroundCompra d-flex align-start justify-center">
-      <v-row >
+    <v-container
+      fluid
+      fill-height
+      class="pa-5 backgroundCompra d-flex align-start justify-center"
+    >
+      <v-row>
         <v-col cols="12" md="10" lg="10" xl="10">
-          
-            <v-card tile elevation="10">
-              <v-card-title style="word-break: break-word" class="text-center"
-                >Selecione o tipo de Pagamento</v-card-title
-              >
-              <v-row class="pa-5">
-                <v-col cols="12" md="6">
-                  <v-expansion-panels>
-                    <v-expansion-panel>
-                      <v-expansion-panel-header class="checkOut">
-                        Pagar com pix <v-icon class="checkOut" small right>mdi-clover</v-icon>
-                      </v-expansion-panel-header>
-                      <v-expansion-panel-content>
-                        <p>
-                          <b>As informações devem aparecer:</b>
-                        </p>
-                        <v-row no-gutters>
-                          <v-col cols="12" md="6">
-                            <p>
-                          <b>CNPJ: 40.470.307/0001-43 </b>
+          <v-card tile elevation="10">
+            <v-card-title style="word-break: break-word" class="text-center"
+              >Selecione o tipo de Pagamento</v-card-title
+            >
+            <v-row class="pa-5">
+              <v-col cols="12" md="6">
+                <v-expansion-panels>
+                  <v-expansion-panel>
+                    <v-expansion-panel-header class="checkOut">
+                      Pagar com pix
+                      <v-icon class="checkOut" small right>mdi-clover</v-icon>
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                      <p>
+                        <b>As informações devem aparecer:</b>
+                      </p>
+                      <v-row no-gutters>
+                        <v-col cols="12" md="6">
+                          <p>
+                            <b>Empresa: CORRE CUTIA </b>
                           </p>
-                          </v-col>
-                          <v-col cols="12" md="6">
-                            <p>
-                          <b>Conta: 1231 </b>
+                        </v-col>
+                        <v-col cols="12" md="6">
+                          <p>
+                            <b>CNPJ: 40.470.307/0001-43 </b>
                           </p>
-                          </v-col>
-                        </v-row>
-                        
-                        <p>
-                          Ao clicar no botão pagar, nesta tela irá mostar o
-                          codigo de pagamento pix. Copie e cole no seu
-                          aplicativo de banco para realizar o pagamento.
-                        </p>
-                        <v-row align="center" justify="center">
-                          <v-col cols="10"
-                            ><v-btn
-                              @click="payment('PIX')"
-                              v-show="ButtonToggle"
-                              outlined
-                              rounded
-                              class="buttonColor pr-6 pl-6"
-                              >Pagar com pix</v-btn
-                            ></v-col
-                          >
-                          <v-col cols="10"
-                            ><v-progress-circular
-                              v-show="loading"
-                              indeterminate
-                            ></v-progress-circular
-                          ></v-col>
-                          <v-col cols="10"
-                            ><v-container fluid fill-height
-                              v-show="pixReady"
-                              style="background-color: lightgray"
-                              class="mt-2 align-center justify-center"
-                            >
-                              <p>Codigo pix gerado</p>
-                              <p>{{error}}</p>
-                              <v-btn class="ma-5" text x-small @click="copyCode()"><v-subheader>Pix copie e cole</v-subheader><v-icon>mdi-clipboard</v-icon></v-btn>
-                              <p>{{pixCode}}</p>
-                            </v-container></v-col
-                          >
-                        </v-row>
-                      </v-expansion-panel-content>
-                    </v-expansion-panel>
-                  </v-expansion-panels>
-                </v-col>
-                <v-col cols="12" md="6">
-                  <v-expansion-panels>
-                    <v-expansion-panel>
-                      <v-expansion-panel-header>
-                        Cartão de Crédito
-                        <v-icon small right>mdi-credit-card</v-icon>
-                      </v-expansion-panel-header>
-                      <v-expansion-panel-content>
-                        Sintimos muito, mas ainda não terminamos de implementar este pagamento. Por enquanto temos apenas pagamento por PIX.
-                      </v-expansion-panel-content>
-                    </v-expansion-panel>
-                  </v-expansion-panels>
-                </v-col>
+                        </v-col>
+                        <v-col cols="12" md="6">
+                          <p>
+                            <b>Conta: 1231 </b>
+                          </p>
+                        </v-col>
+                        <v-col cols="12" md="6">
+                          <p>
+                            Verifique o Valor antes de realizar o pagamento.
+                          </p>
+                        </v-col>
+                      </v-row>
 
-                <v-spacer></v-spacer>
-              </v-row>
-            </v-card>
-          
+                      <p>
+                        Ao clicar no botão pagar, nesta tela irá mostar o codigo
+                        de pagamento pix. Copie e cole no seu aplicativo de
+                        banco para realizar o pagamento.
+                      </p>
+                      <v-row align="center" justify="center">
+                        <v-col cols="10"
+                          ><v-btn
+                            @click="payment('PIX')"
+                            v-show="ButtonToggle"
+                            outlined
+                            rounded
+                            class="buttonColor pr-6 pl-6"
+                            >Pagar com pix</v-btn
+                          ></v-col
+                        >
+                        <v-col cols="10"
+                          ><v-progress-circular
+                            v-show="loading"
+                            indeterminate
+                          ></v-progress-circular
+                        ></v-col>
+                        <v-col cols="10"
+                          ><v-container
+                            fluid
+                            fill-height
+                            v-show="pixReady"
+                            style="background-color: lightgray"
+                            class="mt-2 align-center justify-center"
+                          >
+                            <p>Codigo pix gerado</p>
+
+                            <v-btn class="ma-5" text x-small @click="copyCode()"
+                              ><v-subheader>Pix copie e cole</v-subheader
+                              ><v-icon>mdi-clipboard</v-icon></v-btn
+                            >
+
+                            <v-subheader
+                              >Ao realizar o pagamento seu qrcode será vinculado
+                              a sua conta(caso tenha), caso não apareça apenas
+                              vá ate seus QRCODES e atualize.</v-subheader
+                            >
+                          </v-container></v-col
+                        >
+                      </v-row>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-expansion-panels>
+              </v-col>
+              <v-col cols="12" md="6">
+                <v-expansion-panels>
+                  <v-expansion-panel>
+                    <v-expansion-panel-header>
+                      Cartão de Crédito
+                      <v-icon small right>mdi-credit-card</v-icon>
+                    </v-expansion-panel-header>
+                    <v-expansion-panel-content>
+                      Sintimos muito, mas ainda não terminamos de implementar
+                      este pagamento. Por enquanto temos apenas pagamento por
+                      PIX.
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
+                </v-expansion-panels>
+              </v-col>
+
+              <v-spacer></v-spacer>
+            </v-row>
+          </v-card>
         </v-col>
         <v-snackbar v-model="snackSucesso" color="success">
-      <v-layout justify-space-around align-center>{{snackMsg}}</v-layout>
-    </v-snackbar>
-    <v-snackbar v-model="snackErro" color="error">
-      <v-layout justify-space-around align-center>{{snackMsg}}</v-layout>
-    </v-snackbar>
+          <v-layout justify-space-around align-center>{{ snackMsg }}</v-layout>
+        </v-snackbar>
+        <v-snackbar v-model="snackErro" color="error">
+          <v-layout justify-space-around align-center>{{ snackMsg }}</v-layout>
+        </v-snackbar>
       </v-row>
-      
     </v-container>
-    
   </v-app>
 </template>
 
@@ -151,25 +174,24 @@ export default {
   },
   methods: {
     ...mapActions(["getProfile", "PaymentCheck", "clearCart", "updateProfile"]),
-    async copyCode(){
-
-      console.log(this.pixCode)
-      try{
+    async copyCode() {
+     
+      try {
         await navigator.clipboard
-      .writeText(this.pixCode)
-      .then(() => {
-        alert("Texto Copiado");
-      })
-      .catch(() => {
-        alert("Algo deu errado");
-      });
-      }catch(e){
-        this.error = e.message
+          .writeText(this.pixCode)
+          .then(() => {
+            alert("Texto Copiado");
+          })
+          .catch(() => {
+            alert("Algo deu errado");
+          });
+      } catch (e) {
+        this.error = e.message;
       }
-      
-      this.snackMsg="Codigo Copiado"
+
+      this.snackMsg = "Codigo Copiado";
       this.snackSucesso = true;
-    },  
+    },
     payment(type) {
       if (this.getCart.length > 0) {
         this.ButtonToggle = false;
@@ -191,19 +213,18 @@ export default {
             //console.log(this.getStatus)
             if (this.getStatus) {
               this.snackSucesso = true;
-              this.snackMsg = 'Código pix gerado'
-           
+              this.snackMsg = "Código pix gerado";
+
               this.loading = false;
               this.pixReady = true;
               this.clearCart();
               this.pixCode = this.getPlan;
               //window.location.href = this.getPlan.url;
             } else {
-              this.pixReady = false
+              this.pixReady = false;
               this.loading = false;
-              this.snackMsg = 'Ocorre um erro ao gerar o pix'
+              this.snackMsg = "Ocorre um erro ao gerar o pix";
               this.snackErro = true;
-              
             }
           });
         } else {
@@ -211,9 +232,8 @@ export default {
         }
       } else {
         //CARRINHO VAZIO, não liberar
-        this.snackMsg = 'Carrinho vazio'
+        this.snackMsg = "Carrinho vazio";
         this.snackErro = true;
-        
       }
     },
   },
@@ -231,5 +251,5 @@ export default {
 };
 </script>
 <style>
-  @import "./compra.module.css";
+@import "./compra.module.css";
 </style>
