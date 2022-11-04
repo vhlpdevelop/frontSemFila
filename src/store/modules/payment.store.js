@@ -18,7 +18,7 @@ const socket = io(urlSocket, { autoConnect: true });
 if (sessionID) {
   //this.usernameAlreadySelected = true;
   socket.auth = { sessionID };
-  console.log(sessionID)
+  
   socket.connect();
 }
 socket.on("session", ({ sessionID }) => {
@@ -30,7 +30,7 @@ socket.on("session", ({ sessionID }) => {
 
 
 socket.on("qrcodeGet", (qrcode, callback) => {
-  console.log("Aqui")
+  
   store.dispatch('callQRCODE', qrcode)
   if (store.getters.getPaymentCheck) {
     callback(true);
@@ -60,11 +60,12 @@ const getters = {
 
 const actions = {
   async callQRCODE({ dispatch, commit }, itemData) {
-    console.log(itemData)
-    commit("SetPaymentCheck", true);
+   
+    
     for (let i = 0; i < itemData.dataToSend.length; i++) {
       dispatch("Qrcodes", itemData.dataToSend[i], { root: true });
     }
+    commit("SetPaymentCheck", true);
   },
   async changeFrete({ commit }) {
     commit("SetFreteCheck", false);

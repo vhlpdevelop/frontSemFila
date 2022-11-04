@@ -378,8 +378,9 @@
       <bodySkeleton></bodySkeleton>
     </v-container>
     <ContentFooter ma-0 pr-0 pl-0 fluid class="mx-auto" />
-    <v-overlay :value="getPaymentCheck">
-      <v-card
+    <v-overlay :value="getPaymentCheck"  >
+      <v-slide-x-transition v-show="getPaymentCheck">
+        <v-card
         elevation="12"
         class="pt-6 pb-6 mr-5 ml-5"
         style="background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);"
@@ -413,6 +414,8 @@
           </v-col>
         </v-row>
       </v-card>
+      </v-slide-x-transition>
+      
     </v-overlay>
   </v-app>
 </template>
