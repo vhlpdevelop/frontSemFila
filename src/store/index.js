@@ -9,7 +9,7 @@ import storeItem from "./modules/item.store"
 import storePay from './modules/payment.store'
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
     modules: {
         // store/modules files
         storeLogin,
@@ -22,3 +22,4 @@ export default new Vuex.Store({
     }
 
 })
+export default store

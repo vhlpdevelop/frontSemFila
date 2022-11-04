@@ -73,8 +73,9 @@ const actions = {
     commit("AlertnewQrCode", true);
   },
   async Qrcodes({ commit }, itemData) {
+    console.log(itemData)
     if (itemData.qrcode !== null) {
-      commit("addQrCodes", itemData.data);
+      commit("addQrCodes", itemData);
     } else {
       commit("addQrCodes", itemData);
     }

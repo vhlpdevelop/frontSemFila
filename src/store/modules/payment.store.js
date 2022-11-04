@@ -1,4 +1,5 @@
 /* eslint-disable spaced-comment */
+import store from "../index"
 
 import axios from "axios";
 import { io } from "socket.io-client";
@@ -17,6 +18,7 @@ const socket = io(urlSocket, { autoConnect: true });
 if (sessionID) {
   //this.usernameAlreadySelected = true;
   socket.auth = { sessionID };
+  console.log(sessionID)
   socket.connect();
 }
 socket.on("session", ({ sessionID }) => {
@@ -25,12 +27,17 @@ socket.on("session", ({ sessionID }) => {
   // store it in the localStorage
   window.localStorage.setItem("sessionID", sessionID);
 });
+
+
 socket.on("qrcodeGet", (qrcode, callback) => {
-  actions.callQRCODE(qrcode);
-  if (getters.getPaymentCheck) {
+  console.log("Aqui")
+  store.dispatch('callQRCODE', qrcode)
+  if (store.getters.getPaymentCheck) {
     callback(true);
   }
 });
+
+
 const state = {
   sessionID: "",
   status: "",
