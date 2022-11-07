@@ -25,7 +25,7 @@ socket.on("session", ({ sessionID }) => {
   // attach the session ID to the next reconnection attempts
   socket.auth = { sessionID };
   socket.connect();
-  console.log(sessionID)
+  
   // store it in the localStorage
   window.localStorage.setItem("sessionID", sessionID);
 });
@@ -113,13 +113,9 @@ const actions = {
   async PaymentCheck({ dispatch, commit }, itemData) {
     let object = {
       itemData: itemData,
-      idSocket: sessionID,
+      idSocket: window.localStorage.getItem("sessionID"),
     };
-    console.log("===>")
-    console.log(object)
 
-    console.log(window.localStorage.getItem("sessionID"))
-    console.log("====")
     try {
       if (itemData.type === "PIX") {
         await axios.post(url + "payPix", object).then(
