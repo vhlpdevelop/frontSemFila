@@ -115,6 +115,11 @@ const actions = {
       itemData: itemData,
       idSocket: sessionID,
     };
+    console.log("===>")
+    console.log(object)
+
+    console.log(window.localStorage.getItem("sessionID"))
+    console.log("====")
     try {
       if (itemData.type === "PIX") {
         await axios.post(url + "payPix", object).then(
