@@ -24,6 +24,8 @@ if (sessionID) {
 socket.on("session", ({ sessionID }) => {
   // attach the session ID to the next reconnection attempts
   socket.auth = { sessionID };
+  socket.connect();
+  console.log(sessionID)
   // store it in the localStorage
   window.localStorage.setItem("sessionID", sessionID);
 });

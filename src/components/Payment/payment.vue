@@ -83,11 +83,7 @@
                               ><v-icon>mdi-clipboard</v-icon></v-btn
                             >
 
-                            <v-subheader
-                              >Ao realizar o pagamento seu qrcode será vinculado
-                              a sua conta(caso tenha), caso não apareça apenas
-                              vá ate seus QRCODES e atualize.</v-subheader
-                            >
+                            
                           </v-container></v-col
                         >
                       </v-row>
