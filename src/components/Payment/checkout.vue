@@ -223,7 +223,7 @@
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
-            <v-btn color="blue darken-1" text @click="moveToLogin()">
+            <v-btn color="green" text @click="moveToLogin()">
               Entrar
             </v-btn>
             <v-btn color="grey darken-1" text @click="moveToPayment()">

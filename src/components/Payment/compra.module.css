@@ -16,6 +16,14 @@
         
     }
 }
+.hoverTag{
+    color: #7c7c7c !important;
+    text-decoration: none !important;
+}
+.hoverTag:hover{
+        color:rgb(254,147,140) !important;
+        transition: 0.2s;
+}
 .backgroundCompra{
     background-color: rgb(245, 245, 245) !important
 }

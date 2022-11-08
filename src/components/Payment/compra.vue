@@ -11,42 +11,85 @@
         <v-col
           cols="12"
           sm="6"
-          md="4"
+          md="6"
           lg="5"
           xl="4"
           class="pa-5 d-flex align-start"
         >
           <v-container fluid ma-0 pa-0>
             <v-container class="d-flex align-center justify-center">
-              <div v-if="itemCompra.image_url !== ''">
+              <div class="pl-3 pr-3">
                 <v-img
-                  max-width="320px"
-                  max-height="180px"
+                  max-width="400"
+                  max-height="300"
                   contain
-                  class=""
+                  class="elevation-6"
                   :src="itemCompra.image_url"
+                  lazy-src="https://i.ibb.co/WH7Bj1J/empty.jpg"
                 >
-                </v-img>
-              </div>
-              <div v-else>
-                <v-img
-                  width="320px"
-                  height="180px"
-                  contain
-                  class=""
-                  src="https://i.ibb.co/WH7Bj1J/empty.jpg"
-                >
+                  <template v-slot:placeholder>
+                    <v-row
+                      class="fill-height ma-0"
+                      align="center"
+                      justify="center"
+                    >
+                      <v-progress-circular
+                        indeterminate
+                        color="grey lighten-5"
+                      ></v-progress-circular>
+                    </v-row>
+                  </template>
                 </v-img>
               </div>
             </v-container>
             <v-container fluid class="d-flex">
-              <v-icon v-if="itemCompra.discount_status" color="primary">
+              <v-avatar v-if="itemCompra.discount_status" class="avatarColor mr-2" size="46">
+                <v-icon  color="primary">
                 mdi-sale
               </v-icon>
-              <v-icon v-if="itemCompra.destaques" color="red">mdi-fire</v-icon>
-              <v-icon v-if="itemCompra.promotion" color="yellow"
-                >mdi-lightning-bolt</v-icon
-              >
+              </v-avatar>
+              <v-avatar v-if="itemCompra.destaques" class="avatarColor mr-2" size="46">
+                <v-icon color="red">mdi-fire</v-icon>
+              </v-avatar>
+              <v-avatar  v-if="itemCompra.promotion" class="avatarColor" size="46">
+                <v-icon color="yellow"
+                >mdi-lightning-bolt
+              </v-icon>
+              </v-avatar>
+              
+              
+            </v-container>
+            <v-container fluid class="d-none d-sm-flex">
+              <v-row align="center" justify="center">
+                <v-col cols="4" class="text-center">
+                  <v-badge
+                    bordered
+                    bottom
+                    color="grey darken-1"
+                    icon="mdi-cash"
+                    offset-x="20"
+                    offset-y="20"
+                  >
+                    <v-avatar class="avatarColor">
+                      <v-icon> mdi-lock </v-icon>
+                    </v-avatar>
+                  </v-badge>
+                  <p >
+                    <a class="hoverTag">
+                      Pagamentos e Segurança
+                    </a></p>
+                </v-col>
+                <v-col cols="4"  class="text-center">
+                  <v-avatar class="avatarColor">
+                    <v-icon>mdi-archive-refresh </v-icon>
+                  </v-avatar>
+
+                  <p >
+                    <a class="hoverTag">
+                      Política de Devolução
+                    </a></p>
+                </v-col>
+              </v-row>
             </v-container>
           </v-container>
         </v-col>
@@ -60,22 +103,22 @@
                 <v-row no-gutters>
                   <v-col cols="12">
                     <b class="headline font-weight-light greenTitle pt-3"
-                  >R$
-                  {{
-                    (itemCompra.price - itemCompra.discount_value).toFixed(2)
-                  }}</b
-                >
+                      >R$
+                      {{
+                        (itemCompra.price - itemCompra.discount_value).toFixed(
+                          2
+                        )
+                      }}</b
+                    >
                   </v-col>
                   <v-col cols="12">
                     <b
-                  style="text-decoration: line-through"
-                  class="body-1 font-weight-light pt-3 mr-2"
-                  >R${{ itemCompra.price }}</b
-                >
+                      style="text-decoration: line-through"
+                      class="body-1 font-weight-light pt-3 mr-2"
+                      >R${{ itemCompra.price }}</b
+                    >
                   </v-col>
                 </v-row>
-                
-                
               </v-container>
               <v-container fluid v-else>
                 <p class="greenTitle pt-3">R${{ itemCompra.price }}</p>
@@ -84,7 +127,7 @@
               <v-spacer></v-spacer>
             </v-card-actions>
             <v-container fluid>
-              <span class="compraDescription">Descrição</span>
+              <span class="compraDescription">Descrição do produto</span>
               <p
                 class="subtitleDescription text--primary ImportFontNormal text-center"
               >
@@ -264,6 +307,9 @@ export default {
 
 <style scoped>
 @import "./compra.module.css";
+.avatarColor {
+  background-color: rgb(254, 147, 140) !important;
+}
 .centered-input >>> input {
   text-align: center;
 }
