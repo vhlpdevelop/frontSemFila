@@ -12,6 +12,10 @@
         font-family: Josefin Sans;
        }
 }
+.avatarColor {
+    background-color: rgb(219, 205, 204) !important;
+   
+  }
 *{
     font-family: Josefin Sans;
 }
@@ -21,6 +25,16 @@
 .toolbarColor{
     background-color: rgb(254,147,140) !important;
     color: rgb(254,147,140) !important;
+}
+.buttonEditQrCode{
+    color: rgb(254,147,140) !important;
+    
+}
+.buttonEditQrCode:hover{
+    background-color: rgb(253, 212, 209) !important;
+}
+.backGroundQrCode:click{
+    background-color: rgb(253, 212, 209) !important;
 }
 .textColorDefault{
     color: rgb(88, 157, 108) !important;

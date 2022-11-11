@@ -3,6 +3,13 @@
 
 import axios from "axios";
 let Qrcodes = window.localStorage.getItem("Qrcodes");
+if(Qrcodes){
+  var qrcode = JSON.parse(Qrcodes)
+  for(let i =0; i<qrcode.length; i++){
+    qrcode[i].overlay=false
+  }
+  Qrcodes = qrcode
+}
 let QrcodesSize = window.localStorage.getItem("QrcodesSize");
 //const url = "http://localhost:3000/auth/";
 //const baseUrl = "http://localhost:3000/qrcode/";
@@ -17,7 +24,7 @@ const state = {
   messageUser: "",
   users: [],
   verify: "",
-  Qrcodes: Qrcodes ? JSON.parse(Qrcodes) : [],
+  Qrcodes: Qrcodes ? Qrcodes : [],
   QrcodesSize: QrcodesSize ? parseInt(QrcodesSize) : 0,
   newQrCode: false,
   user: {},
@@ -35,9 +42,44 @@ const getters = {
 };
 
 const actions = {
+  async RSingleQrCode({commit}, itemData){
+    if(itemData){
+      let aux = {
+        id: itemData
+      }
+      try {
+        await axios.post(baseUrl + "refreshSingleQrCode", aux).then(function (response) {
+          if (response.data.success) {
+            console.log(response.data.obj);
+            if(response.data.obj){
+              commit("refreshSingleQrCode", response.data.obj);
+              commit("updateSizeQrCodes");
+              commit("saveQrCodes");
+              commit("setMessageUser", response.data.msg);
+              commit("setRespostaUser", response.data.success);
+            }else{
+              commit("setMessageUser", response.data.msg);
+              commit("setRespostaUser", response.data.success);
+            }
+           
+          } else {
+            commit("setMessageUser", response.data.msg);
+            commit("setRespostaUser", false);
+          }
+        });
+      } catch (e) {
+        console.log(e);
+        commit("setMessageUser", "Ah não, um erro ocorreu ao atualizar");
+        commit("setRespostaUser", false);
+      }
+    }
+  },
   async getQrCodesAuth({ commit }, itemData) {
     //console.log("Entrou aqui no qrcodes");
-    //console.log(itemData)
+    console.log(itemData)
+    itemData.forEach(function (element) {
+      element.overlay = false;
+    });
     if (itemData.length > 0) {
       commit("addQrCodes", itemData);
       commit("updateSizeQrCodes");
@@ -85,8 +127,8 @@ const actions = {
   },
   async DeleteQrcodes({ commit }, itemData) {
     commit("DeleteItem", itemData);
-    commit("updateSize");
-    commit("saveCart");
+    commit("updateSizeQrCodes");
+    commit("saveQrCodes");
   },
   async autenticarbyEmail({ commit }, itemData) {
     if (itemData !== null && itemData !== "") {
@@ -261,6 +303,25 @@ const actions = {
 };
 
 const mutations = {
+  refreshSingleQrCode: (state, Qrcode) => {
+    var index = 0;
+      for(let i =0; i< state.Qrcodes.length; i++){
+        if(state.Qrcodes[i]._id === Qrcode._id){
+          index = i;
+          
+        }
+      }
+      
+      if(Qrcode.state === true && Qrcode.quantity > 0){
+        
+        state.Qrcodes[index].quantity = Qrcode.quantity
+        state.Qrcodes[index].state = Qrcode.state
+     
+      }
+    
+    
+    
+  },
   refreshQrCodes: (state, Qrcode) => {
     state.Qrcodes = Qrcode;
   },
