@@ -1,15 +1,17 @@
 <template>
-  <v-app style="background-color: rgb(245, 245, 245) !important">
-    <v-toolbar class="rounded-xl backgroundB elevation-5 ml-1 mr-1">
+  <v-app style="background-color: #19180A !important">
+    <v-toolbar class="backgroundB elevation-12 ml-1 mr-1">
       <topSkeleton></topSkeleton>
       <v-container ma-0 pa-0 fluid v-if="loaded" class="d-flex">
         <v-app-bar-nav-icon
           class="hidden-md-and-up"
+          style="color: #FBFBFF"
           @click.stop="drawer = !drawer"
         />
         <v-row class="align-center justify-space-around">
           <v-app-bar-nav-icon
             class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex"
+            style="color: #FBFBFF"
             @click.stop="drawer = !drawer"
           />
           <v-btn
@@ -19,9 +21,12 @@
             class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex navText"
             >Destaques</v-btn
           >
-          <h1 v-if="!storeHasImage" class="navTitle" @click="toHome">
+          <a>
+            <h1 v-if="!storeHasImage" class="navTitle" @click="toHome">
             {{ store.name }}
           </h1>
+          </a>
+          
           <v-btn
             small
             text
@@ -41,7 +46,7 @@
                 v-on="on"
                 icon
                 fab
-                style="color: rgb(254, 147, 140)"
+                style="color:#F24236"
                 class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex"
               >
                 <v-icon>mdi-account</v-icon>
@@ -55,7 +60,7 @@
                 <v-list-item v-show="logged">
                   <v-list-item-title class="navSubMenu"
                     >{{ getPerfil }}
-                    <v-icon left color="green"
+                    <v-icon left class="PrimaryColor"
                       >mdi-account</v-icon
                     ></v-list-item-title
                   >
@@ -75,7 +80,7 @@
                     <v-badge
                       :content="getQrcodesSize.toString()"
                       value="2"
-                      color="green"
+                      color="red"
                       overlap
                     >
                       <v-icon>mdi-qrcode</v-icon>
@@ -133,11 +138,11 @@
           </v-menu>
           <v-menu class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex">
             <template v-slot:activator="{ on }">
-              <v-btn text v-on="on">
+              <v-btn text v-on="on" style="color: #FBFBFF">
                 <v-badge
                   :content="getCartSize.toString()"
                   value="2"
-                  color="green"
+                  color="red"
                   overlap
                 >
                   <v-icon>mdi-cart</v-icon>
@@ -217,7 +222,7 @@
             <v-badge
               :content="getQrcodesSize.toString()"
               value="2"
-              color="green"
+              color="red"
               overlap
             >
               <v-icon>mdi-qrcode</v-icon>
@@ -232,7 +237,7 @@
                 <v-badge
                   :content="getCartSize.toString()"
                   value="2"
-                  color="green"
+                  color="red"
                   overlap
                 >
                   <v-icon>mdi-cart</v-icon>
@@ -269,7 +274,7 @@
                   </v-list-item-content>
                   <v-list-item-action>
                     <v-btn icon x-small @click="cartEdit(item)">
-                      <v-icon color="green lighten-1">mdi-pen</v-icon>
+                      <v-icon color="yellow lighten-1">mdi-pen</v-icon>
                     </v-btn>
                   </v-list-item-action>
                   <v-list-item-action>
@@ -318,7 +323,7 @@
               </v-list-item-title>
               <v-list-item-title class="navSubMenu" v-else
                 >{{ getPerfil }}
-                <v-icon left color="green"
+                <v-icon left class="PrimaryColor"
                   >mdi-account</v-icon
                 ></v-list-item-title
               >
@@ -357,7 +362,7 @@
           :key="item.title"
           @click="toLink(item.path)"
         >
-          <v-list-item-title class="textColorDefault">{{
+          <v-list-item-title class="thirdColor">{{
             item.title
           }}</v-list-item-title>
         </v-list-item>

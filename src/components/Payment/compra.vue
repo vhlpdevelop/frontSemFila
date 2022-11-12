@@ -1,5 +1,5 @@
 <template>
-  <v-app class="mb-n6">
+  <v-app style="background: linear-gradient(0deg, rgba(25,24,10,1) 0%, rgba(251,251,255,1) 10%, rgba(251,251,255,1) 90%, rgba(25,24,10,1) 100%);">
     <v-container
       fluid
       ma-0
@@ -18,7 +18,7 @@
         >
           <v-container fluid ma-0 pa-0>
             <v-container class="d-flex align-center justify-center">
-              <div class="pl-3 pr-3">
+              <div class="pl-3 pr-3  mt-6">
                 <v-img
                   max-width="400"
                   max-height="300"
@@ -95,7 +95,7 @@
         </v-col>
         <v-col cols="12" sm="6" md="6" lg="6" xl="6">
           <v-container fluid class="d-row justify-center align-center">
-            <p class="mb-0 ImportFont text-truncate text-center mt-2">
+            <p class="mb-0 ImportFont text-truncate text-center mt-6">
               {{ itemCompra.item_name }}
             </p>
             <v-card-actions class="pa-0 text-center">
@@ -182,7 +182,7 @@
             fluid
             ma-0
             pa-0
-            class="containerDown containerDownTwo mb-10"
+            class="mb-10"
           >
             <v-container class="d-flex justify-center pt-8">
               <v-btn
@@ -308,7 +308,7 @@ export default {
 <style scoped>
 @import "./compra.module.css";
 .avatarColor {
-  background-color: rgb(254, 147, 140) !important;
+  background-color: rgb(242, 66, 54,0.4) !important;
 }
 .centered-input >>> input {
   text-align: center;

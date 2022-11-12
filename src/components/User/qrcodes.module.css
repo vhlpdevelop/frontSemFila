@@ -12,6 +12,11 @@
         font-family: Josefin Sans;
        }
 }
+.itemName{
+    font-family: Josefin Sans !important;
+   
+    color: #F24236 !important;
+  }
 .avatarColor {
     background-color: rgb(219, 205, 204) !important;
    
@@ -20,22 +25,21 @@
     font-family: Josefin Sans;
 }
 .backGroundQrCode {
-    background-image: linear-gradient(rgb(245, 245, 245), white);
+    background-color: #19180A !important;;
   }
 .toolbarColor{
-    background-color: rgb(254,147,140) !important;
-    color: rgb(254,147,140) !important;
+    background-color: #F24236 !important;
+    color: #F24236 !important;
 }
 .buttonEditQrCode{
-    color: rgb(254,147,140) !important;
-    
+    color: #EAC435 !important;
 }
 .buttonEditQrCode:hover{
-    background-color: rgb(253, 212, 209) !important;
+    background-color: rgb(234, 196, 53, 0.1) !important;
 }
 .backGroundQrCode:click{
-    background-color: rgb(253, 212, 209) !important;
+    background-color: rgb(234, 196, 53, 0.1)!important;
 }
-.textColorDefault{
-    color: rgb(88, 157, 108) !important;
-}
+.textColorDefault {
+    color: #EAC435 !important;
+  }

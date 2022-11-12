@@ -99,7 +99,7 @@
                       <v-icon small right>mdi-credit-card</v-icon>
                     </v-expansion-panel-header>
                     <v-expansion-panel-content>
-                      Sintimos muito, mas ainda não terminamos de implementar
+                      Sentimos muito, mas ainda não terminamos de implementar
                       este pagamento. Por enquanto temos apenas pagamento por
                       PIX.
                     </v-expansion-panel-content>

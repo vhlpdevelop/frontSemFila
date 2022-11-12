@@ -1,10 +1,10 @@
 <template>
-  <v-app  style="background-color: rgb(245, 245, 245) !important">
-    <v-container fluid class="backGroundDestaques" style="background-color: rgb(245, 245, 245) !important">
+  <v-app style="background-color: #19180A !important">
+    <v-container fluid class="backGroundDestaques" style="background-color: #19180A !important">
       
-        <v-container fluid fill-height class="d-flex" style="background-color: rgb(245, 245, 245) !important">
+        <v-container fluid fill-height class="d-flex" style="background-color: #19180A !important">
           <v-row align="center" justify="center" class="mt-3">
-            <v-card style="width: 100%" v-if="categorias.length > 0" class=" rounded-xl backGroundDestaques" elevation="5">
+            <v-card style="width: 100%; background-color: #19180A !important" v-if="categorias.length > 0" flat  >
               <v-row justify="start" class="mt-3 ma-1" no-gutters>
                 <v-col cols="12">
                   <v-card-title class="ml-6 textColorDefault"
@@ -13,7 +13,7 @@
                 >
                 </v-col>
                 <v-col cols="12" class="ml-6 mt-n6">
-                  <v-subheader>Nós recomendamos para você</v-subheader>
+                  <v-subheader style="color:#FBFBFF !important ">Nós recomendamos para você</v-subheader>
                 </v-col>
                 
                 
@@ -37,13 +37,15 @@
                       >
                         <v-card
                           outlined
-                          class="fill-height rounded-xl"
+                          elevation="12"
+                          class="fill-height rounded-xl "
+                          style="background-color: rgb(251,251,255) !important"
                           @click="toCompra(item)"
                         >
                           <v-card-title>
                             <v-row>
                               <v-col cols="8">
-                                <p class="text-truncate" style="max-width: 300px">
+                                <p class="text-truncate itemName" style="max-width: 300px">
                                   {{ item.item_name }}
                                 </p>
                                 <v-subheader style="word-break: break-word;">{{

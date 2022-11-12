@@ -1,5 +1,6 @@
 <template>
-  <v-app style="background-color: rgb(245, 245, 245) !important">
+  <v-app style="background: rgb(25,24,10) !important;
+background: linear-gradient(0deg, rgba(25,24,10,0.6951155462184874) 0%, rgba(25,24,10,1) 22%, rgba(25,24,10,0.7819502801120448) 30%, rgba(25,24,10,1) 63%, rgba(25,24,10,0.7483368347338936) 69%, rgba(25,24,10,1) 82%) !important">
     <v-row no-gutters class="align-center justify-center">
     <v-col cols="10" lg="12" md="12" sm="12" class="mt-5 mb-n6 " v-if="itemDestaques.length>0">
       <v-responsive :aspect-ratio="16 / 9" max-height="500px" class="">
@@ -28,7 +29,7 @@
                           @click="toCompra(itemDestaques[+index + i])"
                           dark
                           
-                          
+                          elevation="12"
                           outlined
                           class="pa-5 rounded-xl cardDestaques"
                         >
@@ -133,9 +134,9 @@
     </v-col>
     <v-col cols="10" class="" v-if="itemPromocoes.length>0">
       <v-row align="center" justify="center">
-        <v-divider></v-divider>
-        <h1 class="mr-3 ml-3 navTitle">Promoções</h1>
-        <v-divider></v-divider>
+        <v-divider style="border-color: #EAC435 !important"></v-divider>
+        <h1 class="mr-3 ml-3 navTitlePromo">Promoções</h1>
+        <v-divider style="border-color: #EAC435 !important"></v-divider>
       </v-row>
       <v-row align="center" justify="center" class="">
         <template v-for="(promocao, index) in itemPromocoes">
@@ -148,7 +149,7 @@
             
           >
             
-              <v-card class="pa-5 flex-grow-1" elevation="5">
+              <v-card class="pa-5 flex-grow-1" elevation="5" style="background-color: rgb(251,251,255) !important">
                 <v-row align="center" justify="space-around">
                   <v-img v-if="promocao.image_url !== ''"
                     contain
@@ -238,20 +239,23 @@
       cols="12"
       :key="index"
       class="mt-12"
+      
       v-for="(categoria, index) in categorias"
     >
       
       
-        <v-container fluid fill-height class="d-flex">
+        <v-container fluid fill-height class="d-flex" >
           <v-row align="center" justify="center" class="mt-3">
             
-              <v-card style="width: 100%" v-if="categoria.items.length > 0" elevation="5" class="pa-3">
-              <v-row justify="start" class="mt-3">
-                <v-card-title class="ml-6 CategoryName"
-                  ><b>{{ categoria.category_name }}</b>
+              <v-card style="width: 100%; background-color: #19180A !important" v-if="categoria.items.length > 0" flat class="pa-3" >
+              <v-row  class="mt-3 d-flex align-center justify-center">
+                <v-divider style="border-color: #EAC435 !important"></v-divider>
+                <v-card-title class="ml-3 mr-3 CategoryName"
+                  >
+                  <b>{{ categoria.category_name }}</b> 
                   </v-card-title
                 >
-                
+                <v-divider style="border-color: #EAC435 !important"></v-divider>
               </v-row>
 
               <v-card-text>
@@ -278,7 +282,7 @@
                           <v-card-title>
                             <v-row>
                               <v-col cols="8">
-                                <p class="text-truncate" style="max-width: 300px">
+                                <p class="text-truncate itemName" style="max-width: 300px">
                                   {{ item.item_name }}
                                 </p>
                                 <v-subheader style="word-break: break-word;">{{

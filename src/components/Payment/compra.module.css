@@ -21,14 +21,14 @@
     text-decoration: none !important;
 }
 .hoverTag:hover{
-        color:rgb(254,147,140) !important;
+        color:#F24236 !important;
         transition: 0.2s;
 }
 .backgroundCompra{
-    background-color: rgb(245, 245, 245) !important
+    background: linear-gradient(0deg, rgba(25,24,10,1) 0%, rgba(251,251,255,1) 3%, rgba(251,251,255,1) 97%, rgba(25,24,10,1) 100%);
 }
 .buttonColor{
-    color: rgb(254,147,140) !important;
+    color: #F24236 !important;
 }
 .quantidadeCorner{
     border-radius: 25px;
@@ -63,14 +63,14 @@
 .pinkTitle{
     font-family: Josefin Sans !important;
     font-size: 1em !important;
-    color: rgb(254,147,140) !important;
+    color: #F24236 !important;
 }
 
 .addCarrinho{
-    background-color: rgb(254,147,140) !important;
+    background-color: #F24236 !important;
     font-family: Josefin Sans !important;
 }
 .checkOut{
-    color: rgb(136, 185, 150) !important;
+    color: #EAC435 !important;
     font-family: Josefin Sans !important;
 }

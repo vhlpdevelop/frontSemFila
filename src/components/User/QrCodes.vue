@@ -60,6 +60,7 @@
                               outlined
                               elevation-7
                               class="fill-height ma-2"
+                              style="background: #FBFBFF !important"
                               
                             >
                               <v-fade-transition>
@@ -114,7 +115,7 @@
                                     class="d-flex align-center justify-center mt-5"
                                   >
                                     <p
-                                      class="text-truncate"
+                                      class="text-truncate itemName"
                                       style="max-width: 300px"
                                     >
                                       {{ item.item.item_name }}
