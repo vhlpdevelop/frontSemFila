@@ -50,7 +50,7 @@ const actions = {
       try {
         await axios.post(baseUrl + "refreshSingleQrCode", aux).then(function (response) {
           if (response.data.success) {
-            console.log(response.data.obj);
+            //console.log(response.data.obj);
             if(response.data.obj){
               commit("refreshSingleQrCode", response.data.obj);
               commit("updateSizeQrCodes");
@@ -76,7 +76,7 @@ const actions = {
   },
   async getQrCodesAuth({ commit }, itemData) {
     //console.log("Entrou aqui no qrcodes");
-    console.log(itemData)
+    //console.log(itemData)
     itemData.forEach(function (element) {
       element.overlay = false;
     });
@@ -90,7 +90,7 @@ const actions = {
     try {
       await axios.post(baseUrl + "refreshQrCodeUser").then(function (response) {
         if (response.data.success) {
-          console.log(response.data.obj);
+          //console.log(response.data.obj);
           commit("refreshQrCodes", response.data.obj);
           commit("updateSizeQrCodes");
           commit("saveQrCodes");
@@ -312,12 +312,12 @@ const mutations = {
         }
       }
       
-      if(Qrcode.state === true && Qrcode.quantity > 0){
+      
         
         state.Qrcodes[index].quantity = Qrcode.quantity
         state.Qrcodes[index].state = Qrcode.state
-     
-      }
+        
+      
     
     
     
