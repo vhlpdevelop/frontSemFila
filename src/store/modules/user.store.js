@@ -323,9 +323,9 @@ const mutations = {
     
   },
   refreshQrCodes: (state, Qrcode) => {
-    
+    state.Qrcodes = Qrcode;
     for(let i =0; i< Qrcode.length; i++){
-      state.Qrcodes = Qrcode;
+      
       state.Qrcodes[i].overlay = false;
     }
   },
