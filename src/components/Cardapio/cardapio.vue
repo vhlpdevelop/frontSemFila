@@ -107,33 +107,7 @@
                   </v-list-item-content>
                 </v-list-item>
               </v-list-item-group>
-              <v-list nav dense>
-                <v-list-item-group>
-                  <v-list-item v-for="item in getCart" :key="item._id">
-                    <v-list-item-avatar>
-                      <v-img :src="item.image_url"></v-img>
-                    </v-list-item-avatar>
-                    <v-list-item-content>
-                      <v-list-item-title>{{
-                        item.item_name
-                      }}</v-list-item-title>
-                      <v-list-item-subtitle
-                        >Qtd: {{ item.qtd }}</v-list-item-subtitle
-                      >
-                    </v-list-item-content>
-                    <v-list-item-action>
-                      <v-btn icon x-small @click="cartEdit(item)">
-                        <v-icon color="green lighten-1">mdi-pen</v-icon>
-                      </v-btn>
-                    </v-list-item-action>
-                    <v-list-item-action>
-                      <v-btn icon x-small @click="cartRemove(item)">
-                        <v-icon color="red lighten-1">mdi-delete</v-icon>
-                      </v-btn>
-                    </v-list-item-action>
-                  </v-list-item>
-                </v-list-item-group>
-              </v-list>
+              
             </v-list>
           </v-menu>
           <v-menu class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex">
