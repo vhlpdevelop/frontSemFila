@@ -16,7 +16,7 @@
                 <v-card-title class="ml-6"
                   ><b class="textColorDefault">Meus QrCodes</b></v-card-title
                 >
-                <div v-if="getAuth()">
+                <div v-if="getAuth">
                   <v-btn
                   class="textColorDefault"
                   fab
