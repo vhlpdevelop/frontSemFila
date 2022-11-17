@@ -16,7 +16,8 @@
                 <v-card-title class="ml-6"
                   ><b class="textColorDefault">Meus QrCodes</b></v-card-title
                 >
-                <v-btn
+                <div v-if="getAuth()">
+                  <v-btn
                   class="textColorDefault"
                   fab
                   icon
@@ -25,6 +26,8 @@
                   @click="refreshQrcodes"
                   ><v-icon>mdi-refresh</v-icon></v-btn
                 >
+                </div>
+               
               </v-row>
               <v-divider></v-divider>
               <v-card-text>
@@ -513,7 +516,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getQrcodes", "getRespostaUser", "getMessageUser"]),
+    ...mapGetters(["getQrcodes", "getRespostaUser", "getMessageUser","getAuth"]),
     itemsPerRow() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
