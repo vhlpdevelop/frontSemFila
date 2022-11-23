@@ -5,8 +5,11 @@ import App from './App.vue'
 import router from './routes/index'
 import vuetify from './plugins/vuetify'
 import store from '../src/store/index'
-
-Vue.use(router, VueAxios, axios)
+import VueAnalytics from 'vue-analytics'
+Vue.use(router, VueAxios, axios,VueAnalytics, {
+  id: 'G-99T0SYESWY',
+  checkDuplicatedScript: true
+})
 
 
 Vue.config.productionTip = false

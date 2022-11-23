@@ -1,6 +1,12 @@
 <template>
   <v-app>
     <v-container ma-0 pa-0 fluid class="backGroundQrCode">
+      <v-dialog v-model="withDrawer"
+      persistent 
+      max-width="330">
+        <QrCodeWithDraw v-if="withDrawer" @withDrawReq="widthDrawResponse(object_index)" @closeComponent="close" :object="object_Withdraw" :index="object_index"></QrCodeWithDraw>
+      </v-dialog>
+      
       <v-responsive width="100%">
         <v-container fluid ma-0 pa-0 fill-height class="d-flex">
           <v-row align="center" justify="center" class="mt-3">
@@ -18,16 +24,15 @@
                 >
                 <div v-if="getAuth">
                   <v-btn
-                  class="textColorDefault"
-                  fab
-                  icon
-                  large
-                  :loading="refreshLoader"
-                  @click="refreshQrcodes"
-                  ><v-icon>mdi-refresh</v-icon></v-btn
-                >
+                    class="textColorDefault"
+                    fab
+                    icon
+                    large
+                    :loading="refreshLoader"
+                    @click="refreshQrcodes"
+                    ><v-icon>mdi-refresh</v-icon></v-btn
+                  >
                 </div>
-               
               </v-row>
               <v-divider></v-divider>
               <v-card-text>
@@ -63,8 +68,7 @@
                               outlined
                               elevation-7
                               class="fill-height ma-2"
-                              style="background: #FBFBFF !important"
-                              
+                              style="background: #fbfbff !important"
                             >
                               <v-fade-transition>
                                 <v-overlay
@@ -76,32 +80,59 @@
                                     class="textColorDefault"
                                     :size="64"
                                   ></v-progress-circular>
-                                  
                                 </v-overlay>
                               </v-fade-transition>
+                             
+                              <v-fade-transition>
+                                <v-overlay
+                                  :absolute="true"
+                                  v-if="item.withdraw"
+                                >
+                                  <v-container fluid>
+                                    <v-card
+                                      elevation="12"
+                                      class="ma-5 rounded-xl"
+                                    >
+                                      <v-card-text>
+                                        <p class="text-center white--text">
+                                          Reembolso foi solicitado, aguarde 7
+                                          dias. O valor será enviado para o
+                                          destinatário pago.
+                                        </p>
+                                      </v-card-text>
+                                    </v-card>
+                                  </v-container>
+                                </v-overlay>
+                              </v-fade-transition>
+
                               <v-fade-transition>
                                 <v-overlay
                                   :absolute="true"
                                   v-if="item.quantity == 0 || !item.state"
                                 >
                                   <v-container fluid>
-                                    <v-card elevation="12" class="ma-5 rounded-xl">
-                                      <v-card-text >
+                                    <v-card
+                                      elevation="12"
+                                      class="ma-5 rounded-xl"
+                                    >
+                                      <v-card-text>
                                         <p class="text-center white--text">
-                                      Este QrCode foi usado completamente,
-                                      Já não possui mais uso.
-                                    </p>
+                                          Este QrCode foi usado completamente,
+                                          Já não possui mais uso.
+                                        </p>
                                       </v-card-text>
-                                     <v-card-actions class="d-flex align-center justify-center">
-                                      <v-btn color="red" @click="removeQrCode(item._id)">
-                                      Remove-lo
-                                    </v-btn>
-                                     </v-card-actions>
-                                    
+                                      <v-card-actions
+                                        class="d-flex align-center justify-center"
+                                      >
+                                        <v-btn
+                                          color="red"
+                                          @click="removeQrCode(item._id)"
+                                        >
+                                          Remove-lo
+                                        </v-btn>
+                                      </v-card-actions>
                                     </v-card>
-                                   
                                   </v-container>
-                                  
                                 </v-overlay>
                               </v-fade-transition>
 
@@ -161,7 +192,7 @@
                                             >
                                           </v-list-item-title>
                                         </v-list-item>
-                                        <v-list-item class="pl-12" @click="">
+                                        <v-list-item class="pl-12" @click="popUpWithDraw(item, idx)">
                                           <v-list-item-title
                                             class="pl-6 red--text"
                                           >
@@ -189,36 +220,40 @@
                                   <v-col
                                     cols="12"
                                     class="d-flex align-center justify-center"
-                                   
                                   >
                                     <div
                                       class="d-col align-center justify-center"
-                                      
                                     >
-                                      <a @click="showQrCode(item)" class="text-center d-col align-center justify-center">
-                                        <v-subheader class="ml-5 mb-n5">*Clique no QrCode para expandir.</v-subheader>
+                                      <a
+                                        @click="showQrCode(item)"
+                                        class="text-center d-col align-center justify-center"
+                                      >
+                                        <v-subheader class="ml-5 mb-n5"
+                                          >*Clique no QrCode para
+                                          expandir.</v-subheader
+                                        >
                                         <v-img
-                                        class="d-none d-sm-flex"
-                                        alt="Avatar"
-                                        max-width="300px"
-                                        max-height="300px"
-                                        :src="
-                                          'data:image/jpeg;base64,' +
-                                          item.QrImage
-                                        "
-                                      ></v-img>
-                                      <v-img
-                                        class="d-flex d-sm-none"
-                                        alt="Avatar"
-                                        :src="
-                                          'data:image/jpeg;base64,' +
-                                          item.QrImage
-                                        "
-                                        width="300px"
-                                        height="300px"
-                                      ></v-img>
+                                          class="d-none d-sm-flex"
+                                          alt="Avatar"
+                                          max-width="300px"
+                                          max-height="300px"
+                                          :src="
+                                            'data:image/jpeg;base64,' +
+                                            item.QrImage
+                                          "
+                                        ></v-img>
+                                        <v-img
+                                          class="d-flex d-sm-none"
+                                          alt="Avatar"
+                                          :src="
+                                            'data:image/jpeg;base64,' +
+                                            item.QrImage
+                                          "
+                                          width="300px"
+                                          height="300px"
+                                        ></v-img>
                                       </a>
-                                     
+
                                       <div
                                         class="d-flex align-start justify-start ml-12 mt-n3"
                                       >
@@ -350,7 +385,7 @@
                 </v-data-iterator>
               </v-card-text>
             </v-card>
-
+            
             <v-card class="pa-5" v-else> Sem QrCodes para mostrar </v-card>
             <v-dialog
               v-if="dialog"
@@ -391,26 +426,36 @@
             </v-dialog>
           </v-row>
         </v-container>
+        
       </v-responsive>
+      
     </v-container>
+    
   </v-app>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
 import moment from "moment";
-
+import QrCodeWithDraw from "./QrCode_withDrawRequest.vue";
 export default {
   name: "CategoriaItem",
-
+  components: {
+    QrCodeWithDraw
+  },
   props: ["object", "index"],
   data: () => ({
     snackErro: false,
-    refreshLoader: false,
     snackSucesso: false,
+    timeout: 5000,
+    withDrawer: false,
+    object_Withdraw: null,
+    object_index: "",
+    refreshLoader: false,
+    
     singleQrCode: "",
     ChangeQrCode: "",
-    timeout: 5000,
+ 
     qrcodes: [],
     QrCodeShow: "",
     dialog: false,
@@ -443,12 +488,43 @@ export default {
   */
 
   methods: {
-    ...mapActions(["MovetoCompra", "refreshQRCODEUser", "RSingleQrCode", "DeleteQrcodes"]),
-    removeQrCode(key){
-      this.DeleteQrcodes(key).then ( () => {
-
-      });
+    ...mapActions([
+      "MovetoCompra",
+      "refreshQRCODEUser",
+      "RSingleQrCode",
+      "DeleteQrcodes",
+    ]),
+    widthDrawResponse(){
+      if(this.getRespostaUser){
+        this.$nextTick(() => {
+            this.qrcodes[this.object_index].withdraw = true;
+          });
+        this.snackErro = false;
+        this.snackSucesso = true;
+     
+      }else{
+        this.snackErro = true;
+        this.snackSucesso = false;
+        this.close()
+      
+      }
+      
     },  
+    close(){
+      this.object_Withdraw = {}
+      this.object_index = "";
+      this.withDrawer = false;
+    },
+    popUpWithDraw(object, index){
+      this.object_Withdraw= object;
+      this.object_index=index;
+      this.withDrawer=true;
+      
+
+    },
+    removeQrCode(key) {
+      this.DeleteQrcodes(key).then(() => {});
+    },
     triggerOverlay(key) {
       console.log(this.qrcodes[key].overlay);
 
@@ -465,6 +541,7 @@ export default {
           this.$nextTick(() => {
             this.qrcodes[index].overlay = false;
           });
+
 
           this.snackErro = false;
           this.snackSucesso = true;
@@ -516,7 +593,12 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getQrcodes", "getRespostaUser", "getMessageUser","getAuth"]),
+    ...mapGetters([
+      "getQrcodes",
+      "getRespostaUser",
+      "getMessageUser",
+      "getAuth",
+    ]),
     itemsPerRow() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":

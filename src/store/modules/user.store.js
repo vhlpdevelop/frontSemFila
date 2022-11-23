@@ -42,6 +42,38 @@ const getters = {
 };
 
 const actions = {
+  async RWithDraw( {commit}, itemData){
+    if(itemData){
+      let aux = {
+        id: itemData._id
+      }
+      console.log("Aqui")
+      try {
+        await axios.post(baseUrl + "requestWithdraw", aux).then(function (response) {
+          if (response.data.success) {
+            //console.log(response.data.obj);
+            if(response.data.obj){
+              commit("refreshSingleQrCode", response.data.obj);
+              commit("updateSizeQrCodes");
+              commit("saveQrCodes");
+              commit("setMessageUser", response.data.msg);
+              commit("setRespostaUser", response.data.success);
+            }else{
+              commit("setMessageUser", response.data.msg);
+              commit("setRespostaUser", response.data.success);
+            }
+           
+          } else {
+            commit("setMessageUser", response.data.msg);
+            commit("setRespostaUser", false);
+          }
+        });
+      } catch (e) {
+        commit("setMessageUser", "Ah não, um erro ocorreu ao Enviar pedido");
+        commit("setRespostaUser", false);
+      }
+    }
+  },
   async RSingleQrCode({commit}, itemData){
     if(itemData){
       let aux = {
