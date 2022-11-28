@@ -1,15 +1,16 @@
 <template>
-  <v-app style="background-color: rgb(245, 245, 245) !important;">
+  <v-app class="backgroundDash">
     <v-container fluid ma-0 pa-0>
-      <v-toolbar flat class="backgroundB rounded-xl ml-1 mr-1 elevation-5">
+      <v-toolbar flat class="backgroundB ml-1 mr-1">
         <v-app-bar-nav-icon
-          class="hidden-md-and-up"
+          class="hidden-md-and-up drawerSetting"
           @click.stop="drawer = !drawer"
+          
         />
 
         <v-toolbar-title>
           
-          <v-btn text class="navTitle ma-1" @click="$router.push({name:'home'})" ><v-avatar ><img :src="logo"></v-avatar>SemFila</v-btn>
+          <v-btn text class="navTitle ma-1" @click="$router.push({name:'home'})" ><v-avatar size="140"><img :src="logo"></v-avatar></v-btn>
         </v-toolbar-title>
         <v-spacer />
 
@@ -19,8 +20,8 @@
           @click="$router.push({ path: item.path })"
           class="hidden-sm-and-down"
         >
-          <v-btn text depressed class="hidden-sm-and-down navText">
-            {{ item.title }}</v-btn
+          <a class="hidden-sm-and-down navText mr-5">
+            {{ item.title }}</a
           >
         </div>
 
@@ -39,6 +40,11 @@
           v-if="!logged"
           >Entrar</v-btn
         >
+        <v-btn v-if="!getAuth" icon fab color="white" @click="pushToLogin" class="rounded-xl d-flex d-sm-none">
+          <v-icon>
+            mdi-login
+          </v-icon>
+        </v-btn>
 
         <span
           v-if="logged"
@@ -107,6 +113,7 @@
         absolute
         temporary
         width="300"
+        
         class="mx-auto"
       >
         <v-list class="">
@@ -116,7 +123,7 @@
                 >mdi-home</v-icon
               >
             </v-list-item-icon>
-            <v-btn text class="navTitle" @click="$router.push({name:'home'})">SEMFILA</v-btn>
+            <v-btn text class="navTitle" @click="$router.push({name:'home'})"><v-avatar class="ml-n5" size="100"><img :src="logo"></v-avatar></v-btn>
           </v-list-item>
           <v-divider />
           <v-list-item
@@ -276,7 +283,7 @@ export default {
     ],
     subMenu: [
       { title: "Comece por aqui", path: "/comece" },
-      { title: "Tornar-me um Sem fila", path: "/tornarSemFila" },
+      { title: "Tornar-me um SemFila", path: "/tornarSemFila" },
     ],
   }),
 
@@ -461,6 +468,7 @@ body {
 }
 </style>
 <style>
+
 .slide-fade-enter-active {
   transition: all 0.3s ease;
 }

@@ -6,155 +6,33 @@
     font-family: Josefin Slab;
     src: url("../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
 }
-@media (max-width:320px){
-    .headerTitle{
-        font-family: Josefin Sans !important;
-        font-size: 2em !important;
-        color: rgb(88, 157, 108) !important;
-    }
-    .headersubTitle{
-        font-family: Josefin Sans !important;
-        font-size: 1em !important;
-        color: rgb(105,105,105) !important
-    }
-    .buttonSearch{
-        font-family: Josefin Sans !important;
-        font-size: 0.7em !important;
-        
-    } 
-    .backgroundComece{
-        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
-        background-size:     contain;                      /* <------ */
-        background-repeat:   no-repeat;
-        background-position: center;  
-        text-shadow: 2px 1px white;
-    }
-    
-}
-@media (max-width:480px){
-    .backgroundComece{
-        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
-        background-size:     contain;                      /* <------ */
-        background-repeat:   no-repeat;
-        background-position: center; 
-        text-shadow: 2px 1px white; 
-    }
-    .headerTitle{
-        font-family: Josefin Sans !important;
-        font-size: 2em !important;
-        color: rgb(88, 157, 108) !important;
-    }
-    .headersubTitle{
-        font-family: Josefin Sans !important;
-        font-size: 1em !important;
-        color: rgb(105,105,105) !important
-    } 
-    .buttonSearch{
-        font-family: Josefin Sans !important;
-        font-size: 0.7em !important;
-        
-    }
-}
-@media (max-width:768px){
-    .headerTitle{
-        font-family: Josefin Sans !important;
-        font-size: 2.2em !important;
-        color: rgb(88, 157, 108) !important;
-    }
-    .headersubTitle{
-        font-family: Josefin Sans !important;
-        font-size: 1.2em !important;
-        color: rgb(105,105,105) !important
-    } 
-    .buttonSearch{
-        font-family: Josefin Sans !important;
-        font-size: 0.7em !important;
-       
-    }
-    .backgroundComece{
-        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
-        background-size:     contain;                      /* <------ */
-        background-repeat:   no-repeat;
 
-        background-position: center; 
-        text-shadow: 2px 1px white; 
-    }
+.imageShadow{
+    filter: drop-shadow(10px 4px 4px rgba(0, 0, 0, 0.25));
 }
-@media (max-width:992px){
-    .headerTitle{
-        font-family: Josefin Sans !important;
-        font-size: 2.5em !important;
-        color: rgb(88, 157, 108) !important;
-    }
-    .headersubTitle{
-        font-family: Josefin Sans !important;
-        font-size: 1.5em !important;
-        color: rgb(105,105,105) !important
-    } 
-    .buttonSearch{
-        font-family: Josefin Sans !important;
-        font-size: 0.8em !important;
-        
-    }
-    .backgroundComece{
-        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
-        background-color: rgb(255,192,192) !important;
-        background-size:     contain;                      /* <------ */
-        background-repeat:   no-repeat;
-        background-position: right;  
-        text-shadow: 2px 1px white;
-    }
+.optionCard{
+    border-radius: 15px;
+  background: rgb(25,24,10,0.75);
+  color: #E8E8E7;
+  padding: 10px;
+  padding-right: 20%;
+  
 }
-@media (min-width:993px){
-    .headerTitle{
-        font-family: Josefin Sans !important;
-        font-size: 3em !important;
-        color: rgb(88, 157, 108) !important;
-    }
-    .headersubTitle{
-        font-family: Josefin Sans !important;
-        font-size: 1.8em !important;
-        color: rgb(105,105,105) !important
-    } 
-    .buttonSearch{
-        font-family: Josefin Sans !important;
-        font-size: 0.8em !important;
-        
-    }
-    .backgroundComece{
-        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
-        background-color: rgb(255,192,192);
-        background-size:     cover;                      /* <------ */
-        background-repeat:   no-repeat;
-        background-position: center center; 
-        text-shadow: 2px 1px white; 
-    }
+
+
+.cardColor1{
+    background-color: #FFD800 !important;
+    box-shadow: 10px 5px 5px 1px rgba(219, 180, 180, 0.25) !important;
 }
-@media (min-width:1200px){
-    .headerTitle{
-        font-family: Josefin Sans !important;
-        font-size: 3.2em !important;
-        color: rgb(88, 157, 108) !important;
-    }
-    .headersubTitle{
-        font-family: Josefin Sans !important;
-        font-size: 2em !important;
-        color: rgb(105,105,105) !important
-    }
-    .buttonSearch{
-        font-family: Josefin Sans !important;
-        font-size: 1em !important;
-       
-    }
-    .backgroundComece{
-        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
-        background-color: rgb(255,192,192);
-        background-size:     contain;                      /* <------ */
-        background-repeat:   no-repeat;
-        background-position: 85%;  
-        text-shadow: 2px 1px white;
-    }
+.cardColor2{
+    background-color: #F24236 !important;
+    box-shadow: 10px 5px 5px 1px rgba(219, 180, 180, 0.25) !important;
 }
+
+.searchField{
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25) !important;
+}
+
 .deepTopColor{
     background-image: linear-gradient(rgb(245,245,245) 30%,rgb(255,192,192) 70%) !important;
 }
@@ -177,10 +55,7 @@
     background-position: center;  
     text-shadow: 1px 1px black;
 }
-.backgroundHome{
-    
-    background-image: linear-gradient(rgb(245,245,245), white);
-}
+
 .textColorDefault{
     color: rgb(88, 157, 108) !important;
 }
@@ -200,7 +75,8 @@
 .navText{
     font-family: Josefin Sans !important;
     font-size: 0.9em !important;
-    color: rgb(88, 157, 108) !important;
+    text-decoration: none !important;
+    color: #100C08 !important;
 }
 .cardTitle{
     font-family: Josefin Sans !important;
@@ -241,4 +117,390 @@
 .linkColor{
     color: rgb(66,129,164) !important;
     
+}
+
+@media only screen and (max-width:320px){
+    .textHeaderPartness{
+        font-size: 1.5rem !important;
+    }
+    .ImageRating{
+        width: 220px !important;
+    }
+    .textHeaderSec3{
+        font-size: 2rem !important;
+    }
+    .backgroundHome{
+    background-color: rgba(16, 12, 8, 1) !important ;
+   }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        text-align: center !important;
+        font-size: 1.5rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 2em !important;
+        -webkit-text-stroke: 0.4px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 1em !important;
+       
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    }
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 0.7em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+        
+    } 
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center;  
+        text-shadow: 2px 1px white;
+    }
+    .smallcardColor1{
+        
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%) !important;
+    }
+    .smallcardColor2{
+        background: linear-gradient(0deg,#97672B 0%,#97672B 100%) !important;
+    }
+    .smallcardColor3{
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 100%) !important;
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.3rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    
+}
+@media screen and (min-width:321px) and (max-width:485px){
+    .ImageRating{
+        width: 220px !important;
+    }
+    .textHeaderSec3{
+        font-size: 2rem !important;
+    }
+    .backgroundHome{
+        background-color: rgba(16, 12, 8, 1) !important;
+    }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.5rem !important;
+        text-align: center !important;
+        margin-bottom: 50px !important;
+        
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.3rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center; 
+        text-shadow: 2px 1px white; 
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 2em !important;
+        -webkit-text-stroke: 0.4px black;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+        color: #E8E8E7 !important;
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 1em !important;
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    } 
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 0.7em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+    }
+    .smallcardColor1{
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%) !important;
+       
+        
+    }
+    .smallcardColor2{
+        background: linear-gradient(0deg,#97672B 0%,#97672B 100%) !important;
+        
+    }
+    .smallcardColor3{
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 100%) !important;
+       
+    }
+}
+@media screen and (min-width: 485px) and (max-width:768px){
+    .ImageRating{
+        width: 320px !important;
+    }
+    .textHeaderSec3{
+        font-size: 1.5rem !important;
+    }
+    .backgroundHome{
+        background: linear-gradient(0deg,rgba(16, 12, 8, 1) 0%,rgba(16, 12, 8, 1) 78%, #47463b 78%) !important;
+    }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        font-size: 2rem ;
+        text-align: center !important;
+        margin-bottom: 50px !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.5rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 2.2em !important;
+        -webkit-text-stroke: 0.4px black;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+        color: #E8E8E7 !important;
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 1.2em !important;
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    } 
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 0.7em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+       
+    }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+
+        background-position: center; 
+        text-shadow: 2px 1px white; 
+    }
+    .smallcardColor1{
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%) !important;
+        
+        
+    }
+    .smallcardColor2{
+        background: linear-gradient(0deg,#97672B 0%,#97672B 100%) !important;
+       
+    }
+    .smallcardColor3{
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 100%) !important;
+      
+    }
+}
+@media screen and (min-width: 769px) and (max-width:992px){
+    .ImageRating{
+        width: 320px !important;
+    }
+    .textHeaderSec3{
+        font-size: 2rem !important;
+    }
+    .backgroundHome{
+        background: linear-gradient(0deg,rgba(16, 12, 8, 1) 0%,rgba(16, 12, 8, 1) 78%, #47463b 78%);
+       }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        font-size: 2rem ;
+        text-align: start ;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.5rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 2.5em !important;
+        -webkit-text-stroke: 0.4px black;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+        color: #E8E8E7 !important;
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 1.5em !important;
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    } 
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 0.8em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+        
+    }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-color: rgb(255,192,192) !important;
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: right;  
+        text-shadow: 2px 1px white;
+    }
+    .smallcardColor1{
+     
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%, #100C08 50%);
+        
+    }
+    .smallcardColor2{
+       
+        background: linear-gradient(0deg,#97672B 0%,#97672B 50%, #100C08 50%) ;
+    }
+    .smallcardColor3{
+    
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 50%, #100C08 50%) ;
+    }
+}
+@media screen and (min-width:993px){
+    .textHeaderPartness{
+        font-size: 1.5rem !important;
+    }
+    .textHeaderSec3{
+        font-size: 1.8rem !important;
+    }
+    .backgroundHome{
+        background: linear-gradient(0deg,rgba(16, 12, 8, 1) 0%,rgba(16, 12, 8, 1) 78%, #47463b 78%) !important;
+       }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        font-size: 2rem !important;
+        margin-bottom: 50px !important;
+        text-align: start ;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.7rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 3em !important;
+        -webkit-text-stroke: 0.4px black;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+        color: #E8E8E7 !important;
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 1.8em !important;
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    } 
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 0.8em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+        
+    }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-color: rgb(255,192,192);
+        background-size:     cover;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center center; 
+        text-shadow: 2px 1px white; 
+    }
+    .smallcardColor1{
+        background-color: #FF671F !important;
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%, #100C08 50%) !important;
+        
+    }
+    .smallcardColor2{
+        background-color: #97672B !important;
+        background: linear-gradient(0deg,#97672B 0%,#97672B 50%, #100C08 50%) !important;
+    }
+    .smallcardColor3{
+        background-color: #7B68EE !important;
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 50%, #100C08 50%) !important;
+    }
+}
+@media screen and (min-width:1200px){
+    .textHeaderSec3{
+        font-size: 2rem !important;
+    }
+    .backgroundHome{
+        background: linear-gradient(0deg,rgba(16, 12, 8, 1) 0%,rgba(16, 12, 8, 1) 78%, #47463b 78%) !important;
+       }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        font-size: 2rem !important;
+        margin-bottom: 50px !important;
+        text-align: start ;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.7rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 3.2em !important;
+        -webkit-text-stroke: 0.4px black;
+        text-shadow: 10px 4px rgba(0, 0, 0, 0.25);
+        color: #E8E8E7 !important;
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 2em !important;
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    }
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 1em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+       
+    }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/GMD4X4H/imagephone-1.jpg") !important;
+        background-color: rgb(255,192,192);
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: 85%;  
+        text-shadow: 2px 1px white;
+    }
+    .smallcardColor1{
+        background-color: #FF671F !important;
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%, #100C08 50%) !important;
+        
+    }
+    .smallcardColor2{
+        background-color: #97672B !important;
+        background: linear-gradient(0deg,#97672B 0%,#97672B 50%, #100C08 50%) !important;
+    }
+    .smallcardColor3{
+        background-color: #7B68EE !important;
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 50%, #100C08 50%) !important;
+    }
 }

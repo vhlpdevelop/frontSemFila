@@ -1,115 +1,366 @@
 <template>
-  <div class="d-flex align-center justify-center">
-    <div>
-      <v-row id="big" class="d-none d-sm-flex" align="center" justify="center">
-        <v-col cols="4" class="d-flex align-center justify-center">
-          <v-card tile elevation="7" class="pa-2 flex-grow-1" style="overflow-y: hidden; overflow-x: hidden ; height: 100px">
-            <v-row>
-              <v-col cols="5">
-                <v-avatar color="primary" size="72" tile>
-                    <img
-                    src="https://scontent-gru2-2.xx.fbcdn.net/v/t39.30808-1/295332568_548728433509105_6787476656143271065_n.jpg?stp=dst-jpg_p200x200&_nc_cat=105&ccb=1-7&_nc_sid=c6021c&_nc_ohc=u2HVEmrveqUAX-a3EEj&_nc_ht=scontent-gru2-2.xx&oh=00_AT_m9-Z9a-51dx6c_X4GoVmbmR7d9X-ZaCtCyuw-QqmWIA&oe=63588D5C"
-                  />
-                </v-avatar>
+  <v-row  class="d-flex align-center justify-center pa-5">
+    
+    
+    <v-col cols="12">
+      <div class="mb-12">
+      <h1 class="text-start white--text textHeader">
+      Os melhores SemFila
+    </h1>
+    </div>
+      <v-row id="big" class="d-none d-md-flex" align="center" justify="center">
+        <v-col cols="3" class="d-flex align-center justify-center" width="300">
+          <v-card class="pa-2 flex-grow-1 cardPartners" width="300">
+            <v-row no-gutters>
+              <v-col cols="12" class="d-flex justify-end">
+                
+                  <v-icon small color="red">mdi-check-decagram</v-icon>
+                
               </v-col>
-              <v-col cols="7" class="mt-4"> <p class="pl-1 pr-1 text-center">
-                    <span class="font-weight-bold">Estação Caxara</span> - Bonito MS
-                </p></v-col>
+              <v-col cols="12" class="d-flex justify-start mt-n5">
+                <v-row no-guters>
+                  <v-col cols="5" class="d-flex align-center justify-center">
+                    <v-avatar size="72" tile class="rounded-xl">
+                      <img
+                      src="https://i.ibb.co/7C0YfZF/16124156-680115445505947-4578459704748933120-a.jpg"
+                      />
+                    </v-avatar>
+                  </v-col>
+                  <v-col cols="7" class="mt-4">
+                    <p class="text-start">
+                      <span class="font-weight-bold white--text"
+                        >Estação Caxara</span
+                      >
+                    </p>
+                    <p class="grey--text text-start mt-n2">Pub</p></v-col
+                  >
+                </v-row>
+              </v-col>
             </v-row>
           </v-card>
         </v-col>
-        <v-col cols="4" class="d-flex align-center justify-center">
-          <v-card tile elevation="7" class="pa-2 flex-grow-1"  style="overflow-y: hidden; overflow-x: hidden ; height: 100px">
-            <v-row>
-              <v-col cols="5">
-                <v-avatar color="primary" size="72" tile>
-                    <img
-                  src="https://scontent-gru2-2.xx.fbcdn.net/v/t39.30808-6/297395243_590628309141978_4421262426022539959_n.jpg?stp=cp0_dst-jpg_e15_p64x64_q65&_nc_cat=106&ccb=1-7&_nc_sid=85a577&_nc_ohc=gTsdi1MUJMEAX9aMrLT&_nc_ht=scontent-gru2-2.xx&oh=00_AT-EFRqEiHRC1hrPWYMlup_bKpCbeAOEOUR8ubfTRV5QUQ&oe=6357E669"
-                  />
-                </v-avatar>
+        <v-col cols="3" class="d-flex align-center justify-center" width="300">
+          <v-card class="pa-2 flex-grow-1 cardPartners" width="300">
+            <v-row no-gutters>
+              <v-col cols="12" class="d-flex justify-end">
+                
+                  <v-icon small color="red">mdi-check-decagram</v-icon>
+                
               </v-col>
-              <v-col cols="7" class="mt-4"> <p class="pl-1 pr-1 text-center">
-                <span class="font-weight-bold">Vila Rebuá Gastronomia</span> - Bonito MS
-                </p></v-col>
+              <v-col cols="12" class="d-flex justify-start mt-n5">
+                <v-row no-guters class="">
+                  <v-col cols="5" class="d-flex align-center justify-center">
+                    <v-avatar size="72" tile class="rounded-xl">
+                      <img
+src="https://i.ibb.co/8PNrS5M/316367768-194472383107412-6487271863465689785-n.jpg"
+                      />
+                    </v-avatar>
+                  </v-col>
+                  <v-col cols="7" class="mb-n2">
+                    <p class="text-start">
+                      <span class="font-weight-bold white--text"
+                        >Vila Rebua Gastronomia</span
+                      >
+                    </p>
+                    <p class="grey--text text-start mt-n2">Restaurante</p></v-col
+                  >
+                </v-row>
+              </v-col>
             </v-row>
           </v-card>
         </v-col>
-        <v-col cols="4" class="d-flex align-center justify-center">
-          <v-card tile elevation="7" class="pa-2 flex-grow-1"  style="overflow-y: hidden; overflow-x: hidden ; height: 100px">
-            <v-row>
-              <v-col cols="5">
-                <v-avatar color="primary" size="72" tile></v-avatar>
+        <v-col cols="3" class="d-flex align-center justify-center" width="300">
+          <v-card class="pa-2 flex-grow-1 cardPartners" width="300">
+            <v-row no-gutters>
+              <v-col cols="12" class="d-flex justify-end">
+                
+                  <v-icon small color="red">mdi-check-decagram</v-icon>
+                
               </v-col>
-              <v-col cols="7" class="mt-4"> <p class="pl-1 pr-1 text-center">
-                    <span class="font-weight-bold">???</span> - Bonito MS
-                </p></v-col>
+              <v-col cols="12" class="d-flex justify-start mt-n5">
+                <v-row no-guters>
+                  <v-col cols="5" class="d-flex align-center justify-center">
+                    <v-avatar size="72" tile  class="rounded-xl">
+                      <img
+                      src="https://i.ibb.co/rp2wrSM/301571642-1105104720091168-745642818850234750-n.jpg"
+                      />
+                    </v-avatar>
+                  </v-col>
+                  <v-col cols="7" class="mt-4">
+                    <p class="text-start">
+                      <span class="font-weight-bold white--text"
+                        >Zapi Zen</span
+                      >
+                    </p>
+                    <p class="grey--text text-start mt-n2">Restaurante</p></v-col
+                  >
+                </v-row>
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-col>
+        <v-col cols="3" class="d-flex align-center justify-center" width="300">
+          <v-card class="pa-2 flex-grow-1 cardPartners" width="300">
+            <v-row no-gutters>
+              <v-col cols="12" class="d-flex justify-end">
+                
+                  <v-icon small color="red">mdi-check-decagram</v-icon>
+                
+              </v-col>
+              <v-col cols="12" class="d-flex justify-start mt-n5">
+                <v-row no-guters>
+                  <v-col cols="5" class="d-flex align-center justify-center">
+                    <v-avatar size="72" tile class="rounded-xl">
+                      <img
+                        src="https://i.ibb.co/GPwtWMk/43182921-257320734973261-8112687738852999168-n.jpg"
+                      />
+                    </v-avatar>
+                  </v-col>
+                  <v-col cols="7" class="mt-4">
+                    <p class="text-start">
+                      <span class="font-weight-bold white--text"
+                        >La Bonita</span
+                      >
+                    </p>
+                    <p class="grey--text text-start mt-n2">Bar</p></v-col
+                  >
+                </v-row>
+              </v-col>
             </v-row>
           </v-card>
         </v-col>
       </v-row>
-    </div>
+    </v-col>
 
-    <div>
-      <v-row
-        id="small"
-        class="d-flex d-sm-none"
-        align="center"
-        justify="center"
-      >
-        <v-col cols="4" class="d-flex" style="flex-direction: column">
-          <v-card tile elevation="7" style="overflow-y: auto; height: 160px">
+    <v-col cols="12" class="d-flex d-md-none">
+      <v-slide-group multiple :show-arrows="false">
+        <v-slide-item class="mx-4">
+          <v-card class="pa-2 flex-grow-1 cardPartners" width="120">
             <v-row no-gutters>
-              <v-col cols="12">
-                <v-avatar class="mt-6 mb-2" color="primary" size="60" tile>
-                  <img
-                    src="https://scontent-gru2-2.xx.fbcdn.net/v/t39.30808-1/295332568_548728433509105_6787476656143271065_n.jpg?stp=dst-jpg_p200x200&_nc_cat=105&ccb=1-7&_nc_sid=c6021c&_nc_ohc=u2HVEmrveqUAX-a3EEj&_nc_ht=scontent-gru2-2.xx&oh=00_AT_m9-Z9a-51dx6c_X4GoVmbmR7d9X-ZaCtCyuw-QqmWIA&oe=63588D5C"
-                  />
-                </v-avatar>
+              <v-col cols="12" class="d-flex justify-end">
+                
+                  <v-icon small color="red">mdi-check-decagram</v-icon>
+                
               </v-col>
-              <v-col cols="12" class="mt-1 text-caption">
-                <p class="pl-1 pr-1 text-center">
-                    <span class="font-weight-bold">Estação Caxara</span> - Bonito MS
-                </p></v-col
-              >
+              <v-col cols="12" class="d-flex justify-start mt-n5">
+                <v-row class="mt-4">
+                  <v-col cols="12" class="d-flex align-center justify-center">
+                    <v-avatar size="72" tile class="rounded-xl">
+                      <img
+                      src="https://i.ibb.co/7C0YfZF/16124156-680115445505947-4578459704748933120-a.jpg"
+                      />
+                    </v-avatar>
+                  </v-col>
+                  <v-col cols="12" class="">
+                    <p class="text-center">
+                      <span class="font-weight-bold white--text"
+                        >Estação Caxara</span
+                      >
+                    </p>
+                    <p class="grey--text text-center mt-n2">Pub</p></v-col
+                  >
+                </v-row>
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-slide-item>
+        <v-slide-item class="mx-4">
+          <v-card class="pa-2 flex-grow-1 cardPartners" width="120">
+            <v-row no-gutters>
+              <v-col cols="12" class="d-flex justify-end">
+                
+                  <v-icon small color="red">mdi-check-decagram</v-icon>
+                
+              </v-col>
+              <v-col cols="12" class="d-flex justify-start mt-n5">
+                <v-row class="mt-4">
+                  <v-col cols="12" class="d-flex align-center justify-center">
+                    <v-avatar size="72" tile class="rounded-xl">
+                      <img
+                      src="https://i.ibb.co/8PNrS5M/316367768-194472383107412-6487271863465689785-n.jpg"
+                      />
+                    </v-avatar>
+                  </v-col>
+                  <v-col cols="12" class="">
+                    <p class="text-center">
+                      <span class="font-weight-bold white--text"
+                        >Vila Rebua Gastronomia</span
+                      >
+                    </p>
+                    <p class="grey--text text-center mt-n2">Restaurante</p></v-col
+                  >
+                </v-row>
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-slide-item>
+        <v-slide-item class="mx-4">
+          <v-card class="pa-2 flex-grow-1 cardPartners" width="120">
+            <v-row no-gutters>
+              <v-col cols="12" class="d-flex justify-end">
+                
+                  <v-icon small color="red">mdi-check-decagram</v-icon>
+                
+              </v-col>
+              <v-col cols="12" class="d-flex justify-start mt-n5">
+                <v-row class="mt-4">
+                  <v-col cols="12" class="d-flex align-center justify-center">
+                    <v-avatar size="72" tile class="rounded-xl">
+                      <img
+                      src="https://i.ibb.co/rp2wrSM/301571642-1105104720091168-745642818850234750-n.jpg"
+                      />
+                    </v-avatar>
+                  </v-col>
+                  <v-col cols="12" class="">
+                    <p class="text-center">
+                      <span class="font-weight-bold white--text"
+                        >Zapi Zen</span
+                      >
+                    </p>
+                    <p class="grey--text text-center mt-n2">Restaurante</p></v-col
+                  >
+                </v-row>
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-slide-item>
+        <v-slide-item class="mx-4">
+          <v-card class="pa-2 flex-grow-1 cardPartners" width="120">
+            <v-row no-gutters>
+              <v-col cols="12" class="d-flex justify-end">
+                
+                  <v-icon small color="red">mdi-check-decagram</v-icon>
+                
+              </v-col>
+              <v-col cols="12" class="d-flex justify-start mt-n5">
+                <v-row class="mt-4">
+                  <v-col cols="12" class="d-flex align-center justify-center">
+                    <v-avatar size="72" tile class="rounded-xl">
+                      <img
+                      src="https://i.ibb.co/GPwtWMk/43182921-257320734973261-8112687738852999168-n.jpg"
+                      />
+                    </v-avatar>
+                  </v-col>
+                  <v-col cols="12" class="">
+                    <p class="text-center">
+                      <span class="font-weight-bold white--text"
+                        >La Bonita</span
+                      >
+                    </p>
+                    <p class="grey--text text-center mt-n2">Bar</p></v-col
+                  >
+                </v-row>
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-slide-item>
+  </v-slide-group>
+    </v-col>
+    <v-col cols="12" >
+      <v-container fluid fill-height id="sectionCards" class="">
+      <v-row class="d-flex">
+        <v-col cols="12" sm="4" md="4" lg="4" xl="4">
+          <v-card class="cardColorPartner">
+            <v-row>
+              <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
+                <div class="mt-5">
+                  <span class="text-start white--text ">
+                  Monte da sua
+                </span>
+                <p class="text-start font-weight-bold white--text textHeaderPartness">
+                  Maneira >
+                </p>
+                </div>
+                
+              </v-col>
+              <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
+                <v-img src="https://i.ibb.co/XzSmG1j/imagens-bebidas.png" contain width="150" height="200">
+
+                </v-img>
+              </v-col>
             </v-row>
           </v-card>
         </v-col>
-        <v-col cols="4" class="d-flex" style="flex-direction: column">
-          <v-card tile elevation="7" style="overflow-y: auto; height: 160px">
-            <v-row no-gutters>
-              <v-col cols="12">
-                <v-avatar class="mt-6 mb-2" color="primary" size="60" tile>
-                  <img
-                  src="https://scontent-gru2-2.xx.fbcdn.net/v/t39.30808-6/297395243_590628309141978_4421262426022539959_n.jpg?stp=cp0_dst-jpg_e15_p64x64_q65&_nc_cat=106&ccb=1-7&_nc_sid=85a577&_nc_ohc=gTsdi1MUJMEAX9aMrLT&_nc_ht=scontent-gru2-2.xx&oh=00_AT-EFRqEiHRC1hrPWYMlup_bKpCbeAOEOUR8ubfTRV5QUQ&oe=6357E669"
-                  />
-                </v-avatar>
+        <v-col cols="12" sm="4" md="4" lg="4" xl="4">
+          <v-card class="cardColorPartner">
+            <v-row>
+              <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
+                <div class="mt-5">
+                  <span class="text-start white--text ml-n16">
+                    Seu
+                  </span>
+                  <p class="text-start ml-6 mt-n1 font-weight-bold white--text textHeaderPartness">
+                    Cardapio >
+                  <p class="white--text mt-n6 ml-n16">
+                    com sua <p class="white--text mt-n6">
+                      cara
+                    </p>
+                  </p>
+                </p>
+                
+                </div>
+                
               </v-col>
-              <v-col cols="12" class="mt-1 text-caption">
-                <p class="pl-1 pr-1 text-center flex-grow-1">
-                  <span class="font-weight-bold">Vila Rebuá Gastronomia</span> - Bonito MS
-                </p></v-col
-              >
+              <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
+                <v-img src="https://i.ibb.co/GVYMN3S/cardapio-1.png" contain width="150" height="200">
+
+                </v-img>
+              </v-col>
             </v-row>
           </v-card>
         </v-col>
-        <v-col cols="4" class="d-flex" style="flex-direction: column">
-          <v-card tile elevation="7" style="overflow-y: auto; height: 160px">
-            <v-row no-gutters>
-              <v-col cols="12">
-                <v-avatar class="mt-6 mb-2" color="primary" size="60" tile>
-                  <img
-                  />
-                </v-avatar>
+        <v-col cols="12" sm="4" md="4" lg="4" xl="4">
+          <v-card class="cardColorPartner">
+            <v-row>
+              <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-center justify-center" >
+                <v-img src="https://i.ibb.co/KzgjYhd/pngwing-1.png" contain width="150" height="200">
+
+                </v-img>
               </v-col>
-              <v-col cols="12" class="mt-1 text-caption">
-                <p class="pl-1 pr-1 text-center"><span class="font-weight-bold">???</span> - ???</p></v-col
-              >
+              <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-center justify-lg-start justify-center ml-n6-lg">
+                <div class="mt-5">
+                  <span class="text-center white--text">
+                    Mais <v-icon color="yellow" v-for="index in 5" :key="index" >
+                    mdi-star
+                    </v-icon>
+                </span>
+                <p class="text-center font-weight-bold white--text textHeaderPartness">
+                  Avaliados
+                </p>
+                </div>
+              </v-col>
             </v-row>
           </v-card>
         </v-col>
       </v-row>
-    </div>
-  </div>
+    </v-container>
+  </v-col>
+    
+</v-row>
 </template>
 <script></script>
-<style></style>
+<style scoped>
+ .cardPartners {
+  background: rgba(16, 12, 8, 1) !important;
+  border-color: #e8e8e7 !important;
+  border-radius: 10px !important;
+  border-style: solid !important;
+}
+.backgroundCard {
+  width: 300px !important;
+  background: rgba(16, 12, 8, 1) !important;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+  height: 100px !important;
+}
+.textHeader{
+  font-size: 1.8rem;
+}
+.cardColorPartner{
+  background: #F24236 !important;
+  border-color: #e8e8e7 !important;
+  border-radius: 5px !important;
+  border-style: solid !important;
+  
+}
+</style>
