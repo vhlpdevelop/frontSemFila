@@ -1,7 +1,7 @@
 <template>
-  <v-app>
+  <v-app class="backgroundSingUpEmail">
     <v-layout
-      class="justify-sm-center justify-md-center justify-lg-center justify-xl-center align-sm-center align-md-center align-lg-center align-xl-center"
+      class="backgroundSingUpEmail justify-sm-center justify-md-center justify-lg-center justify-xl-center align-sm-center align-md-center align-lg-center align-xl-center"
     >
       <v-container ma-0 pa-0>
         <v-layout row class="no-gutters">
@@ -29,10 +29,10 @@
         </v-layout>
 
         <v-layout column align-center justify-center class="pl-5 pr-5">
-          <v-btn block text to="/recuperarSenha" class="text-decoration-underline"
+          <v-btn block text to="/recuperarSenha" class="text-decoration-underline secondary--text font-weight-bold"
                   >Esqueci minha Senha
                 </v-btn>
-          <v-btn block rounded outlined color="#FE938C" v-show="!loading" @click="confirmar">Confirmar</v-btn>
+          <v-btn block outlined class="buttonConfirm font-weight-bold" v-show="!loading" @click="confirmar">Confirmar</v-btn>
           <v-progress-circular v-show="loading" indeterminate color="primary" />
         </v-layout>
       </v-container>

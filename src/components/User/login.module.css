@@ -6,10 +6,22 @@
   font-family: Josefin Slab;
   src: url("../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
 }
+.backgroundSingUpEmail{
+  background-color: #ffff !important;
+}
 .background{
     background-image: url("../../img/bgwork.jpeg");
     background-position: center top !important;
     background-size: 300vh auto !important;
+}
+.buttonConfirm{
+  font-family: Josefin Sans !important;
+  font-size: 1em !important;
+  border-radius: 20px !important;
+  color: #F24236 !important;
+  
+  -webkit-font-smoothing: antialiased;
+ 
 }
 
 html * {
@@ -17,7 +29,7 @@ html * {
 }
 .TitleCard {
   font-size: 1.8em !important;
-  color: rgb(88,157,108) !important;
+  color: #F24236 !important;
   font-family: Josefin Slab;
 }
 .SubTitleCard {
@@ -26,11 +38,11 @@ html * {
 }
 .textImp {
   font-size: 1.2em !important;
-  color: rgb(88,157,108) !important;
+  color: #F24236 !important;
   font-family: Josefin Slab;
 }
 .buttonCategory{
-  background-color : rgb(66,129,164) !important; 
+  background-color : #F24236 !important; 
 }
 .termos {
   font-size: 0.8em !important;
@@ -50,7 +62,7 @@ html * {
   font-family: Josefin Slab;
 }
 .pinkyBackground{
-  background-color: rgb(254,147,140) !important;
+  background-color: #FFD800 !important;
 }
 .fontSlab {
   font-family: Josefin Slab;

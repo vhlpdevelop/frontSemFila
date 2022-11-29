@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-layout align-center justify-center>
+  <v-app class="backgroundSingUpEmail">
+    <v-layout align-center justify-center  class="backgroundSingUpEmail">
       <v-form ref="form">
         <v-container pa-5>
           <v-layout row wrap>
@@ -11,37 +11,55 @@
               <v-flex xs12 md8>
                 <v-text-field
                   v-model="schemaUser.email"
-                  label="Email"
+                  label="Digite seu Email"
                   :rules="CampoObrigatorio"
-                  prepend-icon="mdi-email"
-                />
+                  
+                  color="secondary--text"
+                >
+                <template v-slot:prepend>
+                  <v-icon color="primary">mdi-email</v-icon>
+                </template>
+                
+                </v-text-field>
               </v-flex>
               <v-flex xs12 md8>
                 <v-text-field
                   v-model="confEmail"
-                  label="Confirmar Email"
+                  label="Digte novamente seu email"
                   :rules="CampoObrigatorio"
-                  prepend-icon="mdi-email"
-                />
+                  
+                >
+                <template v-slot:prepend>
+                  <v-icon color="primary">mdi-email-check</v-icon>
+                </template>
+                </v-text-field>
               </v-flex>
               <!-- CAMPOS SENHA -->
               <v-flex xs12 md8>
                 <v-text-field
                   v-model="schemaUser.password"
-                  label="Senha"
+                  label="Digite sua senha, minimo 6 caracteres"
                   :rules="CampoObrigatorioSenha"
-                  prepend-icon="mdi-account-lock"
+                  
                   type="password"
-                />
+                >
+                <template v-slot:prepend>
+                  <v-icon color="primary">mdi-lock</v-icon>
+                </template>
+                </v-text-field>
               </v-flex>
               <v-flex xs12 md8>
                 <v-text-field
                   v-model="confirmSenha"
-                  label="Confirmar a senha"
+                  label="Confirme a sua senha"
                   :rules="CampoObrigatorioSenha"
-                  prepend-icon="mdi-account-lock"
+                  
                   type="password"
-                />
+                >
+                <template v-slot:prepend>
+                  <v-icon color="primary">mdi-lock-check</v-icon>
+                </template>
+                </v-text-field>
               </v-flex>
             </v-layout>
           </v-layout>
@@ -53,6 +71,8 @@
           </v-container>
           <v-layout column align-center justify-center>
             <v-checkbox
+            
+            class="secondary--text"
               v-model="agreeTerms"
               :label="`Eu concordo com os`"
             ></v-checkbox>
@@ -66,7 +86,7 @@
               >
             </v-layout>
             
-            <v-btn block rounded outlined color="#FE938C" v-show="!loading" @click="confirmar">Confirmar</v-btn>
+            <v-btn block outlined class="buttonConfirm font-weight-bold" v-show="!loading" @click="confirmar">Confirmar</v-btn>
             <v-progress-circular
               v-show="loading"
               indeterminate

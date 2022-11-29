@@ -60,10 +60,13 @@
           </v-row></v-col>
       </v-row>
     </v-container>
-    <v-container fluid class="text-center" >
-      <v-btn class="buttonSearch" rounded outlined @click="$router.push({name:'tornar'})"
+    <v-container fluid class="text-center pl-16 pr-16" >
+      <div class="pl-16 pr-16">
+        <v-btn class="buttonSearch" block rounded outlined @click="$router.push({name:'tornar'})"
             >Comece agora</v-btn
           >
+      </div>
+      
     </v-container>
     
   </v-app>

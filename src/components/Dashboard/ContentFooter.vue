@@ -1,5 +1,5 @@
 <template>
-  <v-app style="background-color: #19180A !important; width: 100%;">
+  <v-app style="background-color: #100C08 !important; width: 100%;">
     <v-container ma-0 pa-0 fluid >
     <v-img :src="wave" ></v-img>
     <v-footer class="backgroundFooter" >
@@ -58,7 +58,7 @@ export default {
   background-image: url('../../img/wave-down.svg');
   background-size:     cover;                      /* <------ */
   background-repeat:   no-repeat;
-  background-color: #19180A;
+  background-color: #100C08;
 }
 
 </style>

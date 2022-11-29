@@ -214,7 +214,7 @@
     
     <ContentFooter ma-0 pr-0 pl-0 fluid class="mx-auto" />
     <v-overlay :value="getPaymentCheck"  >
-      <v-slide-x-transition v-show="getPaymentCheck" mode="in" hide-on-leave="true">
+      <v-slide-x-transition v-show="getPaymentCheck" mode="in">
         <v-card
         elevation="12"
         class="pt-6 pb-6 mr-5 ml-5"

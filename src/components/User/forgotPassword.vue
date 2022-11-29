@@ -38,6 +38,7 @@
                       :rules="emailRules"
                       v-model="schemaUser.email"
                     ></v-text-field>
+                    
                   </v-container>
 
                   <v-container fluid>
@@ -70,7 +71,7 @@
                       />
                     </v-col>
                     <v-col cols="12" class="d-flex justify-center align-center">
-                      <v-btn text class="pinkyBackground white--text" to="/entrar">
+                      <v-btn text outlined color="primary" block to="/entrar">
                         Já tenho uma conta
                       </v-btn>
                     </v-col>

@@ -42,12 +42,12 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container fluid class="text-center textComeceDefault">
-      <v-row justify="center">
-        <v-col cols="12" md="8" sm="10" lg="8" xl="10">
-          <v-subheader class="white--text">O que <span class="textColorDefault ml-1">entregamos?</span> </v-subheader>
-          <v-row>
-            <v-col>
+    <v-container fluid  pa-12 class="text-center textComeceDefault d-flex align-center justify-center">
+      <v-row class="d-flex justify-center">
+        <v-col cols="12" md="8" sm="8" lg="8" xl="8">
+          <v-subheader class="white--text text-center text-sm-start text-md-start text-lg-start text-xl-start">O que <span class="textColorDefault ml-1">entregamos?</span> </v-subheader>
+          <v-row class="d-flex justify-center">
+            <v-col cols="6" sm="3" md="4" lg="2" xl="2" class="d-flex">
               <v-card class="pa-2 flex-grow-1 cardPartners" width="120">
             <v-row no-gutters>
               <v-col cols="12" lg="7" class="d-flex justify-end">
@@ -77,10 +77,10 @@
             </v-row>
           </v-card>
             </v-col>
-            <v-col>
+            <v-col cols="6" sm="3" md="4" lg="2" xl="2" class="d-flex">
               <v-card class="pa-2 flex-grow-1 cardPartners" width="120">
             <v-row no-gutters>
-              <v-col cols="12" lg="7" class="d-flex justify-end">
+              <v-col cols="12" lg="7" class="d-flex justify-end" >
                 
                   <v-icon small color="red">mdi-check-decagram</v-icon>
                 
@@ -107,7 +107,7 @@
             </v-row>
           </v-card>
             </v-col>
-            <v-col>
+            <v-col cols="6" sm="3" md="4" lg="2" xl="2" class="d-flex">
               <v-card class="pa-2 flex-grow-1 cardPartners" width="120">
             <v-row no-gutters>
               <v-col cols="12" lg="7" class="d-flex justify-end">
@@ -137,7 +137,7 @@
             </v-row>
           </v-card>
             </v-col>
-            <v-col>
+            <v-col cols="6" sm="3" md="4" lg="2" xl="2" class="d-flex">
               <v-card class="pa-2 flex-grow-1 cardPartners" width="120">
             <v-row no-gutters>
               <v-col cols="12" lg="7" class="d-flex justify-end">
@@ -167,7 +167,7 @@
             </v-row>
           </v-card>
             </v-col>
-            <v-col>
+            <v-col cols="6" sm="3" md="4" lg="2" xl="2" class="d-flex">
               <v-card class="pa-2 flex-grow-1 cardPartners" width="120">
             <v-row no-gutters>
               <v-col cols="12" lg="7" class="d-flex justify-end">

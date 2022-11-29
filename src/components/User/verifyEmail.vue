@@ -18,13 +18,13 @@
               Está pronto para começar usar a <span class="cardVerify">SemFila?</span>
             </p>
             <p class="verifyEmail">
-              Clique no botão iniciar para autenticar sua conta.
+              Clique no botão "autenticar agora" para autenticar sua conta.
             </p>
             
           </v-card-text>
           <v-card-actions pa-5>
             <v-layout align-center justify-center pa-2>
-            <v-btn v-show="!loading" @click="verifyEmail" color="success" padded :elevation="5">Iniciar</v-btn>
+            <v-btn v-show="!loading" @click="verifyEmail" color="primary" padded :elevation="5">Autenticar agora</v-btn>
             <v-progress-circular
               v-show="loading"
               indeterminate
@@ -105,7 +105,7 @@ export default {
     },
   },
   created() {
-    console.log(this.id)
+    
     this.verify(this.id).then((response) => {
       //Ao criar, verificar
       if (this.getRespostaUser) {
@@ -116,12 +116,12 @@ export default {
       } else {
         
         this.popError(this.getMessageUser);
-        
+        /*
         setTimeout(function(){ 
           this.$router.push({
             name: "home",
         }) }.bind(this), 3000);
-        
+        */
         
       }
     });
@@ -132,7 +132,7 @@ export default {
 <style scoped>
    @import "../Dashboard/home.module.css";
   .card-layout{
-    background-color:rgb(254,147,140);
+    background-color:#100C08;
   }
   p {
     color:white;

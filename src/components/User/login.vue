@@ -1,12 +1,12 @@
 <template>
-  <v-app>
+  <v-app >
     <v-container fluid fill-height class="background d-flex">
       <v-row class="justify-center align-center mx-auto">
         <v-col cols="12" md="6"></v-col>
         <v-col cols="12" md="6">
           <v-container class="">
             <v-row no-gutters class="justify-center align-center">
-              <v-card>
+              <v-card class="backgroundSingUpEmail">
                 <v-col cols="12" v-if="select">
                   <v-btn text block v-if="createAccount" @click="backSignIn"
                     ><v-icon small>mdi-arrow-left</v-icon>Voltar</v-btn
@@ -30,19 +30,19 @@
                 <v-col cols="12"  v-if="!select"
                   ><v-card-subtitle
                    
-                    class="text-center mt-n10 SubTitleCard"
+                    class="text-center black--text mt-n10 SubTitleCard"
                     >Como deseja continuar?</v-card-subtitle
                   ></v-col
                 >
 
                 <v-col cols="12" v-if="!select">
                   <v-container>
-                    <v-btn block text outlined @click="openEmail(false)"
+                    <v-btn class="black--text font-weight-bold" block text outlined @click="openEmail(false)"
                       >Entrar com Email</v-btn
                     >
                   </v-container>
                   <v-container>
-                    <v-btn block text @click="openEmail(true)"
+                    <v-btn block text class="black--text font-weight-bold" @click="openEmail(true)"
                       >Criar minha conta</v-btn
                     >
                   </v-container>

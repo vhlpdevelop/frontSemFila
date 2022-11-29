@@ -13,7 +13,7 @@
           ></v-skeleton-loader>
         <v-col cols="12" >
           <v-row 
-          v-show="!firstLoad"
+          v-if="!firstLoad"
             no-gutters
             xs="1"
             sm="1"
@@ -94,17 +94,18 @@
                     </v-col>
                     
                   </v-row>
-                  <v-snackbar v-model="snackSucesso" color="success">
-      <v-layout justify-space-around align-center>{{ snackMsg }}</v-layout>
-    </v-snackbar>
-    <v-snackbar v-model="snackErro" color="error">
-      <v-layout justify-space-around align-center>{{ snackMsg }}</v-layout>
-    </v-snackbar>
+                  
                 </v-card>
               </v-form>
             </v-col>
           </v-row>
         </v-col>
+        <v-snackbar v-model="snackSucesso" color="success">
+      <v-layout justify-space-around align-center>{{ snackMsg }}</v-layout>
+    </v-snackbar>
+    <v-snackbar v-model="snackErro" color="error">
+      <v-layout justify-space-around align-center>{{ snackMsg }}</v-layout>
+    </v-snackbar>
       </v-row>
     </v-container>
     
@@ -160,6 +161,7 @@ export default {
           this.snackErro = false;
           this.snackMsg = this.getMessageUser;
           this.snackSucesso = true;
+          
           setTimeout(
             function (router) {
               router.push({
@@ -169,6 +171,7 @@ export default {
             5000,
             this.$router
           );
+          
         } else {
           this.loading = false;
           this.popError(this.getMessageUser);
@@ -207,16 +210,16 @@ export default {
         
       } else {
         this.popError(this.getMessageUser);
-        /*
+        
         setTimeout(
           function () {
             this.$router.push({
-              name: "login",
+              name: "entrar",
             });
           }.bind(this),
           3000
         );
-        */
+        
       }
     });
   },
