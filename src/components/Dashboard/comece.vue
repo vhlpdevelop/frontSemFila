@@ -6,8 +6,8 @@
       <v-row justify="center">
         <v-col cols="12" md="8" sm="6" lg="6" xl="6">
           <v-container pa-6>
-            <h1 class="mb-12 ">Muito mais que um cardapio digital</h1>
-          <p class=" text-start font-weight-bold pt-12 mt-12 mb-12">
+            <h1 class="mb-12 font-weight-bold textComeceDefault ">Muito mais que um cardapio digital</h1>
+          <p class=" text-start font-weight-bold textComeceDefault pt-12 mt-12 mb-12">
             Somos muito mais que um cardapio digital: somos a proxima tecnologia
             de benefícios e praticidade. E temos Qrcodes de futuro do mundo com
             nossa ideia de expansão. Além de promover mais valorização para quem
@@ -27,7 +27,7 @@
       </p>
       
     </v-container>
-    <v-container fluid style="background-color: rgb(245,245,245) !important;" >
+    <v-container fluid class="backgroundAnchor" >
       <v-row justify="center">
         <v-col cols="12">
           <v-row justify="center" align="center">
@@ -60,8 +60,8 @@
           </v-row></v-col>
       </v-row>
     </v-container>
-    <v-container fluid class="text-center" style="background-color: rgb(245,245,245) !important;">
-      <v-btn color="#FE938C" rounded outlined @click="$router.push({name:'tornar'})"
+    <v-container fluid class="text-center" >
+      <v-btn class="buttonSearch" rounded outlined @click="$router.push({name:'tornar'})"
             >Comece agora</v-btn
           >
     </v-container>
