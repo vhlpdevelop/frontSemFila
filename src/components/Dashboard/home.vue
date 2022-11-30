@@ -120,13 +120,13 @@
                   <v-card height="100px" class="rounded-xl smallcardColor1 flex-grow-1">
                     <v-row no-gutters>
                       <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end">
-                        <p class="smalltextCardSection mb-n2 ml-2">
+                        <span class="smalltextCardSection pa-0 ma-0 mb-n3 ml-2">
                           Pub > 
-                        </p>
+                        </span>
                       </v-col>
-                      <v-col cols="12" sm="6" md="6" lg="6" xl="6"> <v-img
-                          max-width="108"
-                          max-height="100"
+                      <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex"> <v-img
+                        max-width="119"
+                          max-height="108"
                           contain
                           class=" imageShadow"
                           aspect-ratio="1.1"
@@ -140,9 +140,9 @@
                   <v-card height="100px" class="rounded-xl smallcardColor2 flex-grow-1">
                     <v-row no-gutters>
                       <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end"> 
-                        <p class="smalltextCardSection mb-n2 ml-2">
+                        <span class="smalltextCardSection mb-n2 ml-2">
                           Café >
-                        </p> </v-col>
+                        </span> </v-col>
                         <v-col cols="12" sm="6" md="6" lg="6" xl="6"> <v-img
                           max-width="119"
                           max-height="108"
@@ -158,7 +158,7 @@
                 <v-col cols="4" class="d-flex flex-grow-1">
                   <v-card height="100px" class="rounded-xl smallcardColor3 flex-grow-1">
                     <v-row no-gutters>
-                      <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end "><p class="smalltextCardSection mb-n2 ml-2 ">Show ></p> </v-col>
+                      <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end "><span class="smalltextCardSection ml-2 ">Show ></span> </v-col>
                       <v-col cols="12" sm="6" md="6" lg="6" xl="6"> <v-img
                           max-width="119"
                           max-height="108"
