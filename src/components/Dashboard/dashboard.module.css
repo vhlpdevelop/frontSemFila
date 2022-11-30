@@ -66,10 +66,10 @@
 }
 
 .textColorDefault {
-  color: rgb(88, 157, 108) !important;
+  color: #f24236 !important;
 }
 .textColorID {
-  color: rgb(88, 157, 108) !important;
+  color: #f24236 !important;
   align-items: center !important;
   justify-content: center !important;
 }

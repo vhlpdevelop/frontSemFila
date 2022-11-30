@@ -24,8 +24,11 @@
         color:#F24236 !important;
         transition: 0.2s;
 }
+.backgroundCompraTop{
+    background: #100c08 !important;
+}
 .backgroundCompra{
-    background: linear-gradient(0deg, rgba(25,24,10,1) 0%, rgba(251,251,255,1) 3%, rgba(251,251,255,1) 97%, rgba(25,24,10,1) 100%);
+    background: rgba(251,251,255,1);
 }
 .buttonColor{
     color: #F24236 !important;
@@ -33,6 +36,10 @@
 .quantidadeCorner{
     border-radius: 25px;
   border: 1px solid #121212;
+}
+.descriptionClass{
+    
+    background-color: rgb(105,105,105, 0.15);
 }
 .ImportFont{
     font-family: Josefin Sans !important;

@@ -1,5 +1,5 @@
 <template>
-  <v-app style="background-color: #19180A !important">
+  <v-app style="background-color: #100c08 !important">
     <v-toolbar class="backgroundB elevation-12 ml-1 mr-1">
       <topSkeleton></topSkeleton>
       <v-container ma-0 pa-0 fluid v-if="loaded" class="d-flex">
