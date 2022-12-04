@@ -1,19 +1,19 @@
 <template>
-  <v-app style="background-color: rgb(245, 245, 245) !important">
-    <v-container  fluid class="backGroundDestaques">
+  <v-app >
+    <v-container  fluid class="">
       
-        <v-container fluid  fill-height class="d-flex" style="background-color: rgb(245, 245, 245) !important">
+        <v-container fluid  fill-height class="d-flex" >
           <v-row align="center" justify="center" class="mt-3">
-            <v-card style="width: 100%" v-if="getCardapio.cardapio[getCategoria].items.length > 0" class="rounded-xl backGroundDestaques" elevation="5" >
+            <v-card style="width: 100%; background-color: #19180A !important" v-if="getCardapio.cardapio[getCategoria].items.length > 0" class="rounded-xl" elevation="5" >
               <v-row justify="start" class="mt-3 ma-1" no-gutters>
                 <v-col cols="12">
-                  <v-card-title class="ml-6 CategoryName"
+                  <v-card-title class="ml-6 textColorDefault"
                   ><b>{{ getCardapio.cardapio[getCategoria].category_name }}</b>
                   </v-card-title
                 >
                 </v-col>
                 <v-col cols="12" class="ml-6 mt-n6">
-                  <v-subheader>Nós recomendamos para você</v-subheader>
+                  <v-subheader style="color:#FBFBFF !important ">Nós recomendamos para você</v-subheader>
                 </v-col>
                 
               </v-row>
@@ -42,7 +42,7 @@
                           <v-card-title>
                             <v-row>
                               <v-col cols="8">
-                                <p class="text-truncate" style="max-width: 300px">
+                                <p class="text-truncate itemName" style="max-width: 300px">
                                   {{ item.item_name }}
                                 </p>
                                 <v-subheader style="word-break: break-word;">{{

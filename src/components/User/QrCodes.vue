@@ -207,7 +207,7 @@
                                   </v-col>
                                   <v-col cols="12" class="text-center">
                                     <b>
-                                      <span class="">
+                                      <span class="black--text">
                                         {{ item.store_name }}
                                       </span>
                                     </b>
