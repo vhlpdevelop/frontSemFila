@@ -75,7 +75,7 @@
                   <td class="text-center pa-5">
                     <div>
                       <span style="color: grey">Produto</span><br />
-                      <b>
+                      <b class="black--text">
                         {{ props.item.item_name }}
                       </b>
                     </div>
@@ -87,7 +87,7 @@
                       >
                         Valor
                         <br />
-                        <b style="text-decoration: line-through;">
+                        <b class="black--text" style="text-decoration: line-through;">
                           R${{ props.item.price }}
                         </b>
                         <b class="textColorDefault">
@@ -99,7 +99,7 @@
                           }}
                         </b>
                       </div>
-                      <b class="" v-else>
+                      <b class="black--text" v-else>
                         Valor
                         <br />
                         <span class="textColorDefault"
@@ -109,7 +109,7 @@
                     </div>
                   </td>
                   <td class="text-center justify-center align-center pa-5">
-                    <span class="">Quantidade</span>
+                    <span class="black--text">Quantidade</span>
                     <v-row justify="center" align="center">
                       <v-text-field
                         class="mt-3"
@@ -126,7 +126,7 @@
                     <br /><span style="color: grey">Total</span><br />
 
                     <div v-if="props.item.discount_status" class="text-center">
-                      <b style="text-decoration: line-through;"
+                      <b class="black--text" style="text-decoration: line-through;"
                         >R${{ (props.item.price * props.item.qtd).toFixed(2) }}
                       </b>
                       <br />
@@ -162,7 +162,7 @@
                 <tr v-show="checkDesconto">
                   <td>Total sem Desconto</td>
                   <td class="text-right" style="width: 50px">
-                    <b
+                    <b class="black--text"
                       ><s>R${{ parseFloat(total).toFixed(2) }}</s></b
                     >
                   </td>
@@ -170,7 +170,7 @@
                 <tr v-show="checkDesconto">
                   <td class="green--text">Desconto</td>
                   <td class="text-right">
-                    <b>R${{ desconto }}</b>
+                    <b class="black--text">R${{ desconto }}</b>
                   </td>
                 </tr>
                 <tr>
