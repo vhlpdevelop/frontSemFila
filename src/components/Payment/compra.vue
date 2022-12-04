@@ -33,7 +33,7 @@
 
             <v-container class="d-flex align-center justify-center">
               <div class="pl-3 pr-3 mt-6">
-                <v-subheader class="ma-0 pa-0 mb-n3"
+                <v-subheader class="ma-0 pa-0 mb-n3 ml-5"
                   >imagem - {{ itemCompra.item_name }}</v-subheader
                 >
                 <v-img
