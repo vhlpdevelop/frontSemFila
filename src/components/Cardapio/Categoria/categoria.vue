@@ -24,7 +24,8 @@
                   :items="getCardapio.cardapio[getCategoria].items"
                   hide-default-header
                   hide-default-footer
-                  class="d-flex flex-column mh-100 ma-5"
+                  class="d-flex flex-column mh-100 ma-5 "
+                  id="qrcodeTable"
                 >
                   <template v-slot:default="props">
                     <v-row class="fill-height overflow-auto" id="container">
@@ -234,6 +235,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "../cardapio.module.css";
+
+
 </style>

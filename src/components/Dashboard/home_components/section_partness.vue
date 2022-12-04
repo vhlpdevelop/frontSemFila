@@ -20,16 +20,22 @@
               <v-col cols="12" class="d-flex justify-start mt-n5">
                 <v-row no-guters>
                   <v-col cols="5" class="d-flex align-center justify-center">
-                    <v-avatar size="72" tile class="rounded-xl">
-                      <img
-                      src="https://i.ibb.co/7C0YfZF/16124156-680115445505947-4578459704748933120-a.jpg"
-                      />
-                    </v-avatar>
+                    <a href="https://www.instagram.com/estacaocaxara/">
+                      <v-avatar size="72" tile class="rounded-xl" >
+                     
+                     <img 
+                   src="https://i.ibb.co/7C0YfZF/16124156-680115445505947-4578459704748933120-a.jpg" 
+                   />
+                 
+                   
+                 </v-avatar>
+                    </a>
+                    
                   </v-col>
                   <v-col cols="7" class="mt-4">
                     <p class="text-start">
-                      <span class="font-weight-bold white--text"
-                        >Estação Caxara</span
+                      <a class="font-weight-bold white--text" href="https://semfilaapp.netlify.app/estacaocaxara/home" style="text-decoration: none !important"
+                        >Estação Caxara</a
                       >
                     </p>
                     <p class="grey--text text-start mt-n2">Pub</p></v-col
@@ -50,16 +56,19 @@
               <v-col cols="12" class="d-flex justify-start mt-n5">
                 <v-row no-guters class="">
                   <v-col cols="5" class="d-flex align-center justify-center">
-                    <v-avatar size="72" tile class="rounded-xl">
+                    <a href="https://www.instagram.com/vilarebuagastronomia/">
+                      <v-avatar size="72" tile class="rounded-xl">
                       <img
 src="https://i.ibb.co/8PNrS5M/316367768-194472383107412-6487271863465689785-n.jpg"
                       />
                     </v-avatar>
+                    </a>
+                    
                   </v-col>
                   <v-col cols="7" class="mb-n2">
                     <p class="text-start">
-                      <span class="font-weight-bold white--text"
-                        >Vila Rebua Gastronomia</span
+                      <a class="font-weight-bold white--text" href="https://semfilaapp.netlify.app/vilarebuagastronomia/home" style="text-decoration: none !important"
+                        >Vila Rebua Gastronomia</a
                       >
                     </p>
                     <p class="grey--text text-start mt-n2">Restaurante</p></v-col
@@ -80,16 +89,20 @@ src="https://i.ibb.co/8PNrS5M/316367768-194472383107412-6487271863465689785-n.jp
               <v-col cols="12" class="d-flex justify-start mt-n5">
                 <v-row no-guters>
                   <v-col cols="5" class="d-flex align-center justify-center">
-                    <v-avatar size="72" tile  class="rounded-xl">
+                    <a href="https://www.instagram.com/zapizenbonitoms/">
+                      <v-avatar size="72" tile  class="rounded-xl">
                       <img
                       src="https://i.ibb.co/rp2wrSM/301571642-1105104720091168-745642818850234750-n.jpg"
                       />
                     </v-avatar>
+                    </a>
+
+                   
                   </v-col>
                   <v-col cols="7" class="mt-4">
                     <p class="text-start">
-                      <span class="font-weight-bold white--text"
-                        >Zapi Zen</span
+                      <a class="font-weight-bold white--text" href="https://semfilaapp.netlify.app/zapizen/home" style="text-decoration: none !important"
+                        >Zapi Zen</a
                       >
                     </p>
                     <p class="grey--text text-start mt-n2">Restaurante</p></v-col
@@ -110,16 +123,19 @@ src="https://i.ibb.co/8PNrS5M/316367768-194472383107412-6487271863465689785-n.jp
               <v-col cols="12" class="d-flex justify-start mt-n5">
                 <v-row no-guters>
                   <v-col cols="5" class="d-flex align-center justify-center">
-                    <v-avatar size="72" tile class="rounded-xl">
+                    <a href="https://www.instagram.com/labonitabarerestaurante/">
+                      <v-avatar size="72" tile class="rounded-xl">
                       <img
                         src="https://i.ibb.co/GPwtWMk/43182921-257320734973261-8112687738852999168-n.jpg"
                       />
                     </v-avatar>
+                    </a>  
+                   
                   </v-col>
                   <v-col cols="7" class="mt-4">
                     <p class="text-start">
-                      <span class="font-weight-bold white--text"
-                        >La Bonita</span
+                      <a class="font-weight-bold white--text" href="https://semfilaapp.netlify.app/labonita/home" style="text-decoration: none !important"
+                        >La Bonita</a
                       >
                     </p>
                     <p class="grey--text text-start mt-n2">Bar</p></v-col

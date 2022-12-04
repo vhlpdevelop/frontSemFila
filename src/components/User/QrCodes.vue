@@ -50,6 +50,7 @@
                   :headers="headers"
                   :items="qrcodes"
                   hide-default-header
+                  id="qrcodeTable"
                   class="d-flex flex-column mh-100 ma-1"
                 >
                   <template v-slot:default="props">
@@ -624,7 +625,22 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
+::v-deep  .v-data-footer {
+  color:white !important;
+}
+
+::v-deep .v-data-footer .v-select__slot{
+  background:white !important;
+}
+
+::v-deep .v-data-footer .v-data-footer__icons-before .v-btn .v-btn__content .v-icon{
+  color: white !important;
+}
+::v-deep .v-data-footer .v-data-footer__icons-after .v-btn .v-btn__content .v-icon{
+  color: white !important;
+}
 .menuPosition {
   background-color: #ddd;
   position: relative !important;

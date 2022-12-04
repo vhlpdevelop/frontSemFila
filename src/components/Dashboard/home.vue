@@ -51,11 +51,12 @@
                         </v-row>
                       </v-col>
                       <v-col cols="12" lg="6" md="6" xl="6" class="d-flex align-center justify-sm-center align-sm-center"  order-xl="1" order-lg="1" order-md="1" order-sm="2" order="2">
-                            <p 
+                            <a
                             class="ml-3 mt-1 optionCard "
+                            href="https://semfila-portal.netlify.app/"
                             >
                               Inscreva-se >
-                            </p>
+                      </a>
                       </v-col>
                       <v-col cols="12" lg="6" md="6" xl="6" order-xl="2" order-lg="2" order-md="2" order-sm="1" order="1" class="mt-n4">
                         <div class="d-flex justify-sm-center">
@@ -85,11 +86,12 @@
                         </v-row>
                       </v-col>
                       <v-col cols="12" lg="6" md="6" xl="6" class="d-flex align-center justify-sm-center"  order-xl="1" order-lg="1" order-md="1" order-sm="2" order="2">
-                            <p 
+                            <a 
                             class="ml-3 mt-1 optionCard "
+                            href="https://semfila-portal.netlify.app/"
                             >
                               Cadastre-se >
-                            </p>
+                      </a>
                       </v-col>
                       <v-col cols="12" lg="6" md="6" xl="6" order-xl="2" order-lg="2" order-md="2" order-sm="1" order="1" class=" mt-n4 ">
                         <div class="d-flex justify-sm-center">
@@ -120,9 +122,9 @@
                   <v-card height="100px" class="rounded-xl smallcardColor1 flex-grow-1">
                     <v-row no-gutters>
                       <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end">
-                        <span class="smalltextCardSection pa-0 ma-0 mb-n3 ml-2">
+                        <a href="https://semfila-portal.netlify.app/" class="smalltextCardSection pa-0 ma-0 mb-n3 ml-2">
                           Pub > 
-                        </span>
+                        </a>
                       </v-col>
                       <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex"> <v-img
                         max-width="119"
@@ -140,9 +142,9 @@
                   <v-card height="100px" class="rounded-xl smallcardColor2 flex-grow-1">
                     <v-row no-gutters>
                       <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end"> 
-                        <span class="smalltextCardSection mb-n2 ml-2">
+                        <a href="https://semfila-portal.netlify.app/" class="smalltextCardSection mb-n2 ml-2">
                           Café >
-                        </span> </v-col>
+                        </a> </v-col>
                         <v-col cols="12" sm="6" md="6" lg="6" xl="6"> <v-img
                           max-width="119"
                           max-height="108"
@@ -158,7 +160,7 @@
                 <v-col cols="4" class="d-flex flex-grow-1">
                   <v-card height="100px" class="rounded-xl smallcardColor3 flex-grow-1">
                     <v-row no-gutters>
-                      <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end "><span class="smalltextCardSection ml-2 ">Show ></span> </v-col>
+                      <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end "><a href="https://semfila-portal.netlify.app/" class="smalltextCardSection ml-2 ">Show ></a> </v-col>
                       <v-col cols="12" sm="6" md="6" lg="6" xl="6"> <v-img
                           max-width="119"
                           max-height="108"

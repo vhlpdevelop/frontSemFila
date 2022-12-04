@@ -227,6 +227,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "./cardapio.module.css";
 </style>

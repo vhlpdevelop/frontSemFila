@@ -13,7 +13,8 @@
 .optionCard{
     border-radius: 15px;
   background: rgb(25,24,10,0.75);
-  color: #E8E8E7;
+  color: #E8E8E7 !important;
+  text-decoration: none !important;
   padding: 10px;
   padding-right: 20%;
   
@@ -187,6 +188,7 @@
         color: #E8E8E7 !important;
         font-size: 1.2rem !important;
         text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
     }
     
 }
@@ -212,6 +214,7 @@
         color: #E8E8E7 !important;
         font-size: 1.3rem !important;
         text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
     }
     .backgroundComece{
         background-image: url("https://i.ibb.co/bJtXM92/teste-img.png"), -webkit-linear-gradient(top,  #912820 0%,#c2352b 12%,#da3b31 17%,#da3b31 17%,#f24236 32%,#f24236 75%,#da3b31 83%,#c2352b 90%,#912820 100%) !important;
@@ -275,6 +278,7 @@
         color: #E8E8E7 !important;
         font-size: 1.5rem !important;
         text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
     }
     .headerTitle{
         font-family: Josefin Sans !important;
@@ -339,6 +343,7 @@
         color: #E8E8E7 !important;
         font-size: 1.5rem !important;
         text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
     }
     .headerTitle{
         font-family: Josefin Sans !important;
@@ -403,6 +408,7 @@
         color: #E8E8E7 !important;
         font-size: 1.7rem !important;
         text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
     }
     .headerTitle{
         font-family: Josefin Sans !important;
@@ -465,6 +471,7 @@
         color: #E8E8E7 !important;
         font-size: 1.7rem !important;
         text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
     }
     .headerTitle{
         font-family: Josefin Sans !important;
