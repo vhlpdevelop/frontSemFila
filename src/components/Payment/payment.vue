@@ -8,7 +8,7 @@
       <v-row>
         <v-col cols="12" md="10" lg="10" xl="10">
           <v-card tile elevation="10">
-            <v-card-title style="word-break: break-word" class="text-center"
+            <v-card-title style="word-break: break-word" class="text-center black--text"
               >Selecione o tipo de Pagamento</v-card-title
             >
             <v-row class="pa-5">
@@ -26,7 +26,7 @@
                       <v-row no-gutters>
                         <v-col cols="12" md="6">
                           <p>
-                            <b>Empresa: CORRE CUTIA </b>
+                            <b>Empresa: SEM FILA </b>
                           </p>
                         </v-col>
                         <v-col cols="12" md="6">
