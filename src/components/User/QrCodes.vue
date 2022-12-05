@@ -416,7 +416,7 @@
                 </v-container>
                 <v-container fluid fill-height>
                   <v-row justify="center" align="center">
-                    <h1 class="pa-5 text-justify">
+                    <h1 class="pa-5 text-justify black--text">
                       Aproxime-se de um atendente do local para aprovar seu
                       QrCode. Mostre o QrCode. O Atendente deve escanea-lo com o
                       celular e aprovar quantas unidades você quer retirar.
