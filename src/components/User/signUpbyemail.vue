@@ -1,97 +1,81 @@
 <template>
   <v-app class="backgroundSingUpEmail">
-    <v-layout align-center justify-center  class="backgroundSingUpEmail">
+    <v-layout align-center justify-center class="backgroundSingUpEmail">
       <v-form ref="form">
         <v-container pa-5>
           <v-layout row wrap>
             <v-layout column pa-5>
-              <b class="text-center TitleCard"
-                >Crie sua conta rapidinho</b
-              >
+              <b class="text-center TitleCard">Crie sua conta rapidinho</b>
               <v-flex xs12 md8>
-                <v-text-field
-                  v-model="schemaUser.email"
-                  label="Digite seu Email"
-                  :rules="CampoObrigatorio"
-                  
-                  color="secondary--text"
-                >
-                <template v-slot:prepend>
-                  <v-icon color="primary">mdi-email</v-icon>
-                </template>
-                
+                <v-text-field v-model="schemaUser.nome" label="Nome Completo" :rules="CampoObrigatorio"
+                  color="secondary--text">
+                  <template v-slot:prepend>
+                    <v-icon color="primary">mdi-account</v-icon>
+                  </template>
+
                 </v-text-field>
               </v-flex>
               <v-flex xs12 md8>
-                <v-text-field
-                  v-model="confEmail"
-                  label="Digte novamente seu email"
-                  :rules="CampoObrigatorio"
-                  
-                >
-                <template v-slot:prepend>
-                  <v-icon color="primary">mdi-email-check</v-icon>
-                </template>
+                <v-text-field v-model="schemaUser.cpf" label="CPF - obrigatório" :rules="CampoObrigatorio"
+                  color="secondary--text">
+                  <template v-slot:prepend>
+                    <v-icon color="primary">mdi-account</v-icon>
+                  </template>
+
+                </v-text-field>
+              </v-flex>
+              <v-flex xs12 md8>
+                <v-text-field v-model="schemaUser.email" label="Digite seu Email" :rules="CampoObrigatorio"
+                  color="secondary--text">
+                  <template v-slot:prepend>
+                    <v-icon color="primary">mdi-email</v-icon>
+                  </template>
+
+                </v-text-field>
+              </v-flex>
+              <v-flex xs12 md8>
+                <v-text-field v-model="confEmail" label="Digte novamente seu email" :rules="CampoObrigatorio">
+                  <template v-slot:prepend>
+                    <v-icon color="primary">mdi-email-check</v-icon>
+                  </template>
                 </v-text-field>
               </v-flex>
               <!-- CAMPOS SENHA -->
               <v-flex xs12 md8>
-                <v-text-field
-                  v-model="schemaUser.password"
-                  label="Digite sua senha, minimo 6 caracteres"
-                  :rules="CampoObrigatorioSenha"
-                  
-                  type="password"
-                >
-                <template v-slot:prepend>
-                  <v-icon color="primary">mdi-lock</v-icon>
-                </template>
+                <v-text-field v-model="schemaUser.password" label="Digite sua senha, minimo 6 caracteres"
+                  :rules="CampoObrigatorioSenha" type="password">
+                  <template v-slot:prepend>
+                    <v-icon color="primary">mdi-lock</v-icon>
+                  </template>
                 </v-text-field>
               </v-flex>
               <v-flex xs12 md8>
-                <v-text-field
-                  v-model="confirmSenha"
-                  label="Confirme a sua senha"
-                  :rules="CampoObrigatorioSenha"
-                  
-                  type="password"
-                >
-                <template v-slot:prepend>
-                  <v-icon color="primary">mdi-lock-check</v-icon>
-                </template>
+                <v-text-field v-model="confirmSenha" label="Confirme a sua senha" :rules="CampoObrigatorioSenha"
+                  type="password">
+                  <template v-slot:prepend>
+                    <v-icon color="primary">mdi-lock-check</v-icon>
+                  </template>
                 </v-text-field>
               </v-flex>
             </v-layout>
           </v-layout>
           <v-container fluid>
-                <p class="recaptcha pa-5 mt-n10 d-none">
-                  Esse site é protegido pelo reCAPTCHA e está sujeito à Política
-                  de Privacidade e aos Termos de Serviço do Google.
-                </p>
+            <p class="recaptcha pa-5 mt-n10 d-none">
+              Esse site é protegido pelo reCAPTCHA e está sujeito à Política
+              de Privacidade e aos Termos de Serviço do Google.
+            </p>
           </v-container>
           <v-layout column align-center justify-center>
-            <v-checkbox
-            
-            class="secondary--text"
-              v-model="agreeTerms"
-              :label="`Eu concordo com os`"
-            ></v-checkbox>
+            <v-checkbox class="secondary--text" v-model="agreeTerms" :label="`Eu concordo com os`"></v-checkbox>
             <v-layout row class="justify-center align-center mt-n4 pb-3 ma-1">
-              <a @click="$router.push((path = '/TermosdeUso'))" class="mr-1"
-                >Termos de Serviço</a
-              >
+              <a @click="$router.push((path = '/TermosdeUso'))" class="mr-1">Termos de Serviço</a>
               e
-              <a class="ml-1" @click="$router.push((path = '/privacidade'))"
-                >Política de privacidade</a
-              >
+              <a class="ml-1" @click="$router.push((path = '/privacidade'))">Política de privacidade</a>
             </v-layout>
-            
-            <v-btn block outlined class="buttonConfirm font-weight-bold" v-show="!loading" @click="confirmar">Confirmar</v-btn>
-            <v-progress-circular
-              v-show="loading"
-              indeterminate
-              color="primary"
-            />
+
+            <v-btn block outlined class="buttonConfirm font-weight-bold" v-show="!loading"
+              @click="confirmar">Confirmar</v-btn>
+            <v-progress-circular v-show="loading" indeterminate color="primary" />
           </v-layout>
         </v-container>
       </v-form>
@@ -123,6 +107,8 @@ export default {
     schemaUser: {
       email: "",
       password: "",
+      nome: "",
+      cpf: ""
     },
     snackMsg: "",
     confirmSenha: "",
@@ -139,6 +125,26 @@ export default {
       "FazerLogin",
       "callSnack",
     ]),
+    TestaCPF(strCPF) {
+      var Soma;
+      var Resto;
+      Soma = 0;
+      if (strCPF == "00000000000") return false;
+
+      for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+      Resto = (Soma * 10) % 11;
+
+      if ((Resto == 10) || (Resto == 11)) Resto = 0;
+      if (Resto != parseInt(strCPF.substring(9, 10))) return false;
+
+      Soma = 0;
+      for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+      Resto = (Soma * 10) % 11;
+
+      if ((Resto == 10) || (Resto == 11)) Resto = 0;
+      if (Resto != parseInt(strCPF.substring(10, 11))) return false;
+      return true;
+    },
     cadastrar() {
       this.registrarUser(this.schemaUser).then((response) => {
         if (this.getRespostaUser) {
@@ -167,24 +173,40 @@ export default {
     },
     confirmar() {
       this.loading = true;
+      if (!this.TestaCPF(this.schemaUser.cpf)) {
+        this.snackMsg =
+          "CPF inválido.";
+        this.snackErro = true;
+
+        this.loading = false;
+        return;
+      }
+      if(this.schemaUser.nome === ""){
+        this.snackMsg =
+          "Insira o nome.";
+        this.snackErro = true;
+
+        this.loading = false;
+        return;
+      }
       if (this.validateEmail(this.schemaUser.email)) {
-        console.log("2");
+
         if (this.validateEmail(this.confEmail)) {
-          console.log("3");
+
           if (this.confirmEmails()) {
-            console.log("4");
+
             if (this.agreeTerms) {
-              console.log("5");
+
               if (this.confirmSenha === this.schemaUser.password) {
-                console.log("6");
+
                 this.cadastrar();
               } else {
-              this.snackMsg =
-                "Senhas não conferem";
-              this.snackErro = true;
+                this.snackMsg =
+                  "Senhas não conferem";
+                this.snackErro = true;
 
-              this.loading = false;
-            }
+                this.loading = false;
+              }
             } else {
               this.snackMsg =
                 "Para cadastrar é necessário concordar com os termos de uso";

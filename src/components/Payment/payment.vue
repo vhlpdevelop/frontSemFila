@@ -1,16 +1,11 @@
 <template>
   <v-app class="">
-    <v-container
-      fluid
-      fill-height
-      class="pa-5 backgroundCompra d-flex align-start justify-center"
-    >
+    <v-container fluid fill-height class="pa-5 backgroundCompra d-flex align-start justify-center">
       <v-row>
         <v-col cols="12" md="10" lg="10" xl="10">
           <v-card tile elevation="10">
-            <v-card-title style="word-break: break-word" class="text-center black--text"
-              >Selecione o tipo de Pagamento</v-card-title
-            >
+            <v-card-title style="word-break: break-word" class="text-center black--text">Selecione o tipo de
+              Pagamento</v-card-title>
             <v-row class="pa-5">
               <v-col cols="12" md="6">
                 <v-expansion-panels>
@@ -46,46 +41,49 @@
                         </v-col>
                       </v-row>
 
+                      <v-container fluid v-if="!getAuth">
+                        <v-row class="d-flex align-center justify-center">
+                          <v-col cols="12" sm="12" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
+                            <v-text-field v-model="nome" label="Nome Completo" :rules="CampoObrigatorio"
+                              color="secondary--text">
+                              <template v-slot:prepend>
+                                <v-icon color="primary">mdi-account</v-icon>
+                              </template>
+
+                            </v-text-field>
+                          </v-col>
+                          <v-col cols="12" sm="12" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
+                            <v-text-field v-model="cpf" label="CPF" :rules="CampoObrigatorio"
+                              color="secondary--text">
+                              <template v-slot:prepend>
+                                <v-icon color="primary">mdi-account</v-icon>
+                              </template>
+
+                            </v-text-field>
+                          </v-col>
+                        </v-row>
+                      </v-container>
                       <p>
                         Ao clicar no botão pagar, nesta tela irá mostar o codigo
                         de pagamento pix. Copie e cole no seu aplicativo de
                         banco para realizar o pagamento.
                       </p>
+
+
                       <v-row align="center" justify="center">
-                        <v-col cols="10"
-                          ><v-btn
-                            @click="payment('PIX')"
-                            v-show="ButtonToggle"
-                            outlined
-                            rounded
-                            class="buttonColor pr-6 pl-6"
-                            >Pagar com pix</v-btn
-                          ></v-col
-                        >
-                        <v-col cols="10"
-                          ><v-progress-circular
-                            v-show="loading"
-                            indeterminate
-                          ></v-progress-circular
-                        ></v-col>
-                        <v-col cols="10"
-                          ><v-container
-                            fluid
-                            fill-height
-                            v-show="pixReady"
-                            style="background-color: lightgray"
-                            class="mt-2 align-center justify-center"
-                          >
+                        <v-col cols="10"><v-btn @click="payment('PIX')" v-show="ButtonToggle" outlined rounded
+                            class="buttonColor pr-6 pl-6">Pagar com pix</v-btn></v-col>
+                        <v-col cols="10"><v-progress-circular v-show="loading"
+                            indeterminate></v-progress-circular></v-col>
+                        <v-col cols="10"><v-container fluid fill-height v-show="pixReady"
+                            style="background-color: lightgray" class="mt-2 align-center justify-center">
                             <p>Codigo pix gerado</p>
 
-                            <v-btn class="ma-5" text x-small @click="copyCode()"
-                              ><v-subheader>Pix copie e cole</v-subheader
-                              ><v-icon>mdi-clipboard</v-icon></v-btn
-                            >
+                            <v-btn class="ma-5" text x-small @click="copyCode()"><v-subheader>Pix copie e
+                                cole</v-subheader><v-icon>mdi-clipboard</v-icon></v-btn>
 
-                            
-                          </v-container></v-col
-                        >
+
+                          </v-container></v-col>
                       </v-row>
                     </v-expansion-panel-content>
                   </v-expansion-panel>
@@ -137,6 +135,9 @@ export default {
     snackMsg: "",
     total: 0,
     ButtonToggle: true,
+    nome: "",
+    cpf: "",
+    CampoObrigatorio: [(v) => !!v || "Campo obrigatório!"],
     desconto: 0,
     user: {
       endereco: {
@@ -162,6 +163,7 @@ export default {
     ...mapGetters([
       "getRespostaUser",
       "getUser",
+      "getAuth",
       "getStatus",
       "getPlan",
       "getCart",
@@ -170,8 +172,28 @@ export default {
   },
   methods: {
     ...mapActions(["getProfile", "PaymentCheck", "clearCart", "updateProfile"]),
+    TestaCPF(strCPF) {
+      var Soma;
+      var Resto;
+      Soma = 0;
+      if (strCPF == "00000000000") return false;
+
+      for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+      Resto = (Soma * 10) % 11;
+
+      if ((Resto == 10) || (Resto == 11)) Resto = 0;
+      if (Resto != parseInt(strCPF.substring(9, 10))) return false;
+
+      Soma = 0;
+      for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+      Resto = (Soma * 10) % 11;
+
+      if ((Resto == 10) || (Resto == 11)) Resto = 0;
+      if (Resto != parseInt(strCPF.substring(10, 11))) return false;
+      return true;
+    },
     async copyCode() {
-     
+
       try {
         await navigator.clipboard
           .writeText(this.pixCode)
@@ -189,16 +211,34 @@ export default {
       this.snackSucesso = true;
     },
     payment(type) {
+      if (!this.getAuth) { //NÃO ESTA AUTENTICADO, VERIFICAR SE CAMPO NOME E CPF ESTÃO PREENCHIDOS E CORRETOS.
+        if (!this.TestaCPF(this.cpf)) {
+          this.snackSucesso = false;
+          this.snackMsg = "CPF inválido."
+          this.snackErro = true;
+          return;
+        }
+
+        if (this.nome === "") {
+          this.snackSucesso = false;
+          this.snackMsg = "Nome vazio."
+          this.snackErro = true;
+          return;
+        }
+
+      }
       if (this.getCart.length > 0) {
         this.ButtonToggle = false;
         this.loading = true;
-        this.snackAlert = false;
+
         //console.log(this.getUser);
         var object = {
           cart: this.getCart,
           user: 0,
           company_id: this.getCardapio.store.company_id,
           store_id: this.getCardapio.store._id,
+          nome: this.nome,
+          cpf: this.cpf
         };
         if (type === "PIX") {
           object.type = type;

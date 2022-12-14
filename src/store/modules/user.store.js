@@ -259,6 +259,8 @@ const actions = {
         account: {
           pss: itemData.password,
           email: itemData.email,
+          cpf: itemData.cpf,
+          nome: itemData.nome
         },
       };
       try {
