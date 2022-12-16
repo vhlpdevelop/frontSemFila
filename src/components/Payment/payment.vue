@@ -31,7 +31,12 @@
                         </v-col>
                         <v-col cols="12" md="6">
                           <p>
-                            <b>Conta: 1231 </b>
+                            <b>Banco Gerencianet 364 </b>
+                          </p>
+                        </v-col>
+                        <v-col cols="12" md="6">
+                          <p>
+                            <b>Conta: 410302-5 </b>
                           </p>
                         </v-col>
                         <v-col cols="12" md="6">
