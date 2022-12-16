@@ -260,7 +260,7 @@ const actions = {
           pss: itemData.password,
           email: itemData.email,
           cpf: itemData.cpf,
-          nome: itemData.nome
+          name: itemData.name
         },
       };
       try {

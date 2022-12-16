@@ -7,7 +7,7 @@
             <v-layout column pa-5>
               <b class="text-center TitleCard">Crie sua conta rapidinho</b>
               <v-flex xs12 md8>
-                <v-text-field v-model="schemaUser.nome" label="Nome Completo" :rules="CampoObrigatorio"
+                <v-text-field v-model="schemaUser.name" label="Nome Completo" :rules="CampoObrigatorio"
                   color="secondary--text">
                   <template v-slot:prepend>
                     <v-icon color="primary">mdi-account</v-icon>
@@ -107,7 +107,7 @@ export default {
     schemaUser: {
       email: "",
       password: "",
-      nome: "",
+      name: "",
       cpf: ""
     },
     snackMsg: "",
@@ -131,14 +131,14 @@ export default {
       Soma = 0;
       if (strCPF == "00000000000") return false;
 
-      for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+      for (let i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
       Resto = (Soma * 10) % 11;
 
       if ((Resto == 10) || (Resto == 11)) Resto = 0;
       if (Resto != parseInt(strCPF.substring(9, 10))) return false;
 
       Soma = 0;
-      for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+      for (let i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
       Resto = (Soma * 10) % 11;
 
       if ((Resto == 10) || (Resto == 11)) Resto = 0;
@@ -151,6 +151,9 @@ export default {
           console.log("Ok");
           this.snackSucesso = true;
           this.snackMsg = this.getMessageUser;
+          setTimeout(function (router){
+            router.go(-1)
+          }, 3000, this.$router)
         } else {
           console.log("N ok");
           this.loading = false;
@@ -181,7 +184,7 @@ export default {
         this.loading = false;
         return;
       }
-      if(this.schemaUser.nome === ""){
+      if(this.schemaUser.name === ""){
         this.snackMsg =
           "Insira o nome.";
         this.snackErro = true;
