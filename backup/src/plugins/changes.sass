@@ -1,0 +1,28 @@
+@import '~vuetify/src/styles/styles.sass'
+
+@font-face
+  font-family: 'Josefin Sans'
+  src: url('../font/JosefinSans/JosefinSans-VariableFont_wght.ttf')
+
+
+
+$body-font-family : Josefin Sans
+
+$heading-font-family : Josefin Sans
+
+$headings: map-deep-set($headings, 'h1' 'font-family', $body-font-family)
+$headings: map-deep-set($headings, 'h2' 'font-family', $body-font-family)
+$headings: map-deep-set($headings, 'h3' 'font-family', $body-font-family)
+$headings: map-deep-set($headings, 'h4' 'font-family', $body-font-family)
+$headings: map-deep-set($headings, 'h5' 'font-family', $body-font-family)
+$headings: map-deep-set($headings, 'h6' 'font-family', $body-font-family)
+$headings: map-deep-set($headings, 'subtitle-1' 'font-family', $body-font-family)
+$headings: map-deep-set($headings, 'subtitle-2' 'font-family', $body-font-family)
+$headings: map-deep-set($headings, 'body-1' 'font-family', $body-font-family)
+$headings: map-deep-set($headings, 'body-2' 'font-family', $body-font-family)
+$headings: map-deep-set($headings, 'caption' 'font-family', $body-font-family)
+
+
+%font-choice 
+  font-family: $body-font-family, 'Josefin Sans' !important
+

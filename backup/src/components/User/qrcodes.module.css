@@ -1,0 +1,45 @@
+@font-face {
+    font-family: Josefin Sans;
+    src: url("../../font/JosefinSans/JosefinSans-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: Josefin Slab;
+    src: url("../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
+}
+@media (max-width:320px){
+    * {
+        font-size: 100%;
+        font-family: Josefin Sans;
+       }
+}
+.itemName{
+    font-family: Josefin Sans !important;
+   
+    color: #F24236 !important;
+  }
+.avatarColor {
+    background-color: rgb(219, 205, 204) !important;
+   
+  }
+*{
+    font-family: Josefin Sans;
+}
+.backGroundQrCode {
+    background-color: #19180A !important;;
+  }
+.toolbarColor{
+    background-color: #F24236 !important;
+    color: #F24236 !important;
+}
+.buttonEditQrCode{
+    color: #EAC435 !important;
+}
+.buttonEditQrCode:hover{
+    background-color: rgb(234, 196, 53, 0.1) !important;
+}
+.backGroundQrCode:click{
+    background-color: rgb(234, 196, 53, 0.1)!important;
+}
+.textColorDefault {
+    color: #EAC435 !important;
+  }

@@ -1,0 +1,119 @@
+@font-face {
+  font-family: Josefin Sans;
+  src: url("../../font/JosefinSans/JosefinSans-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: Josefin Slab;
+  src: url("../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
+}
+@media (max-width: 480px) {
+    .drawerSetting{
+        color: #E8E8E7 !important;
+    }
+  .backgroundDash {
+    background-color: rgba(16, 12, 8, 1) !important;
+  }
+  .backgroundB{
+    background-color: rgba(16, 12, 8, 1) !important;
+  }
+}
+@media (max-width: 485px) {
+    .drawerSetting{
+        color: #E8E8E7;
+    }
+  .backgroundDash {
+    background-color: rgba(16, 12, 8, 1) ;
+  }
+  .backgroundB {
+    background-color: rgba(16, 12, 8, 1) ;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) ;
+  }
+}
+@media (max-width: 768px) {
+    .drawerSetting{
+        color: #47463b ;
+    }
+    .backgroundB {
+        background-color: #e8e8e7 ;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) ;
+      }
+  .backgroundDash {
+    background-color: #47463b ;
+  }
+}
+@media (max-width: 992px) {
+  .backgroundDash {
+    background-color: #47463b ;
+  }
+}
+@media (min-width: 993px) {
+  .backgroundDash {
+    background-color: #47463b ;
+  }
+  .backgroundB {
+    background-color: #e8e8e7 ;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) ;
+  }
+}
+@media (min-width: 1200px) {
+  .backgroundDash {
+    background-color: #47463b ;
+  }
+  .backgroundB {
+    background-color: #e8e8e7 ;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 0.2) ;
+  }
+}
+
+.textColorDefault {
+  color: #f24236 !important;
+}
+.textColorID {
+  color: #f24236 !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.backgroundNav {
+  background-color: rgb(228, 239, 241) !important;
+}
+.navText {
+  font-family: Josefin Sans !important;
+  font-size: 0.9em !important;
+  text-decoration: none !important;
+  color: #100c08 !important;
+}
+.navTitle {
+  font-family: Josefin Sans !important;
+  font-size: 1em !important;
+  color: #f24236 !important;
+  -webkit-text-stroke: 0.2px black;
+}
+.navButtonEntrar {
+  font-family: Josefin Sans !important;
+  font-size: 1em !important;
+  background-color: #f24236 !important;
+  box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+}
+.navButtonEntrar .v-btn__content {
+  color: #100c08 !important;
+}
+.navSubMenu {
+  font-family: Josefin Sans !important;
+  font-size: 0.9em !important;
+  color: rgb(66, 129, 164) !important;
+}
+.defaultText {
+  font-family: JosefinSlab !important;
+}
+.buttonCategory {
+  background-color: rgb(66, 129, 164) !important;
+  border-color: rgb(66, 129, 164) !important;
+}
+
+.selectCategory button {
+  border-color: rgb(66, 129, 164) !important;
+}
+
+.linkColor {
+  color: rgb(66, 129, 164) !important;
+}

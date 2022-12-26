@@ -1,0 +1,518 @@
+@font-face {
+    font-family: Josefin Sans;
+    src: url("../../font/JosefinSans/JosefinSans-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: Josefin Slab;
+    src: url("../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
+}
+
+.imageShadow{
+    filter: drop-shadow(10px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.optionCard{
+    border-radius: 15px;
+  background: rgb(25,24,10,0.75);
+  color: #E8E8E7 !important;
+  text-decoration: none !important;
+  padding: 10px;
+  padding-right: 20%;
+  
+}
+
+
+.cardColor1{
+    background-color: #FFD800 !important;
+    box-shadow: 10px 5px 5px 1px rgba(219, 180, 180, 0.25) !important;
+}
+.cardColor2{
+    background-color: #F24236 !important;
+    box-shadow: 10px 5px 5px 1px rgba(219, 180, 180, 0.25) !important;
+}
+
+.searchField{
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25) !important;
+}
+
+.deepTopColor{
+    background-image: linear-gradient(#100C08 70%, #F24236 30%) !important;
+}
+.deepBottomColor{
+    background-image: linear-gradient(#F24236 5%, #100C08 5%) !important;
+    
+}
+.verifyEmail{
+    font-family: Josefin Sans !important;
+}
+.cardVerify{
+    font-family: Josefin Sans !important;
+    color: #F24236 !important;
+    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+
+}
+.backgroundTornar{
+    background-image: url("https://i.ibb.co/t260MTR/5182ae135815275-61eeba8cb745d.jpg") !important;
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center;  
+    text-shadow: 1px 1px black;
+}
+
+.textColorDefault{
+    color: #F24236 !important;
+}
+.textComeceDefault.font-weight-bold {
+    text-shadow: 2px 1px #100C08 !important;
+}
+.textComeceDefault{
+    font-family: Josefin Sans !important;
+    
+}
+.textColorID{
+    color: rgb(88, 157, 108) !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.backgroundAnchor{
+    background-color: #100C08 !important;
+}
+.backgroundNav{
+    background-color: rgb(228, 239, 241) !important;
+}
+.navText{
+    font-family: Josefin Sans !important;
+    font-size: 0.9em !important;
+    text-decoration: none !important;
+    color: #100C08 !important;
+}
+.cardTitle{
+    font-family: Josefin Sans !important;
+    font-size: 2em !important;
+    color: #F24236 !important;
+
+}
+.sheetsPinky{
+    font-family: Josefin Sans !important;
+    font-size: 1em !important;
+    background-color: rgb(254,147,140) !important;
+
+}
+
+.sheetsMarine{
+    font-family: Josefin Sans !important;
+    font-size: 1em !important;
+    background-color: rgb(88, 157, 108) !important;
+
+}
+.navSubMenu{
+    font-family: Josefin Sans !important;
+    font-size: 0.9em !important;
+    color: rgb(66, 129, 164) !important;
+}
+.defaultText{
+    font-family: JosefinSlab !important;
+}
+.buttonCategory{
+    background-color : rgb(66,129,164) !important; 
+    border-color:rgb(66,129,164) !important;
+}
+
+.selectCategory button{
+    border-color:rgb(66,129,164) !important;
+}
+
+.linkColor{
+    color: rgb(66,129,164) !important;
+    
+}
+
+@media only screen and (max-width:320px){
+    .textHeaderPartness{
+        font-size: 1.5rem !important;
+    }
+    .ImageRating{
+        width: 220px !important;
+    }
+    .textHeaderSec3{
+        font-size: 2rem !important;
+    }
+    .backgroundHome{
+    background-color: rgba(16, 12, 8, 1) !important ;
+   }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        text-align: center !important;
+        font-size: 1.5rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 2em !important;
+        -webkit-text-stroke: 0.4px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 1em !important;
+       
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    }
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 0.7em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+        
+    } 
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/bJtXM92/teste-img.png"), -webkit-linear-gradient(top,  #912820 0%,#c2352b 12%,#da3b31 17%,#da3b31 17%,#f24236 32%,#f24236 75%,#da3b31 83%,#c2352b 90%,#912820 100%) !important;
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center;  
+        text-shadow: 2px 1px white;
+    }
+    .smallcardColor1{
+        
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%) !important;
+    }
+    .smallcardColor2{
+        background: linear-gradient(0deg,#97672B 0%,#97672B 100%) !important;
+    }
+    .smallcardColor3{
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 100%) !important;
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.2rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
+    }
+    
+}
+@media screen and (min-width:321px) and (max-width:485px){
+    .ImageRating{
+        width: 220px !important;
+    }
+    .textHeaderSec3{
+        font-size: 2rem !important;
+    }
+    .backgroundHome{
+        background-color: rgba(16, 12, 8, 1) !important;
+    }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.5rem !important;
+        text-align: center !important;
+        margin-bottom: 50px !important;
+        
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.3rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
+    }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/bJtXM92/teste-img.png"), -webkit-linear-gradient(top,  #912820 0%,#c2352b 12%,#da3b31 17%,#da3b31 17%,#f24236 32%,#f24236 75%,#da3b31 83%,#c2352b 90%,#912820 100%) !important;
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center; 
+        text-shadow: 2px 1px white; 
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 2em !important;
+        -webkit-text-stroke: 0.4px black;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+        color: #E8E8E7 !important;
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 1em !important;
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    } 
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 0.7em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+    }
+    .smallcardColor1{
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%) !important;
+       
+        
+    }
+    .smallcardColor2{
+        background: linear-gradient(0deg,#97672B 0%,#97672B 100%) !important;
+        
+    }
+    .smallcardColor3{
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 100%) !important;
+       
+    }
+}
+@media screen and (min-width: 485px) and (max-width:768px){
+    .ImageRating{
+        width: 320px !important;
+    }
+    .textHeaderSec3{
+        font-size: 1.5rem !important;
+    }
+    .backgroundHome{
+        background: linear-gradient(0deg,rgba(16, 12, 8, 1) 0%,rgba(16, 12, 8, 1) 78%, #47463b 78%) !important;
+    }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        font-size: 2rem ;
+        text-align: center !important;
+        margin-bottom: 50px !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.5rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 2.2em !important;
+        -webkit-text-stroke: 0.4px black;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+        color: #E8E8E7 !important;
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 1.2em !important;
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    } 
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 0.7em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+       
+    }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/bJtXM92/teste-img.png"), -webkit-linear-gradient(top,  #912820 0%,#c2352b 12%,#da3b31 17%,#da3b31 17%,#f24236 32%,#f24236 75%,#da3b31 83%,#c2352b 90%,#912820 100%) !important;
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+
+        background-position: center; 
+        text-shadow: 2px 1px white; 
+    }
+    .smallcardColor1{
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%) !important;
+        
+        
+    }
+    .smallcardColor2{
+        background: linear-gradient(0deg,#97672B 0%,#97672B 100%) !important;
+       
+    }
+    .smallcardColor3{
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 100%) !important;
+      
+    }
+}
+@media screen and (min-width: 769px) and (max-width:992px){
+    .ImageRating{
+        width: 320px !important;
+    }
+    .textHeaderSec3{
+        font-size: 2rem !important;
+    }
+    .backgroundHome{
+        background: linear-gradient(0deg,rgba(16, 12, 8, 1) 0%,rgba(16, 12, 8, 1) 78%, #47463b 78%);
+       }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        font-size: 2rem ;
+        text-align: start ;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.5rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 2.5em !important;
+        -webkit-text-stroke: 0.4px black;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+        color: #E8E8E7 !important;
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 1.5em !important;
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    } 
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 0.8em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+        
+    }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/bJtXM92/teste-img.png"), -webkit-linear-gradient(top,  #912820 0%,#c2352b 12%,#da3b31 17%,#da3b31 17%,#f24236 32%,#f24236 75%,#da3b31 83%,#c2352b 90%,#912820 100%) !important;filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#912820', endColorstr='#912820',GradientType=0 ); /* IE6-9 */
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: right;  
+        text-shadow: 2px 1px white;
+    }
+    .smallcardColor1{
+     
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%, #100C08 50%);
+        
+    }
+    .smallcardColor2{
+       
+        background: linear-gradient(0deg,#97672B 0%,#97672B 50%, #100C08 50%) ;
+    }
+    .smallcardColor3{
+    
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 50%, #100C08 50%) ;
+    }
+}
+@media screen and (min-width:993px){
+    .textHeaderPartness{
+        font-size: 1.5rem !important;
+    }
+    .textHeaderSec3{
+        font-size: 1.8rem !important;
+    }
+    .backgroundHome{
+        background: linear-gradient(0deg,rgba(16, 12, 8, 1) 0%,rgba(16, 12, 8, 1) 78%, #47463b 78%) !important;
+       }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        font-size: 2rem !important;
+        margin-bottom: 50px !important;
+        text-align: start ;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.7rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 3em !important;
+        -webkit-text-stroke: 0.4px black;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+        color: #E8E8E7 !important;
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 1.8em !important;
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    } 
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 0.8em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+        
+    }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/bJtXM92/teste-img.png"), -webkit-linear-gradient(top,  #912820 0%,#c2352b 12%,#da3b31 17%,#da3b31 17%,#f24236 32%,#f24236 75%,#da3b31 83%,#c2352b 90%,#912820 100%) !important;
+
+        background-size:     cover;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: center center; 
+        text-shadow: 2px 1px white; 
+    }
+    .smallcardColor1{
+        background-color: #FF671F !important;
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%, #100C08 50%) !important;
+        
+    }
+    .smallcardColor2{
+        background-color: #97672B !important;
+        background: linear-gradient(0deg,#97672B 0%,#97672B 50%, #100C08 50%) !important;
+    }
+    .smallcardColor3{
+        background-color: #7B68EE !important;
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 50%, #100C08 50%) !important;
+    }
+}
+@media screen and (min-width:1200px){
+    .textHeaderSec3{
+        font-size: 2rem !important;
+    }
+    .backgroundHome{
+        background: linear-gradient(0deg,rgba(16, 12, 8, 1) 0%,rgba(16, 12, 8, 1) 78%, #47463b 78%) !important;
+       }
+    .textCardSection{
+        color: #E8E8E7 !important;
+        font-size: 2rem !important;
+        margin-bottom: 50px !important;
+        text-align: start ;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+    }
+    .smalltextCardSection{
+        color: #E8E8E7 !important;
+        font-size: 1.7rem !important;
+        text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
+        text-decoration: none !important;
+    }
+    .headerTitle{
+        font-family: Josefin Sans !important;
+        font-size: 3.2em !important;
+        -webkit-text-stroke: 0.4px black;
+        text-shadow: 10px 4px rgba(0, 0, 0, 0.25);
+        color: #E8E8E7 !important;
+    }
+    .headersubTitle{
+        font-family: Josefin Sans !important;
+        font-size: 2em !important;
+        -webkit-text-stroke: 0.2px black;
+        color: #E8E8E7 !important;
+        text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
+    }
+    .buttonSearch{
+        font-family: Josefin Sans !important;
+        font-size: 1em !important;
+        background-color: #F24236 !important;
+    box-shadow: 7px 6px 5px 1px rgba(0, 0, 0, 0.25);
+       
+    }
+    .backgroundComece{
+        background-image: url("https://i.ibb.co/bJtXM92/teste-img.png"), -webkit-linear-gradient(top,  #912820 0%,#c2352b 12%,#da3b31 17%,#da3b31 17%,#f24236 32%,#f24236 75%,#da3b31 83%,#c2352b 90%,#912820 100%) !important;
+
+        background-size:     contain;                      /* <------ */
+        background-repeat:   no-repeat;
+        background-position: 85%;  
+        text-shadow: 2px 1px white;
+    }
+    .smallcardColor1{
+        background-color: #FF671F !important;
+        background: linear-gradient(0deg,#FF671F 0%,#FF671F 50%, #100C08 50%) !important;
+        
+    }
+    .smallcardColor2{
+        background-color: #97672B !important;
+        background: linear-gradient(0deg,#97672B 0%,#97672B 50%, #100C08 50%) !important;
+    }
+    .smallcardColor3{
+        background-color: #7B68EE !important;
+        background: linear-gradient(0deg,#7B68EE 0%,#7B68EE 50%, #100C08 50%) !important;
+    }
+}

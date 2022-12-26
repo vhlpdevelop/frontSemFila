@@ -1,0 +1,118 @@
+@font-face {
+  font-family: Josefin Sans;
+  src: url("../../font/JosefinSans/JosefinSans-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: Josefin Slab;
+  src: url("../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
+}
+.backgroundSingUpEmail{
+  background-color: #ffff !important;
+}
+.background{
+    background-image: url("../../img/login_semfila.png");
+    object-fit: contain !important;
+    background-position: center !important;
+    width:100%; height:100%;
+    
+}
+.backgroundColor{
+  background: rgb(158, 52, 37, 0.5);
+
+  border-radius: 0% 100% 100% 0%
+}
+.buttonConfirm{
+  font-family: Josefin Sans !important;
+  font-size: 1em !important;
+  border-radius: 20px !important;
+  color: #F24236 !important;
+  
+  -webkit-font-smoothing: antialiased;
+ 
+}
+.containerSpace{
+  height: 700px !important;
+}
+html * {
+  font-family: Josefin Sans;
+}
+.TitleCard {
+  font-size: 1.8em !important;
+  color: #F24236 !important;
+  font-family: Josefin Slab;
+}
+.SubTitleCard {
+  font-size: 1.5em !important;
+  font-family: Josefin Slab;
+}
+.textImp {
+  font-size: 1.2em !important;
+  color: #F24236 !important;
+  font-family: Josefin Slab;
+}
+.buttonCategory{
+  background-color : #F24236 !important; 
+}
+.termos {
+  font-size: 0.8em !important;
+}
+
+.termosLinks {
+  font-size: 0.8em !important;
+  padding-left: 0.3em;
+}
+.recaptcha {
+  font-size: 0.8em !important;
+  padding-top: 1em;
+}
+.TitleCard2 {
+  font-size: 1.3em !important;
+  color: rgb(55,80,92) !important;
+  font-family: Josefin Slab;
+}
+.pinkyBackground{
+  background-color: #FFD800 !important;
+}
+.fontSlab {
+  font-family: Josefin Slab;
+}
+.fontSans {
+  font-family: Josefin Sans;
+  font-size: 1em;
+}
+
+.border {
+  border-top: 1px solid #bbbbbb;
+  padding: 45px 0 10px;
+  margin-top: 40px;
+  margin-left: calc(50% - 40vw);
+  margin-right: calc(50% - 40vw);
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -o-flexbox;
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+}
+
+@media (min-width: 320px) and (max-width: 480px){
+  .containerSpace{
+    height: 510px !important;
+  }
+  .background{
+      background: url("../../img/login_semfila.png"), rgb(158, 52, 37, 0.5);;
+      background-size: contain;
+      background-repeat: no-repeat;
+     
+  
+      height: 300px !important;
+   
+      
+  }
+  .backgroundColor{
+    background: rgb(158, 52, 37, 0.5);
+  
+    border-radius: 0% 0% 0% 0%
+  }
+}

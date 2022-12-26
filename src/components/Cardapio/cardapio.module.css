@@ -1,0 +1,264 @@
+@font-face {
+  font-family: Josefin Sans;
+  src: url("../../font/JosefinSans/JosefinSans-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: Josefin Slab;
+  src: url("../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
+}
+.titleText {
+  font-family: Josefin Sans !important;
+  font-size: 1.2em !important;
+}
+@font-face {
+  font-family: Josefin Sans;
+  src: url("../../font/JosefinSans/JosefinSans-VariableFont_wght.ttf");
+}
+@font-face {
+  font-family: Josefin Slab;
+  src: url("../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
+}
+.cardDestaques {
+  background-image: linear-gradient(
+    to bottom,
+    rgb(251,251,255, 0.1),
+    #121212 5%,
+    #121212 95%,
+    rgb(251,251,255, 0.1)
+  ) !important;
+  -webkit-border-radius: 24px !important;
+  -moz-border-radius: 24px !important;
+  border-radius: 24px !important;
+  border: none !important;
+  overflow:hidden;
+}
+.PrimaryColor{
+  color: #F24236 !important;
+}
+.secondaryColor{
+  color: #EAC435 !important;
+}
+.thirdColor{
+  color: #19180A !important;
+}
+.pinkColorText {
+  font-family: Josefin Sans !important;
+  font-size: 1em !important;
+  color: #F24236 !important;
+}
+.pinkTitle {
+  font-family: Josefin Sans !important;
+  font-size: 1.3em !important;
+  color: #F24236 !important;
+}
+@media (max-width: 320px) {
+  .headerTitle {
+    font-family: Josefin Sans !important;
+    font-size: 2em !important;
+    color: #EAC435 !important;
+  }
+  .headersubTitle {
+    font-family: Josefin Sans !important;
+    font-size: 1em !important;
+    color: rgb(105, 105, 105) !important;
+  }
+  .buttonSearch {
+    font-family: Josefin Sans !important;
+    font-size: 0.7em !important;
+    background-color: #F24236 !important;
+  }
+  * {
+    font-size: 90%;
+    font-family: Josefin Sans;
+  }
+}
+@media (max-width: 480px) {
+  * {
+    font-size: 94%;
+    font-family: Josefin Sans;
+  }
+  .headerTitle {
+    font-family: Josefin Sans !important;
+    font-size: 2em !important;
+    color: #EAC435 !important;
+  }
+  .headersubTitle {
+    font-family: Josefin Sans !important;
+    font-size: 1em !important;
+    color: rgb(105, 105, 105) !important;
+  }
+  .buttonSearch {
+    font-family: Josefin Sans !important;
+    font-size: 0.7em !important;
+    background-color: #F24236 !important;
+  }
+}
+@media (max-width: 768px) {
+  * {
+    font-size: 98%;
+    font-family: Josefin Sans;
+  }
+  .headerTitle {
+    font-family: Josefin Sans !important;
+    font-size: 2.2em !important;
+    color: #EAC435 !important;
+  }
+  .headersubTitle {
+    font-family: Josefin Sans !important;
+    font-size: 1.2em !important;
+    color: rgb(105, 105, 105) !important;
+  }
+  .buttonSearch {
+    font-family: Josefin Sans !important;
+    font-size: 0.7em !important;
+    background-color: #F24236 !important;
+  }
+}
+@media (max-width: 992px) {
+  * {
+    font-size: 100%;
+    font-family: Josefin Sans;
+  }
+  .headerTitle {
+    font-family: Josefin Sans !important;
+    font-size: 2.5em !important;
+    color: #EAC435 !important;
+  }
+  .headersubTitle {
+    font-family: Josefin Sans !important;
+    font-size: 1.5em !important;
+    color: rgb(105, 105, 105) !important;
+  }
+  .buttonSearch {
+    font-family: Josefin Sans !important;
+    font-size: 0.8em !important;
+    background-color: #F24236 !important;
+  }
+}
+@media (min-width: 993px) {
+  * {
+    font-size: 100%;
+    font-family: Josefin Sans;
+  }
+  .headerTitle {
+    font-family: Josefin Sans !important;
+    font-size: 3em !important;
+    color: #EAC435 !important;
+  }
+  .headersubTitle {
+    font-family: Josefin Sans !important;
+    font-size: 1.8em !important;
+    color: rgb(105, 105, 105) !important;
+  }
+  .buttonSearch {
+    font-family: Josefin Sans !important;
+    font-size: 0.8em !important;
+    background-color: #F24236 !important;
+  }
+}
+@media (min-width: 1200px) {
+  * {
+    font-size: 100%;
+    font-family: Josefin Sans;
+  }
+  .headerTitle {
+    font-family: Josefin Sans !important;
+    font-size: 3.2em !important;
+    color: #EAC435 !important;
+  }
+  .headersubTitle {
+    font-family: Josefin Sans !important;
+    font-size: 2em !important;
+    color: rgb(105, 105, 105) !important;
+  }
+  .buttonSearch {
+    font-family: Josefin Sans !important;
+    font-size: 1em !important;
+    background-color: #F24236 !important;
+  }
+}
+
+.backGroundDestaques {
+  
+}
+
+.backgroundB {
+  background: rgb(25,24,10);
+  background: linear-gradient(0deg, rgba(25,24,10,0.6951155462184874) 0%, rgba(25,24,10,1) 10%);
+}
+.textColorDefault {
+  color: #EAC435 !important;
+}
+.textColorID {
+  color: #EAC435 !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.backgroundNav {
+  background-color: rgb(228, 239, 241) !important;
+}
+.navText {
+  font-family: Josefin Sans !important;
+  font-size: 0.9em !important;
+  color: #EAC435 !important;
+}
+.navTitle {
+  font-family: Josefin Sans !important;
+  font-size: 1.5em !important;
+  color: #F24236 !important;
+}
+.navTitlePromo{
+  font-family: Josefin Sans !important;
+  font-size: 1.5em !important;
+  color: #EAC435 !important;
+}
+
+.navButtonEntrar {
+  font-family: Josefin Sans !important;
+  font-size: 1em !important;
+  background-color: #F24236 !important;
+}
+.navSubMenu {
+  font-family: Josefin Sans !important;
+  font-size: 0.9em !important;
+  color: #EAC435 !important;
+}
+.defaultText {
+  font-family: JosefinSlab !important;
+}
+.buttonCategory {
+  background-color: rgb(66, 129, 164) !important;
+  border-color: rgb(66, 129, 164) !important;
+}
+
+.selectCategory {
+  border-color: rgb(66, 129, 164) !important;
+}
+.itemName{
+  font-family: Josefin Sans !important;
+ 
+  color: #F24236 !important;
+}
+.CategoryName {
+  font-family: Josefin Sans !important;
+  font-size: 1.5em !important;
+  color: #F24236 !important;
+}
+.defaultText {
+  font-family: JosefinSlab !important;
+}
+.toolbarColor {
+  background-color: #F24236 !important;
+  color: #F24236 !important;
+}
+.buttonCategory {
+  background-color: rgb(66, 129, 164) !important;
+}
+
+.selectCategory button {
+  border-color: rgb(66, 129, 164) !important;
+}
+
+.linkColor {
+  color: rgb(66, 129, 164) !important;
+}

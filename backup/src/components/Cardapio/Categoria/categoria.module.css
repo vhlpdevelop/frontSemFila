@@ -1,0 +1,35 @@
+@font-face {
+    font-family: Josefin Sans;
+    src: url("../../../font/JosefinSans/JosefinSans-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: Josefin Slab;
+    src: url("../../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
+}
+.backGroundCategoria {
+    background-color: rgb(245, 245, 245) !important
+  }
+.titleText{
+    font-family: Josefin Sans !important;
+    font-size: 1.2em !important;
+}
+.defaultText{
+    font-family: JosefinSlab !important;
+}
+.buttonCategory{
+    background-color : rgb(66,129,164) !important; 
+}
+.HeaderColor{
+
+}
+.buttonColor{
+    
+}
+.selectCategory button{
+    border-color:rgb(66,129,164) !important;
+}
+
+.linkColor{
+    color: rgb(66,129,164) !important;
+    
+}

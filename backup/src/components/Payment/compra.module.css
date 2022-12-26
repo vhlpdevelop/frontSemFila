@@ -1,0 +1,83 @@
+@font-face {
+    font-family: Josefin Sans;
+    src: url("../../font/JosefinSans/JosefinSans-VariableFont_wght.ttf");
+}
+@font-face {
+    font-family: Josefin Slab;
+    src: url("../../font/JosefinSlab/JosefinSlab-VariableFont_wght.ttf");
+}
+@media (max-width: 480px) {
+    .containerDown{
+        background: linear-gradient(#121212 95%, rgb(245, 245, 245) ) !important;
+        
+        height: 200px;
+        border-top-right-radius: 90px;
+        border-top-left-radius: 90px;
+        
+    }
+}
+.hoverTag{
+    color: #7c7c7c !important;
+    text-decoration: none !important;
+}
+.hoverTag:hover{
+        color:#F24236 !important;
+        transition: 0.2s;
+}
+.backgroundCompraTop{
+    background: #100c08 !important;
+}
+.backgroundCompra{
+    background: rgba(251,251,255,1);
+}
+.buttonColor{
+    color: #F24236 !important;
+}
+.quantidadeCorner{
+    border-radius: 25px;
+  border: 1px solid #121212;
+}
+.descriptionClass{
+    
+    background-color: rgb(105,105,105, 0.15);
+}
+.ImportFont{
+    font-family: Josefin Sans !important;
+    font-size: 2em !important;
+}
+.compraDescription{
+    opacity: 80%;
+    font-family: Josefin Sans !important;
+    font-size: 0.7em !important;
+}
+.subtitleDescription{
+    font-family: Josefin Sans !important;
+    font-size: 0.9em !important;
+}
+.ImportFontNormal{
+    font-family: Josefin Sans !important;
+}
+.greenTitle{
+    font-family: Josefin Sans !important;
+    font-size: 1.5em !important;
+    color: rgb(88, 157, 108) !important;
+}
+.blueTitle{
+    font-family: Josefin Sans !important;
+    font-size: 1em !important;
+    color: rgb(105,105,105) !important
+}
+.pinkTitle{
+    font-family: Josefin Sans !important;
+    font-size: 1em !important;
+    color: #F24236 !important;
+}
+
+.addCarrinho{
+    background-color: #F24236 !important;
+    font-family: Josefin Sans !important;
+}
+.checkOut{
+    color: #EAC435 !important;
+    font-family: Josefin Sans !important;
+}
