@@ -11,7 +11,6 @@
         <v-container fluid ma-0 pa-0 fill-height class="d-flex">
           <v-row align="center" justify="center" class="mt-3">
             <v-card
-              v-if="getQrcodes.length > 0"
               class="rounded-xl backGroundQrCode"
               elevation="0"
             >
@@ -35,7 +34,7 @@
                 </div>
               </v-row>
               <v-divider></v-divider>
-              <v-card-text>
+              <v-card-text v-if="getQrcodes.length > 0">
                 <v-snackbar v-model="snackSucesso" color="success">
                   <v-layout justify-space-around align-center>{{
                     getMessageUser
@@ -76,6 +75,7 @@
                                   :absolute="true"
                                   :value="item.overlay"
                                 >
+                                
                                   <v-progress-circular
                                     indeterminate
                                     class="textColorDefault"
@@ -94,12 +94,13 @@
                                       elevation="12"
                                       class="ma-5 rounded-xl"
                                     >
-                                      <v-card-text>
+                                      <v-card-text class="">
                                         <p class="text-center white--text">
                                           Reembolso foi solicitado, aguarde 7
                                           dias. O valor será enviado para o
                                           destinatário pago.
                                         </p>
+                                        <v-btn outlined color="red" block @click="refreshSingle(item._id, idx)" :loading="buttonChecar" >Checar</v-btn>
                                       </v-card-text>
                                     </v-card>
                                   </v-container>
@@ -229,26 +230,26 @@
                                         @click="showQrCode(item)"
                                         class="text-center d-col align-center justify-center"
                                       >
-                                        <v-subheader class="ml-5 mb-n5"
-                                          >*Clique no QrCode para
+                                        <v-subheader class="ml-5 mb-n4"
+                                          >*Clique na Imagem para
                                           expandir.</v-subheader
                                         >
                                         <v-img
-                                          class="d-none d-sm-flex"
+                                          class="d-none d-sm-flex pa-1"
                                           alt="Avatar"
                                           max-width="300px"
                                           max-height="300px"
                                           :src="
-                                            'data:image/jpeg;base64,' +
-                                            item.QrImage
+                                            
+                                            item.item.image_url
                                           "
                                         ></v-img>
                                         <v-img
-                                          class="d-flex d-sm-none"
+                                          class="d-flex d-sm-none ma-2"
                                           alt="Avatar"
                                           :src="
-                                            'data:image/jpeg;base64,' +
-                                            item.QrImage
+                                            
+                                            item.item.image_url
                                           "
                                           width="300px"
                                           height="300px"
@@ -387,7 +388,7 @@
               </v-card-text>
             </v-card>
             
-            <v-card class="pa-5" v-else> Sem QrCodes para mostrar </v-card>
+            <v-card class="pa-5" v-if="getQrcodes.length <= 0"> Sem QrCodes para mostrar </v-card>
             <v-dialog
               v-if="dialog"
               v-model="dialog"
@@ -395,7 +396,7 @@
               hide-overlay
               transition="dialog-bottom-transition"
             >
-              <v-card class="">
+              <v-card>
                 <v-toolbar class="toolbarColor white--text">
                   <v-btn icon dark @click="dialog = false">
                     <v-icon>mdi-close</v-icon>
@@ -404,7 +405,7 @@
                     >QrCode {{ QrCodeShow.item.item_name }}</v-toolbar-title
                   >
                 </v-toolbar>
-                <v-container fluid fill-height mt-12>
+                <v-container fluid fill-height mt-5 ma-0 pa-0>
                   <v-row justify="center" align="center">
                     <v-img
                       :src="'data:image/jpeg;base64,' + QrCodeShow.QrImage"
@@ -414,13 +415,29 @@
                     ></v-img>
                   </v-row>
                 </v-container>
-                <v-container fluid fill-height>
-                  <v-row justify="center" align="center">
-                    <h1 class="pa-5 text-justify black--text">
+                <v-container fluid>
+                  <v-row justify="center" align="center" >
+                    <v-col cols="12" >
+                      <v-subheader class="pl-5 pr-5 mt-6 text-justify black--text">
                       Aproxime-se de um atendente do local para aprovar seu
-                      QrCode. Mostre o QrCode. O Atendente deve escanea-lo com o
+                      QrCode. Mostre o QrCode. O Atendente deve escaneá-lo com o
                       celular e aprovar quantas unidades você quer retirar.
-                    </h1>
+                    </v-subheader>
+                    </v-col>
+                    <v-col cols="12">
+                      <p class="mt-6">Sobre o QrCode</p>
+                      <v-divider></v-divider>
+                      <v-subheader>{{ QrCodeShow.item.description }}
+                  
+                      </v-subheader>
+                      <v-subheader>Unidades: {{ QrCodeShow.quantity }}</v-subheader>
+                    </v-col>
+                    <v-col cols="12" class="mt-6">
+                      
+                      <v-subheader>Código do QrCode: {{ QrCodeShow._id }}</v-subheader>
+                      <v-subheader>Código do Pedido: {{ QrCodeShow.pedido_id }}</v-subheader>
+                      
+                    </v-col>
                   </v-row>
                 </v-container>
               </v-card>
@@ -453,7 +470,7 @@ export default {
     object_Withdraw: null,
     object_index: "",
     refreshLoader: false,
-    
+    buttonChecar: false,
     singleQrCode: "",
     ChangeQrCode: "",
  
@@ -471,22 +488,6 @@ export default {
       ,
     ],
   }),
-  /*
-  watch: {
-    singleQrCode(item) {
-      this.qrcodes[item].overlay = true;
-      this.refreshSingle(this.qrcodes[item]._id, item)
-    },
-    ChangeQrCode(item){
-    
-      this.qrcodes[item].overlay = false;
-      this.$nextTick( () => {
-        console.log(this.qrcodes[item].overlay)
-      });
-     
-    }
-  },
-  */
 
   methods: {
     ...mapActions([
@@ -525,10 +526,12 @@ export default {
 
     },
     removeQrCode(key) {
-      this.DeleteQrcodes(key).then(() => {});
+      this.DeleteQrcodes(key).then(() => {
+        this.$forceUpdate;
+      });
     },
     triggerOverlay(key) {
-      console.log(this.qrcodes[key].overlay);
+      //console.log(this.qrcodes[key].overlay);
 
       if (this.qrcodes[key].overlay) {
         this.qrcodes[key].overlay = false;
@@ -538,6 +541,7 @@ export default {
       }
     },
     refreshSingle(id, index) {
+      this.buttonChecar = true;
       this.RSingleQrCode(id).then(() => {
         if (this.getRespostaUser) {
           this.$nextTick(() => {
@@ -553,6 +557,7 @@ export default {
           this.snackSucesso = false;
           this.snackErro = true;
         }
+        this.buttonChecar=false;
       });
     },
     refreshQrcodes() {
@@ -571,7 +576,8 @@ export default {
       });
     },
     AssimilateTime(time, createdAt) {
-      if (time === undefined) {
+      if (time === null) {
+       
         const d = new Date(createdAt);
         var seconds = d.getTime() / 1000;
         var expire = seconds + 6 * 730 * 3600;
@@ -580,6 +586,7 @@ export default {
         let data_show = moment(date_expire).format("lll");
         return data_show;
       } else {
+       
         const d = new Date(createdAt);
         var seconds = d.getTime() / 1000;
         var expire = seconds + time * 24 * 3600;
@@ -618,9 +625,19 @@ export default {
   },
 
   created() {
+    
     if (this.getQrcodes.length > 0) {
-      console.log(this.getQrcodes);
+      for(let i=0; i<this.getQrcodes.length; i++){
+        if(this.getQrcodes[i].data){
+          this.getQrcodes[i] = this.getQrcodes[i].data
+          this.getQrcodes[i].overlay=false;
+          this.getQrcodes[i].data = null;
+        }
+      }
+     
       this.qrcodes = this.getQrcodes;
+      this.$forceUpdate;
+
     }
   },
 };

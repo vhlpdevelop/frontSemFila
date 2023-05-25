@@ -13,7 +13,7 @@
           ></v-skeleton-loader>
         <v-card v-show="!loadingSkeleton" class="card-layout verifyEmail white--text">
           <v-card-text class="my-4 text-center subtitle-1">
-            <p><h1 class="verifyEmail ">{{getVerify}}</h1></p>
+            <p><h1 class="verifyEmail white--text">{{getVerify}}</h1></p>
             <p class="verifyEmail">
               Está pronto para começar usar a <span class="cardVerify">SemFila?</span>
             </p>
@@ -116,12 +116,12 @@ export default {
       } else {
         
         this.popError(this.getMessageUser);
-        /*
+        
         setTimeout(function(){ 
           this.$router.push({
             name: "home",
-        }) }.bind(this), 3000);
-        */
+        }) }.bind(this), 5000);
+        
         
       }
     });

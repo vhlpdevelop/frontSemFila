@@ -85,11 +85,11 @@ const objects = [
     item: [
       {
         title: "Afiliado",
-        text: "",
+        text: "Estamos ainda criando esta parte...",
       },
       {
         title: "Tornando-se um",
-        text: "",
+        text: "Estamos ainda criando esta parte...",
       },
     ],
   },

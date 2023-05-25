@@ -1,28 +1,30 @@
 <template>
   <v-app  >
     <router-view  />
+    <footer>
+    <CookieLaw theme="base">
+      
+  <div slot-scope="props">
+    <div slot="message" class="mb-2">
+        Este site usa cookies para garantir que você obtenha a melhor experiência de navegação. Desativar os cookies do site pode prejudicar a funcionalidade de alguns recursos. <router-link style="color: red" to="privacidade">Ler mais</router-link>
+      </div>
+     
+        <button class="mr-6" style="color: red; text-decoration: underline"  @click="props.accept"><span>Concordar e fechar</span></button>
+      
+        <button style="color: grey; text-decoration: underline"  @click="props.close"><span>Discordar e fechar</span></button>
+      
+    
+  
+  </div>
+    </CookieLaw>
+  </footer>
   </v-app>
 </template>
 <script>
-window.cookieconsent.initialise({
-      "palette": {
-        "popup": {
-          "background": "#f5f5f5",
-          "text": "#000000"
-        },
-        "button": {
-          "background": "#f24236",
-          "text": "#ffffff"
-        }
-      },
-      "content": {
-        "message": "Este site usa cookies para garantir que você obtenha a melhor experiência de navegação. Desativar os cookies do site pode prejudicar a funcionalidade de alguns recursos.",
-        "dismiss": "Concordar e fechar",
-        "link": "Ler mais",
-        "href": "https://www.semfila.app/privacidade"
-      }
-    });
+
+    import CookieLaw from 'vue-cookie-law'
   export default {
+    components: { CookieLaw },
     name: 'App',
     metaInfo: {
     title: 'SemFila',
@@ -30,9 +32,6 @@ window.cookieconsent.initialise({
     meta: [
     { name: 'description', content:  'A melhor maneira de comprar na hora. Veja o cardapio e todos os produtos de restaurantes, praças de alimentação, bares e festa, faça seu pedido e retire sua compra.'},           
     ]
-    },
-    components: {
-    //
     },
     data () {
       return {

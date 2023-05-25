@@ -21,7 +21,7 @@
               <template v-slot:item="{ item }">
                 <v-breadcrumbs-item
                   :to="item.to"
-                  class="text-subtitle-2 crumb-item"
+                  class="text-subtitle-2 crumb-item black--text"
                   style="text-decoration: underline"
                   :disabled="item.disabled"
                   exact
@@ -42,7 +42,7 @@
                   contain
                   class="elevation-6"
                   :src="itemCompra.image_url"
-                  lazy-src="https://i.ibb.co/WH7Bj1J/empty.jpg"
+                  lazy-src="https://i.ibb.co/sKgtRT3/empty.png"
                 >
                   <template v-slot:placeholder>
                     <v-row
@@ -98,7 +98,7 @@
                     </v-avatar>
                   </v-badge>
                   <p>
-                    <a class="hoverTag"> Pagamentos e Segurança </a>
+                    <a class="hoverTag" @click="$router.push({name:'termos'})"> Pagamentos e Segurança </a>
                   </p>
                 </v-col>
                 <v-col cols="4" class="text-center">
@@ -107,14 +107,14 @@
                   </v-avatar>
 
                   <p>
-                    <a class="hoverTag"> Política de Devolução </a>
+                    <a class="hoverTag" @click="$router.push({name:'devolucao'})"> Política de Devolução </a>
                   </p>
                 </v-col>
               </v-row>
             </v-container>
           </v-container>
         </v-col>
-        <v-col cols="12" sm="6" md="6" lg="4" xl="6" class="">
+        <v-col cols="12" sm="6" md="6" lg="4" xl="6" class="mt-n8 mt-sm-12 mt-md-0 mt-lg-0 mt-xl-0">
           <v-container fluid class="d-row justify-center align-center">
             <p
               class="mb-0 ImportFont black--text font-weight-bold text-truncate text-center mt-6"
@@ -149,7 +149,8 @@
 
               <v-spacer></v-spacer>
             </v-card-actions>
-            <span class="compraDescription ml-5">Descrição do produto</span>
+            <v-divider></v-divider>
+            <span class="compraDescription ml-5">Descrição</span>
             <v-container fluid class="d-flex align-center justify-center">
               <p
                 class="subtitleDescription text--primary ImportFontNormal text-center"
@@ -179,7 +180,7 @@
               </v-col>
             </v-row>
             </v-container>
-            <v-container fluid class="pr-n12">
+            <v-container fluid class="pr-n12 mt-4">
               <v-row class="d-flex justify-center align-center" no-gutters>
                 <v-col
                   cols="12 mb-n4"
@@ -197,7 +198,7 @@
                     <v-col cols="8" class="d-flex justify-center align-center">
                       <v-slider
                         v-model="itemCompra.qtd"
-                        class="align-center"
+                        class="align-center ml-8 mr-4"
                         :max="max"
                         :min="min"
                         hide-details
@@ -207,11 +208,12 @@
                     <v-col cols="4">
                       <v-text-field
                         v-model="itemCompra.qtd"
-                        class="mt-0 pt-0"
+                        class="mt-0 pt-0 centered-input"
                         :rules="[rules.counter]"
                         hide-details
                         single-line
                         type="number"
+                        
                         :value="1"
                         style="width: 40px"
                       ></v-text-field>
@@ -248,8 +250,8 @@
                 class="checkOut"
                 style="text-decoration: underline"
               >
-                Ir ao checkout
-                <v-icon right style="text-decoration: none !important"
+                Finalizar compra
+                <v-icon class="mt-n1" right style="text-decoration: none !important"
                   >mdi-shopping</v-icon
                 >
               </v-btn>
@@ -257,6 +259,16 @@
           </v-container>
         </v-col>
       </v-row>
+      <v-dialog transition="dialog-bottom-transition" v-model="dialogAddonCart" width="300">
+        <v-card
+        color="primary"
+        dark
+      >
+        <v-card-text class="pa-2 text-center">
+          <p>Produto foi adicionado no carrinho. </p><v-icon right>mdi-cart</v-icon>
+        </v-card-text>
+      </v-card>
+      </v-dialog>
     </v-container>
   </v-app>
 </template>
@@ -274,6 +286,7 @@ export default {
     qtd: 1,
     min: 1,
     max: 30,
+    dialogAddonCart: false,
     snackErro: false,
     snackSucesso: false,
     route: "",
@@ -317,6 +330,7 @@ export default {
         //console.log(this.item.num)
         this.addCart(this.itemCompra).then((response) => {
           //Após colocar no carrinho, mostrar ao usuário
+          this.dialogAddonCart = true;
           this.$gtag.event('add_to_card', { method: 'Google' })
         });
       }
@@ -373,8 +387,6 @@ export default {
 @import "./compra.module.css";
 .avatarColor {
   background-color: rgb(242, 66, 54, 0.4) !important;
-}
-.centered-input {
 }
 .centered-input >>> input {
   text-align: center;

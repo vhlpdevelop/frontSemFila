@@ -24,7 +24,7 @@
       <v-row justify="center">
         <v-col cols="12" md="8" sm="10" lg="8" xl="10">
           <v-subheader class="white--text"
-            >O que é <span class="textColorDefault ml-1">SemFila</span>
+            >O que é <span class="textColorDefaultDashBoard ml-1">SemFila</span>
           </v-subheader>
           <v-divider dark></v-divider>
           <p class="pa-5 textGrow">
@@ -32,14 +32,14 @@
             realiza compras com o estabelecimento e apresenta um QrCode que
             possui dados criptografados do pedido realizado.
           </p>
-          <v-subheader class="white--text ">Nosso <span class="textColorDefault ml-1">conceito</span></v-subheader>
+          <v-subheader class="white--text ">Nosso <span class="textColorDefaultDashBoard ml-1">conceito</span></v-subheader>
           <v-divider dark></v-divider>
           <p class="pa-5 textGrow">
             Queremos cobrar barato para entregar muito. Quem consome pode pedir
             reembolso dos produtos a qualquer momento e se ele não usar o qrcode
             também recebe devolta.
           </p>
-          <v-subheader class="white--text">Onde <span class="textColorDefault ml-1">surgiu</span></v-subheader>
+          <v-subheader class="white--text">Onde <span class="textColorDefaultDashBoard ml-1">surgiu</span></v-subheader>
           <v-divider dark></v-divider>
           <p class="pa-5 textGrow">
             A ideia surgiu em uma cidadezinha do interior de Mato grosso do Sul,
@@ -58,7 +58,7 @@
         <v-col cols="12" md="8" sm="8" lg="8" xl="8">
           <v-subheader
             class="white--text text-center text-sm-start text-md-start text-lg-start text-xl-start"
-            >O que <span class="textColorDefault ml-1">entregamos?</span>
+            >O que <span class="textColorDefaultDashBoard ml-1">entregamos?</span>
           </v-subheader>
           <v-row class="d-flex justify-center">
             <v-col cols="6" sm="3" md="4" lg="2" xl="2" class="d-flex">
@@ -230,7 +230,7 @@
       <v-row justify="center" class="mb-10">
         <v-col cols="12" md="8" sm="10" lg="8" xl="10">
           <h1 class="mt-10 mb-10" style="font-size: 1.5rem">
-            Conheça nosso plano <span class="textColorDefault"> SemFila</span>
+            Conheça nosso plano <span class="textColorDefaultDashBoard"> SemFila</span>
           </h1>
           <v-row justify="center">
             <v-col cols="12" md="6" sm="6" lg="6" xl="6">
@@ -273,7 +273,7 @@
       <v-row justify="center" class="mb-10">
         <v-col cols="12" md="8" sm="10" lg="8" xl="10">
           <h1 class="mt-10 mb-10" style="font-size: 1.5rem">
-            Qualquer um pode ser <span class="textColorDefault"> SemFila</span>
+            Qualquer um pode ser <span class="textColorDefaultDashBoard"> SemFila</span>
           </h1>
           <v-row justify="center">
             <v-col cols="12" md="6" sm="6" lg="6" xl="6">
@@ -292,7 +292,7 @@
             >
             <a href="https://semfila.tech">
               <v-btn rounded outlined class="buttonSearch"
-                >Me tornar um SemFila</v-btn
+                >Quero começar agora</v-btn
               >
             </a>
               

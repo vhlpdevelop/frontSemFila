@@ -145,14 +145,14 @@
         font-size: 1.5rem !important;
         text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
     }
-    .headerTitle{
+    .headerTitleHome{
         font-family: Josefin Sans !important;
         font-size: 2em !important;
         -webkit-text-stroke: 0.4px black;
         color: #E8E8E7 !important;
         text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
     }
-    .headersubTitle{
+    .headersubTitleHome{
         font-family: Josefin Sans !important;
         font-size: 1em !important;
        
@@ -223,14 +223,14 @@
         background-position: center; 
         text-shadow: 2px 1px white; 
     }
-    .headerTitle{
+    .headerTitleHome{
         font-family: Josefin Sans !important;
         font-size: 2em !important;
         -webkit-text-stroke: 0.4px black;
         text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
         color: #E8E8E7 !important;
     }
-    .headersubTitle{
+    .headersubTitleHome{
         font-family: Josefin Sans !important;
         font-size: 1em !important;
         -webkit-text-stroke: 0.2px black;
@@ -280,14 +280,14 @@
         text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
         text-decoration: none !important;
     }
-    .headerTitle{
+    .headerTitleHome{
         font-family: Josefin Sans !important;
         font-size: 2.2em !important;
         -webkit-text-stroke: 0.4px black;
         text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
         color: #E8E8E7 !important;
     }
-    .headersubTitle{
+    .headersubTitleHome{
         font-family: Josefin Sans !important;
         font-size: 1.2em !important;
         -webkit-text-stroke: 0.2px black;
@@ -345,14 +345,14 @@
         text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
         text-decoration: none !important;
     }
-    .headerTitle{
+    .headerTitleHome{
         font-family: Josefin Sans !important;
         font-size: 2.5em !important;
         -webkit-text-stroke: 0.4px black;
         text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
         color: #E8E8E7 !important;
     }
-    .headersubTitle{
+    .headersubTitleHome{
         font-family: Josefin Sans !important;
         font-size: 1.5em !important;
         -webkit-text-stroke: 0.2px black;
@@ -410,14 +410,14 @@
         text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
         text-decoration: none !important;
     }
-    .headerTitle{
+    .headerTitleHome{
         font-family: Josefin Sans !important;
         font-size: 3em !important;
         -webkit-text-stroke: 0.4px black;
         text-shadow: 0px 4px rgba(0, 0, 0, 0.25);
         color: #E8E8E7 !important;
     }
-    .headersubTitle{
+    .headersubTitleHome{
         font-family: Josefin Sans !important;
         font-size: 1.8em !important;
         -webkit-text-stroke: 0.2px black;
@@ -473,14 +473,14 @@
         text-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.25);
         text-decoration: none !important;
     }
-    .headerTitle{
+    .headerTitleHome{
         font-family: Josefin Sans !important;
         font-size: 3.2em !important;
         -webkit-text-stroke: 0.4px black;
         text-shadow: 10px 4px rgba(0, 0, 0, 0.25);
         color: #E8E8E7 !important;
     }
-    .headersubTitle{
+    .headersubTitleHome{
         font-family: Josefin Sans !important;
         font-size: 2em !important;
         -webkit-text-stroke: 0.2px black;

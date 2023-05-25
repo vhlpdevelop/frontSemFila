@@ -214,7 +214,7 @@
           <v-card-text>
             <b>
               Recomendamos que você crie uma conta para guardar todos os seus
-              QrCodes em segurança e assim você pode acessa-los em qualquer
+              QrCodes em segurança e assim você pode acessá-los em qualquer
               lugar.
             </b>
             <p>
@@ -223,10 +223,11 @@
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
-            <v-btn color="green" text @click="moveToLogin()">
+            <v-btn  class="primary white--text mr-6"
+              outlined text @click="moveToLogin()">
               Entrar
             </v-btn>
-            <v-btn color="grey darken-1" text @click="moveToPayment()">
+            <v-btn outlined color="grey darken-1" text @click="moveToPayment()">
               Continuar
             </v-btn>
           </v-card-actions>

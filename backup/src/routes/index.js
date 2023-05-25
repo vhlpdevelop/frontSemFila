@@ -51,6 +51,12 @@ const router = new Router({
           component: () => import('../components/Payment/compra.vue'),
         },
         {
+          path: '/:id/configuracoes',
+          name: 'configCardapio',
+          component: () => import("../components/User/configuration/user_config"),
+          props:true
+        },
+        {
           path:'/:id/checkout',
           name: 'checkout',
           props:true,
@@ -108,6 +114,12 @@ const router = new Router({
           props:true
         },
         {
+          path: '/configuracoes',
+          name: 'config',
+          component: () => import("../components/User/configuration/user_config"),
+          props:true
+        },
+        {
           path: '/QrCodes',
           name: 'qrcodes',
           component: () => import('../components/User/QrCodes.vue'),
@@ -123,9 +135,29 @@ const router = new Router({
           component: () => import('../components/User/termos.vue'),
         },
         {
+          path:'/Devolucao',
+          name: 'devolucao',
+          component: () => import('../components/User/devolucao.vue'),
+        },
+        {
           path:'/comece',
           name: 'comece',
           component: () => import('../components/Dashboard/comece.vue'),
+        },
+        {
+          path:'/carreiras',
+          name: 'carreira',
+          component: () => import('../components/Dashboard/carreiras.vue'),
+        },
+        {
+          path:'/festa&bar',
+          name: 'festaebar',
+          component: () => import('../components/Dashboard/convert/type_one.vue'),
+        },
+        {
+          path:'/restaurante&cafe',
+          name: 'restauranteecafe',
+          component: () => import('../components/Dashboard/convert/type_two.vue'),
         },
         {
           path:'/tornarSemFila',

@@ -4,10 +4,10 @@
       <v-row class="justify-center align-center text-center">
         <v-container fluid fill-height class="d-flex justify-center align-center mb-16 mt-6">
           <v-col cols="12" md="12" lg="12">
-            <span class="headerTitle">Hora de deixar tudo mais fácil</span>
+            <span class="headerTitleHome">Hora de deixar tudo mais fácil</span>
           </v-col>
           <v-col cols="12" md="12" lg="12" class="mt-n8">
-            <span class="headersubTitle">A facilidade está aqui.</span>
+            <span class="headersubTitleHome">A facilidade está aqui.</span>
           </v-col>
           <v-col cols="12" md="12" lg="6" sm="12" xs="12">
             <v-row class="justify-center align-center text-center">
@@ -51,7 +51,7 @@
                       <v-col cols="12" lg="6" md="6" xl="6"
                         class="d-flex align-center justify-sm-center align-sm-center" order-xl="1" order-lg="1"
                         order-md="1" order-sm="2" order="2">
-                        <a class="ml-3 mt-1 optionCard " href="https://semfila-portal.netlify.app/">
+                        <a class="ml-3 mt-1 optionCard " @click="$router.push({name:'restauranteecafe'})">
                           Inscreva-se >
                         </a>
                       </v-col>
@@ -80,7 +80,7 @@
                       </v-col>
                       <v-col cols="12" lg="6" md="6" xl="6" class="d-flex align-center justify-sm-center" order-xl="1"
                         order-lg="1" order-md="1" order-sm="2" order="2">
-                        <a class="ml-3 mt-1 optionCard " href="https://semfila.tech/">
+                        <a class="ml-3 mt-1 optionCard " @click="$router.push({name:'festaebar'})">
                           Cadastre-se >
                         </a>
                       </v-col>
@@ -110,7 +110,7 @@
                   <v-card height="100px" class="rounded-xl smallcardColor1 flex-grow-1">
                     <v-row no-gutters>
                       <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end">
-                        <a href="https://semfila.tech/" class="smalltextCardSection pa-0 ma-0 mb-n3 ml-2">
+                        <a @click="$router.push({name:'festaebar'})" class="smalltextCardSection pa-0 ma-0 mb-n3 ml-2">
                           Pub >
                         </a>
                       </v-col>
@@ -125,7 +125,7 @@
                   <v-card height="100px" class="rounded-xl smallcardColor2 flex-grow-1">
                     <v-row no-gutters>
                       <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end">
-                        <a href="https://semfila.tech/" class="smalltextCardSection mb-n2 ml-2">
+                        <a @click="$router.push({name:'restauranteecafe'})" class="smalltextCardSection mb-n2 ml-2">
                           Café >
                         </a> </v-col>
                       <v-col cols="12" sm="6" md="6" lg="6" xl="6"> <v-img max-width="119" max-height="108" contain
@@ -138,8 +138,8 @@
                 <v-col cols="4" class="d-flex flex-grow-1">
                   <v-card height="100px" class="rounded-xl smallcardColor3 flex-grow-1">
                     <v-row no-gutters>
-                      <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end "><a
-                          href="https://semfila.tech/" class="smalltextCardSection ml-2 ">Show ></a> </v-col>
+                      <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-end ">
+                        <a @click="$router.push({name:'festaebar'})" class="smalltextCardSection ml-2 ">Show ></a> </v-col>
                       <v-col cols="12" sm="6" md="6" lg="6" xl="6"> <v-img max-width="119" max-height="108" contain
                           class="imageShadow"
                           src="https://i.ibb.co/KwPFDbc/kisspng-computer-speakers-sound-box-subwoofer-pro-acoustics-5b1b0bfcaa8be3-3841475715284991966986.png">
@@ -159,7 +159,7 @@
 
         </v-col>
         <v-col cols="12" md="12" lg="12" sm="12" xs="12" class=" mb-6 d-row align-center justify-center">
-          <section_partness class=""></section_partness>
+          <section_partness v-once ></section_partness>
         </v-col>
         <v-col cols="12" md="12" lg="12" sm="12" xl="12" class="">
           <v-container fluid class="pr-10 pl-10">
@@ -177,16 +177,16 @@
                 <v-container fluid fill-height class="white--text d-flex align-center justify-center mt-sm-10">
                   <v-row class="d-flex align-center justify-center mt-lg-16 mt-sm-16 mt-n10">
                     <v-col cols="12">
-                      <h1 class="text-center text-sm-justify text-lg-justify textHeaderSec3">Você tem vontade de criar
+                      <h1 class="text-start text-md-justify text-lg-justify text-sm-justify text-lg-justify textHeaderSec3">Você tem vontade de criar
                         um QrCode?</h1>
                     </v-col>
                     <v-col cols="12">
-                      <p class="text-center text-sm-justify text-lg-justify">Seja um SemFila Tech e veja como é inovar o
+                      <p class="text-start white--text text-sm-justify text-lg-justify text-md-justify textGrow">Seja um SemFila Tech e veja como é inovar o
                         digital.</p>
                     </v-col>
                     <v-col cols="12"
                       class="d-flex align-center justify-center justify-lg-start justify-sm-end justify-md-start ">
-                      <v-btn class="buttonSec3" @click="$router.push({ name: 'tornar' })">Saiba mais</v-btn>
+                      <v-btn outlined class="buttonSec3" @click="$router.push({ name: 'comece' })">Saiba mais</v-btn>
                     </v-col>
                   </v-row>
                 </v-container>
@@ -196,10 +196,10 @@
 
         </v-col>
         <v-col cols="12" class="mt-16">
-          <section_ratings></section_ratings>
+          <section_ratings v-once></section_ratings>
         </v-col>
         <v-col cols="12" class="mt-16">
-          <section_numbers></section_numbers>
+          <section_numbers v-once></section_numbers>
         </v-col>
       </v-row>
     </v-container>
@@ -285,6 +285,9 @@ export default {
 </script>
 
 <style scoped>
+.textGrow {
+  font-size: calc(15px + 0.390625vw) !important;
+}
 .buttonSec3 {
   font-family: Josefin Sans !important;
   font-size: 1em !important;

@@ -21,7 +21,7 @@
                       <v-row no-gutters>
                         <v-col cols="12" md="6">
                           <p>
-                            <b>Empresa: SEM FILA </b>
+                            <b>Empresa: SEM FILA LTDA</b>
                           </p>
                         </v-col>
                         <v-col cols="12" md="6">
@@ -31,7 +31,7 @@
                         </v-col>
                         <v-col cols="12" md="6">
                           <p>
-                            <b>Banco Gerencianet 364 </b>
+                            <b>Instituição EFÍ S.A - IP </b>
                           </p>
                         </v-col>
                         <v-col cols="12" md="6">
@@ -48,6 +48,9 @@
 
                       <v-container fluid v-if="!getAuth">
                         <v-row class="d-flex align-center justify-center">
+                          <v-col cols="12" class="text-center">
+                            <v-subheader>Por favor, preencha o formulário abaixo obrigatório. *</v-subheader>
+                          </v-col>
                           <v-col cols="12" sm="12" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
                             <v-text-field v-model="nome" label="Nome Completo" :rules="CampoObrigatorio"
                               color="secondary--text">
@@ -58,37 +61,49 @@
                             </v-text-field>
                           </v-col>
                           <v-col cols="12" sm="12" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
-                            <v-text-field v-model="cpf" label="CPF" :rules="CampoObrigatorio"
-                              color="secondary--text">
+                            <v-text-field v-model="cpf" label="CPF" :rules="CampoObrigatorio" color="secondary--text" hint="12345678900">
                               <template v-slot:prepend>
                                 <v-icon color="primary">mdi-account</v-icon>
                               </template>
 
                             </v-text-field>
                           </v-col>
+                          <v-col cols="12" sm="12" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
+                            <v-text-field v-model="email" label="Email" :rules="CampoObrigatorio" color="secondary--text" hint="seuemail@email.com">
+                              <template v-slot:prepend>
+                                <v-icon color="primary">mdi-email</v-icon>
+                              </template>
+
+                            </v-text-field>
+                          </v-col>
+
                         </v-row>
                       </v-container>
                       <p>
-                        Ao clicar no botão pagar, nesta tela irá mostar o codigo
-                        de pagamento pix. Copie e cole no seu aplicativo de
-                        banco para realizar o pagamento.
+                        Ao clicar no botão pagar, aguarde a criação do código pix.
+                        Clique em copiar código pix e vá ate seu aplicativo do banco onde se localiza o pix.
+                        Vá ate <span class="primary--text">Pix Copie e Cole</span> e cole o código.
                       </p>
 
 
                       <v-row align="center" justify="center">
-                        <v-col cols="10"><v-btn @click="payment('PIX')" v-show="ButtonToggle" outlined rounded
-                            class="buttonColor pr-6 pl-6">Pagar com pix</v-btn></v-col>
-                        <v-col cols="10"><v-progress-circular v-show="loading"
-                            indeterminate></v-progress-circular></v-col>
-                        <v-col cols="10"><v-container fluid fill-height v-show="pixReady"
-                            style="background-color: lightgray" class="mt-2 align-center justify-center">
+                        <v-col cols="12" class="d-flex align-center justify-center">
+                          <v-btn @click="payment('PIX')" v-show="ButtonToggle" outlined rounded
+                            class="buttonColor pr-6 pl-6">Pagar com pix</v-btn>
+                        </v-col>
+                        <v-col cols="10">
+                          <v-progress-circular v-show="loading" indeterminate></v-progress-circular>
+                        </v-col>
+                        <v-col cols="10">
+                          <v-container fluid fill-height v-show="pixReady" style="background-color: lightgray"
+                            class="mt-2 align-center justify-center">
                             <p>Codigo pix gerado</p>
-
-                            <v-btn class="ma-5" text x-small @click="copyCode()"><v-subheader>Pix copie e
-                                cole</v-subheader><v-icon>mdi-clipboard</v-icon></v-btn>
-
-
-                          </v-container></v-col>
+                            <v-img class="d-none d-sm-flex" :src="imageQRcode"></v-img>
+                            <v-btn class="ma-5" text x-small @click="copyCode()">
+                              <v-subheader>Pix copie e cole</v-subheader><v-icon>mdi-clipboard</v-icon>
+                            </v-btn>
+                          </v-container>
+                        </v-col>
                       </v-row>
                     </v-expansion-panel-content>
                   </v-expansion-panel>
@@ -136,11 +151,13 @@ export default {
     timeout: 5000,
     loadingFrete: false,
     snackSucesso: false,
+    imageQRcode: "",
     snackErro: false,
     snackMsg: "",
     total: 0,
     ButtonToggle: true,
     nome: "",
+    email: "",
     cpf: "",
     CampoObrigatorio: [(v) => !!v || "Campo obrigatório!"],
     desconto: 0,
@@ -169,14 +186,22 @@ export default {
       "getRespostaUser",
       "getUser",
       "getAuth",
+      "getPaymentMsg",
       "getStatus",
       "getPlan",
       "getCart",
       "getCardapio",
+      "getTotalCart",
+      "getPedidoID"
     ]),
   },
   methods: {
-    ...mapActions(["getProfile", "PaymentCheck", "clearCart", "updateProfile"]),
+    ...mapActions(["getProfile", "PaymentCheck", "clearCart", "updateProfile", "fetchTotal"]),
+    validateEmail: function (email) {
+      var re =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    },
     TestaCPF(strCPF) {
       var Soma;
       var Resto;
@@ -223,6 +248,12 @@ export default {
           this.snackErro = true;
           return;
         }
+        if(!this.validateEmail(this.email)){
+          this.snackSucesso = false;
+          this.snackMsg = "Email inválido."
+          this.snackErro = true;
+          return;
+        }
 
         if (this.nome === "") {
           this.snackSucesso = false;
@@ -242,30 +273,39 @@ export default {
           user: 0,
           company_id: this.getCardapio.store.company_id,
           store_id: this.getCardapio.store._id,
+          email: this.email,
           nome: this.nome,
           cpf: this.cpf
         };
         if (type === "PIX") {
           object.type = type;
-          //console.log(object);
-          //console.log("Aqui")
           this.PaymentCheck(object).then((response) => {
-            //console.log("Flag")
-            //console.log(this.getStatus)
+
             if (this.getStatus) {
+              this.fetchTotal(this.getCart).then(() => {
+                this.$gtag.purchase({
+
+                  "transaction_id": this.getPedidoID,
+                  "affiliation": "Google online store",
+                  "value": parseFloat(this.getTotalCart)
+                })
+              });
               this.snackSucesso = true;
               this.snackMsg = "Código pix gerado";
 
               this.loading = false;
               this.pixReady = true;
               this.clearCart();
-              this.$gtag.event('purchase', { method: 'Google' })
-              this.pixCode = this.getPlan;
-              //window.location.href = this.getPlan.url;
+              //this.$gtag.event('purchase', { method: 'Google' })
+
+              this.pixCode = this.getPlan.qrcode;
+              this.imageQRcode = this.getPlan.imagemQrcode;
             } else {
+              this.clearCart();
               this.pixReady = false;
               this.loading = false;
-              this.snackMsg = "Ocorre um erro ao gerar o pix";
+              console.log(this.getPaymentMsg)
+              this.snackMsg = this.getPaymentMsg;
               this.snackErro = true;
             }
           });

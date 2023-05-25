@@ -26,7 +26,7 @@
   </div>
 </template>
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   props: ["load"],
   data: () => ({}),
@@ -35,7 +35,8 @@ export default {
 
   computed: mapGetters(["getLoaded"]),
 
-  created() {},
+  created() {
+  },
 };
 </script>
 

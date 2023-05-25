@@ -78,14 +78,14 @@ export default {
     async login() {
       this.FazerLogin(this.schemaUser).then((response) => {
         if (this.getAuth) {
-          console.log("Ok");
+          //console.log("Ok");
           this.snackSucesso = true;
           this.snackMsg = this.getMessageLogin;
           setTimeout(function (router){
             router.go(-1)
           }, 3000, this.$router)
         } else {
-          console.log("N ok");
+          //console.log("N ok");
           this.loading = false;
           this.snackErro = true;
           this.snackMsg = this.getMessageLogin;

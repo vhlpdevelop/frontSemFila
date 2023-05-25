@@ -1,5 +1,3 @@
-//const url = "http://localhost:3000/cart/";
-const url = "https://api-semfila.api-semfila.online/cart/"
 
 let cart = window.localStorage.getItem('cart');
 let cartSize = window.localStorage.getItem('cartSize');

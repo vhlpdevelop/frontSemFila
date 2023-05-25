@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-container fluid style="position: relative;">
-      <p class="display-3 font-weight-light text-center pa-4">Checkout</p>
+      <p class="display-3 font-weight-light text-center pa-4">Seu carrinho</p>
       <v-row>
         <v-col :cols="12" md="9" sm="12">
         
@@ -204,8 +204,8 @@
         </v-overlay>
     </v-container>
 
-    <v-dialog v-model="dialogAuth" scrollable v-show="dialogAuth">
-      <v-container fluid fill-height>
+    <v-dialog v-model="dialogAuth" persistent v-show="dialogAuth" width="600">
+      <v-container fluid class="pa-2">
         <v-card>
           <v-card-title style="word-break: break-word"
             >Deseja pagar mesmo assim?</v-card-title
@@ -213,9 +213,7 @@
           <v-divider></v-divider>
           <v-card-text>
             <b>
-              Recomendamos que você crie uma conta para guardar todos os seus
-              QrCodes em segurança e assim você pode acessa-los em qualquer
-              lugar.
+              Recomendamos que você crie uma conta
             </b>
             <p>
               Mas, se preferir pode continuar sem.
@@ -223,11 +221,12 @@
           </v-card-text>
           <v-divider></v-divider>
           <v-card-actions>
-            <v-btn color="green" text @click="moveToLogin()">
+            <v-btn small  class="primary white--text mr-2"
+              outlined text @click="moveToLogin()">
               Entrar
             </v-btn>
-            <v-btn color="grey darken-1" text @click="moveToPayment()">
-              Continuar
+            <v-btn small outlined color="grey darken-4" class="" text @click="moveToPayment()">
+              Continuar sem cadastro
             </v-btn>
           </v-card-actions>
         </v-card>

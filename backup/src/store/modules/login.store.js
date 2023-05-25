@@ -52,8 +52,13 @@ const actions = {
         });
       } catch (e) {
         console.log(e);
+        if (e.response.status === 429) {
+          commit("setAuthLogin", false);
+          commit("messageLogin", "Muitas tentativas, aguarde 1 minuto.");
+        } else {
+          commit("messageLogin", "Erro ao enviar verificação");
         commit("setAuthLogin", false);
-        commit("setSession", "");
+        }
         axios.defaults.headers.common["Authorization"] = "";
         window.localStorage.setItem("session", "");
       }
@@ -87,7 +92,13 @@ const actions = {
       })
       .catch(function (error) {
         console.log(error, error.message);
-        commit("messageLogin", error);
+        if (error.response.status === 429) {
+          commit("setAuthLogin", false);
+          commit("messageLogin", "Muitas tentativas, aguarde 1 minuto.");
+        } else {
+          commit("messageLogin", "Erro ao enviar verificação");
+        commit("setAuthLogin", false);
+        }
       });
   },
   async LogOut({commit}){

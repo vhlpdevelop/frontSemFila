@@ -148,14 +148,14 @@ export default {
     cadastrar() {
       this.registrarUser(this.schemaUser).then((response) => {
         if (this.getRespostaUser) {
-          console.log("Ok");
+          //console.log("Ok");
           this.snackSucesso = true;
           this.snackMsg = this.getMessageUser;
           setTimeout(function (router){
             router.go(-1)
           }, 3000, this.$router)
         } else {
-          console.log("N ok");
+          //console.log("N ok");
           this.loading = false;
           this.snackErro = true;
           this.snackMsg = this.getMessageUser;

@@ -1,100 +1,85 @@
 <template>
   <v-app style="background-color: #100c08 !important">
-    <v-toolbar class="backgroundB elevation-12 ml-1 mr-1">
-      <topSkeleton></topSkeleton>
-      <v-container ma-0 pa-0 fluid v-if="loaded" class="d-flex">
-        <v-app-bar-nav-icon
-          class="hidden-md-and-up"
-          style="color: #FBFBFF"
-          @click.stop="drawer = !drawer"
-        />
-        <v-row class="align-center justify-space-around">
-          <v-app-bar-nav-icon
-            class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex"
-            style="color: #FBFBFF"
-            @click.stop="drawer = !drawer"
-          />
-          <v-btn
-            @click="toLink('destaques')"
-            small
-            text
-            class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex navText"
-            >Destaques</v-btn
-          >
-          <a>
-            <h1 v-if="!storeHasImage" class="navTitle" @click="toHome">
-            {{ store.name }}
-          </h1>
-          </a>
+    <topSkeleton></topSkeleton>
+    <v-dialog class="elevation-0" persistent  overlay-color="red" overlay-opacity="1"  v-model="readyLoad">
+      <v-container fill-height fluid class="d-flex align-start justify-center" ma-0 pa-0>
+        <v-row no-gutters>
+          <v-col cols="12" class="d-flex align-start justify-center">
+            <div style="width:300px; height:300px">
+          <v-img :src="semfilaGif"></v-img>
           
-          <v-btn
-            small
-            text
-            @click="toLink('promocoes')"
-            class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex navText"
-            >Promoções</v-btn
-          >
+        </div>
+          </v-col>
+          <v-col cols=12 class="text-center">
+            <p class="textImg">Aguarde um segundo...</p>
+        <p class="textImg">Estamos preparando o cardapio</p>
+        
+          </v-col>
+          <v-col cols="12">
+            <v-progress-linear
+      indeterminate
+      color="yellow darken-2"
+    ></v-progress-linear>
+          </v-col>
+        </v-row>
+        
+         
+      </v-container>
+    </v-dialog>
+    <v-toolbar class="backgroundB elevation-12 ml-1 mr-1">
+      
+      
+      <v-container ma-0 pa-0 fluid v-if="loaded" class="d-flex">
+        <v-app-bar-nav-icon class="hidden-md-and-up" style="color: #FBFBFF" @click.stop="drawer = !drawer" />
+        <v-row class="align-center justify-space-around">
+          <v-app-bar-nav-icon class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex" style="color: #FBFBFF"
+            @click.stop="drawer = !drawer" />
+          <v-btn @click="toLink('destaques')" small text
+            class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex navText">Destaques</v-btn>
+          <v-badge bottom offset-x="75" color="none" offset-y="5">
+            <template v-slot:badge>
+              <StarRating :rating="configRating.rating" :star-style="configRating.starStyle"></StarRating>
+            </template>
+            <a>
+              <h1 v-if="!storeHasImage" class="navTitle" @click="toHome">
+                {{ store.name }}
+              </h1>
+            </a>
+          </v-badge>
+
+
+          <v-btn small text @click="toLink('promocoes')"
+            class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex navText">Promoções</v-btn>
 
           <v-menu class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex">
-            <template
-              v-slot:activator="{ on }"
-              class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex"
-            >
-              <v-btn
-                :loading="loginLoader"
-                text
-                v-on="on"
-                icon
-                fab
-                style="color:#F24236"
-                class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex"
-              >
+            <template v-slot:activator="{ on }" class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex">
+              <v-btn :loading="loginLoader" text v-on="on" icon fab style="color:#F24236"
+                class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex">
                 <v-icon>mdi-account</v-icon>
               </v-btn>
             </template>
             <v-list shaped width="250px" class="pa-2">
-              <v-list-item-group
-                style="width: 100%"
-                class="d-row align-center justify-center"
-              >
+              <v-list-item-group style="width: 100%" class="d-row align-center justify-center">
                 <v-list-item v-show="logged">
-                  <v-list-item-title class="navSubMenu"
-                    >{{ getPerfil }}
-                    <v-icon left class="PrimaryColor"
-                      >mdi-account</v-icon
-                    ></v-list-item-title
-                  >
+                  <v-list-item-title class="navSubMenu">{{ getPerfil }}
+                    <v-icon left class="PrimaryColor">mdi-account</v-icon></v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="pushToLogin" v-show="!logged">
-                  <v-list-item-title class="navSubMenu"
-                    >Entrar</v-list-item-title
-                  >
+                  <v-list-item-title class="navSubMenu">Entrar</v-list-item-title>
                 </v-list-item>
                 <v-divider></v-divider>
-                <v-list-item
-                  @click="toLink('qrcodesOnCardapio')"
-                  class="mb-1 text-center"
-                >
+                <v-list-item @click="toLink('qrcodesOnCardapio')" class="mb-1 text-center">
                   <h1 class="navSubMenu">Meus QrCodes</h1>
                   <v-list-item-icon>
-                    <v-badge
-                      :content="getQrcodesSize.toString()"
-                      value="2"
-                      color="red"
-                      overlap
-                    >
+                    <v-badge :content="getQrcodesSize.toString()" value="2" color="red" overlap>
                       <v-icon>mdi-qrcode</v-icon>
                     </v-badge>
                   </v-list-item-icon>
                 </v-list-item>
                 <v-list-item @click="moveToSettings()" v-show="logged">
-                  <v-list-item-icon
-                    ><v-icon v-text="'mdi-cog'"></v-icon
-                  ></v-list-item-icon>
+                  <v-list-item-icon><v-icon v-text="'mdi-cog'"></v-icon></v-list-item-icon>
                   <v-list-item-content>
-                    <v-list-item-title
-                      v-text="'Configurações'"
-                    ></v-list-item-title>
+                    <v-list-item-title v-text="'Configurações'"></v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
 
@@ -112,12 +97,7 @@
           <v-menu class="d-none d-sm-none d-md-flex d-lg-flex d-xl-flex">
             <template v-slot:activator="{ on }">
               <v-btn text v-on="on" style="color: #FBFBFF">
-                <v-badge
-                  :content="getCartSize.toString()"
-                  value="2"
-                  color="red"
-                  overlap
-                >
+                <v-badge :content="getCartSize.toString()" value="2" color="red" overlap>
                   <v-icon>mdi-cart</v-icon>
                 </v-badge>
               </v-btn>
@@ -125,12 +105,7 @@
             <v-list shaped>
               <v-list-item-group>
                 <v-list-item @click="toLink('checkout')" color="primary">
-                  <v-list-item-icon
-                    ><v-icon
-                      color="primary"
-                      v-text="'mdi-cart-arrow-right'"
-                    ></v-icon
-                  ></v-list-item-icon>
+                  <v-list-item-icon><v-icon color="primary" v-text="'mdi-cart-arrow-right'"></v-icon></v-list-item-icon>
                   <v-list-item-content>
                     <v-list-item-title v-text="'Checkout'"></v-list-item-title>
                   </v-list-item-content>
@@ -147,9 +122,7 @@
                       <v-list-item-title>{{
                         item.item_name
                       }}</v-list-item-title>
-                      <v-list-item-subtitle
-                        >Qtd: {{ item.qtd }}</v-list-item-subtitle
-                      >
+                      <v-list-item-subtitle>Qtd: {{ item.qtd }}</v-list-item-subtitle>
                     </v-list-item-content>
                     <v-list-item-action>
                       <v-btn icon x-small @click="cartEdit(item)">
@@ -169,35 +142,35 @@
         </v-row>
       </v-container>
     </v-toolbar>
-    <v-navigation-drawer
-      v-model="drawer"
-      absolute
-      temporary
-      width="300"
-      class="mx-auto"
-    >
+    <v-navigation-drawer v-model="drawer" absolute temporary width="300" class="mx-auto">
       <v-list class="">
-        <v-list-item @click="toHome" class="mb-1">
-          <v-list-item-icon>
-            <v-icon fab style="color: rgb(55, 80, 92) !important"
-              >mdi-home</v-icon
-            >
-          </v-list-item-icon>
-          <h1 class="navTitle">{{ store.name }}</h1>
+        <v-list-item>
+          <v-row class="d-flex align-center justify-center">
+            <v-col cols="10" class="d-flex align-center justify-start">
+              <a @click="toHome" style="text-decoration:none" class="mb-1 d-flex align-center justify-center">
+
+                
+                  <v-icon class="mr-1 mt-n1" fab style="color: rgb(55, 80, 92) !important">mdi-home</v-icon>
+                
+                <h1 class="navTitle">{{ store.name }}</h1>
+
+              </a>
+            </v-col>
+            <v-col cols="2" class="d-flex align-center justify-center">
+              <v-btn icon @click="openRate()">
+                <v-icon v-if="!ratedReady" color="">mdi-star</v-icon>
+                <v-icon v-else color="yellow">mdi-star</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+
+
         </v-list-item>
         <v-divider />
-        <v-list-item
-          @click="toLink('qrcodesOnCardapio')"
-          class="mb-1 text-center"
-        >
+        <v-list-item @click="toLink('qrcodesOnCardapio')" class="mb-1 text-center">
           <h1 class="navSubMenu">Meus QrCodes</h1>
           <v-list-item-icon>
-            <v-badge
-              :content="getQrcodesSize.toString()"
-              value="2"
-              color="red"
-              overlap
-            >
+            <v-badge :content="getQrcodesSize.toString()" value="2" color="red" overlap>
               <v-icon>mdi-qrcode</v-icon>
             </v-badge>
           </v-list-item-icon>
@@ -207,12 +180,7 @@
             <v-list-item v-on="on" class="mb-1 text-center">
               <h1 class="navSubMenu">Meu carrinho</h1>
               <v-list-item-icon>
-                <v-badge
-                  :content="getCartSize.toString()"
-                  value="2"
-                  color="red"
-                  overlap
-                >
+                <v-badge :content="getCartSize.toString()" value="2" color="red" overlap>
                   <v-icon>mdi-cart</v-icon>
                 </v-badge>
               </v-list-item-icon>
@@ -221,12 +189,7 @@
           <v-list shaped>
             <v-list-item-group>
               <v-list-item @click="toLink('checkout')" color="primary">
-                <v-list-item-icon
-                  ><v-icon
-                    color="primary"
-                    v-text="'mdi-cart-arrow-right'"
-                  ></v-icon
-                ></v-list-item-icon>
+                <v-list-item-icon><v-icon color="primary" v-text="'mdi-cart-arrow-right'"></v-icon></v-list-item-icon>
                 <v-list-item-content>
                   <v-list-item-title v-text="'Checkout'"></v-list-item-title>
                 </v-list-item-content>
@@ -242,8 +205,7 @@
                   <v-list-item-content>
                     <v-list-item-title>{{ item.item_name }}</v-list-item-title>
                     <v-list-item-subtitle>
-                      Qtd: {{ item.qtd }}</v-list-item-subtitle
-                    >
+                      Qtd: {{ item.qtd }}</v-list-item-subtitle>
                   </v-list-item-content>
                   <v-list-item-action>
                     <v-btn icon x-small @click="cartEdit(item)">
@@ -261,24 +223,15 @@
           </v-list>
         </v-menu>
         <v-divider />
-        <v-list-item
-          v-for="(item, index) in subMenu"
-          :key="item.title"
-          @click="toLink(item.to)"
-        >
-          <v-list-item-title class="pinkColorText"
-            >{{ item.title
-            }}<v-icon :color="item.color">{{
-              item.icon
-            }}</v-icon></v-list-item-title
-          >
+        <v-list-item v-for="(item, index) in subMenu" :key="item.title" @click="toLink(item.to)">
+          <v-list-item-title class="pinkColorText">{{
+            item.title
+          }}<v-icon :color="item.color">{{
+  item.icon
+}}</v-icon></v-list-item-title>
         </v-list-item>
 
-        <v-list-item
-          v-for="(item, index) in cardapio"
-          :key="item.category_name"
-          @click="toLinkCategoria(item)"
-        >
+        <v-list-item v-for="(item, index) in cardapio" :key="item.category_name" @click="toLinkCategoria(item)">
           <v-list-item-title class="pinkColorText">{{
             item.category_name
           }}</v-list-item-title>
@@ -289,17 +242,10 @@
           <template v-slot:activator="{ on }">
             <v-list-item v-show="logged" v-on="on">
               <v-list-item-title v-if="loginLoader">
-                <v-progress-circular
-                  indeterminate
-                  color="primary"
-                ></v-progress-circular>
+                <v-progress-circular indeterminate color="primary"></v-progress-circular>
               </v-list-item-title>
-              <v-list-item-title class="navSubMenu" v-else
-                >{{ getPerfil }}
-                <v-icon left class="PrimaryColor"
-                  >mdi-account</v-icon
-                ></v-list-item-title
-              >
+              <v-list-item-title class="navSubMenu" v-else>{{ getPerfil }}
+                <v-icon left class="PrimaryColor">mdi-account</v-icon></v-list-item-title>
             </v-list-item>
             <v-list-item @click="pushToLogin" v-show="!logged">
               <v-list-item-title class="navSubMenu">Entrar</v-list-item-title>
@@ -308,13 +254,9 @@
           <v-list shaped>
             <v-list-item-group>
               <v-list-item @click="moveToSettings()">
-                <v-list-item-icon
-                  ><v-icon v-text="'mdi-cog'"></v-icon
-                ></v-list-item-icon>
+                <v-list-item-icon><v-icon v-text="'mdi-cog'"></v-icon></v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title
-                    v-text="'Configurações'"
-                  ></v-list-item-title>
+                  <v-list-item-title v-text="'Configurações'"></v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
               <v-divider></v-divider>
@@ -330,14 +272,15 @@
             </v-list-item-group>
           </v-list>
         </v-menu>
-        <v-list-item
-          v-for="(item, index) in staticMenu"
-          :key="item.title"
-          @click="toLink(item.path)"
-        >
+        <v-list-item v-for="(item, index) in staticMenu" :key="item.title" @click="toLink(item.path)">
           <v-list-item-title class="thirdColor">{{
             item.title
           }}</v-list-item-title>
+        </v-list-item>
+        <v-list-item @click="openReport()">
+          <v-list-item-title class="thirdColor">
+            Reportar cardapio <v-icon>mdi-alert-box-outline</v-icon>
+          </v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -346,69 +289,96 @@
         <router-view class="view" />
       </transition>
     </v-container>
-    <v-container
-      fluid
-      ma-0
-      pa-0
-      mt-10
-      class="d-flex align-center justify-center"
-    >
+    <v-container fluid ma-0 pa-0 mt-10 class="d-flex align-center justify-center">
       <bodySkeleton></bodySkeleton>
     </v-container>
     <ContentFooter ma-0 pr-0 pl-0 fluid class="mx-auto" />
-    <v-overlay :value="getPaymentCheck"  >
-      <v-slide-x-transition v-show="getPaymentCheck" mode="in">
-        <v-card
-        elevation="12"
-        class="pt-6 pb-6 mr-5 ml-5"
-        style="background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);"
-      >
-        <div class="pyro">
-          <div class="before"></div>
-          <div class="after"></div>
-        </div>
-        <v-row no-gutters>
-          <v-col cols="12" class="d-flex align-center justify-center">
-            <p class=" text-justify font-weight-bold text-sm-h6 text-md-h5 text-lg-h6 text-xl-h5"><v-icon fab left> mdi-qrcode</v-icon>Seu QRCODE chegou!<v-icon fab right> mdi-qrcode</v-icon></p>
-          </v-col>
-          <v-col cols="12" class="mt-6 d-flex align-center justify-center">
-            <v-btn
+    <v-dialog persistent v-model="reportDialog" v-if="getAuth">
 
-              class="white--text buttonSearch pr-12 pl-12"
-              @click="SetPaymentCheck(false)"
-            >
-              Entendi
-            </v-btn>
-          </v-col>
-          <v-col cols="12" class="mt-4 d-flex align-center justify-center">
-            <v-btn
-              text
-              class="text-decoration-underline"
-              style="color: rgb(254, 147, 140) !important;"
-              @click="moveToQrcodes()"
-            >
-              Ver meus QrCodes
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-card>
+      <Report @close="reportDialog = false" max-width="290" :object="getCardapio">
+
+      </Report>
+    </v-dialog>
+    <v-dialog persistent v-model="ratingDialog" v-if="getAuth">
+
+      <Rate @close="ratingDialog = false" max-width="290" :object="getCardapio" @updateRate="ratedReady = true">
+
+      </Rate>
+    </v-dialog>
+    <v-dialog v-model="signupDialog.status">
+
+      <signupWarning persistent @close="signupDialog.status = false" @redirect="pushToLogin()" max-width="290"
+        :object="{ message: signupDialog.message, subtitle: signupDialog.subtitle }">
+
+      </signupWarning>
+    </v-dialog>
+    <v-overlay :value="getPaymentCheck">
+      <v-slide-x-transition v-show="getPaymentCheck" mode="in">
+        <v-card elevation="12" class="pt-6 pb-6 mr-5 ml-5"
+          style="background: linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%);">
+          <div class="pyro">
+            <div class="before"></div>
+            <div class="after"></div>
+          </div>
+          <v-row no-gutters>
+            <v-col cols="12" class="d-flex align-center justify-center">
+              <p class=" text-justify font-weight-bold text-sm-h6 text-md-h5 text-lg-h6 text-xl-h5"><v-icon fab left>
+                  mdi-qrcode</v-icon>Seu QRCODE chegou!<v-icon fab right> mdi-qrcode</v-icon></p>
+            </v-col>
+            <v-col cols="12" class="mt-6 d-flex align-center justify-center">
+              <v-btn class="white--text buttonSearch pr-12 pl-12" @click="SetPaymentCheck(false)">
+                Entendi
+              </v-btn>
+            </v-col>
+            <v-col cols="12" class="mt-4 d-flex align-center justify-center">
+              <v-btn text class="text-decoration-underline" style="color: rgb(254, 147, 140) !important;"
+                @click="moveToQrcodes()">
+                Ver meus QrCodes
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-card>
       </v-slide-x-transition>
-      
+
     </v-overlay>
+    <v-dialog persistent  v-model="errorLoad">
+      <v-card pa-5>
+        <p class="d-flex align-center justify-center pt-6">Sentimos muito</p>
+        <v-card-title class="d-flex align-center justify-center">
+          {{ getResponseMsgCardapio }}
+        </v-card-title>
+        <v-card-actions class="d-flex align-center justify-center">
+          <v-btn outlined color="primary" class="mb-2" @click="returnHome()">Voltar</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    
+    <v-dialog persistent v-model="firstLoad">
+      <stepper @close="closeFirstLoad()"></stepper>
+    </v-dialog>
   </v-app>
 </template>
 
 <script>
 import { mapActions, mapGetters, mapMutations } from "vuex";
 import topSkeleton from "./TopcardapioSkeletonLoader.vue";
-import ContentFooter from "../Dashboard/ContentFooter";
+import ContentFooter from "../Dashboard/ContentFooter.vue";
 import bodySkeleton from "./BodycardapioSkeletonLoader.vue";
-import { EventBus } from "./EventBus";
+import StarRating from 'vue-dynamic-star-rating'
+import Report from "./Report/report.vue"
+import Rate from "./Rating/rate.vue"
 import topCardapio from "./topCardapio.vue";
+import stepper from "./stepper.vue"
+import signupWarning from "../User/signupWarning.vue";
 export default {
   components: {
     topSkeleton,
+    stepper,
     ContentFooter,
+    Rate,
+    StarRating,
+    signupWarning,
+    Report,
     bodySkeleton,
     topCardapio,
   },
@@ -416,6 +386,21 @@ export default {
   data: () => ({
     zIndex: 0,
     snackErro: false,
+    ratedReady: false,
+    errorLoad:false,
+    readyLoad:true,
+    semfilaGif: require("../../img/semfilaPNG.png"),
+    firstLoad: false,
+    configRating: {
+      rating: 5,
+      starStyle: {
+        fullStarColor: '#ed8a19',
+        emptyStarColor: '#737373',
+        starWidth: 10,
+        starHeight: 10
+      }
+    },
+    ratingDialog: false,
     snackSucesso: false,
     loginLoader: false,
     timeout: 5000,
@@ -425,8 +410,14 @@ export default {
     store: "",
     cardapio: "",
     StoreImg: "",
+    signupDialog: {
+      status: false,
+      message: '',
+      subtitle: ''
+    },
     logged: false,
     StoreName: "",
+    reportDialog: false,
     skeletonLoading: true,
     loaded: false,
     staticMenu: [
@@ -455,8 +446,34 @@ export default {
       "checkToken",
       "MovetoCompra",
       "autoLogin",
+      "switchFirstLoad",
+      "switchLoaded"
     ]),
-    moveToQrcodes(){
+    closeFirstLoad(){
+      this.firstLoad = false
+      this.switchFirstLoad();
+    },  
+    openReport() {
+      if (this.getAuth) {
+        this.reportDialog = true;
+      } else {
+
+        this.signupDialog.message = 'Entre na sua Conta.'
+        this.signupDialog.subtitle = 'Para realizar esta ação, será necessário de uma conta. Clique abaixo em Criar conta.'
+        this.signupDialog.status = true;
+      }
+    },
+    openRate() {
+      if (this.getAuth) {
+        this.ratingDialog = true;
+      } else {
+
+        this.signupDialog.message = 'Entre na sua Conta.'
+        this.signupDialog.subtitle = 'Para Avaliar o cardapio, será necessário de uma conta. Clique abaixo em Criar conta.'
+        this.signupDialog.status = true;
+      }
+    },
+    moveToQrcodes() {
       this.SetPaymentCheck(false)
       this.$router.push({
         //arrumar os props
@@ -474,7 +491,8 @@ export default {
     },
     moveToSettings() {
       this.$router.push({
-        name: "settings",
+        name: "configCardapio",
+        params: this.id,
       });
     },
     accountLogOut() {
@@ -567,6 +585,14 @@ export default {
         }
       });
     },
+    returnHome(){
+      this.errorLoad=false;
+      setTimeout(function (router){
+          router.push({
+          name: "dashboard",
+        });
+          }, 1000, this.$router)
+    },  
     async fetcher() {
       await this.fetchCardapio().then(() => {
         if (this.getResponseCardapio) {
@@ -579,7 +605,8 @@ export default {
     },
   },
   computed: mapGetters([
-    "getResponseMsgCardapio, getResponseCardapio",
+    "getResponseMsgCardapio",
+    "getResponseCardapio",
     "getCardapio",
     "getLoaded",
     "getCart",
@@ -590,22 +617,26 @@ export default {
     "getQrcodesSize",
     "getAuth",
     "getPerfil",
+    "getRated",
+    "getRating",
     "getCheckToken",
+    "getFirstLoad"
   ]),
-
   created() {
     ////console.log(JSON.parse(JSON.stringify(this.getQrcodes)))
     ////console.log(this.getQrcodes[0])
     ////console.log(this.id);
-
+    this.switchLoaded();
     this.LoadStore(this.id).then((response) => {
       ////console.log(this.getLoaded);
+      this.readyLoad = false;
       if (this.getLoaded) {
+        
         ////console.log(this.getCardapio);
         if (this.getCardapio !== "") {
-          this.$gtag.event('cardapio-'+this.getCardapio.store.name, { method: 'Google' })
+          this.$gtag.event('cardapio-' + this.getCardapio.store.name, { method: 'Google' })
           this.StoreName = this.getCardapio.store.name;
-          document.title = this.StoreName;
+          document.title = 'Cardapio ' + this.StoreName;
           this.StoreImg = this.getCardapio.store.store_img;
           let aux = this.getCardapio.store.store_img;
           if (aux.length !== 0) {
@@ -614,9 +645,13 @@ export default {
           this.store = this.getCardapio.store;
           this.cardapio = this.getCardapio.cardapio;
           this.loaded = true;
+          this.configRating.rating = this.getRating
+          this.ratedReady = this.getRated
+          this.firstLoad = this.getFirstLoad
         }
         this.loginLoader = true;
-        this.autoLogin().then(() => {
+        if(!this.getAuth){
+          this.autoLogin().then(() => {
           if (this.getAuth) {
             this.loginLoader = false;
             this.logged = true;
@@ -624,35 +659,38 @@ export default {
             this.loginLoader = false;
           }
         });
+        }else{
+          this.loginLoader = false;
+          this.logged = true;
+        }
+        
       } else {
-        this.$router.push({
-          name: "dashboard",
-        });
-      }
+        this.errorLoad = true;
+        
+       }
     });
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 $particles: 60;
 $width: 500;
 $height: 400;
 
 // Create the explosion...
-$box-shadow: ();
-$box-shadow2: ();
+$box-shadow: (
+);
+$box-shadow2: (
+);
+
 @for $i from 0 through $particles {
   $box-shadow: $box-shadow,
-    random($width)-$width /
-      2 +
-      px
-      random($height)-$height /
-      1.2 +
-      px
-      hsl(random(360), 100, 50);
-  $box-shadow2: $box-shadow2, 0 0 #fff;
+  random($width)-$width / 2+px random($height)-$height / 1.2+px hsl(random(360), 100, 50);
+  $box-shadow2: $box-shadow2,
+  0 0 #fff;
 }
+
 @mixin keyframes($animationName) {
   @-webkit-keyframes #{$animationName} {
     @content;
@@ -714,23 +752,19 @@ body {
   overflow: hidden;
 }
 
-.pyro > .before,
-.pyro > .after {
+.pyro>.before,
+.pyro>.after {
   position: absolute;
   width: 4px;
   height: 4px;
   border-radius: 50%;
   box-shadow: $box-shadow2;
-  @include animation(
-    (
-      1s bang ease-out infinite backwards,
+  @include animation((1s bang ease-out infinite backwards,
       1s gravity ease-in infinite backwards,
-      5s position linear infinite backwards
-    )
-  );
+      5s position linear infinite backwards));
 }
 
-.pyro > .after {
+.pyro>.after {
   @include animation-delay((1.25s, 1.25s, 1.25s));
   @include animation-duration((1.25s, 1.25s, 6.25s));
 }
@@ -749,26 +783,31 @@ body {
 }
 
 @include keyframes(position) {
+
   0%,
   19.9% {
     margin-top: 10%;
     margin-left: 40%;
   }
+
   20%,
   39.9% {
     margin-top: 40%;
     margin-left: 30%;
   }
+
   40%,
   59.9% {
     margin-top: 20%;
     margin-left: 70%;
   }
+
   60%,
   79.9% {
     margin-top: 30%;
     margin-left: 20%;
   }
+
   80%,
   99.9% {
     margin-top: 30%;
@@ -777,16 +816,22 @@ body {
 }
 </style>
 <style>
+.v-dialog {
+  box-shadow: none;
+}
 .slide-fade-enter-active {
   transition: all 0.3s ease;
 }
+
 .slide-fade-leave-active {
   transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
+
 .slide-fade-enter,
 .slide-fade-leave-to {
   transform: translateX(10px);
   opacity: 0;
 }
+
 @import "./cardapio.module.css";
 </style>

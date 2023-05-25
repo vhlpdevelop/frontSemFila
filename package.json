@@ -10,6 +10,7 @@
     "start": "npm run dev"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^1.52.1",
     "@vue/shared": "^3.2.45",
     "axios": "^0.21.1",
     "core-js": "^2.6.12",
@@ -25,6 +26,8 @@
     "vue-axios": "^2.1.5",
     "vue-chartjs": "^3.5.1",
     "vue-chartkick": "^0.6.1",
+    "vue-cookie-law": "^1.13.3",
+    "vue-dynamic-star-rating": "^1.0.8",
     "vue-gtag": "^1.16.1",
     "vue-meta": "^2.4.0",
     "vue-router": "^3.4.9",

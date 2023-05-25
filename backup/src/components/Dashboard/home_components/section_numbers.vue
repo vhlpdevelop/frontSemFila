@@ -4,7 +4,7 @@
         <div class="px-4 mx-auto px-sm-6 px-lg-8">
             <div class=" mx-auto text-center">
                 <h2 class="text-md-h3 text-sm-h6 font-weight-bold">Números dizem nossa história</h2>
-                <p class="mt-3 text-xl leading-relaxed text-gray-600 mt-md-8 text-body-1" style="color: #616161">Desde o começo, acompanhe abaixo o que conquistamos até agora.</p>
+                <p class="mt-3 text-xl leading-relaxed text-gray-600 mt-md-8 text-body-1 textGrow" style="color: #616161">Desde o começo, acompanhe abaixo o que conquistamos até agora.</p>
             </div>
 
             <v-row class="grid grid-cols-1 gap-8 mt-10 text-center lg:mt-24 sm:gap-x-8 md:grid-cols-3">
@@ -42,7 +42,9 @@
     }
 </script>
 <style>
-
+.textGrow {
+  font-size: calc(15px + 0.390625vw) !important;
+}
 .backgroundNumbers{
     background: #100C08 !important;
 }

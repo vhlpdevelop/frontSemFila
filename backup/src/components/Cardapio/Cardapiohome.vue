@@ -95,9 +95,17 @@ background: linear-gradient(0deg, rgba(25,24,10,0.6951155462184874) 0%, rgba(25,
                           </v-row>
                           <v-row align="center" justify="center">
                             <p class="mt-n6 pinkColorText"
-                              >R${{
+                              >
+                              <span v-if="itemDestaques[+index+i].discount_status">
+                                R${{
+                                (parseFloat(itemDestaques[+index + i].price) - parseFloat(itemDestaques[+index+i].discount_value) ).toFixed(2)
+                              }}
+                              </span>
+                              <span v-else>
+                                R${{
                                 itemDestaques[+index + i].price
-                              }}</p
+                              }}
+                              </span></p
                             >
                           </v-row>
                           <v-row align="center" justify="center">
@@ -264,6 +272,7 @@ background: linear-gradient(0deg, rgba(25,24,10,0.6951155462184874) 0%, rgba(25,
                   :items="categoria.items"
                   hide-default-header
                   hide-default-footer
+                  disable-pagination
                   class="d-flex flex-column mh-100 "
                 >
                   <template v-slot:default="props">

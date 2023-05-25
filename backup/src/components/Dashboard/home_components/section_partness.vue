@@ -288,7 +288,8 @@ src="https://i.ibb.co/8PNrS5M/316367768-194472383107412-6487271863465689785-n.jp
           <v-card class="cardColorPartner">
             <v-row>
               <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
-                <div class="mt-5">
+                <a @click="$router.push({name:'tornar'})" style="text-decoration: none">
+                  <div class="mt-5">
                   <span class="text-start white--text ">
                   Monte da sua
                 </span>
@@ -296,6 +297,8 @@ src="https://i.ibb.co/8PNrS5M/316367768-194472383107412-6487271863465689785-n.jp
                   Maneira >
                 </p>
                 </div>
+                </a>  
+               
                 
               </v-col>
               <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
@@ -310,7 +313,8 @@ src="https://i.ibb.co/8PNrS5M/316367768-194472383107412-6487271863465689785-n.jp
           <v-card class="cardColorPartner">
             <v-row>
               <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-center justify-center">
-                <div class="mt-5">
+                <a href="https://semfila.tech/" style="text-decoration: none">
+                  <div class="mt-5">
                   <span class="text-start white--text ml-n16">
                     Seu
                   </span>
@@ -324,6 +328,8 @@ src="https://i.ibb.co/8PNrS5M/316367768-194472383107412-6487271863465689785-n.jp
                 </p>
                 
                 </div>
+                </a>
+                
                 
               </v-col>
               <v-col cols="12" sm="6" md="6" lg="6" xl="6" class="d-flex align-center justify-center">

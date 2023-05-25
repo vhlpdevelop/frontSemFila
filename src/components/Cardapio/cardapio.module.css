@@ -52,6 +52,10 @@
   color: #F24236 !important;
 }
 @media (max-width: 320px) {
+  .textImg{
+    font-size: 1.1rem !important;
+    color: rgb(255, 255, 255) !important;
+  }
   .headerTitle {
     font-family: Josefin Sans !important;
     font-size: 2em !important;
@@ -73,6 +77,10 @@
   }
 }
 @media (max-width: 480px) {
+  .textImg{
+    font-size: 1.1rem !important;
+    color: rgb(255, 255, 255) !important;
+  }
   * {
     font-size: 94%;
     font-family: Josefin Sans;
@@ -94,6 +102,10 @@
   }
 }
 @media (max-width: 768px) {
+  .textImg{
+    font-size: 1.1rem !important;
+    color: rgb(255, 255, 255) !important;
+  }
   * {
     font-size: 98%;
     font-family: Josefin Sans;
@@ -115,6 +127,10 @@
   }
 }
 @media (max-width: 992px) {
+  .textImg{
+    font-size: 1.1rem !important;
+    color: rgb(255, 255, 255) !important;
+  }
   * {
     font-size: 100%;
     font-family: Josefin Sans;
@@ -157,6 +173,10 @@
   }
 }
 @media (min-width: 1200px) {
+  .textImg{
+    font-size: 1.1rem !important;
+    color: rgb(255, 255, 255) !important;
+  }
   * {
     font-size: 100%;
     font-family: Josefin Sans;
@@ -205,6 +225,11 @@
 .navTitle {
   font-family: Josefin Sans !important;
   font-size: 1.5em !important;
+  color: #F24236 !important;
+}
+.navTitleMenu{
+  font-family: Josefin Sans !important;
+  font-size: 1em !important;
   color: #F24236 !important;
 }
 .navTitlePromo{

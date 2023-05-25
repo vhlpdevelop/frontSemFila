@@ -1,6 +1,5 @@
 /* eslint-disable spaced-comment */
 // TESTE DO VUEX LOGIN JS
-
 import axios from "axios";
 let Qrcodes = window.localStorage.getItem("Qrcodes");
 if(Qrcodes){
@@ -11,19 +10,15 @@ if(Qrcodes){
   Qrcodes = qrcode
 }
 let QrcodesSize = window.localStorage.getItem("QrcodesSize");
-//const url = "http://localhost:3000/auth/";
-//const baseUrl = "http://localhost:3000/qrcode/";
-//const url = 'http://10.1.1.23:3000/auth/'
+let firstLoader = window.localStorage.getItem("firstLoader");
 const url = "https://api-semfila.api-semfila.online/auth/";
 const baseUrl = "https://api-semfila.api-semfila.online/qrcode/";
-//window.localStorage.clear('Qrcodes')
-//window.localStorage.clear('QrcodesSize')
-
 const state = {
   respostaUser: "",
   messageUser: "",
   users: [],
   verify: "",
+  firstLoad: firstLoader ? JSON.parse(firstLoader) : true,
   Qrcodes: Qrcodes ? Qrcodes : [],
   QrcodesSize: QrcodesSize ? parseInt(QrcodesSize) : 0,
   newQrCode: false,
@@ -39,9 +34,48 @@ const getters = {
   getQrcodes: (state) => state.Qrcodes,
   getQrcodesSize: (state) => state.QrcodesSize,
   getnewQrCode: (state) => state.newQrCode,
+  getFirstLoad: (state) => state.firstLoad
 };
 
 const actions = {
+  async QrcodeUpdate({commit}, itemData){ //Update automático quando usado.
+    if(itemData){
+      commit("refreshSingleQrCode", itemData);
+      commit("updateSizeQrCodes");
+      commit("saveQrCodes");
+    }
+  },
+  async fetchQrCode({commit},itemData){
+    if(itemData){
+      let aux ={
+        qrcode:itemData
+      }
+      try{
+        await axios.post(baseUrl + "recoverQrCode", aux).then(function (response) {
+          if (response.data.success) {
+            //console.log(response.data.obj);
+            if(response.data.obj){
+              commit("addQrCodes", response.data.obj);
+              commit("updateSizeQrCodes");
+              commit("saveQrCodes");
+              commit("AlertnewQrCode", response.data.success);
+            }
+          } else {
+            if(response.data.error){
+              commit("setMessageUser", "Ocorreu um erro ao localizar o QrCode");
+              commit("AlertnewQrCode", false);
+            }else{
+              commit("setMessageUser", "Parece que seu QrCode já foi usado ou reembolsado.");
+              commit("AlertnewQrCode", false);
+            }
+           
+          }
+        });
+      }catch(e){
+
+      }
+    }
+  },
   async RWithDraw( {commit}, itemData){
     if(itemData){
       let aux = {
@@ -163,15 +197,13 @@ const actions = {
     commit("AlertnewQrCode", true);
   },
   async Qrcodes({ commit }, itemData) {
-    console.log(itemData)
-    if (itemData.qrcode !== null) {
-      commit("addQrCodes", itemData);
-    } else {
-      commit("addQrCodes", itemData);
-    }
-
+   
+    
+    commit("addQrCodes", itemData)
     commit("updateSizeQrCodes");
     commit("saveQrCodes");
+
+   
   },
   async DeleteQrcodes({ commit }, itemData) {
     commit("DeleteItem", itemData);
@@ -243,18 +275,19 @@ const actions = {
       }
     }
   },
-  async getProfile({ commit, state }) {
-    if (Object.keys(state.user).length !== 0)
-      //IMPORTANTE
+  async getProfile({ commit }) {
+    const session = window.localStorage.getItem("session");
+    //console.log(session);
+    if (session !== "") {
       await axios
         .post(url + "getProfile")
         .then(function (response) {
-          commit("setUser", response.data.user);
-          commit("setRespostaUser", response.data.ok);
+          commit("setUser", response.data.obj);
+          commit("setMessageUser", response.data.msg)
+          commit("setRespostaUser", response.data.success);
         })
         .catch(function (error) {
           console.log(error);
-          commit("setCheckToken", false);
           if (error.response.status === 429) {
             commit("setRespostaUser", false);
             commit("setMessageUser", "Muitas tentativas, aguarde 1 minuto.");
@@ -263,10 +296,14 @@ const actions = {
           commit("setRespostaUser", false);
           }
         });
+    }else{
+      commit("setRespostaUser", false);
+    }
+      
   },
   async verify({ commit }, itemData) {
     if (itemData !== null) {
-      console.log(itemData);
+      //console.log(itemData);
       let aux = {
         token: itemData,
       };
@@ -275,6 +312,33 @@ const actions = {
           .post(url + "verifyTokenEmail", aux)
           .then(function (response) {
             commit("setVerify", response.data.obj);
+            commit("setMessageUser", response.data.msg);
+            commit("setRespostaUser", response.data.success);
+          });
+      } catch (e) {
+        console.log(e);
+        if (e.response.status === 429) {
+          commit("setRespostaUser", false);
+          commit("setMessageUser", "Muitas tentativas, aguarde 1 minuto.");
+        } else {
+          commit("setMessageUser", "Erro ao enviar verificação");
+        commit("setRespostaUser", false);
+        }
+      }
+    }
+  },
+  async saveProfile({ commit }, itemData) {
+    if (itemData !== null) {
+      //console.log(itemData);
+      let aux = {
+        user: itemData,
+      };
+      try {
+        await axios
+          .post(url + "saveProfile", aux)
+          .then(function (response) {
+            if(response.data.success)
+              commit("setUser", response.data.obj)
             commit("setMessageUser", response.data.msg);
             commit("setRespostaUser", response.data.success);
           });
@@ -392,9 +456,16 @@ const actions = {
       }
     }
   },
+  async switchFirstLoad({commit}){
+    commit("changeFirstLoad", false);
+  }
 };
 
 const mutations = {
+  changeFirstLoad: (state, firstLoad) => {
+    state.firstLoad = firstLoad;
+    window.localStorage.setItem("firstLoader", firstLoad);
+  },
   refreshSingleQrCode: (state, Qrcode) => {
     var index = 0;
       for(let i =0; i< state.Qrcodes.length; i++){
@@ -405,6 +476,8 @@ const mutations = {
       }
         state.Qrcodes[index].quantity = Qrcode.quantity
         state.Qrcodes[index].state = Qrcode.state
+        state.Qrcodes[index].withdraw = Qrcode.withdraw
+        
 
   },
   refreshQrCodes: (state, Qrcode) => {
@@ -421,22 +494,54 @@ const mutations = {
         Qrcodes !== null &&
         !Array.isArray(Qrcodes)
       ) {
-        state.Qrcodes.push(Qrcodes);
-      } else {
-        for (let i = 0; i < Qrcodes.length; i++) {
-          const index = state.Qrcodes.findIndex(
-            (item) => item._id === Qrcodes[i]._id
-          );
-          if (index > -1) {
-            state.Qrcodes.splice(index, 1);
-            state.Qrcodes.push(Qrcodes[i]);
-          } else {
-            state.Qrcodes.push(Qrcodes[i]);
+        var trigger = false
+        for (let i = 0; i < state.Qrcodes.length; i++) {
+          if(Qrcodes._id === state.Qrcodes[i]._id){
+            trigger = true;
           }
+        }
+        if(trigger === false){ //Se nao localizar um, insira.
+          Qrcodes.overlay=false
+          state.Qrcodes.push(Qrcodes);
+        }
+      } else {
+      
+        for (let i = 0; i < Qrcodes.length; i++) {
+          if(Qrcodes[i].data){
+            const index_sec = state.Qrcodes.findIndex(
+              (item) => item._id === Qrcodes[i].data._id
+            );
+            if (index_sec > -1) {
+        
+              state.Qrcodes.splice(index_sec, 1);
+              Qrcodes[i].data.overlay=false
+              state.Qrcodes.push(Qrcodes[i].data);
+            } else {
+              Qrcodes[i].data.overlay=false
+              state.Qrcodes.push(Qrcodes[i].data);
+            }
+          }else{
+            const index = state.Qrcodes.findIndex(
+              (item) => item._id === Qrcodes[i]._id
+            );
+            if (index > -1) {
+        
+              state.Qrcodes.splice(index, 1);
+              Qrcodes[i].overlay = false;
+              state.Qrcodes.push(Qrcodes[i]);
+            } else {
+              Qrcodes[i].overlay = false;
+              state.Qrcodes.push(Qrcodes[i]);
+            }
+          }
+        
         }
       }
     } else {
-      state.Qrcodes.push(Qrcodes);
+      console.log("Flag 2")
+      Qrcodes.data.overlay = false;
+
+      state.Qrcodes.push(Qrcodes.data);
     }
   },
   setLogOutQrCodes: (state) => {
@@ -450,12 +555,14 @@ const mutations = {
     window.localStorage.setItem("Qrcodes", JSON.stringify(state.Qrcodes));
     window.localStorage.setItem("QrcodesSize", state.QrcodesSize);
   },
-  DeleteItem: (state, Qrcodes) => {
+  DeleteItem: (state, Qrcode) => { //Arrumado
+    
     const index = state.Qrcodes.findIndex(
-      (Qrcodes) => Qrcodes._id === Qrcodes._id
+      (Qrcodes) => Qrcodes._id === Qrcode
     );
 
-    if (index !== -1) {
+    if (index > -1) {
+      
       state.Qrcodes.splice(index, 1);
     }
   },

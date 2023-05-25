@@ -1,4 +1,4 @@
-const url = "https://api-semfila.api-semfila.online/categoria/";
+
 
 const state = {
     newcategoria: "",

@@ -37,12 +37,12 @@
 
                 <v-col cols="12" v-if="!select">
                   <v-container>
-                    <v-btn class="black--text font-weight-bold" block text outlined @click="openEmail(false)"
+                    <v-btn class="black--text " block text outlined @click="openEmail(false)"
                       >Entrar com Email</v-btn
                     >
                   </v-container>
                   <v-container>
-                    <v-btn block text class="black--text font-weight-bold" @click="openEmail(true)"
+                    <v-btn block text class="black--text " @click="openEmail(true)"
                       >Criar minha conta</v-btn
                     >
                   </v-container>
@@ -123,7 +123,7 @@ export default {
     },
     onSignIn(user) {
       // do stuff, for exampl
-      console.log(user);
+      //console.log(user);
     },
     openEmail(type) {
       if (type) {
@@ -147,8 +147,8 @@ export default {
   },
   mounted() {
     let that = this;
-    console.log(GoogleAuth);
-    console.log(gapi);
+    //console.log(GoogleAuth);
+    //console.log(gapi);
     /*
     gapi.signin2.render('google-signin-btn', { // this is the button "id"
       cookiePolicy: 'single_host_origin',

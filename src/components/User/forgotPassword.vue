@@ -123,7 +123,6 @@ export default {
   methods: {
     ...mapActions(["sendRecoveryPssToken"]),
     esqueciSenha() {
-      //console.log("6");
       this.sendRecoveryPssToken(this.schemaUser).then((response) => {
         if (this.getRespostaUser) {
           this.snackErro = false;

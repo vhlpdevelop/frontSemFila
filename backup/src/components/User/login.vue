@@ -1,11 +1,11 @@
 <template>
-  <v-app >
-    <v-container fluid fill-height class="background d-flex">
-      <v-row class="justify-center align-center mx-auto">
-        <v-col cols="12" md="6"></v-col>
-        <v-col cols="12" md="6">
-          <v-container class="">
-            <v-row no-gutters class="justify-center align-center">
+  <v-app>
+    <v-container ma-0 pa-0 fluid fill-height class="d-flex ">
+      <v-row class="justify-center align-center mx-auto ">
+        <v-col cols="12" md="6" class="background containerSpace"><v-container fluid fill-height ma-0 pa-0 ></v-container></v-col>
+        <v-col cols="12" md="6" class="backgroundColor">
+          <v-container ma-0 pa-0  fluid fill-height class="justify-center align-center containerSpace">
+            <v-row no-gutters class="justify-center align-center ">
               <v-card class="backgroundSingUpEmail">
                 <v-col cols="12" v-if="select">
                   <v-btn text block v-if="createAccount" @click="backSignIn"
@@ -37,12 +37,12 @@
 
                 <v-col cols="12" v-if="!select">
                   <v-container>
-                    <v-btn class="black--text font-weight-bold" block text outlined @click="openEmail(false)"
+                    <v-btn class="black--text " block text outlined @click="openEmail(false)"
                       >Entrar com Email</v-btn
                     >
                   </v-container>
                   <v-container>
-                    <v-btn block text class="black--text font-weight-bold" @click="openEmail(true)"
+                    <v-btn block text class="black--text " @click="openEmail(true)"
                       >Criar minha conta</v-btn
                     >
                   </v-container>
@@ -123,7 +123,7 @@ export default {
     },
     onSignIn(user) {
       // do stuff, for exampl
-      console.log(user);
+      //console.log(user);
     },
     openEmail(type) {
       if (type) {
@@ -147,8 +147,8 @@ export default {
   },
   mounted() {
     let that = this;
-    console.log(GoogleAuth);
-    console.log(gapi);
+    //console.log(GoogleAuth);
+    //console.log(gapi);
     /*
     gapi.signin2.render('google-signin-btn', { // this is the button "id"
       cookiePolicy: 'single_host_origin',

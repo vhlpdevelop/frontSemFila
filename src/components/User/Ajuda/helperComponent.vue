@@ -4,9 +4,12 @@
       <div class="py-6 justify-start d-flex flex">
         <v-btn block text>
           <div @click="$router.go(-1)" class="primary--text">Ajuda</div>
-          <div>
+          <div class="white--text">
             <v-icon x-small>mdi-arrow-right</v-icon>
-            {{ id }}
+            <span>
+              {{ id }}
+            </span>
+            
           </div>
         </v-btn>
       </div>

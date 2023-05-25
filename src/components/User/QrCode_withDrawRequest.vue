@@ -13,35 +13,35 @@
       
         <v-card v-if="!loading">
             <v-container fluid fill-height ma-0 pa-0 class="overflow-hidden">
-                <v-card-title class="text-h5 " style="word-break: break-word">
+                <v-card-title class="text-h5 black--text" style="word-break: break-word">
           Gostaria de solicitar o reembolso deste QrCode?
         </v-card-title>
         <v-card-text>
             O valor será reembolsado para a conta que efetuou o pagamento.
-            <ul class="text-caption mt-2 text-justify">
-                <li class="text-justify">
+            <ul class="text-caption mt-2 text-justify  black--text">
+                <li class="text-justify  black--text">
                     O valor será reembolsado totalmente.
                 </li>
-                <li class="mt-1 text-justify">
+                <li class="mt-1 text-justify  black--text">
                     Somente quando um QrCode expirar a solicitação de reembolso será liberada.
                 </li>
-                <li class="mt-1 text-justify">
+                <li class="mt-1 text-justify  black--text">
                     Em caso de impossibilidade de reembolso pela conta pagante será possível pedir reembolso enviando um Email de suporte para SemFila Tech.
                 </li>
             </ul>
             
-            <p class="mt-2 text-center">
+            <p class="mt-2 text-center  black--text">
                 Poderá solicitar o reembolso até
-                <p class="text-center mt-n3">
+                <p class="text-center mt-n3  black--text">
                     {{
                         AssimilateTime(
                         object.createdAt
                         )
                     }}
                 </p>
-                <p class="text-caption">Art. 49 - O consumidor pode desistir da compra, no prazo de 7 dias. </p>
+                <p class="text-caption  black--text">Art. 49 - O consumidor pode desistir da compra, no prazo de 7 dias. </p>
             </p>
-            <p class="text-center mt-5 red--text">Valor estornado: R${{ (object.item.price * object.quantity).toFixed(2)}}</p>
+            <p class="text-center mt-5 red--text ">Valor estornado: R${{ (object.item.price * object.quantity).toFixed(2)}}</p>
         </v-card-text>
         <v-card-actions class="mt-n2">
           <v-btn
@@ -96,8 +96,9 @@ export default {
     startWithDraw(){
         this.loading=true;
         this.RWithDraw(this.object).then( () => {
-            console.log("Aqui")
-            this.$emit("withDrawReq") 
+            
+            this.$emit("withDrawReq")
+            this.closePopUp();
         })
     },  
     closePopUp(){

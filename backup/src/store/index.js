@@ -7,6 +7,7 @@ import storeCardapio from './modules/cardapio.store'
 import storeCategoria from './modules/categoria.store'
 import storeItem from "./modules/item.store"
 import storePay from './modules/payment.store'
+import storeHome from "./modules/home.store"
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -15,6 +16,7 @@ const store = new Vuex.Store({
         storeLogin,
         storeUser,
         storeCardapio,
+        storeHome,
         storeCategoria,
         storeItem,
         storeCart,

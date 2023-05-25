@@ -42,7 +42,7 @@
                   contain
                   class="elevation-6"
                   :src="itemCompra.image_url"
-                  lazy-src="https://i.ibb.co/WH7Bj1J/empty.jpg"
+                  lazy-src="https://i.ibb.co/sKgtRT3/empty.png"
                 >
                   <template v-slot:placeholder>
                     <v-row
@@ -98,7 +98,7 @@
                     </v-avatar>
                   </v-badge>
                   <p>
-                    <a class="hoverTag"> Pagamentos e Segurança </a>
+                    <a class="hoverTag" @click="$router.push({name:'termos'})"> Pagamentos e Segurança </a>
                   </p>
                 </v-col>
                 <v-col cols="4" class="text-center">
@@ -107,7 +107,7 @@
                   </v-avatar>
 
                   <p>
-                    <a class="hoverTag"> Política de Devolução </a>
+                    <a class="hoverTag" @click="$router.push({name:'devolucao'})"> Política de Devolução </a>
                   </p>
                 </v-col>
               </v-row>
@@ -257,6 +257,16 @@
           </v-container>
         </v-col>
       </v-row>
+      <v-dialog transition="dialog-bottom-transition" v-model="dialogAddonCart" width="300">
+        <v-card
+        color="primary"
+        dark
+      >
+        <v-card-text class="pa-2 text-center">
+          <p>Produto foi adicionado no carrinho. </p><v-icon right>mdi-cart</v-icon>
+        </v-card-text>
+      </v-card>
+      </v-dialog>
     </v-container>
   </v-app>
 </template>
@@ -274,6 +284,7 @@ export default {
     qtd: 1,
     min: 1,
     max: 30,
+    dialogAddonCart: false,
     snackErro: false,
     snackSucesso: false,
     route: "",
@@ -317,6 +328,7 @@ export default {
         //console.log(this.item.num)
         this.addCart(this.itemCompra).then((response) => {
           //Após colocar no carrinho, mostrar ao usuário
+          this.dialogAddonCart = true;
           this.$gtag.event('add_to_card', { method: 'Google' })
         });
       }

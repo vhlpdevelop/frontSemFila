@@ -1,15 +1,7 @@
 /* eslint-disable spaced-comment */
 import store from "../index"
-
 import axios from "axios";
 import { io } from "socket.io-client";
-//const url = 'https://lobby-contador.herokuapp.com/pagSeguro/'
-//{ transports: ['websocket', 'polling', 'flashsocket'] }
-//const url = "http://localhost:3000/payment/"
-
-//const url = "http://localhost:3000/payment/"
-//const urlSocket="http://localhost:3000"
-//const urlSocket = "https://semfila-api.herokuapp.com" //
 const urlSocket = "https://api-semfila.api-semfila.online";
 const url = "https://api-semfila.api-semfila.online/payment/";
 const sessionID = window.localStorage.getItem("sessionID");
@@ -32,7 +24,6 @@ socket.on("session", ({ sessionID }) => {
 
 
 socket.on("qrcodeGet", (qrcode, callback) => {
-  
   store.dispatch('callQRCODE', qrcode)
   if (store.getters.getPaymentCheck) {
     callback(true);
@@ -43,15 +34,21 @@ socket.on("qrcodeGet", (qrcode, callback) => {
 const state = {
   sessionID: "",
   status: "",
+  msg: "",
   plan: "",
   frete: "",
   freteCheck: false,
   paymentCheck: false,
+  totalCart: 0,
+  pedidoID: "",
   paymentData: "",
 };
 
 const getters = {
   getSessionID: (state) => state.sessionID,
+  getTotalCart: (state)=> state.totalCart,
+  getPaymentMsg: (state) => state.msg,
+  getPedidoID:(state) => state.pedidoID,
   getStatus: (state) => state.status,
   getPlan: (state) => state.plan,
   getFrete: (state) => state.frete,
@@ -65,12 +62,11 @@ const actions = {
    
     
     for (let i = 0; i < itemData.dataToSend.length; i++) {
+    
+
       dispatch("Qrcodes", itemData.dataToSend[i], { root: true });
     }
     commit("SetPaymentCheck", true);
-  },
-  async changeFrete({ commit }) {
-    commit("SetFreteCheck", false);
   },
   async verifyTokenSuccess({ commit }, itemData) {
     if (itemData !== null) {
@@ -87,30 +83,43 @@ const actions = {
           });
       } catch (e) {
         console.log(e);
-        commit("setMessageUser", "Erro ao enviar verificação");
+        
+        if (e.response.status === 429) {
+          commit("setRespostaUser", false);
+          commit("setMessageUser", "Muitas tentativas, aguarde 1 minuto.");
+        } else {
+          commit("setMessageUser", "Erro ao enviar verificação");
         commit("setRespostaUser", false);
+        }
       }
     }
   },
-  async fetchFrete({ commit }, itemData) {
-    try {
-      await axios.post(url + "fetchFrete", itemData).then(
-        function (response) {
-          commit("SetFrete", response.data.valor);
-          commit("SetFreteCheck", response.data.ok);
-        },
-        (error) => {
-          //Caso de erro
-          commit("SetFrete", "0");
-          commit("SetFreteCheck", false);
+  async fetchTotal({commit}, itemData){
+    //Calcular o carrinho.
+    console.log(itemData)
+    if(itemData){
+      var total = 0;
+      var desconto =0;
+      for (let i = 0; i < itemData.length; i++) {
+        if (itemData[i].qtd >= 1) {
+          total += itemData[i].price *itemData[i].qtd;
+          if (itemData[i].discount_status) {
+            desconto =
+              (
+                parseFloat(itemData[i].discount_value)) *
+                itemData[i].qtd;
+                desconto = desconto.toFixed(2);
+                total = parseFloat(total) - parseFloat(desconto);
+          }
+          
         }
-      );
-    } catch (e) {
-      console.log(e.message);
-      commit("SetFrete", "0");
+        
+      }
+      commit("SetTotalCart", total)
     }
+    
   },
-  async PaymentCheck({ dispatch, commit }, itemData) {
+  async PaymentCheck({ dispatch, commit }, itemData) { //CALL PAYMETHOD E RETURN
     let object = {
       itemData: itemData,
       idSocket: window.localStorage.getItem("sessionID"),
@@ -122,14 +131,26 @@ const actions = {
           function (response) {
             //console.log(response.data);
             if (response.data.success) {
+              commit("SetPedidoID", response.data.obj_pedido);
               commit("SetPlan", response.data.obj);
               commit("SetStatus", true);
+              commit("SetPaymentMsg", response.data.msg);
             } else {
+              console.log(response.data.obj)
+              commit("SetPaymentMsg", response.data.msg);
+              if(response.data.obj){ //Caso um item fique sem estoque, chamar o dispatch e retirar do cardapio.
+                console.log("Aqui")
+                dispatch("shutdownItem", response.data.obj, { root: true });
+              }
+              console.log(response.data.msg)
+              
               commit("SetPlan", "");
               commit("SetStatus", false);
             }
           },
           (error) => {
+            console.log(error.message)
+            commit("SetPaymentMsg", error.message);
             //Caso de erro
             //console.log("Flag 2");
             commit("SetPlan", "");
@@ -153,48 +174,16 @@ const actions = {
         );
       }
     } catch (e) {
-      //console.log(e.message);
+      console.log(e.message);
       commit("SetPlan", "");
       commit("SetStatus", false);
-    }
-  },
-  async checkOutPlan({ commit }, itemData) {
-    try {
-      await axios.post(url + "fetchProduct", itemData).then(
-        function (response) {
-          commit("SetPlan", response.data);
-          commit("SetStatus", true);
-        },
-        (error) => {
-          //Caso de erro
-          commit("SetPlan", "");
-          commit("SetStatus", false);
-        }
-      );
-    } catch (e) {
-      //console.log(e);
-      commit("SetPlan", "");
-      commit("SetStatus", false);
-    }
-  },
-  async getPagSession({ commit }) {
-    try {
-      await axios.post(url + "fetchSession").then(function (response) {
-        ////console.log(response.data)
-        if (response.data.ok) {
-          commit("SetSession", response.data.session_id);
-          commit("SetStatus", response.data.ok);
-        }
-      });
-    } catch (err) {
-      commit("respostaLogin", false);
-      commit("messageLogin", "Erro ao enviar");
-      //console.log("erro:", err);
     }
   },
 };
 
 const mutations = {
+  SetTotalCart: (state, totalCart) => (state.totalCart = totalCart),
+  SetPedidoID: (state, pedidoID) => (state.pedidoID = pedidoID),
   SetSession: (state, sessionID) => (state.sessionID = sessionID),
   SetPaymentCheck: (state, paymentCheck) => (state.paymentCheck = paymentCheck),
   SetPaymentData: (state, paymentData) => (state.paymentData = paymentData),
@@ -202,6 +191,7 @@ const mutations = {
   SetPlan: (state, plan) => (state.plan = plan),
   SetFrete: (state, frete) => (state.frete = frete),
   SetFreteCheck: (state, freteCheck) => (state.freteCheck = freteCheck),
+  SetPaymentMsg: (state, msg) => (state.msg = msg),
 };
 
 export default {

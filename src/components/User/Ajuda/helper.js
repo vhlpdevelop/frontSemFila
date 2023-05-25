@@ -85,11 +85,11 @@ const objects = [
     item: [
       {
         title: "Afiliado",
-        text: "",
+        text: "Estamos ainda criando esta parte...",
       },
       {
         title: "Tornando-se um",
-        text: "",
+        text: "Estamos ainda criando esta parte...",
       },
     ],
   },
@@ -99,12 +99,12 @@ const objects = [
     item: [
       {
         title: "Uma loja não trouxe meu produto",
-        text: "Abra uma reclamação imediatamente para a SemFila iniciar o processo, envie um Email para a SemFila. <br/><br/>"
+        text: "Abra uma reclamação imediatamente para a SemFila iniciar o processo, envie um Email ou WhatsApp para a SemFila. você também pode abrir uma denúncia do cardápio <br/><br/>"
         +"Titulo: RECLAMACAO - NOME DA LOJA <br/><br/> Descreva o que aconteceu. No fim seu nome, qual dispositivo e se possui uma conta.",
       },
       {
         title: "Uma loja retirou mais itens que solicitei",
-        text: "Abra uma reclamação imediatamente para a SemFila iniciar o processo, envie um Email para a SemFila. <br/><br/>"
+        text: "Abra uma reclamação imediatamente para a SemFila iniciar o processo, envie um Email ou WhatsApp para a SemFila. <br/><br/>"
         +"Titulo: RECLAMACAO - NOME DA LOJA <br/><br/> Descreva o que aconteceu. No fim seu nome, qual dispositivo e se possui uma conta.",
       },
       {

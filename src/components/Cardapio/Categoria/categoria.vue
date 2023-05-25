@@ -23,6 +23,7 @@
                   :headers="headers"
                   :items="getCardapio.cardapio[getCategoria].items"
                   hide-default-header
+                  disable-pagination
                   hide-default-footer
                   class="d-flex flex-column mh-100 ma-5 "
                   id="qrcodeTable"
@@ -223,7 +224,7 @@ export default {
 
   created() {
     if (this.getCardapio.cardapio.length > 0) {
-      console.log("flag")
+      //console.log("flag")
       if (this.getCardapio.cardapio[this.getCategoria] === undefined) {
         this.$router.push({
           name: "homeCardapio",

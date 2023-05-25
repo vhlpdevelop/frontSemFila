@@ -11,21 +11,22 @@
               <v-container fluid class="flex-grow-1 d-flex row justify-center align-center mt-5">
                 <p>
                   <a style="text-decoration: none" href="https://semfila.app/home">
-                    <h1 style="color: #F24236 !important; font-size: 1.5em">Sem Fila <span
-                    style="color: #EAC435 !important"> Tech</span></h1>
+                    <h1 style="color: #F24236 !important; font-size: 1.5em">Sem Fila</h1>
                   </a>
                
                 </p>
                 <v-container fluid class="d-flex justify-center">
-                  <a href="https://www.instagram.com/semfila.oficial">
+                  <a  style="text-decoration: none" href="https://www.instagram.com/semfila.oficial">
                     <v-icon large class="ma-5 white--text" > mdi-instagram </v-icon>
                   </a>
                   
-                  <v-icon large class="ma-5 white--text"> mdi-facebook </v-icon>
+                  <a  style="text-decoration: none" href="https://wa.me/5567991312906?text=Ol%C3%A1%2C+estou+com+d%C3%BAvida+e+preciso+de+ajuda+da+SemFila">
+                    <v-icon large class="ma-5 white--text" > mdi-whatsapp </v-icon>
+                  </a>
                 </v-container>
                 <div class="text-center">
                   <v-subheader class="white--text">
-                    © Copyright 2022 - SemFila - Todos os direitos reservados SemFila
+                    © Copyright 2023 - SemFila - Todos os direitos reservados SemFila
                   </v-subheader>
                   <v-subheader class="white--text">
                     CNPJ 40.740.307/0001-43
@@ -42,6 +43,9 @@
                 <v-container fluid><v-btn class="white--text" text @click="$router.push({
                   name: 'privacidade',
                 })">Privacidade </v-btn></v-container>
+                <v-container fluid><v-btn class="white--text" text @click="$router.push({
+                  name: 'devolucao',
+                })">Política de Devolução </v-btn></v-container>
                 <v-container fluid><v-btn class="white--text" text @click="$router.push({
                   name: 'ajuda',
                 })">Ajuda </v-btn></v-container>

@@ -13,7 +13,7 @@
   .backgroundDash {
     background-color: rgba(16, 12, 8, 1) !important;
   }
-  .backgroundB{
+  .backgroundBDashBoard{
     background-color: rgba(16, 12, 8, 1) !important;
   }
 }
@@ -24,7 +24,7 @@
   .backgroundDash {
     background-color: rgba(16, 12, 8, 1) ;
   }
-  .backgroundB {
+  .backgroundBDashBoard {
     background-color: rgba(16, 12, 8, 1) ;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) ;
   }
@@ -33,7 +33,7 @@
     .drawerSetting{
         color: #47463b ;
     }
-    .backgroundB {
+    .backgroundBDashBoard {
         background-color: #e8e8e7 ;
         box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) ;
       }
@@ -50,7 +50,7 @@
   .backgroundDash {
     background-color: #47463b ;
   }
-  .backgroundB {
+  .backgroundBDashBoard {
     background-color: #e8e8e7 ;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2) ;
   }
@@ -59,13 +59,13 @@
   .backgroundDash {
     background-color: #47463b ;
   }
-  .backgroundB {
+  .backgroundBDashBoard {
     background-color: #e8e8e7 ;
     box-shadow: 0 5px 10px rgb(0 0 0 / 0.2) ;
   }
 }
 
-.textColorDefault {
+.textColorDefaultDashBoard {
   color: #f24236 !important;
 }
 .textColorID {
@@ -76,13 +76,13 @@
 .backgroundNav {
   background-color: rgb(228, 239, 241) !important;
 }
-.navText {
+.navTextDashBoard {
   font-family: Josefin Sans !important;
   font-size: 0.9em !important;
   text-decoration: none !important;
   color: #100c08 !important;
 }
-.navTitle {
+.navTitleDashBoard {
   font-family: Josefin Sans !important;
   font-size: 1em !important;
   color: #f24236 !important;

@@ -1,7 +1,7 @@
 <template>
   <v-app class="backgroundDash">
     <v-container fluid ma-0 pa-0>
-      <v-toolbar flat class="backgroundB ml-1 mr-1">
+      <v-toolbar flat class="backgroundBDashBoard ml-1 mr-1">
         <v-app-bar-nav-icon
           class="hidden-md-and-up drawerSetting"
           @click.stop="drawer = !drawer"
@@ -10,7 +10,7 @@
 
         <v-toolbar-title>
           
-          <v-btn text class="navTitle ma-1" @click="$router.push({name:'home'})" ><v-avatar size="140"><img :src="logo"></v-avatar></v-btn>
+          <v-btn text class="navTitleDashBoard ma-1" @click="$router.push({name:'home'})" ><v-avatar size="140"><img :src="logo"></v-avatar></v-btn>
         </v-toolbar-title>
         <v-spacer />
 
@@ -20,7 +20,7 @@
           @click="$router.push({ path: item.path })"
           class="hidden-sm-and-down"
         >
-          <a class="hidden-sm-and-down navText mr-5">
+          <a class="hidden-sm-and-down navTitleDashBoard mr-5">
             {{ item.title }}</a
           >
         </div>
@@ -28,7 +28,7 @@
         <v-btn
           depressed
           text
-          class="ml-5 navTitle d-none d-sm-flex d-md-flex d-lg-flex d-xl-flex"
+          class="ml-5 navTitleDashBoard d-none d-sm-flex d-md-flex d-lg-flex d-xl-flex"
           to="/entrar"
           v-if="!logged"
           >criar conta</v-btn
@@ -123,7 +123,7 @@
                 >mdi-home</v-icon
               >
             </v-list-item-icon>
-            <v-btn text class="navTitle" @click="$router.push({name:'home'})"><v-avatar class="ml-n5" size="100"><img :src="logo"></v-avatar></v-btn>
+            <v-btn text class="navTitleDashBoard" @click="$router.push({name:'home'})"><v-avatar class="ml-n5" size="100"><img :src="logo"></v-avatar></v-btn>
           </v-list-item>
           <v-divider />
           <v-list-item
@@ -131,7 +131,7 @@
             :key="item.title"
             :to="item.path"
           >
-            <v-list-item-title class="navTitle">{{
+            <v-list-item-title class="navTitleDashBoard">{{
               item.title
             }}</v-list-item-title>
           </v-list-item>
@@ -308,7 +308,7 @@ export default {
     },
     moveToSettings() {
       this.$router.push({
-        name: "settings",
+        name: "config",
       });
     },
     accountLogOut() {
@@ -321,11 +321,16 @@ export default {
   },
   created() {
     document.title = "SemFila";
-    this.autoLogin().then(() => {
+    if(!this.getAuth){
+      this.autoLogin().then(() => {
       if (this.getAuth) {
         this.logged = true;
       }
     });
+    }else{
+      this.logged=true;
+    }
+
   },
 };
 </script>
